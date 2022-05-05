@@ -5,10 +5,10 @@ from PyQt5.QtGui import QFont, QPixmap
 from PyQt5.QtWidgets import QSplashScreen, QProgressBar, QStyleFactory, QMessageBox
 from qgis.core import QgsApplication
 # from qgis.core import 
-from gui.mainwindow import MainWindow
+from rscder.gui.mainwindow import MainWindow
 import multiprocessing
-from gui import license
-from utils.setting import Settings
+from rscder.gui import license
+from rscder.utils.setting import Settings
 
 class MulStart:
 
@@ -27,7 +27,7 @@ class MulStart:
 
         
         # pyrcc5 res.qrc -o rc.py
-        import rc  
+        import rscder.rc  
 
         app = QgsApplication([], True)
         QgsApplication.initQgis()

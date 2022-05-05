@@ -9,6 +9,7 @@ from rscder.gui.layertree import LayerTree
 from rscder.gui.mapcanvas import DoubleCanvas
 from rscder.gui.messagebox import MessageBox
 from rscder.gui.result import ResultTable
+from rscder.plugins.loader import PluginLoader
 from rscder.utils import Settings
 from rscder.utils.project import Project
 
@@ -42,6 +43,18 @@ class MainWindow(QMainWindow):
         self.action_manager.set_toolbar(self.toolbar)
         self.action_manager.set_status_bar(self.statusBar())
         self.action_manager.set_actions()
+
+        PluginLoader(dict(
+            layer_tree=self.layer_tree,
+            pair_canvas=self.double_map,
+            message_box=self.message_box,
+            result_table=self.result_box,
+            project=Project(self),
+            mainwindow=self,
+            toolbar=self.toolbar,
+            statusbar=self.statusBar(),
+            **self.action_manager.menus
+        )).load_plugin()
 
         self.resize(*Settings.General().size)
 

@@ -1,5 +1,9 @@
+import os
+import shutil
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QIcon, Qt
+from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import Qt
+from rscder.plugins.loader import PluginLoader
 from rscder.utils.setting import Settings
 
 class PluginDialog(QDialog):
@@ -8,25 +12,25 @@ class PluginDialog(QDialog):
         super().__init__(parent)
         self.setWindowTitle('Plugins')
         self.setWindowIcon(QIcon(":/icons/logo.svg"))
-        self.setMinimumWidth(800)
+        self.setMinimumWidth(900)
         self.setMinimumHeight(600)
-        self.plugins = Settings.Plugin().plugins
+        self.plugins = list(Settings.Plugin().plugins)
 
-        self.plugin_table = QTableWidget(len(self.plugins), 2, self)
+        self.plugin_table = QTableWidget(len(self.plugins), 3, self)
         self.plugin_table.setSelectionMode(QAbstractItemView.ExtendedSelection)
         self.plugin_table.setColumnWidth(0, 200)
         self.plugin_table.setColumnWidth(1, 500)
-        self.plugin_table.setHorizontalHeaderLabels(['Name', 'Path', 'Enabled'])
-        self.plugin_table.setEditTriggers(QAbstractItemView.DoubleClicked)
+        self.plugin_table.setHorizontalHeaderLabels(['Name', 'Module', 'Enabled'])
+        self.plugin_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.plugin_table.cellDoubleClicked.connect(self.edit_plugin)
         for idx, plugin in enumerate(self.plugins):
             name_item = QTableWidgetItem(plugin['name'])
-            path_item = QTableWidgetItem(plugin['path'])
+            module_item = QTableWidgetItem(plugin['module'])
             enabled_item = QTableWidgetItem()
             enabled_item.setCheckState(Qt.Checked if plugin['enabled'] else Qt.Unchecked)
 
             self.plugin_table.setItem(idx, 0, name_item)
-            self.plugin_table.setItem(idx, 1, path_item)
+            self.plugin_table.setItem(idx, 1, module_item)
             self.plugin_table.setItem(idx, 2, enabled_item)
     
         self.add_button = QPushButton('Add', self)
@@ -50,39 +54,58 @@ class PluginDialog(QDialog):
         self.has_change = False
 
     def add_plugin(self):
-        self.has_change = True
-        self.plugin_table.insertRow(self.plugin_table.rowCount())
+        plugin_directory = QFileDialog.getExistingDirectory(self, 'Select Plugin Directory', '.')
+        if plugin_directory is not None:
+            info = PluginLoader.load_plugin_info(plugin_directory)
+            print(info)
+           
+            if info is not None:
+                info['module'] = os.path.basename(plugin_directory)
+                info['enabled'] = True
+                self.has_change = True
+                self.plugins.append(info)
+                self.plugin_table.insertRow(self.plugin_table.rowCount())
+                name_item = QTableWidgetItem(info['name'])
+                module_item = QTableWidgetItem(info['module'])
+                enabled_item = QTableWidgetItem('启用')
+                enabled_item.setCheckState(Qt.Checked)
+                self.plugin_table.setItem(self.plugin_table.rowCount() - 1, 0, name_item)
+                self.plugin_table.setItem(self.plugin_table.rowCount() - 1, 1, module_item)
+                self.plugin_table.setItem(self.plugin_table.rowCount() - 1, 2, enabled_item)
+
+                dst = PluginLoader.copy_plugin_to_3rd(plugin_directory)
+                if dst is not None:
+                    self.plugins[-1]['path'] = dst
+
+        else:
+            pass
+        
     
     def remove_plugin(self):
         self.has_change = True
-        for row in self.plugin_table.selectedItems():
-            self.plugin_table.removeRow(row.row())
-        
+        row_ids = list( row.row() for row in self.plugin_table.selectionModel().selectedRows())
+        row_ids.sort(reverse=True)
+        for row in row_ids:
+            self.plugin_table.removeRow(row)
+            info = self.plugins.pop(row)
+            try:
+                shutil.rmtree(info['path'])
+            except:
+                pass
         # for idx in self.plugins
     
     def edit_plugin(self, row, column):
         self.has_change = True
-        if column == 0:
-            self.plugin_table.item(row, column).setFlags(Qt.ItemIsEnabled | Qt.ItemIsSelectable)
-        elif column == 1:
-            open_file = QFileDialog.getOpenFileName(self, 'Open File', '', 'Python Files (*.py)')
-            if open_file[0]:
-                self.plugin_table.item(row, column).setText(open_file[0])
-            else:
-                pass
-        elif column == 2:
+        if column == 2:
             self.plugin_table.item(row, column).setFlags(Qt.ItemIsEnabled | Qt.ItemIsSelectable)       
-        # self.plugin_list.setFixedWidth(200)
     
     def save_plugin(self):
 
-        plugins = []
         for idx in range(self.plugin_table.rowCount()):
-            name = self.plugin_table.item(idx, 0).text()
-            path = self.plugin_table.item(idx, 1).text()
             enabled = self.plugin_table.item(idx, 2).checkState() == Qt.Checked
-            plugins.append({'name': name, 'path': path, 'enabled': enabled})
-        Settings.Plugin().plugins = plugins
+            self.plugins[idx]['enabled'] = enabled            
+        Settings.Plugin().plugins = self.plugins
+        self.has_change = False
         self.close()
 
     def closeEvent(self, event):

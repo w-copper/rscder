@@ -47,6 +47,21 @@ class ActionManager(QtCore.QObject):
         self.help_menu = menubar.addMenu('&帮助')
 
     
+    @property
+    def menus(self):
+        return {
+            'file_menu': self.file_menu,
+            'basic_menu': self.basic_menu,
+            'change_detection_menu': self.change_detection_menu,
+            'special_chagne_detec_menu': self.special_chagne_detec_menu,
+            'seg_chagne_detec_menu': self.seg_chagne_detec_menu,
+            'postop_menu': self.postop_menu,
+            'view_menu': self.view_menu,
+            'plugin_menu': self.plugin_menu,
+            'help_menu': self.help_menu,
+            'menu_bar': self.menubar
+        }
+
     def set_toolbar(self, toolbar):
         self.toolbar = toolbar
         self.toolbar.setIconSize(QtCore.QSize(24, 24))

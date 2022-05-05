@@ -27,8 +27,10 @@ class Settings(QSettings):
         @property
         def plugins(self):
             with Settings(Settings.Plugin.PRE) as s:
-                return s.value('plugins', [])
-        
+                pl = s.value('plugins', [])
+                if pl is None:
+                    return []
+                return pl
         @plugins.setter
         def plugins(self, value):
             with Settings(Settings.Plugin.PRE) as s:

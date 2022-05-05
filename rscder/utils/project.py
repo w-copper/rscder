@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Dict, List
 import uuid
 from osgeo import gdal, gdal_array
-from utils.setting import Settings
+from rscder.utils.setting import Settings
 from qgis.core import QgsRasterLayer, QgsLineSymbol, QgsSingleSymbolRenderer, QgsSimpleLineSymbolLayer, QgsVectorLayer, QgsCoordinateReferenceSystem, QgsFeature, QgsGeometry, QgsPointXY
 from PyQt5.QtCore import QObject, pyqtSignal
 from PyQt5.QtGui import QColor

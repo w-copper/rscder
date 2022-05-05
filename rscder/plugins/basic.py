@@ -1,6 +1,7 @@
 from PyQt5.QtCore import QObject, pyqtSignal
 from rscder.utils.project import PairLayer
 
+
 class BasicPlugin(QObject):
     '''
     插件基类
@@ -15,11 +16,16 @@ class BasicPlugin(QObject):
     statusbar: statusbar
     menu: menu
         file_menu: file menu
-        
-
     '''
+    @staticmethod
+    def info():
+        '''
+        Plugin info
+        '''
+        raise NotImplementedError
+
     def __init__(self, ctx:dict) -> None:
-        super().__init__()
+        super().__init__(ctx['mainwindow'])
         self.ctx = ctx
         self.layer_tree = ctx['layer_tree']
         self.pair_canvas = ctx['pair_canvas']
@@ -29,7 +35,7 @@ class BasicPlugin(QObject):
         self.mainwindow = ctx['mainwindow']
         self.set_action()
         self.project.layer_load.connect(self.on_data_load)
-        self.project.project_created.connect(self.setup)
+        self.project.project_init.connect(self.setup)
         
 
     def set_action(self):
