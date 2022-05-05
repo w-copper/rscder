@@ -4,13 +4,13 @@ from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui
 from PyQtAds import QtAds
-from actions.actions import ActionManager
-from gui.layertree import LayerTree
-from gui.mapcanvas import DoubleCanvas
-from gui.messagebox import MessageBox
-from gui.result import ResultTable
-from utils import Settings
-from utils.project import Project
+from rscder.gui.actions import ActionManager
+from rscder.gui.layertree import LayerTree
+from rscder.gui.mapcanvas import DoubleCanvas
+from rscder.gui.messagebox import MessageBox
+from rscder.gui.result import ResultTable
+from rscder.utils import Settings
+from rscder.utils.project import Project
 
 class MainWindow(QMainWindow):
 
@@ -41,7 +41,6 @@ class MainWindow(QMainWindow):
         self.action_manager.set_menus(self.menuBar())
         self.action_manager.set_toolbar(self.toolbar)
         self.action_manager.set_status_bar(self.statusBar())
-
         self.action_manager.set_actions()
 
         self.resize(*Settings.General().size)

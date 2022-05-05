@@ -12,12 +12,14 @@ from PyQt5.QtWidgets import QMessageBox, QWidget, QHBoxLayout
 from PyQt5.QtGui import QColor, QDragEnterEvent, QDropEvent
 
 from qgis.core import QgsPointXY, QgsRasterLayer, QgsVectorLayer, QgsFeature, QgsGeometry, QgsCategorizedSymbolRenderer, QgsRendererCategory, QgsFillSymbol, QgsPalLayerSettings, QgsRuleBasedLabeling, QgsTextFormat
-from qgis.gui import QgsMapCanvas
-from qgis.core import QgsVectorLayerExporter, QgsVectorFileWriter, QgsProject, QgsField, QgsRasterFileWriter, QgsRasterPipe
+from qgis.gui import QgsMapCanvas, QgsMapToolPan, QgsMapToolZoom
+from qgis.core import QgsRectangle, QgsVectorFileWriter, QgsProject, QgsField, QgsRasterFileWriter, QgsRasterPipe
 import threading
 import tempfile
 import cv2
 import os
+
+from rscder.utils.project import PairLayer, Project
 
 class DoubleCanvas(QWidget):
     corr_changed = pyqtSignal(str)
@@ -35,6 +37,16 @@ class DoubleCanvas(QWidget):
         self.mapcanva1.update_coordinates_text.connect(self.corr_changed)
         self.mapcanva2.update_coordinates_text.connect(self.corr_changed)
 
+        def set_map1_extent():
+            self.mapcanva1.set_extent(self.mapcanva2.extent())
+        def set_map2_extent():
+            self.mapcanva2.set_extent(self.mapcanva1.extent())
+
+        self.mapcanva1.extentsChanged.connect(set_map2_extent)
+        self.mapcanva2.extentsChanged.connect(set_map1_extent)
+
+        self.set_pan_tool(True)
+
         self.mapcanva1.update_scale_text.connect(self.scale_changed)
         self.mapcanva2.update_scale_text.connect(self.scale_changed)
         
@@ -43,16 +55,117 @@ class DoubleCanvas(QWidget):
         layout.addWidget(self.mapcanva2)
         
         self.setLayout(layout)
+        self.grid_show = True
+
+    def connect_grid_show(self, action):
+        def show_grid(_):
+            
+            self.grid_show = not self.grid_show
+            action.setChecked(self.grid_show)
+            if self.grid_show:
+                for layer in Project().layers.values():
+                    self.mapcanva1.add_grid_layer(layer.grid_layer.grid_layer)
+                    self.mapcanva2.add_grid_layer(layer.grid_layer.grid_layer)
+            else:
+                self.mapcanva1.remove_grid_layer()
+                self.mapcanva2.remove_grid_layer()
+
+        action.triggered.connect(show_grid)
+
+
+    def connect_map_tool(self, pan, zoom_in, zoom_out):
+        pan.triggered.connect(self.set_pan_tool)
+        zoom_in.triggered.connect(self.set_zoom_in)
+        zoom_out.triggered.connect( self.set_zoom_out)
+
+    def set_pan_tool(self, s):
+        print('set pan tool')
+        if s:
+            self.mapcanva1.setMapTool(QgsMapToolPan(self.mapcanva1))
+            self.mapcanva2.setMapTool(QgsMapToolPan(self.mapcanva2))
+
+    def set_zoom_in(self, s):
+        print('set zoom in')
+        if s:
+            self.mapcanva1.setMapTool(QgsMapToolZoom(self.mapcanva1, False))
+            self.mapcanva2.setMapTool(QgsMapToolZoom(self.mapcanva2, False))
+
+    def set_zoom_out(self, s):
+        print('set zoom out')
+        if s:
+            self.mapcanva1.setMapTool(QgsMapToolZoom(self.mapcanva1, True))
+            self.mapcanva2.setMapTool(QgsMapToolZoom(self.mapcanva2, True))
+
+    def add_layer(self, layer:str):
+        layer = Project().layers[layer]
+        if  not self.mapcanva1.is_main and not self.mapcanva2.is_main:
+            self.mapcanva1.is_main = True
+        self.mapcanva1.add_layer(layer.l1)
+        self.mapcanva2.add_layer(layer.l2)
+        if self.grid_show:
+            self.mapcanva1.add_grid_layer(layer.grid_layer.grid_layer)
+            self.mapcanva2.add_grid_layer(layer.grid_layer.grid_layer)
+        
+    
+    def clear(self):
+        self.mapcanva1.clear()
+        self.mapcanva2.clear()
 
 class CanvasWidget(QgsMapCanvas):
     update_coordinates_text = pyqtSignal(str)
     update_scale_text = pyqtSignal(str)
 
+    def add_layer(self, layer) -> None:
+        self.layers.insert(0, layer)
+        self.setLayers(self.layers)
+        self.zoomToFeatureExtent(layer.extent())
+
+    def add_grid_layer(self, layer):
+        self.grid_layers.append(layer)
+        self.layers.insert(0, layer)
+        self.setLayers(self.layers)
+
+    def remove_grid_layer(self):
+        layers = []
+        for layer in self.layers:
+            if layer in self.grid_layers:
+                continue
+            layers.append(layer)
+        self.layers = layers
+        self.setLayers(self.layers)
+
+    def enterEvent(self,e):
+        self.is_main = True
+        # print(e)
+        pass
+
+    def leaveEvent(self, e):
+        self.is_main = False
+        pass
+
+    def set_extent(self, extent:QgsRectangle):
+        '''
+        Zoom to extent
+        '''
+        # print(extent)
+        if self.is_main:
+            return
+        else:
+            self.zoomToFeatureExtent(extent)
+
+    def clear(self) -> None:
+        self.setTheme('')
+        self.layers = []
+        self.is_main = False
+        self.setLayers([])
+        self.clearCache()
+        self.refresh()
+
     def __init__(self, parent):
         super().__init__(parent)        
-        self.current_raster_layer = None
-        self.current_vector_layer = None
-
+        self.layers = []
+        self.grid_layers = []
+        self.is_main = False
         self.setCanvasColor(Qt.white)
         self.enableAntiAliasing(True)
         self.setAcceptDrops(False)

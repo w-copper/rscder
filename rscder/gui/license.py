@@ -4,7 +4,7 @@ from PyQt5 import QtCore
 from PyQt5.QtGui import QIcon
 import os
 
-from utils.license import LicenseHelper
+from rscder.utils.license import LicenseHelper
 
 class License(QtWidgets.QDialog):
 

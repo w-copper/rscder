@@ -2,7 +2,7 @@ from datetime import datetime
 import os
 from typing import Tuple
 from PyQt5.QtCore import QSettings
-from utils.license import LicenseHelper
+from rscder.utils.license import LicenseHelper
 
 class Settings(QSettings):
 
@@ -15,6 +15,25 @@ class Settings(QSettings):
     
     def __exit__(self, *args, **kargs):
         self.endGroup()
+
+    class Plugin:
+
+        PRE='plugin'
+
+        @property
+        def root(self):
+            return './3rd'
+
+        @property
+        def plugins(self):
+            with Settings(Settings.Plugin.PRE) as s:
+                return s.value('plugins', [])
+        
+        @plugins.setter
+        def plugins(self, value):
+            with Settings(Settings.Plugin.PRE) as s:
+                s.setValue('plugins', value)
+
 
     class Project:
 

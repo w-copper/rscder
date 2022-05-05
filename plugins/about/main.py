@@ -1,6 +1,8 @@
-from PyQt5.QtWidgets import QDialog, QApplication, QLabel, QTextEdit, QVBoxLayout
-from PyQt5.QtCore import Qt
+from rscder.plugins.basic import BasicPlugin
 
+from PyQt5.QtWidgets import QDialog, QAction, QApplication, QLabel, QTextEdit, QVBoxLayout
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QIcon
 
 class AboutDialog(QDialog):
     def __init__(self, parent=None):
@@ -40,3 +42,17 @@ class AboutDialog(QDialog):
         self.layout.addWidget(self.label4)
         self.layout.addWidget(self.text)
         self.setLayout(self.layout)
+
+
+class AboutPlugin(BasicPlugin):
+
+    def set_action(self):
+        menu = self.ctx['help_menu']
+        action = QAction('&关于', self.ctx['menubar'])
+        action.triggered.connect(self.on_about)
+
+        menu.addAction(action)
+    
+    def on_about(self):
+        dialog = AboutDialog(self.ctx['main_window'])
+        dialog.show()

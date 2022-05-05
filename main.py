@@ -1,4 +1,4 @@
-from mul.mulstart import MulStart
+from rscder import MulStart
 import logging
 
 logging.basicConfig(level=logging.INFO, filename='log.txt', filemode='w', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')

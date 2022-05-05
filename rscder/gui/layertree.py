@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt,QModelIndex
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import (QTreeView, QTreeWidgetItem, QAbstractItemView, QHeaderView, QStyleFactory)
 
-from utils.project import PairLayer
+from rscder.utils.project import PairLayer, Project
 
 class LayerTree(QtWidgets.QWidget):
 
@@ -18,13 +18,13 @@ class LayerTree(QtWidgets.QWidget):
         self.root=QTreeWidgetItem(self.tree)
         self.tree.setHeaderHidden(True)
         # self.tree.setHeaderLabels(['图层'])
-        self.root.setText(0,'Root')
+        self.root.setText(0,'图层')
 
-        child1=QTreeWidgetItem()
-        child1.setText(0,'child1')
-        child1.setCheckState(0,Qt.Checked)
+        # child1=QTreeWidgetItem()
+        # child1.setText(0,'child1')
+        # child1.setCheckState(0,Qt.Checked)
 
-        self.root.addChild(child1)
+        # self.root.addChild(child1)
         self.tree.expandAll()
 
         self.tree.addTopLevelItem(self.root)
@@ -39,9 +39,25 @@ class LayerTree(QtWidgets.QWidget):
     def onClicked(self,index):
         print(index.row())
 
-    def add_layer(self, layer:PairLayer):
-        pass
-    
+    def add_layer(self, layer:str):
+        layer:PairLayer = Project().layers[layer]
+        item1 = QtWidgets.QTreeWidgetItem(self.root)
+        item1.setText(0, layer.l1_name)
+        item1.setCheckState(0, Qt.Checked)
+        item2 = QtWidgets.QTreeWidgetItem(self.root)
+        item2.setText(0, layer.l2_name)
+        item2.setCheckState(0, Qt.Checked)
+
+        item1.setData(0, Qt.UserRole, layer.id)
+        item2.setData(0, Qt.UserRole, layer.id)
+        self.tree.expandAll()
+
+    def clear(self):
+        self.tree.clear()
+        self.root = QTreeWidgetItem(self.tree)
+        self.root.setText(0,'图层')
+        self.tree.addTopLevelItem(self.root)
+
     def right_menu_show(self, position):
         rightMenu = QtWidgets.QMenu(self)
         # QAction = QtWidgets.QAction(self.menuBar1)

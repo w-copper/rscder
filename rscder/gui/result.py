@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt,QModelIndex
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import (QTreeView, QTreeWidgetItem, QAbstractItemView, QHeaderView, QStyleFactory)
 
-from utils.project import PairLayer
+from rscder.utils.project import PairLayer
 
 class ResultTable(QtWidgets.QWidget):
 
@@ -33,6 +33,9 @@ class ResultTable(QtWidgets.QWidget):
         layout = QtWidgets.QVBoxLayout(self)
         layout.addWidget(self.tree)
         self.setLayout(layout)
+
+    def clear(self):
+        pass
 
     def onClicked(self,index):
         print(index.row())
