@@ -210,3 +210,6 @@ rc.py
 *.aux.xml
 
 model/
+
+plugin-build/
+3rd/
