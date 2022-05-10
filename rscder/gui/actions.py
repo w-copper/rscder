@@ -4,8 +4,17 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QAction, QActionGroup, QLabel, QFileDialog
 from rscder.gui.project import Create
 from rscder.utils.project import Project
+from rscder.utils.misc import singleton
 from rscder.gui.plugins import PluginDialog
+from rscder.utils.setting import Settings
+
+def get_action_manager() -> 'ActionManager':
+    return ActionManager()
+
+@singleton
 class ActionManager(QtCore.QObject):
+
+    instance = None
 
     def __init__(self,
              double_map,
@@ -137,147 +146,9 @@ class ActionManager(QtCore.QObject):
         plugin_list.triggered.connect(self.plugin_list)
 
         self.plugin_menu.addAction(plugin_list)
-        # morphology_filter = self.add_action(QAction('&形态学滤波', self.w_parent), 'filter')
-        # lee_filter = self.add_action(QAction('&Lee滤波', self.w_parent), 'filter')
-        # auto_filter = self.add_action(QAction('&自适应滤波-自主', self.w_parent), 'filter')
-        # auto_filter_no_params = self.add_action(QAction('自动滤波（无参自适应滤波）-自主', self.w_parent), 'filter')
-        # double_filter = self.add_action(QAction('&双边滤波', self.w_parent), 'filter')
-       
-        # filter_action_group = self.get_action_group('filter')
-
-        # filter_menu = self.basic_menu.addMenu('&滤波处理')
-        # for action in filter_action_group.actions():
-        #     filter_menu.addAction(action)
-        
-        # rgb2rgb = self.add_action(QAction('&光学-影像', self.w_parent), 'align')
-        # sar2sar = self.add_action(QAction('&SAR-影像', self.w_parent), 'align')
-        # multi_source = self.add_action(QAction('&多源影像', self.w_parent), 'align')
-
-        # align_menu = self.basic_menu.addMenu('&图像配准')
-        # align_menu.addAction(rgb2rgb)
-        # align_menu.addAction(sar2sar)
-        # align_menu.addAction(multi_source)
-
-        # cloud_menu = self.basic_menu.addMenu('&去云处理')
-        # defogging_menu = self.basic_menu.addMenu('&去雾处理')
-
-        # # self.preop_menu.addActionGroup(filter_action_group)
-        # # self.basic_menu.addAction(align_action)
-
-        # if self.toolbar is not None:
-        #     self.toolbar.addAction(morphology_filter)
-        #     self.toolbar.addAction(lee_filter)
-        #     self.toolbar.addAction(auto_filter)
-        #     self.toolbar.addAction(auto_filter_no_params)
-        #     self.toolbar.addAction(double_filter)
-
-        # '''
-        # Change detection menu
-        # '''
-        # diff_method = self.add_action(QAction('&差分法', self.w_parent), 'unsuper_change_detection')
-        # log_diff = self.add_action(QAction('&对数差分法', self.w_parent), 'unsuper_change_detection')
-        # lsts_ = self.add_action(QAction('&LSTS法', self.w_parent), 'unsuper_change_detection')
-        # lhba = self.add_action(QAction('&LHBA法', self.w_parent), 'unsuper_change_detection')
-        # aht = self.add_action(QAction('&AHT法', self.w_parent), 'unsuper_change_detection')
-        # kpvd = self.add_action(QAction('&KPVD法', self.w_parent), 'unsuper_change_detection')
-        # mohd = self.add_action(QAction('&MOHD法', self.w_parent), 'unsuper_change_detection')
-        # sh = self.add_action(QAction('&SH法', self.w_parent), 'unsuper_change_detection')
-        # cva = self.add_action(QAction('&CVA法', self.w_parent), 'unsuper_change_detection')
-        # mls = self.add_action(QAction('&MLS法', self.w_parent), 'unsuper_change_detection')
-        # pca_kmean = self.add_action(QAction('&PCA-KMean法', self.w_parent), 'unsuper_change_detection')
-        # semi_fcm = self.add_action(QAction('&Semi-FCM法', self.w_parent), 'unsuper_change_detection')
-        # mls_svm = self.add_action(QAction('&MLS-SVM法', self.w_parent), 'unsuper_change_detection')
-        # cva_fcm = self.add_action(QAction('&CVA-FCM法', self.w_parent), 'unsuper_change_detection')
-        # cva_emgmm = self.add_action(QAction('&CVA-EMGMM法', self.w_parent), 'unsuper_change_detection')
-        # gwdm = self.add_action(QAction('&GWDM法', self.w_parent), 'unsuper_change_detection')
-
-        # mrf = self.add_action(QAction('&MRF法', self.w_parent), 'super_change_detection')
-        # mad = self.add_action(QAction('&MAD法', self.w_parent), 'super_change_detection')
-        # irmad = self.add_action(QAction('&IRMAD法', self.w_parent), 'super_change_detection')
-
-        # dcva = self.add_action(QAction('&DCVA法', self.w_parent), 'ai_change_detection')
-        # dp_fcn = self.add_action(QAction('&DP-FCN法', self.w_parent), 'ai_change_detection')
-        # rcnn = self.add_action(QAction('&RCNN法', self.w_parent), 'ai_change_detection')
-
-        # if self.toolbar is not None:
-        #     self.toolbar.addAction(diff_method)
-        #     self.toolbar.addAction(log_diff)
-        #     self.toolbar.addAction(lsts_)
-        #     self.toolbar.addAction(lhba)
-            
-
-        # unsuper_change_detection = self.get_action_group('unsuper_change_detection')
-        # super_change_detection = self.get_action_group('super_change_detection')
-        # ai_change_detection = self.get_action_group('ai_change_detection')
-        # unsuper_menu = self.change_detection_menu.addMenu('&非监督')
-        # for action in unsuper_change_detection.actions():
-        #     unsuper_menu.addAction(action)
-        # super_menu = self.change_detection_menu.addMenu('&监督')
-        # for action in super_change_detection.actions():
-        #     super_menu.addAction(action)
-        # ai_menu = self.change_detection_menu.addMenu('&AI')
-        # for action in ai_change_detection.actions():
-        #     ai_menu.addAction(action)
-
-        # # self.change_detection_menu.addActionGroup(super_change_detection)
-        # # self.change_detection_menu.addActionGroup(ai_change_detection)
-
-        # '''
-        # Special change detection menu
-        # '''
-
-        # water_change = self.add_action(QAction('&水体变化', self.w_parent), 'special_change_detection')
-        # vegetation_change = self.add_action(QAction('&植被变化', self.w_parent), 'special_change_detection')
-        # build_change = self.add_action(QAction('&房屋变化', self.w_parent), 'special_change_detection')
-
-        # self.special_chagne_detec_menu.addAction(water_change)
-        # self.special_chagne_detec_menu.addAction(vegetation_change)
-        # self.special_chagne_detec_menu.addAction(build_change)
-
-        # '''
-        # Postop menu
-        # '''
-        # slide_window = self.add_action(QAction('&滑动窗口法', self.w_parent), 'noise_reduction')
-        # density = self.add_action(QAction('&密度法', self.w_parent), 'noise_reduction')
-
-        # raster_export = self.add_action(QAction('&二值栅格数据导出', self.w_parent), 'export')
-        # txt_pos_export = self.add_action(QAction('&兼容ArcMap的坐标Txt文件', self.w_parent), 'export')
-        # render_export = self.add_action(QAction('&渲染图像导出', self.w_parent), 'export')
-
-        # noise_reduction = self.get_action_group('noise_reduction')
-        # export = self.get_action_group('export')
-
-        # noise_reduction_menu = self.postop_menu.addMenu('&噪声抑制')
-        # for action in noise_reduction.actions():
-        #     noise_reduction_menu.addAction(action)
-        # export_menu = self.postop_menu.addMenu('&导出')
-        # for action in export.actions():
-        #     export_menu.addAction(action)
-        
-        # # self.postop_menu.addActionGroup(noise_reduction)
-        # # self.postop_menu.addActionGroup(export)
-
-        # '''
-        # Evaluation menu
-        # '''
-
-        # evaluation = self.add_action(QAction('&评估', self.w_parent), 'evaluation')
-        # self.postop_menu.addAction(evaluation)
-
-        '''
-        Help menu
-        '''
-        # about = self.add_action(QAction('&关于', self.w_parent), 'about')
-        # about.triggered.connect(lambda : AboutDialog(self.w_parent).show())
-        # self.help_menu.addAction(about)
 
         self.message_box.info('Menu init finished')
         self.message_box.info(self.actions.keys())
-        # for group in self.action_groups.keys():
-        #     self.message_box.info('%s:' % (group))
-        #     for action in self.action_groups[group].actions():
-        #         action.setEnabled(False)
-        #         self.message_box.info('\t%s' % (action.text()))
 
         '''
         Enabled actions
@@ -298,6 +169,11 @@ class ActionManager(QtCore.QObject):
             self.status_bar.addWidget(scale_widget)
             self.double_map.corr_changed.connect(corr_widget.setText)
             self.double_map.scale_changed.connect(scale_widget.setText)
+
+            lic_end_date = QLabel(self.status_bar)
+            lic_end_date.setFixedWidth(200)
+            lic_end_date.setText('有效期至：%s' % (Settings.General().end_date))
+            self.status_bar.addPermanentWidget(lic_end_date)
 
     def plugin_list(self):
         dialog = PluginDialog(self.w_parent)
@@ -365,7 +241,7 @@ class ActionManager(QtCore.QObject):
                 self.action_groups[group] = QActionGroup(self.w_parent)
                 self.action_groups[group].setExclusive(True)
             self.action_groups[group].addAction(action)
-            self.action_group_actions[group] = action
+
         return action
 
     def get_action(self, action_name, group_name=None):
@@ -375,10 +251,10 @@ class ActionManager(QtCore.QObject):
             if group_name is None:
                 return None
             else:
-                if group_name not in self.action_group_actions:
+                if group_name not in self.action_groups:
                     return None
                 else:
-                    group =  self.action_group_actions[group_name]
+                    group =  self.action_groups[group_name]
                     for action in group.actions():
                         if action.text() == action_name:
                             return action
@@ -386,12 +262,6 @@ class ActionManager(QtCore.QObject):
 
     def get_action_group(self, group_name):
         return self.action_groups[group_name]
-
-    def get_action_group_action(self, group_name):
-        return self.action_group_actions[group_name]
-
-    def get_action_group_actions(self, group_name):
-        return self.action_group_actions[group_name].actions()
 
     def get_actions(self):
         return self.actions

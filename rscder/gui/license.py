@@ -69,6 +69,8 @@ class License(QtWidgets.QDialog):
             if not os.path.exists(pth):
                 QtWidgets.QMessageBox.warning(self, "Warning", "The selected file does not exist.")
             else:
+                if not os.path.exists('lic'):
+                    os.mkdir('lic')
                 shutil.copy(pth, os.path.join("lic", "license.lic"))
                 self.accept()
                 self.close()

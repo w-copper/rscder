@@ -1,12 +1,7 @@
-cell_size: &id001
+cell_size:
 - 100
 - 100
-layers:
-- cell_size: *id001
-  l1_name: p122_r032_l5_20090915.tif
-  l2_name: p122_r032_l8_20170804.tif
-  pth1: F:/LZY_DATA/p122r032/p122_r032_l5_20090915.tif
-  pth2: F:/LZY_DATA/p122r032/p122_r032_l8_20170804.tif
+layers: []
 max_memory: 100
 max_threads: 4
 results: []

@@ -1,5 +1,5 @@
 import pdb
-from PyQt5.QtWidgets import  QWidget, QApplication, QMainWindow
+from PyQt5.QtWidgets import  QWidget, QApplication, QMainWindow, QToolBox
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui
@@ -63,11 +63,10 @@ class MainWindow(QMainWindow):
         self.toolbar = self.addToolBar('Toolbar')
         self.toolbar.setMovable(False)
         self.toolbar.setFloatable(False)
-        self.toolbar.setIconSize(QSize(16, 16))
+        self.toolbar.setIconSize(QSize(32, 32))
         self.toolbar.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.toolbar.setContextMenuPolicy(Qt.PreventContextMenu)
         self.toolbar.setLayoutDirection(Qt.LeftToRight)
-        pass
 
 
     def set_pannels(self):
@@ -82,8 +81,17 @@ class MainWindow(QMainWindow):
         central_dock_area.setAllowedAreas(QtAds.DockWidgetArea.OuterDockAreas) 
         
         self.double_map.setContextMenuPolicy(Qt.CustomContextMenu)
-
         self.layer_tree = LayerTree(self)
+        left_tool_box = QToolBox(self)
+        
+        self.follow_box = QWidget(self)
+        self.eye_box = QWidget(self)
+        left_tool_box.setContextMenuPolicy(Qt.CustomContextMenu)
+        left_tool_box.addItem(self.layer_tree, self.tr("图层树"))
+        left_tool_box.addItem(self.follow_box, self.tr("流程"))
+        left_tool_box.addItem(self.eye_box, self.tr("鹰眼"))
+
+        
         # self.layer_tree.setContextMenuPolicy(Qt.CustomContextMenu)
 
         def set_docker_fixed(docker):
@@ -91,15 +99,11 @@ class MainWindow(QMainWindow):
             docker.setFeature(QtAds.ads.CDockWidget.DockWidgetFeature.DockWidgetMovable , False)
             docker.setFeature(QtAds.ads.CDockWidget.DockWidgetFeature.DockWidgetFloatable , False)
 
-        self.layer_tree_dock = QtAds.CDockWidget(self.tr("图层树"), self)
+        self.layer_tree_dock = QtAds.CDockWidget(self.tr("面板"), self)
         
-        self.layer_tree_dock.setWidget(self.layer_tree)
+        self.layer_tree_dock.setWidget(left_tool_box)
         left_area = self.dock_manager.addDockWidget(QtAds.DockWidgetArea.LeftDockWidgetArea, self.layer_tree_dock, central_dock_area)
         self.left_arre = left_area
-        self.follow_dock = QtAds.CDockWidget(self.tr("流程"))
-        self.follow_box = QWidget(self)
-        self.follow_dock.setWidget(self.follow_box)
-        self.dock_manager.addDockWidget(QtAds.DockWidgetArea.BottomDockWidgetArea, self.follow_dock, left_area)
 
         self.result_dock = QtAds.CDockWidget(self.tr("结果"))
         self.result_box = ResultTable(self)
@@ -109,11 +113,9 @@ class MainWindow(QMainWindow):
         self.message_box = MessageBox(self, MessageBox.INFO)
         self.message_dock.setWidget(self.message_box)
         self.dock_manager.addDockWidget(QtAds.DockWidgetArea.RightDockWidgetArea, self.message_dock, bottom_area)
-        # bottom_area.setCurrentDockWidget(self.result_dock)
         self.bottom_area = bottom_area
 
         set_docker_fixed(self.layer_tree_dock)
-        set_docker_fixed(self.follow_dock)
         set_docker_fixed(self.result_dock)
         set_docker_fixed(self.message_dock)
 

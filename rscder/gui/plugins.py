@@ -60,10 +60,17 @@ class PluginDialog(QDialog):
             print(info)
            
             if info is not None:
+                try:
+                    dst = PluginLoader.copy_plugin_to_3rd(plugin_directory)
+                except:
+                    QMessageBox.warning(self, 'Warning', 'Failed to copy plugin to 3rd party directory')
+                    return
+                
                 info['module'] = os.path.basename(plugin_directory)
                 info['enabled'] = True
+                info['path'] = dst
                 self.has_change = True
-                self.plugins.append(info)
+                
                 self.plugin_table.insertRow(self.plugin_table.rowCount())
                 name_item = QTableWidgetItem(info['name'])
                 module_item = QTableWidgetItem(info['module'])
@@ -72,11 +79,7 @@ class PluginDialog(QDialog):
                 self.plugin_table.setItem(self.plugin_table.rowCount() - 1, 0, name_item)
                 self.plugin_table.setItem(self.plugin_table.rowCount() - 1, 1, module_item)
                 self.plugin_table.setItem(self.plugin_table.rowCount() - 1, 2, enabled_item)
-
-                dst = PluginLoader.copy_plugin_to_3rd(plugin_directory)
-                if dst is not None:
-                    self.plugins[-1]['path'] = dst
-
+                self.plugins.append(info)
         else:
             pass
         

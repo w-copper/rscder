@@ -12,5 +12,4 @@ with open(os.path.join(path, '..', 'res.qrc'), 'w') as f:
     f.write(f'</RCC>\n')
 
 subprocess.run(['pyrcc5', 'res.qrc', '-o', 'rc.py'], cwd=os.path.join(path, '..'))
-
 shutil.rmtree(icon_path)

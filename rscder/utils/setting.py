@@ -3,7 +3,7 @@ import os
 from typing import Tuple
 from PyQt5.QtCore import QSettings
 from rscder.utils.license import LicenseHelper
-
+import yaml
 class Settings(QSettings):
 
     def __init__(self, key):
@@ -22,20 +22,25 @@ class Settings(QSettings):
 
         @property
         def root(self):
-            return './3rd'
+            _r = './3rd'
+            if not os.path.exists(_r):
+                os.makedirs(_r)
+            return _r
 
         @property
         def plugins(self):
-            with Settings(Settings.Plugin.PRE) as s:
-                pl = s.value('plugins', [])
-                if pl is None:
-                    return []
-                return pl
+            plugins_file = os.path.join(self.root, 'plugins.yaml')
+            if not os.path.exists(plugins_file):
+                with open(plugins_file, 'w') as f:
+                    yaml.safe_dump([], f)
+            with open(plugins_file, 'r') as f:
+                return yaml.safe_load(f)
+
         @plugins.setter
         def plugins(self, value):
-            with Settings(Settings.Plugin.PRE) as s:
-                s.setValue('plugins', value)
-
+            plugins_file = os.path.join(self.root, 'plugins.yaml')
+            with open(plugins_file, 'w') as f:
+                yaml.safe_dump(value, f)
 
     class Project:
 
@@ -84,6 +89,16 @@ class Settings(QSettings):
         def size(self, value):
             with Settings(Settings.General.PRE) as s:
                 s.setValue('size', value)
+
+        @property
+        def last_path(self):
+            with Settings(Settings.General.PRE) as s:
+                return s.value('last_path', '')
+        
+        @last_path.setter
+        def last_path(self, value):
+            with Settings(Settings.General.PRE) as s:
+                s.setValue('last_path', value)
 
         @property
         def end_date(self):

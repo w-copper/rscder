@@ -8,21 +8,19 @@ from qgis.core import QgsRasterLayer, QgsLineSymbol, QgsSingleSymbolRenderer, Qg
 from PyQt5.QtCore import QObject, pyqtSignal
 from PyQt5.QtGui import QColor
 import yaml
-def singleton(cls):
-    _instance = {}
+from .misc import singleton
 
-    def inner(*args, **kargs):
-        if cls not in _instance:
-            _instance[cls] = cls(*args, **kargs)
-        return _instance[cls]
-    return inner
+def relative_path(path: str, root:str) -> str:
+    return os.path.relpath(path, root)
 
 @singleton
 class Project(QObject):
 
     project_init = pyqtSignal(bool)
-
     layer_load = pyqtSignal(str)
+
+    ABSOLUTE_MODE = 'absolute'
+    RELATIVE_MODE = 'relative'
 
     def __init__(self, 
                     parent=None):
@@ -31,9 +29,9 @@ class Project(QObject):
         self.cell_size = Settings.Project().cell_size
         self.max_memory = Settings.Project().max_memory
         self.max_threads = Settings.Project().max_threads
-        self.root = Settings.General().root
-        self.layers:Dict = dict()
-        # self.layers:List[PairLayer] = []
+        self.root = str(Path(Settings.General().root)/'default')
+        self.file_mode = Project.ABSOLUTE_MODE
+        self.layers:Dict[str, PairLayer] = dict()
 
     def connect(self, pair_canvas,
              layer_tree,
@@ -46,18 +44,17 @@ class Project(QObject):
 
         self.layer_load.connect(layer_tree.add_layer)
         self.layer_load.connect(pair_canvas.add_layer)
-        # self.layer_load.connect(message_box.add_layer)
-
+        # self.layer_load.connect(message_box.add_layer)    
     
-    def setup(self, file=None):
+    def setup(self, path = None, name = None):
         self.is_init = True
-        self.file = file
-        if file is None:
-            self.file = Path(self.root)/'project'/'untitled.prj'
-        self.root = str(Path(self.file).parent)
-        dir_name = os.path.dirname(self.file)
-        if not os.path.exists(dir_name):
-            os.makedirs(dir_name, exist_ok=True)
+        if path is not None:
+            self.root = path
+        if name is None:
+            self.file = str(Path(self.root)/'default.prj')
+
+        if not os.path.exists(self.root):
+            os.makedirs(self.root, exist_ok=True)
         if not os.path.exists(self.file):
             with open(self.file, 'w') as f:
                 pass
@@ -72,7 +69,7 @@ class Project(QObject):
             'max_memory': self.max_memory,
             'max_threads': self.max_threads,
             'root': self.root,
-            'layers': [ layer.to_dict() for layer in self.layers.values() ],
+            'layers': [ layer.to_dict(None if self.file_mode == Project.ABSOLUTE_MODE else self.root) for layer in self.layers.values() ],
             'results': []
         }
         with open(self.file, 'w') as f:
@@ -94,7 +91,7 @@ class Project(QObject):
         with open(self.file, 'r') as f:
             data = yaml.safe_load(f)
         if data is None:
-            return
+            return  
         # data = yaml.safe_load(open(self.file, 'r'))
         self.cell_size = data['cell_size']
         self.max_memory = data['max_memory']
@@ -102,13 +99,14 @@ class Project(QObject):
         self.root = data['root']
         self.layers = dict()
         for layer in data['layers']:
-            player = PairLayer.from_dict(layer)
+            player = PairLayer.from_dict(layer, None if self.file_mode == Project.ABSOLUTE_MODE else self.root)
             if player.check():
                 self.layers[player.id] = player
                 self.layer_load.emit(player.id)
 
     def add_layer(self, pth1, pth2):
-        self.root = str(Path(pth1).parent)
+        # self.root = str(Path(pth1).parent)
+        
         player = PairLayer(pth1, pth2, self.cell_size)
         if player.check():
             # self.layers.append(player)
@@ -201,20 +199,41 @@ class GridLayer:
     def from_dict(data):
         return GridLayer()
 
+class ResultLayer:
+
+    POINT = 0
+    RASTER = 1
+
+    def __init__(self, layer_type):
+        self.layer_type = layer_type
+        self.data = []
+
 class PairLayer:
     
-    def to_dict(self):
-        return {
-            'pth1': self.pth1,
-            'pth2': self.pth2,
-            'l1_name': self.l1_name,
-            'l2_name': self.l2_name,
-            'cell_size': self.cell_size,
-        }
+    def to_dict(self, root = None):
+        if root is None:
+            return {
+                'pth1': self.pth1,
+                'pth2': self.pth2,
+                'l1_name': self.l1_name,
+                'l2_name': self.l2_name,
+                'cell_size': self.cell_size,
+            }
+        else:
+            return {
+                'pth1': relative_path(self.pth1, root),
+                'pth2': relative_path(self.pth2, root),
+                'l1_name': self.l1_name,
+                'l2_name': self.l2_name,
+                'cell_size': self.cell_size,
+            }
 
     @staticmethod
-    def from_dict(data):
-        layer = PairLayer(data['pth1'], data['pth2'], data['cell_size'])
+    def from_dict(data, root = None):
+        if root is None:
+            layer = PairLayer(data['pth1'], data['pth2'], data['cell_size'])
+        else:
+            layer = PairLayer(os.path.join(root, data['pth1']), os.path.join(root, data['pth2']), data['cell_size'])
         layer.l1_name = data['l1_name']
         layer.l2_name = data['l2_name']
         # layer.grid_layer = GridLayer.from_dict(data['grid_layer'])
@@ -232,8 +251,11 @@ class PairLayer:
         # self.grid_layer = GridLayer(cell_size)
 
         self.msg = ''
+        self.checked = False
     
     def check(self):
+        if self.checked:
+            return self.checked
         if not os.path.exists(self.pth1):
             self.msg = '图层1不存在'
             return False
@@ -258,5 +280,5 @@ class PairLayer:
 
         self.l1 = QgsRasterLayer(self.pth1, self.l1_name)
         self.l2 = QgsRasterLayer(self.pth2, self.l2_name)
-
+        self.checked = True
         return True

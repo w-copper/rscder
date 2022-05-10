@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QDialog, QFileDialog, QLineEdit, QPushButton, QVBoxL
 from PyQt5.QtGui import QIcon, QIntValidator
 from PyQt5.QtCore import Qt
 from rscder.utils.setting import Settings
+
 class Create(QDialog):
 
     def __init__(self, parent=None) -> None:
