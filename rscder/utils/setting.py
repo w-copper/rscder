@@ -22,7 +22,7 @@ class Settings(QSettings):
 
         @property
         def root(self):
-            _r = './3rd'
+            _r = './plugins'
             if not os.path.exists(_r):
                 os.makedirs(_r)
             return _r
@@ -93,12 +93,12 @@ class Settings(QSettings):
         @property
         def last_path(self):
             with Settings(Settings.General.PRE) as s:
-                return s.value('last_path', '')
+                return str(s.value('last_path', ''))
         
         @last_path.setter
         def last_path(self, value):
             with Settings(Settings.General.PRE) as s:
-                s.setValue('last_path', value)
+                s.setValue('last_path', str(value))
 
         @property
         def end_date(self):

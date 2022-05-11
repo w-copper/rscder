@@ -1,15 +1,17 @@
 import math
 import os
+import pdb
 from rscder.plugins.basic import BasicPlugin
 from PyQt5.QtWidgets import QAction
 from PyQt5.QtCore import pyqtSignal
-from rscder.utils.project import PairLayer
+from rscder.utils.project import PairLayer, ResultLayer
 from osgeo import gdal, gdal_array
 from threading import Thread
 import numpy as np
 class BasicMethod(BasicPlugin):
 
     message_send  = pyqtSignal(str)
+    table_result_ok = pyqtSignal(str)
 
     @staticmethod
     def info():
@@ -21,23 +23,42 @@ class BasicMethod(BasicPlugin):
         }
 
     def set_action(self):
-        basic_change_detection_menu = self.ctx['basic_change_detection_menu']
+        basic_change_detection_menu = self.ctx['change_detection_menu']
 
         basic_diff_method = QAction('差分法')
         basic_change_detection_menu.addAction(basic_diff_method)
 
         basic_diff_method.setEnabled(False)
         self.basic_diff_method = basic_diff_method
+        basic_diff_method.triggered.connect(self.basic_diff_alg)
 
         self.message_send.connect(self.send_message)
+        self.table_result_ok.connect(self.on_table_result_ok)
 
         self.gap = 128
 
     def on_data_load(self, layer_id):
         self.basic_diff_method.setEnabled(True)
-    
+
     def send_message(self, s):
         self.message_box.info(s)
+    
+    def on_table_result_ok(self, s):
+        with open(s, 'r') as f:
+            lines = f.readlines()
+            data_lines = lines[1:]
+        
+        if len(data_lines) > 0:
+            data_table = []
+            for l in data_lines:
+                l = l.strip()
+                ls = l.split(',')
+                ls = [float(i) for i in ls]
+                data_table.append(ls)
+            result = ResultLayer(ResultLayer.POINT)
+            result.data = data_table
+            self.result_table.set_data(result)
+
 
     def run_basic_diff_alg(self, pth1, pth2, cell_size, out):
         self.message_send.emit('开始计算差分法')
@@ -70,10 +91,10 @@ class BasicMethod(BasicPlugin):
             if band == 1:
                 block_data1 =  block_data1[None, ...]
                 block_data2 =  block_data2[None, ...]
-            
+            # pdb.set_trace()
             block_diff = block_data1 - block_data2
             block_diff = block_diff.astype(np.float32)
-            block_diff = block_diff.abs().sum(0)
+            block_diff = np.abs(block_diff).sum(0)
             
             min_diff = min(min_diff, block_diff.min())
             max_diff = max(max_diff, block_diff.max())
@@ -82,7 +103,7 @@ class BasicMethod(BasicPlugin):
             self.message_send.emit(f'完成{j}/{yblocks}')
 
         out_ds.FlushCache()
-        out_ds = None
+        del out_ds
         self.message_send.emit('归一化概率中...')
         temp_in_ds = gdal.Open(out_tif) 
 
@@ -100,12 +121,15 @@ class BasicMethod(BasicPlugin):
             out_normal_ds.GetRasterBand(1).WriteArray(block_data, *block_xy)
         
         out_normal_ds.FlushCache()
-        out_normal_ds = None
+        del out_normal_ds
         self.message_send.emit('完成归一化概率')   
 
         self.message_send.emit('计算变化表格中...')
         out_csv = os.path.join(out, 'diff_table.csv')
         xblocks = xsize // cell_size[0]
+        
+        normal_in_ds = gdal.Open(out_normal_tif)
+
         with open(out_csv, 'w') as f:
             f.write('x,y,diff,status\n')
             for j in range(yblocks):
@@ -113,7 +137,7 @@ class BasicMethod(BasicPlugin):
                 block_size = (xsize, cell_size[1])
                 if block_xy[1] + block_size[1] > ysize:
                     block_size = (xsize, ysize - block_xy[1])
-                block_data = temp_in_ds.ReadAsArray(*block_xy, *block_size)
+                block_data = normal_in_ds.ReadAsArray(*block_xy, *block_size)
                 for i in range(xblocks):
                     start_x = i * cell_size[0]
                     end_x = start_x + cell_size[0]
@@ -127,21 +151,26 @@ class BasicMethod(BasicPlugin):
                         center_y = center_y * geo[5] + geo [3]
                         f.write(f'{center_x},{center_y},{block_data_xy.mean()},1\n')
         
+        self.table_result_ok.emit(out_csv)
+
         self.message_send.emit('完成计算变化表格')
                     
         self.message_send.emit('差分法计算完成')
 
     def basic_diff_alg(self):
         # layer_select = 
-        layer:PairLayer = self.project.layers.values()[0]
+        layer:PairLayer = list(self.project.layers.values())[0]
 
-        img1 = layer.pth2
+        img1 = layer.pth1
         img2 = layer.pth2
 
         if not layer.check():
             return
-        
-        t = Thread(target=self.run_basic_diff_alg, args=(img1, img2, layer.pth1))
+        out_dir =os.path.join(self.project.root, 'basic_diff_result')
+        if not os.path.exists(out_dir):
+            os.makedirs(out_dir, exist_ok=True)
+
+        t = Thread(target=self.run_basic_diff_alg, args=(img1, img2, layer.cell_size, out_dir))
         t.start()
 
 

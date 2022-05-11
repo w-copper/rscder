@@ -1,3 +1,4 @@
+from pathlib import Path
 from PyQt5.QtWidgets import QDialog, QFileDialog, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QMessageBox
 from PyQt5.QtGui import QIcon, QIntValidator
 from PyQt5.QtCore import Qt
@@ -10,7 +11,7 @@ class Create(QDialog):
         self.setWindowTitle('Create Project')
         self.setWindowIcon(QIcon(":/icons/logo.svg"))
 
-        self.file = str(Settings.General().root)
+        self.file = str(Path(Settings.General().root)/'default')
         self.name = '未命名'
         self.max_memory = Settings.Project().max_memory
         self.cell_size = Settings.Project().cell_size        

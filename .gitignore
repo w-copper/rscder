@@ -211,5 +211,8 @@ rc.py
 
 model/
 
+plugins/*.c
 plugin-build/
 3rd/
+default/
+plugins/*/*.c

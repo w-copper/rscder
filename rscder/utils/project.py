@@ -52,7 +52,8 @@ class Project(QObject):
             self.root = path
         if name is None:
             self.file = str(Path(self.root)/'default.prj')
-
+        else:
+            self.file = str(Path(self.root)/name)
         if not os.path.exists(self.root):
             os.makedirs(self.root, exist_ok=True)
         if not os.path.exists(self.file):

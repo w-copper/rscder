@@ -15,9 +15,9 @@ class ResultTable(QtWidgets.QWidget):
         super(ResultTable, self).__init__(parent)
         # self.tableview = QTableView(self)
         self.tablewidget = QTableWidget(self)
-        self.tablewidget.setColumnCount(5)
+        self.tablewidget.setColumnCount(4)
         self.tablewidget.setRowCount(0)
-        self.tablewidget.setHorizontalHeaderLabels(['序号', 'X', 'Y', '概率', '变化'])
+        self.tablewidget.setHorizontalHeaderLabels(['X', 'Y', '概率', '变化'])
         self.tablewidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         self.tablewidget.cellDoubleClicked.connect(self.onDoubleClicked)
@@ -34,27 +34,32 @@ class ResultTable(QtWidgets.QWidget):
         pass
     
     def onChanged(self, row, col):
-        if col == 4:
+        if col == 3:
             item_idx = row
             item_status = self.tablewidget.item(row, col).checkState() == Qt.Checked
+            if item_status:
+                self.tablewidget.item(row, col).setBackground(Qt.yellow)
+            else:
+                self.tablewidget.item(row, col).setBackground(Qt.green)
             self.on_item_changed.emit({'idx':item_idx, 'status':item_status})
 
     def onClicked(self, row, col):
-        if col == 4:
+        if col == 3:
             self.tablewidget.item(row, col).setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
     
     def onDoubleClicked(self, row, col):
-        x = self.tablewidget.item(row, 1).text()
-        y = self.tablewidget.item(row, 2).text()
+        x = self.tablewidget.item(row, 0).text()
+        y = self.tablewidget.item(row, 1).text()
         self.on_item_click.emit({'x':x, 'y':y})
 
     def set_data(self, data:ResultLayer):
         self.tablewidget.setRowCount(len(data.data))
+        # print(len(data.data))
+        self.tablewidget.setVerticalHeaderLabels([ str(i+1) for i in range(len(data.data))])
         for i, d in enumerate(data.data):
-            self.tablewidget.setItem(i, 0, QTableWidgetItem(str(i+1)))
-            self.tablewidget.setItem(i, 1, QTableWidgetItem(str(d[0]))) # X
-            self.tablewidget.setItem(i, 2, QTableWidgetItem(str(d[1]))) # Y
-            self.tablewidget.setItem(i, 3, QTableWidgetItem(str(d[2]))) # 概率
+            self.tablewidget.setItem(i, 0, QTableWidgetItem(str(d[0]))) # X
+            self.tablewidget.setItem(i, 1, QTableWidgetItem(str(d[1]))) # Y
+            self.tablewidget.setItem(i, 2, QTableWidgetItem(str(d[2]))) # 概率
             status_item = QTableWidgetItem('变化')
             if d[3] == 0:
                 status_item.setBackground(Qt.green)
@@ -62,7 +67,7 @@ class ResultTable(QtWidgets.QWidget):
             elif d[3] == 1:
                 status_item.setBackground(Qt.yellow)
                 status_item.setCheckState(Qt.Checked)
-            self.tablewidget.setItem(i, 4, status_item) # 变化
+            self.tablewidget.setItem(i, 3, status_item) # 变化
         self.tablewidget.resizeColumnsToContents()
         self.tablewidget.resizeRowsToContents()
         self.tablewidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)

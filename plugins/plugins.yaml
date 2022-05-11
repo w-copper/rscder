@@ -1,0 +1,14 @@
+- author: RSCDER
+  description: "\u5173\u4E8E"
+  enabled: true
+  module: about
+  name: "\u5173\u4E8E"
+  path: ./plugin-build\about
+  version: 1.0.0
+- author: RSCDER
+  description: BasicMethod
+  enabled: true
+  module: basic_change
+  name: BasicMethod
+  path: ./plugin-build\basic_change
+  version: 1.0.0

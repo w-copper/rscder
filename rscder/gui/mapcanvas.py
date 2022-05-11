@@ -38,9 +38,11 @@ class DoubleCanvas(QWidget):
         self.mapcanva2.update_coordinates_text.connect(self.corr_changed)
 
         def set_map1_extent():
-            self.mapcanva1.set_extent(self.mapcanva2.extent())
+            if self.mapcanva2.is_main:
+                self.mapcanva1.set_extent(self.mapcanva2.extent())
         def set_map2_extent():
-            self.mapcanva2.set_extent(self.mapcanva1.extent())
+            if self.mapcanva1.is_main:
+                self.mapcanva2.set_extent(self.mapcanva1.extent())
 
         self.mapcanva1.extentsChanged.connect(set_map2_extent)
         self.mapcanva2.extentsChanged.connect(set_map1_extent)

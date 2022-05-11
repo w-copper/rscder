@@ -26,7 +26,7 @@ class PluginDialog(QDialog):
         for idx, plugin in enumerate(self.plugins):
             name_item = QTableWidgetItem(plugin['name'])
             module_item = QTableWidgetItem(plugin['module'])
-            enabled_item = QTableWidgetItem()
+            enabled_item = QTableWidgetItem('启用')
             enabled_item.setCheckState(Qt.Checked if plugin['enabled'] else Qt.Unchecked)
 
             self.plugin_table.setItem(idx, 0, name_item)
@@ -93,7 +93,8 @@ class PluginDialog(QDialog):
             info = self.plugins.pop(row)
             try:
                 shutil.rmtree(info['path'])
-            except:
+            except Exception as e:
+                print(e)
                 pass
         # for idx in self.plugins
     

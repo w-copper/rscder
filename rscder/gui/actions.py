@@ -1,5 +1,6 @@
 import logging
 import os
+from pathlib import Path
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QAction, QActionGroup, QLabel, QFileDialog
 from rscder.gui.project import Create
@@ -187,7 +188,7 @@ class ActionManager(QtCore.QObject):
             if project.is_init:
                 project.save()
                 project.clear()
-            project.setup(os.path.join(projec_create.file, projec_create.name + '.prj'))
+            project.setup(projec_create.file, projec_create.name + '.prj')
             project.is_init = True
             project.cell_size = projec_create.cell_size
             project.max_memory = projec_create.max_memory
@@ -208,10 +209,13 @@ class ActionManager(QtCore.QObject):
         if Project().is_init:
             Project().save()
             
-        project_file = QFileDialog.getOpenFileName(self.w_parent, '打开工程', '.', '*.prj')
+        project_file = QFileDialog.getOpenFileName(self.w_parent, '打开工程', Settings.General().last_path, '*.prj')
         if project_file[0] != '':
             Project().clear()
-            Project().setup(project_file[0])
+            parent = str(Path(project_file[0]).parent)
+            Settings.General().last_path = parent
+            name = os.path.basename(project_file[0])
+            Project().setup(parent, name)
 
     def project_save(self):
         if Project().is_init:
@@ -221,7 +225,7 @@ class ActionManager(QtCore.QObject):
         if Project().is_init:
             Project().save()
 
-        file_open = QFileDialog.getOpenFileNames(self.w_parent, '打开数据', Project().root, '*.*')  
+        file_open = QFileDialog.getOpenFileNames(self.w_parent, '打开数据', Settings.General().last_path, '*.*')  
         if file_open[0] != '':
             if len(file_open[0]) != 2:
                 self.message_box.warning('请选择两个数据文件')
