@@ -2,7 +2,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt,QModelIndex, pyqtSignal
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import (QTableWidgetItem, QTableWidget, QAbstractItemView, QHeaderView, QStyleFactory)
+from PyQt5.QtWidgets import (QTableWidgetItem, QTableWidget, QMessageBox,  QAbstractItemView, QHeaderView, QStyleFactory)
 
 from rscder.utils.project import PairLayer, Project, ResultLayer
 
@@ -56,9 +56,16 @@ class ResultTable(QtWidgets.QWidget):
         y = self.tablewidget.item(row, 1).text()
         self.on_item_click.emit({'x':float(x), 'y':float(y)})
 
+    def save(self):
+        if self.result is None:
+            return
+        self.result.save()
+
     def on_result(self, layer_id, result_id):
         self.is_in_set_data = True
         result = Project().layers[layer_id].results[result_id]
+        if result != self.result:
+            self.save() 
         self.result = result
         self.clear()
         self.set_data(result)

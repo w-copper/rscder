@@ -83,6 +83,8 @@ class Project(QObject):
             'root': self.root,
             'layers': [ layer.to_dict(None if self.file_mode == Project.ABSOLUTE_MODE else self.root) for layer in self.layers.values() ],
         }
+        for layer in self.layers.values():
+            layer.save()
         with open(self.file, 'w') as f:
             yaml.safe_dump(data_dict, f)
         # yaml.safe_dump(data_dict, open(self.file, 'w'))
@@ -129,19 +131,16 @@ class Project(QObject):
         else:
             self.message_box.error(player.msg)
 
-class VectorLayer:
-    pass
-
 class GridLayer:
     
     def set_render(self):
         symbol_layer = QgsSimpleLineSymbolLayer()
-        symbol_layer.setWidth(1)
-        symbol_layer.setColor(QColor.fromRgb(255,255,255, 100))
+        symbol_layer.setWidth(1 * self.x_res)
+        symbol_layer.setColor(QColor.fromRgb(255,255,255, 200))
 
         symbol = QgsLineSymbol()
         symbol.changeSymbolLayer(0, symbol_layer)
-
+        symbol.setWidthUnit(QgsUnitTypes.RenderMapUnits)
         render = QgsSingleSymbolRenderer(symbol)
         self.lines_layer.setRenderer(render)
         
@@ -228,6 +227,14 @@ class ResultLayer:
         self.enable = False
         self.parent = parent
     
+    def save(self):
+        if self.layer_type == ResultLayer.POINT:
+            with open(self.path, 'w') as f:
+                f.write('x,y,diff,status\n')
+                for i in range(len(self.data)):
+                    f.write('{},{},{},{}\n'.format(self.data[i][0], self.data[i][1], self.data[i][2], int(self.data[i][3])))
+
+
     def update(self, data):
         if self.layer_type == ResultLayer.POINT:
             row = data['row']
@@ -403,6 +410,11 @@ class PairLayer:
             layer.results.append(ResultLayer.from_dict(r, layer, root))
         # layer.grid_layer = GridLayer.from_dict(data['grid_layer'])
         return layer
+    
+    def save(self):
+        for r in self.results:
+            r.save()
+
     def __init__(self, pth1, pth2, cell_size) -> None:
         self.pth1 = pth1
         self.pth2 = pth2

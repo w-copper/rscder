@@ -2,7 +2,7 @@ import logging
 import os
 from pathlib import Path
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QAction, QActionGroup, QLabel, QFileDialog
+from PyQt5.QtWidgets import QAction, QActionGroup, QLabel, QFileDialog, QMenuBar
 from rscder.gui.project import Create
 from rscder.utils.project import Project
 from rscder.utils.misc import singleton
@@ -44,18 +44,19 @@ class ActionManager(QtCore.QObject):
         self.menubar = None
         self.status_bar = None
 
-    def set_menus(self, menubar):
+    def set_menus(self, menubar:QMenuBar):
         self.menubar = menubar
-        self.file_menu = menubar.addMenu('&文件')
-        self.basic_menu = menubar.addMenu('&基本工具')
-        self.change_detection_menu = menubar.addMenu('&通用变化检测')
-        self.special_chagne_detec_menu = menubar.addMenu('&专题变化检测')
+        self.file_menu = menubar.addMenu( '&文件')
+        self.basic_menu = menubar.addMenu( '&基本工具')
+        self.change_detection_menu = menubar.addMenu( '&通用变化检测')
+        self.special_chagne_detec_menu = menubar.addMenu( '&专题变化检测')
         self.seg_chagne_detec_menu = menubar.addMenu('&分类后变化检测')
-        self.postop_menu = menubar.addMenu('&检测后处理')
+        self.postop_menu = menubar.addMenu( '&检测后处理')
         self.view_menu = menubar.addMenu('&视图')
         self.plugin_menu = menubar.addMenu('&插件')
-        self.help_menu = menubar.addMenu('&帮助')
+        self.help_menu = menubar.addMenu( '&帮助')
 
+    
     
     @property
     def menus(self):
@@ -83,16 +84,17 @@ class ActionManager(QtCore.QObject):
         '''
         File menu
         '''
-        project_create = self.add_action(QAction('&工程创建', self.w_parent), 'File')
-        project_open = self.add_action(QAction('&打开工程', self.w_parent), 'File')
-        project_save = self.add_action(QAction('&保存工程', self.w_parent), 'File')
-        data_load = self.add_action(QAction('&数据加载', self.w_parent), 'File')
-        view_setting = self.add_action(QAction('&界面定制', self.w_parent), 'File')
-        exit_app = self.add_action(QAction('&退出', self.w_parent), 'File')
+        project_create = self.add_action(QAction(QtGui.QIcon( ':/icons/create.png' ), '&工程创建', self.w_parent), 'File')
+        project_open = self.add_action(QAction(QtGui.QIcon( ':/icons/open.png' ), '&打开工程', self.w_parent), 'File')
+        project_save = self.add_action(QAction(QtGui.QIcon( ':/icons/save.png' ),'&保存工程', self.w_parent), 'File')
+        data_load = self.add_action(QAction(QtGui.QIcon( ':/icons/data_load.png' ),'&数据加载', self.w_parent), 'File')
+        view_setting = self.add_action(QAction(QtGui.QIcon( ':/icons/view.png' ),'&界面定制', self.w_parent), 'File')
+        exit_app = self.add_action(QAction(QtGui.QIcon( ':/icons/exit.png' ),'&退出', self.w_parent), 'File')
         project_create.triggered.connect(self.project_create)
         project_open.triggered.connect(self.project_open)
         project_save.triggered.connect(self.project_save)
         data_load.triggered.connect(self.data_load)
+        
         view_setting.triggered.connect(self.view_setting)
         exit_app.triggered.connect(self.w_parent.close)
 
@@ -103,9 +105,9 @@ class ActionManager(QtCore.QObject):
         self.file_menu.addAction(project_open)
         self.file_menu.addAction(project_save)
         self.file_menu.addAction(data_load)
-        self.file_menu.addAction(view_setting)
+        # self.file_menu.addAction(view_setting)
         self.file_menu.addAction(exit_app)
-
+        self.view_menu.addAction(view_setting)
         if self.toolbar is not None:
             self.toolbar.addAction(project_create)
             self.toolbar.addAction(project_open)
@@ -114,14 +116,14 @@ class ActionManager(QtCore.QObject):
         '''
         Basic menu
         '''
-        grid_line = self.add_action(QAction('&网格线', self.w_parent), 'Basic Line')
+        grid_line = self.add_action(QAction(QtGui.QIcon( ':/icons/grid.png' ),'&网格线', self.w_parent), 'Basic Line')
         grid_line.setCheckable(True)
         grid_line.setChecked(True)
         
-        zomm_in = self.add_action(QAction('&放大', self.w_parent), 'Basic')
-        zomm_out = self.add_action(QAction('&缩小', self.w_parent), 'Basic')
-        pan = self.add_action(QAction('&漫游', self.w_parent), 'Basic')
-        locate = self.add_action(QAction('&定位', self.w_parent), 'Basic')
+        zomm_in = self.add_action(QAction(QtGui.QIcon( ':/icons/zoom_out.png' ),'&放大', self.w_parent), 'Basic')
+        zomm_out = self.add_action(QAction(QtGui.QIcon( ':/icons/zoom_in.png' ),'&缩小', self.w_parent), 'Basic')
+        pan = self.add_action(QAction(QtGui.QIcon( ':/icons/pan_1.png' ),'&漫游', self.w_parent), 'Basic')
+        locate = self.add_action(QAction(QtGui.QIcon( ':/icons/zoom_to.png' ),'&定位', self.w_parent), 'Basic')
 
         pan.setCheckable(True)
         pan.setChecked(True)
@@ -143,7 +145,7 @@ class ActionManager(QtCore.QObject):
         '''
         Plugin menu
         '''
-        plugin_list = self.add_action(QAction('&插件列表', self.w_parent), 'Plugin')
+        plugin_list = self.add_action(QAction(QtGui.QIcon( ':/icons/toolbox.png' ),'&插件列表', self.w_parent), 'Plugin')
         plugin_list.triggered.connect(self.plugin_list)
 
         self.plugin_menu.addAction(plugin_list)
@@ -163,10 +165,10 @@ class ActionManager(QtCore.QObject):
         if self.status_bar is not None:
             corr_widget = QLabel(self.status_bar)
             # corr_widget.setLineWidth(200)
-            corr_widget.setFixedWidth(200)
+            corr_widget.setFixedWidth(250)
             self.status_bar.addWidget(corr_widget)
             scale_widget = QLabel(self.status_bar)
-            scale_widget.setFixedWidth(200)
+            scale_widget.setFixedWidth(250)
             self.status_bar.addWidget(scale_widget)
             self.double_map.corr_changed.connect(corr_widget.setText)
             self.double_map.scale_changed.connect(scale_widget.setText)

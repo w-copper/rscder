@@ -32,6 +32,7 @@ class LayerTree(QtWidgets.QWidget):
         self.tree.setHeaderHidden(True)
         # self.tree.setHeaderLabels(['图层'])
         self.root.setText(0,'图层')
+        self.root.setIcon(0,QtGui.QIcon(':/icons/layer.png'))
 
         # child1=QTreeWidgetItem()
         # child1.setText(0,'child1')
@@ -98,6 +99,7 @@ class LayerTree(QtWidgets.QWidget):
         layer:PairLayer = Project().layers[layer]
         item_root = QtWidgets.QTreeWidgetItem(self.root)
         item_root.setText(0,layer.name)
+        item_root.setIcon(0, QtGui.QIcon(':/icons/document.png'))
         item_root.setData(0, Qt.UserRole, LayerTree.LAYER_TOOT)
         item_root.setData(0, Qt.UserRole + 1, layer.id)
         item_root.setCheckState(0, Qt.Checked if layer.enable else Qt.Unchecked)
@@ -112,18 +114,21 @@ class LayerTree(QtWidgets.QWidget):
         grid_item.setText(0,'格网')
         grid_item.setData(0, Qt.UserRole, LayerTree.GRID)
         grid_item.setCheckState(0, Qt.Checked if layer.grid_enable else Qt.Unchecked)
+        grid_item.setIcon(0, QtGui.QIcon(':/icons/grid.png'))
 
         item1 = QtWidgets.QTreeWidgetItem(item_root)
         item1.setText(0, layer.l1_name)
         item1.setCheckState(0, Qt.Checked if layer.l1_enable else Qt.Unchecked)
         item1.setData(0, Qt.UserRole, LayerTree.SUB_RASTER)
         item1.setData(0, Qt.UserRole + 1, LayerTree.LEFT_RASTER)
+        item1.setIcon(0, QtGui.QIcon(':/icons/layer.png'))
 
         item2 = QtWidgets.QTreeWidgetItem(item_root)
         item2.setText(0, layer.l2_name)
         item2.setCheckState(0, Qt.Checked if layer.l2_enable else Qt.Unchecked)
-        item1.setData(0, Qt.UserRole, LayerTree.SUB_RASTER)
-        item1.setData(0, Qt.UserRole + 1, LayerTree.RIGHT_RASTER)
+        item2.setData(0, Qt.UserRole, LayerTree.SUB_RASTER)
+        item2.setData(0, Qt.UserRole + 1, LayerTree.RIGHT_RASTER)
+        item2.setIcon(0, QtGui.QIcon(':/icons/layer.png'))
  
         for ri, item in enumerate(layer.results):
             item_result = QtWidgets.QTreeWidgetItem(item_root)
@@ -131,6 +136,8 @@ class LayerTree(QtWidgets.QWidget):
             item_result.setCheckState(0, Qt.Checked if item.enable else Qt.Unchecked)
             item_result.setData(0, Qt.UserRole, LayerTree.RESULT)
             item_result.setData(0, Qt.UserRole + 1, ri)
+
+            item_result.setIcon(0, QtGui.QIcon(':/icons/vector.svg'))
         
         self.tree.expandAll()
     

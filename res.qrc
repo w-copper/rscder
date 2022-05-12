@@ -1,0 +1,45 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons\change_detect.png</file>
+        <file>icons\cancel.svg</file>
+        <file>icons\clear.svg</file>
+        <file>icons\edit.svg</file>
+        <file>icons\exit.png</file>
+        <file>icons\export.svg</file>
+        <file>icons\font.svg</file>
+        <file>icons\full.svg</file>
+        <file>icons\create.png</file>
+        <file>icons\data_load.png</file>
+        <file>icons\delete.png</file>
+        <file>icons\document.png</file>
+        <file>icons\filter.png</file>
+        <file>icons\grid_close.png</file>
+        <file>icons\grid.png</file>
+        <file>icons\layer.png</file>
+        <file>icons\open.png</file>
+        <file>icons\pan.png</file>
+        <file>icons\pan_1.png</file>
+        <file>icons\save.png</file>
+        <file>icons\select.png</file>
+        <file>icons\toolbox.png</file>
+        <file>icons\tools.png</file>
+        <file>icons\view.png</file>
+        <file>icons\zoom_in.png</file>
+        <file>icons\zoom_out.png</file>
+        <file>icons\zoom_to.png</file>
+        <file>icons\load.svg</file>
+        <file>icons\logo.svg</file>
+        <file>icons\model.svg</file>
+        <file>icons\ok.svg</file>
+        <file>icons\outline.svg</file>
+        <file>icons\paint.svg</file>
+        <file>icons\pan.svg</file>
+        <file>icons\qt.svg</file>
+        <file>icons\settings.svg</file>
+        <file>icons\splash.png</file>
+        <file>icons\start.svg</file>
+        <file>icons\vector.svg</file>
+        <file>icons\zoomin.svg</file>
+        <file>icons\zoomout.svg</file>
+    </qresource>
+</RCC>

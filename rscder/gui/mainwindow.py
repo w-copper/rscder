@@ -22,7 +22,7 @@ class MainWindow(QMainWindow):
             self.setWindowTitle(QApplication.applicationName() + ' ' + str(self.current_instance))
         else:
             self.setWindowTitle(QApplication.applicationName())
-        self.setWindowIcon(QIcon(":/icons/logo.svg"))
+        self.setWindowIcon(QIcon(":/icons/change_detect.png"))
         
         self.setAcceptDrops(True) 
         self.setContextMenuPolicy(Qt.CustomContextMenu)
