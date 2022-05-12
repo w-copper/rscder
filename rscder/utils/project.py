@@ -5,7 +5,7 @@ import uuid
 import numpy as np
 from osgeo import gdal, gdal_array
 from rscder.utils.setting import Settings
-from qgis.core import QgsRasterLayer, QgsMarkerSymbol,  QgsPalLayerSettings, QgsRuleBasedLabeling, QgsTextFormat, QgsLineSymbol, QgsSingleSymbolRenderer, QgsSimpleLineSymbolLayer, QgsVectorLayer, QgsCoordinateReferenceSystem, QgsFeature, QgsGeometry, QgsPointXY
+from qgis.core import QgsRasterLayer, QgsMarkerSymbol, QgsUnitTypes, QgsCategorizedSymbolRenderer, QgsRendererCategory,  QgsPalLayerSettings, QgsRuleBasedLabeling, QgsTextFormat, QgsLineSymbol, QgsSingleSymbolRenderer, QgsSimpleLineSymbolLayer, QgsVectorLayer, QgsCoordinateReferenceSystem, QgsFeature, QgsGeometry, QgsPointXY
 from PyQt5.QtCore import QObject, pyqtSignal
 from PyQt5.QtGui import QColor
 import yaml
@@ -218,7 +218,7 @@ class ResultLayer:
     POINT = 0
     RASTER = 1
 
-    def __init__(self, name, layer_type = POINT):
+    def __init__(self, name, parent, layer_type = POINT):
         self.layer_type = layer_type
         self.data = None
         self.layer = None
@@ -226,13 +226,14 @@ class ResultLayer:
         self.path = None
         self.wkt = None
         self.enable = False
+        self.parent = parent
     
     def update(self, data):
         if self.layer_type == ResultLayer.POINT:
             row = data['row']
             value = data['value']
             self.data[row][-1] = value
-            self.update_point_layer()
+            self.update_point_layer(row)
         elif self.layer_type == ResultLayer.RASTER:
             pass
 
@@ -249,7 +250,7 @@ class ResultLayer:
         layer.setLabelsEnabled(True)
         lyr = QgsPalLayerSettings()
         lyr.enabled = True
-        lyr.fieldName = 'id'
+        lyr.fieldName = 'fid'
         lyr.placement = QgsPalLayerSettings.OverPoint
         lyr.textNamedStyle = 'Medium'
         text_format =  QgsTextFormat()
@@ -268,8 +269,14 @@ class ResultLayer:
         layer.setLabeling(rules)
 
     def set_render(self, layer):
-        symbol = QgsMarkerSymbol.createSimple({'color': '#ffffff', 'size': '5'})
-        render = QgsSingleSymbolRenderer(symbol)
+        symbol_change = QgsMarkerSymbol.createSimple({'color': '#ffff00', 'size':  5 * self.parent.xres })
+        symbol_change.setSizeUnit(QgsUnitTypes.RenderUnit.RenderMetersInMapUnits)
+        category_change = QgsRendererCategory(1, symbol_change,'change')
+
+        symbol_unchange = QgsMarkerSymbol.createSimple({'color': '#00000000', 'size': '0'})
+        
+        category_unchange = QgsRendererCategory(0, symbol_unchange, 'unchange')
+        render = QgsCategorizedSymbolRenderer('status', [category_change, category_unchange])
         layer.setRenderer(render)
 
     def load_point_file(self):
@@ -286,7 +293,7 @@ class ResultLayer:
         else:
             crs = QgsCoordinateReferenceSystem()
         
-        uri = 'Point?crs={}'.format(crs.toProj())
+        uri = 'Point?crs={}&field=status:integer'.format(crs.toProj())
         layer = QgsVectorLayer(uri, self.name, "memory")
         if not layer.isValid():
             Project().message_box.error('Failed to create layer')
@@ -294,38 +301,40 @@ class ResultLayer:
         self.format_point_layer(layer)
         layer.startEditing()
         features = []
+        # status_index = 
         for i, d in enumerate(self.data):
-            point = QgsFeature(i)
+            point = QgsFeature(layer.fields())
+            point.setId(i)
             point.setGeometry(QgsGeometry.fromPointXY(QgsPointXY(d[0], d[1])))
+            point.setAttribute('status', int(d[-1]))
             # point.setAttribute('id', i)
             features.append(point)
         layer.addFeatures(features)
-        layer.commitChanges()
         self.set_render(layer)
+        layer.commitChanges()
+  
         self.layer = layer
 
-    def update_point_layer(self):
+    def update_point_layer(self, row = 0):
         if self.layer is None:
             return
         self.layer.startEditing()
-        add_features = []
-        delete_features = []
-        for i, d in enumerate(self.data):
-            feature = self.layer.getFeature(i+1)
-            if d[-1]:
+        if row < 0:
+            for i, d in enumerate(self.data):
+                feature = self.layer.getFeature(i+1)
                 if feature is None:
-                    feature = QgsFeature(i)
-                    feature.setGeometry(QgsGeometry.fromPointXY(QgsPointXY(d[0], d[1])))
-                    # feature.setAttribute('id', i)
-                    add_features.append(feature)
-            else:
-                if feature is not None:
-                    delete_features.append(feature.id())
-        if len(add_features) > 0:
-            self.layer.addFeatures(add_features)
-        if len(delete_features) > 0:            
-            self.layer.deleteFeatures(delete_features)
-
+                    continue
+                feature.setAttribute('status', d[-1])  
+        else:
+            feature = self.layer.getFeature(row+1)
+            # print(feature)
+            if feature is None:
+                return
+            # print(feature.fields().names())
+            # self.layer.deleteFeature(feature.id())
+            # del feature
+            feature.setAttribute('status', int(self.data[row][-1]))
+            self.layer.updateFeature(feature)
         self.layer.commitChanges()
 
 
@@ -336,8 +345,8 @@ class ResultLayer:
         self.layer = QgsRasterLayer(self.path, self.name)
 
     @staticmethod
-    def from_dict(data, root = None):
-        result = ResultLayer(data['name'], data['layer_type'])
+    def from_dict(data, parent, root = None):
+        result = ResultLayer(data['name'], parent, data['layer_type'])
         result.wkt = data['wkt']
         if root is not None:
             result.load_file(str(Path(root) / data['path']))
@@ -391,7 +400,7 @@ class PairLayer:
         layer.name = data['name']
 
         for r in data['results']:
-            layer.results.append(ResultLayer.from_dict(r, root))
+            layer.results.append(ResultLayer.from_dict(r, layer, root))
         # layer.grid_layer = GridLayer.from_dict(data['grid_layer'])
         return layer
     def __init__(self, pth1, pth2, cell_size) -> None:

@@ -21,7 +21,7 @@ class ResultTable(QtWidgets.QWidget):
         self.tablewidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         self.tablewidget.cellDoubleClicked.connect(self.onDoubleClicked)
-        self.tablewidget.cellClicked.connect(self.onClicked)
+        # self.tablewidget.cellClicked.connect(self.onClicked)
         self.tablewidget.cellChanged.connect(self.onChanged)
 
         # self.tablewidget.setModel(self.tableview)
@@ -31,27 +31,26 @@ class ResultTable(QtWidgets.QWidget):
         self.setLayout(layout)
         self.result = None
         self.is_in_set_data = False
+        self.no_change = False
 
     def clear(self):
         self.tablewidget.clear()
     
     def onChanged(self, row, col):
-        if self.is_in_set_data:
+        if self.is_in_set_data or self.no_change:
             return
         if col == 3:
+            self.no_change = True
             item_idx = row
             item_status = self.tablewidget.item(row, col).checkState() == Qt.Checked
             if item_status:
                 self.tablewidget.item(row, col).setBackground(Qt.yellow)
             else:
                 self.tablewidget.item(row, col).setBackground(Qt.green)
-            # print(item_idx, item_status)
+            print(item_idx, item_status)
             self.result.update({'row':item_idx, 'value':item_status})
+            self.no_change = False
 
-    def onClicked(self, row, col):
-        if col == 3:
-            self.tablewidget.item(row, col).setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
-    
     def onDoubleClicked(self, row, col):
         x = self.tablewidget.item(row, 0).text()
         y = self.tablewidget.item(row, 1).text()

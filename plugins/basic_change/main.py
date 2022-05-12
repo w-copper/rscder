@@ -79,7 +79,7 @@ class BasicMethod(BasicPlugin):
         self.message_send.connect(self.send_message)
         self.result_ok.connect(self.on_result_ok)
         # self.result_ok.connect(self.on_result_ok)
-        self.gap = 128
+        self.gap = 250
 
 
     def on_data_load(self, layer_id):
@@ -90,9 +90,13 @@ class BasicMethod(BasicPlugin):
     
     def on_result_ok(self, data):
         layer = Project().layers[data['layer_id']]
-        csv_result = ResultLayer('basic_diff_result', ResultLayer.POINT)
+        csv_result = ResultLayer('basic_diff_result', layer, ResultLayer.POINT)
         csv_result.load_file(data['csv_file'])
+
+        raster_layer = ResultLayer('basic_diff_result-raster',layer, ResultLayer.RASTER)
+        raster_layer.load_file(data['raster_file'])
         layer.results.append(csv_result)
+        layer.results.append(raster_layer)
         self.layer_tree.update_layer(layer.id)
 
     def run_basic_diff_alg(self, layer:PairLayer, out):
@@ -133,9 +137,9 @@ class BasicMethod(BasicPlugin):
                 block_data1 =  block_data1[None, ...]
                 block_data2 =  block_data2[None, ...]
             # pdb.set_trace()
-            block_diff = block_data1 - block_data2
+            block_diff = block_data1.sum(0) - block_data2.sum(0)
             block_diff = block_diff.astype(np.float32)
-            block_diff = np.abs(block_diff).sum(0)
+            block_diff = np.abs(block_diff)
             
             min_diff = min(min_diff, block_diff.min())
             max_diff = max(max_diff, block_diff.max())
@@ -190,12 +194,13 @@ class BasicMethod(BasicPlugin):
                         center_y = j * cell_size[1] + cell_size[1] // 2
                         center_x = center_x * geo[1] + geo [0]
                         center_y = center_y * geo[5] + geo [3]
-                        f.write(f'{center_x},{center_y},{block_data_xy.mean()},1\n')
+                        f.write(f'{center_x},{center_y},{block_data_xy.mean() / 255},1\n')
         
        
         self.result_ok.emit({
             'layer_id': layer.id,
             'csv_file': out_csv,
+            'raster_file': out_normal_tif
         })
 
         self.message_send.emit('完成计算变化表格')
