@@ -12,7 +12,7 @@ from rscder.gui.result import ResultTable
 from rscder.plugins.loader import PluginLoader
 from rscder.utils import Settings
 from rscder.utils.project import Project
-
+from rscder.gui.layercombox import LayerCombox
 class MainWindow(QMainWindow):
 
     def __init__(self, parent=None, **kargs):

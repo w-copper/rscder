@@ -49,7 +49,7 @@ class ResultTable(QtWidgets.QWidget):
             else:
                 self.tablewidget.item(row, col).setBackground(Qt.green)
             # logging
-            logging.info(item_idx, item_status)
+            # logging.info()
             self.result.update({'row':item_idx, 'value':item_status})
             self.no_change = False
 

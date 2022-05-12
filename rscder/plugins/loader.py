@@ -36,7 +36,7 @@ class PluginLoader(QObject):
             mes = inspect.getmembers(module)
             for name, obj in mes:
                 # logging
-                logging.info(name, obj)
+                logging.info(f'{name}:{obj}')
                 if inspect.isclass(obj) and issubclass(obj, BasicPlugin):
                     info = obj.info()
                     break

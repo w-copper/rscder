@@ -17,7 +17,7 @@ class MyDialog(QDialog):
         super().__init__(parent)
 
         self.setWindowTitle('BasicChange')
-        self.setWindowIcon(QIcon(":/icons/logo.svg"))
+        self.setWindowIcon(QIcon(":/icons/logo.png"))
 
         self.setFixedWidth(500)
 
@@ -124,9 +124,12 @@ class BasicMethod(BasicPlugin):
         out_ds.SetProjection(ds1.GetProjection())
         max_diff = 0
         min_diff = math.inf
-        for j in range(yblocks):
+        for j in range(yblocks + 1):
+            
             self.message_send.emit(f'计算{j}/{yblocks}')
             block_xy = (0, j * cell_size[1])
+            if block_xy[1] > ysize:
+                break
             block_size = (xsize, cell_size[1])
             if block_xy[1] + block_size[1] > ysize:
                 block_size = (xsize, ysize - block_xy[1])
@@ -141,7 +144,7 @@ class BasicMethod(BasicPlugin):
             block_diff = block_diff.astype(np.float32)
             block_diff = np.abs(block_diff)
             
-            min_diff = min(min_diff, block_diff.min())
+            min_diff = min(min_diff, block_diff[block_diff > 0].min())
             max_diff = max(max_diff, block_diff.max())
             out_ds.GetRasterBand(1).WriteArray(block_diff, *block_xy)
 
@@ -152,11 +155,15 @@ class BasicMethod(BasicPlugin):
         self.message_send.emit('归一化概率中...')
         temp_in_ds = gdal.Open(out_tif) 
 
-        out_normal_tif = os.path.join(out, 'diff_0_255.tif')
+        out_normal_tif = os.path.join(out, '{}.tif'.format(int(np.random.rand() * 100000)))
         out_normal_ds = driver.Create(out_normal_tif, xsize, ysize, 1, gdal.GDT_Byte)
+        out_normal_ds.SetGeoTransform(ds1.GetGeoTransform())
+        out_normal_ds.SetProjection(ds1.GetProjection())
         hist = np.zeros(256, dtype=np.int32)
-        for j in range(yblocks):
+        for j in range(yblocks+1):
             block_xy = (0, j * cell_size[1])
+            if block_xy[1] > ysize:
+                break
             block_size = (xsize, cell_size[1])
             if block_xy[1] + block_size[1] > ysize:
                 block_size = (xsize, ysize - block_xy[1])
@@ -164,9 +171,14 @@ class BasicMethod(BasicPlugin):
             block_data = (block_data - min_diff) / (max_diff - min_diff) * 255
             block_data = block_data.astype(np.uint8)
             out_normal_ds.GetRasterBand(1).WriteArray(block_data, *block_xy)
-            hist_t, _ = np.histogram(block_data, bins=256)
+            hist_t, _ = np.histogram(block_data, bins=256, range=(0, 256))
             hist += hist_t
-        
+        print(hist)
+        del temp_in_ds
+        try:
+            os.remove(out_tif)
+        except:
+            pass
         self.gap = OTSU(hist)
 
         self.message_send.emit('OTSU：' + str(self.gap))

@@ -22,7 +22,7 @@ class ExportDialog(QDialog):
         for layer in Project().layers.values():
             for result_layer in layer.results:
                 if result_layer.layer_type == ResultLayer.POINT:
-                    result_layer_select.addItem( layer.name[5:] + '-' + result_layer.name, result_layer)
+                    result_layer_select.addItem( layer.name[:5] + '-' + result_layer.name, result_layer)
         
         for i in range(result_layer_select.count() - 1):
             result_layer_select.setItemIcon(i + 1, QIcon(":/icons/layer.png"))

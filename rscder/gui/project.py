@@ -9,7 +9,7 @@ class Create(QDialog):
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
         self.setWindowTitle('Create Project')
-        self.setWindowIcon(QIcon(":/icons/logo.svg"))
+        self.setWindowIcon(QIcon(":/icons/logo.png"))
 
         self.file = str(Path(Settings.General().root)/'default')
         self.name = '未命名'
