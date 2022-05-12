@@ -39,12 +39,16 @@ class MulStart:
                 sys.exit(0)
         # Create and display the splash screen
         splash_pix = QPixmap(':/icons/splash.png')
+        # splash_pix.scaledToWidth(800)
+        # splash_pix.scaledToHeight(600)
 
         splash = QSplashScreen(splash_pix, Qt.WindowStaysOnTopHint)
+        # splash
+        # splash.setFixedSize(800, 600)
         progressBar = QProgressBar(splash)
         progressBar.setMaximum(10)
         progressBar.setTextVisible(False)
-        progressBar.setGeometry(46, splash_pix.height() - 60, splash_pix.width()-92, 10)
+        progressBar.setGeometry(106, splash_pix.height() - 60, splash_pix.width()-212, 10)
 
         splash.show()
         for i in range(1, 11):

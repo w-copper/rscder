@@ -1,4 +1,5 @@
 import base64
+import logging
 from Crypto.Cipher import AES
 import uuid
 import hashlib
@@ -78,7 +79,7 @@ def get_aes():
 
 class LicenseHelper(object):
     def generate_license(self, end_date, mac_addr):
-        print("Received end_date: {}, mac_addr: {}".format(end_date, mac_addr))
+        logging.info("Received end_date: {}, mac_addr: {}".format(end_date, mac_addr))
         psw = self.hash_msg('smartant' + str(mac_addr))
         license_str = {}
         license_str['mac'] = mac_addr
@@ -110,8 +111,8 @@ class LicenseHelper(object):
         lic_date_array = datetime.datetime.strptime(lic_date, "%Y-%m-%d %H:%M:%S")
         remain_days = lic_date_array - current_time_array
         remain_days = remain_days.days
-        print('lic data:{}'.format(lic_date))
-        print('remain_days: {}'.format(remain_days))
+        logging.info('lic data:{}'.format(lic_date))
+        logging.info('remain_days: {}'.format(remain_days))
         if remain_days < 0 or remain_days == 0:
             return False
         else:
@@ -138,6 +139,6 @@ if __name__ == '__main__':
     
     license_dic = LicenseHelper().read_license(license_result)
 
-    print(license_dic)
+    logging.info(license_dic)
 
     

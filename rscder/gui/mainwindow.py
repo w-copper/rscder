@@ -37,6 +37,7 @@ class MainWindow(QMainWindow):
         self.layer_tree.result_clicked.connect(self.result_box.on_result)
         self.result_box.on_item_click.connect(self.double_map.zoom_to_result)
         self.result_box.on_item_changed.connect(Project().change_result)
+        self.layer_tree.zoom_to_layer_signal.connect(self.double_map.zoom_to_layer)
 
         self.action_manager = ActionManager(
             self.double_map, 

@@ -1,3 +1,4 @@
+import logging
 import os
 import shutil
 from PyQt5.QtWidgets import *
@@ -11,7 +12,7 @@ class PluginDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setWindowTitle('Plugins')
-        self.setWindowIcon(QIcon(":/icons/logo.svg"))
+        self.setWindowIcon(QIcon(":/icons/logo.png"))
         self.setMinimumWidth(900)
         self.setMinimumHeight(600)
         self.plugins = list(Settings.Plugin().plugins)
@@ -57,7 +58,7 @@ class PluginDialog(QDialog):
         plugin_directory = QFileDialog.getExistingDirectory(self, 'Select Plugin Directory', '.')
         if plugin_directory is not None:
             info = PluginLoader.load_plugin_info(plugin_directory)
-            print(info)
+            logging.info(info)
            
             if info is not None:
                 try:
@@ -73,6 +74,7 @@ class PluginDialog(QDialog):
                 
                 self.plugin_table.insertRow(self.plugin_table.rowCount())
                 name_item = QTableWidgetItem(info['name'])
+                name_item.setIcon(QIcon(':/icons/tools.png'))
                 module_item = QTableWidgetItem(info['module'])
                 enabled_item = QTableWidgetItem('启用')
                 enabled_item.setCheckState(Qt.Checked)
@@ -94,7 +96,8 @@ class PluginDialog(QDialog):
             try:
                 shutil.rmtree(info['path'])
             except Exception as e:
-                print(e)
+                # logging
+                logging.info(e)
                 pass
         # for idx in self.plugins
     

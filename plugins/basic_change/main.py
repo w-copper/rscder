@@ -10,7 +10,7 @@ from rscder.gui.layercombox import LayerCombox
 from osgeo import gdal, gdal_array
 from threading import Thread
 import numpy as np
-
+from basic_change.otsu import OTSU
 class MyDialog(QDialog):
 
     def __init__(self, parent=None):
@@ -154,7 +154,7 @@ class BasicMethod(BasicPlugin):
 
         out_normal_tif = os.path.join(out, 'diff_0_255.tif')
         out_normal_ds = driver.Create(out_normal_tif, xsize, ysize, 1, gdal.GDT_Byte)
-
+        hist = np.zeros(256, dtype=np.int32)
         for j in range(yblocks):
             block_xy = (0, j * cell_size[1])
             block_size = (xsize, cell_size[1])
@@ -164,7 +164,13 @@ class BasicMethod(BasicPlugin):
             block_data = (block_data - min_diff) / (max_diff - min_diff) * 255
             block_data = block_data.astype(np.uint8)
             out_normal_ds.GetRasterBand(1).WriteArray(block_data, *block_xy)
+            hist_t, _ = np.histogram(block_data, bins=256)
+            hist += hist_t
         
+        self.gap = OTSU(hist)
+
+        self.message_send.emit('OTSU：' + str(self.gap))
+
         out_normal_ds.FlushCache()
         del out_normal_ds
         self.message_send.emit('完成归一化概率')   
@@ -194,7 +200,7 @@ class BasicMethod(BasicPlugin):
                         center_y = j * cell_size[1] + cell_size[1] // 2
                         center_x = center_x * geo[1] + geo [0]
                         center_y = center_y * geo[5] + geo [3]
-                        f.write(f'{center_x},{center_y},{block_data_xy.mean() / 255},1\n')
+                        f.write(f'{center_x},{center_y},{block_data_xy.mean() / 255 * 100},1\n')
         
        
         self.result_ok.emit({

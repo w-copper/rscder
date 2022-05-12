@@ -11,7 +11,7 @@ class License(QtWidgets.QDialog):
     def __init__(self, parent = None, flags = QtCore.Qt.WindowFlags() ) -> None:
         super().__init__(parent, flags)
         self.setWindowTitle("License")
-        self.setWindowIcon(QIcon(':/icons/license.png'))
+        self.setWindowIcon(QIcon(':/icons/logo.png'))
         self.setWindowFlags(QtCore.Qt.WindowCloseButtonHint)
         self.setFixedSize(600, 400)
 

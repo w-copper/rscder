@@ -1,4 +1,5 @@
 
+import logging
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt,QModelIndex, pyqtSignal
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
@@ -47,7 +48,8 @@ class ResultTable(QtWidgets.QWidget):
                 self.tablewidget.item(row, col).setBackground(Qt.yellow)
             else:
                 self.tablewidget.item(row, col).setBackground(Qt.green)
-            print(item_idx, item_status)
+            # logging
+            logging.info(item_idx, item_status)
             self.result.update({'row':item_idx, 'value':item_status})
             self.no_change = False
 

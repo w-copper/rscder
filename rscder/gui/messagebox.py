@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QTextEdit
 from PyQt5 import QtWidgets
-from PyQt5.QtGui import QTextCursor
+from PyQt5.QtGui import QTextCursor, QIcon
 from PyQt5.QtCore import Qt
 from datetime import datetime, time
 class MessageBox(QTextEdit):
@@ -24,7 +24,7 @@ class MessageBox(QTextEdit):
     def right_menu_show(self, position):
         rightMenu = QtWidgets.QMenu(self)
         # QAction = QtWidgets.QAction(self.menuBar1)
-        action = QtWidgets.QAction('清空')
+        action = QtWidgets.QAction(QIcon(':/icons/exit.png'), '清空')
         action.triggered.connect(self.clear)
         rightMenu.addAction(action)
         

@@ -63,6 +63,6 @@ class AboutPlugin(BasicPlugin):
         menu.addAction(action)
     
     def on_about(self):
-        print('on_about')
+        # print('on_about')
         dialog = AboutDialog(self.ctx['mainwindow'])
         dialog.show()

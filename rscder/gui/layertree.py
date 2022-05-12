@@ -1,8 +1,9 @@
 
+import logging
 import pdb
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt,QModelIndex
-from PyQt5.QtGui import QStandardItemModel, QStandardItem, QCursor
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QCursor, QIcon
 from PyQt5.QtWidgets import (QTreeView, QTreeWidgetItem, QAbstractItemView, QHeaderView, QStyleFactory)
 from rscder.gui.actions import get_action_manager
 
@@ -18,6 +19,7 @@ class LayerTree(QtWidgets.QWidget):
     GRID = 3
 
     tree_changed = QtCore.pyqtSignal(str)
+    zoom_to_layer_signal = QtCore.pyqtSignal(str)
     result_clicked = QtCore.pyqtSignal(str, int)
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -52,6 +54,7 @@ class LayerTree(QtWidgets.QWidget):
         self.setLayout(layout)
         self.setLayoutDirection(Qt.LeftToRight)
         self.is_in_add_layer = False
+        self.current_item = None
 
     def onItemClicked(self, item:QtWidgets.QTreeWidgetItem, column):
         if item == self.root:
@@ -153,7 +156,7 @@ class LayerTree(QtWidgets.QWidget):
                 if item_root.data(0, Qt.UserRole + 1) == layer.id:
                     layer_root = item_root
                     break
-        print(layer_root.text(0))
+        logging.info(layer_root.text(0))
         if layer_root is None:
             self.add_layer(layer.id)
             return
@@ -172,38 +175,72 @@ class LayerTree(QtWidgets.QWidget):
         self.root.setText(0,'图层')
         self.tree.addTopLevelItem(self.root)
 
+    def delete_layer(self):
+        item = self.current_item
+        if item is None:
+            return
+        if item == self.root:
+            return
+        root = item
+        if item.data(0, Qt.UserRole) != LayerTree.LAYER_TOOT:
+            root = item.parent()
+        
+        if item.data(0, Qt.UserRole) == LayerTree.LAYER_TOOT:
+            self.root.takeChild(self.root.indexOfChild(item))
+            del Project().layers[root.data(0, Qt.UserRole + 1)]
+        elif item.data(0, Qt.UserRole) == LayerTree.SUB_RASTER:
+            return
+        elif item.data(0, Qt.UserRole) == LayerTree.GRID:
+            return
+        elif item.data(0, Qt.UserRole) == LayerTree.RESULT:
+            root.takeChild(root.indexOfChild(item))
+            del Project().layers[root.data(0, Qt.UserRole + 1)].results[item.data(0, Qt.UserRole + 1)]
+            self.update_layer(root.data(0, Qt.UserRole + 1))
+        self.tree_changed.emit(root.data(0, Qt.UserRole + 1))
+    
+    def zoom_to_layer(self):
+        item = self.current_item
+        if item is None:
+            return
+        if item == self.root:
+            return
+        root = item
+        if item.data(0, Qt.UserRole) != LayerTree.LAYER_TOOT:
+            root = item.parent()
+        
+        self.zoom_to_layer_signal.emit(root.data(0, Qt.UserRole + 1))
+        
+
     def right_menu_show(self, position):
         rightMenu = QtWidgets.QMenu(self)
         # QAction = QtWidgets.QAction(self.menuBar1)
         item = self.tree.itemAt(position)
-
+        self.current_item = item
         action_manager = get_action_manager()
         actions = []
         data_load_action = action_manager.get_action('&数据加载', 'File')
         actions.append(data_load_action)
+        zoom_to_action = QtWidgets.QAction(QIcon(':/icons/full.svg'), '&缩放至该图层', self)
+        del_action = QtWidgets.QAction(QIcon(':/icons/delete.png'), '&删除该图层', self)
+        zoom_to_action.triggered.connect(self.zoom_to_layer)
+        del_action.triggered.connect(self.delete_layer)
         if item is None:
-            print('nothing')
+            logging.info('nothing')
         else:
             if item == self.root:
                 pass
             elif item.data(0, Qt.UserRole) == LayerTree.LAYER_TOOT:
-                actions.append(QtWidgets.QAction('&缩放至该图层', self))
-                
+                actions.append(zoom_to_action)
                 actions.append(QtWidgets.QAction('&重命名', self))
-                actions.append(QtWidgets.QAction('&删除', self))
+                actions.append(del_action)
             elif item.data(0, Qt.UserRole) == LayerTree.SUB_RASTER:
-                actions.append(QtWidgets.QAction('&缩放至该图层', self))
-                
+                actions.append(zoom_to_action)
                 actions.append(QtWidgets.QAction('&重命名', self))
-                actions.append(QtWidgets.QAction('&删除', self))
             elif item.data(0, Qt.UserRole) == LayerTree.RESULT:
-                actions.append(QtWidgets.QAction('&缩放至该图层', self))
-                
+                actions.append(zoom_to_action)
                 actions.append(QtWidgets.QAction('&重命名', self))
-                actions.append(QtWidgets.QAction('&导出', self))
-                actions.append(QtWidgets.QAction('&删除', self))
+                actions.append(del_action)
     
-
                 
         for action in actions:
             rightMenu.addAction(action)

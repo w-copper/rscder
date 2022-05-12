@@ -1,3 +1,4 @@
+import logging
 import shutil
 from rscder.utils.setting import Settings
 from PyQt5.QtWidgets import QMessageBox
@@ -34,12 +35,13 @@ class PluginLoader(QObject):
             module = importlib.import_module(os.path.basename(path))
             mes = inspect.getmembers(module)
             for name, obj in mes:
-                print(name, obj)
+                # logging
+                logging.info(name, obj)
                 if inspect.isclass(obj) and issubclass(obj, BasicPlugin):
                     info = obj.info()
                     break
         except Exception as e:
-            print(e)
+            logging.info(str(e))
             QMessageBox.critical(None, 'Error', f'{path} load error: {e}')
         finally:
             sys.path.pop(0)

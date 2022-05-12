@@ -3,12 +3,19 @@
   enabled: true
   module: about
   name: "\u5173\u4E8E"
-  path: ./plugin-build\about
+  path: ./plugin\about
   version: 1.0.0
 - author: RSCDER
   description: BasicMethod
   enabled: true
   module: basic_change
   name: BasicMethod
-  path: ./plugin-build\basic_change
+  path: ./plugin\basic_change
+  version: 1.0.0
+- author: RSCDER
+  description: ExportTo
+  enabled: true
+  module: export_to
+  name: ExportTo
+  path: ./plugin\export_to
   version: 1.0.0
