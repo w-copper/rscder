@@ -2,16 +2,60 @@ import math
 import os
 import pdb
 from rscder.plugins.basic import BasicPlugin
-from PyQt5.QtWidgets import QAction
+from PyQt5.QtWidgets import QAction, QDialog, QHBoxLayout, QVBoxLayout, QPushButton
 from PyQt5.QtCore import pyqtSignal
-from rscder.utils.project import PairLayer, ResultLayer
+from PyQt5.QtGui import QIcon
+from rscder.utils.project import Project, PairLayer, ResultLayer
+from rscder.gui.layercombox import LayerCombox
 from osgeo import gdal, gdal_array
 from threading import Thread
 import numpy as np
+
+class MyDialog(QDialog):
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+
+        self.setWindowTitle('BasicChange')
+        self.setWindowIcon(QIcon(":/icons/logo.svg"))
+
+        self.setFixedWidth(500)
+
+        self.layer_select = LayerCombox(self)
+        self.layer_select.setFixedWidth(400)
+
+        # self.number_input = QLineEdit(self)
+
+        self.ok_button = QPushButton('OK', self)
+        self.ok_button.setIcon(QIcon(":/icons/ok.svg"))
+        self.ok_button.clicked.connect(self.on_ok)
+
+        self.cancel_button = QPushButton('Cancel', self)
+        self.cancel_button.setIcon(QIcon(":/icons/cancel.svg"))
+        self.cancel_button.clicked.connect(self.on_cancel)
+    
+        self.button_layout = QHBoxLayout()
+        self.button_layout.addWidget(self.ok_button)
+        self.button_layout.addWidget(self.cancel_button)
+
+        self.main_layout = QVBoxLayout()
+        self.main_layout.addWidget(self.layer_select)
+        # self.main_layout.addWidget(self.number_input)
+        self.main_layout.addLayout(self.button_layout)
+        self.setLayout(self.main_layout)
+    
+    def on_ok(self):
+        self.accept()
+    
+    def on_cancel(self):
+        self.reject()
+
+
+
 class BasicMethod(BasicPlugin):
 
     message_send  = pyqtSignal(str)
-    table_result_ok = pyqtSignal(str)
+    result_ok = pyqtSignal(dict)
 
     @staticmethod
     def info():
@@ -33,9 +77,10 @@ class BasicMethod(BasicPlugin):
         basic_diff_method.triggered.connect(self.basic_diff_alg)
 
         self.message_send.connect(self.send_message)
-        self.table_result_ok.connect(self.on_table_result_ok)
-
+        self.result_ok.connect(self.on_result_ok)
+        # self.result_ok.connect(self.on_result_ok)
         self.gap = 128
+
 
     def on_data_load(self, layer_id):
         self.basic_diff_method.setEnabled(True)
@@ -43,24 +88,20 @@ class BasicMethod(BasicPlugin):
     def send_message(self, s):
         self.message_box.info(s)
     
-    def on_table_result_ok(self, s):
-        with open(s, 'r') as f:
-            lines = f.readlines()
-            data_lines = lines[1:]
+    def on_result_ok(self, data):
+        layer = Project().layers[data['layer_id']]
+        csv_result = ResultLayer('basic_diff_result', ResultLayer.POINT)
+        csv_result.load_file(data['csv_file'])
+        layer.results.append(csv_result)
+        self.layer_tree.update_layer(layer.id)
+
+    def run_basic_diff_alg(self, layer:PairLayer, out):
         
-        if len(data_lines) > 0:
-            data_table = []
-            for l in data_lines:
-                l = l.strip()
-                ls = l.split(',')
-                ls = [float(i) for i in ls]
-                data_table.append(ls)
-            result = ResultLayer(ResultLayer.POINT)
-            result.data = data_table
-            self.result_table.set_data(result)
+        pth1 = layer.pth1
+        pth2 = layer.pth2
 
+        cell_size = layer.cell_size
 
-    def run_basic_diff_alg(self, pth1, pth2, cell_size, out):
         self.message_send.emit('开始计算差分法')
 
         ds1 = gdal.Open(pth1)
@@ -125,7 +166,7 @@ class BasicMethod(BasicPlugin):
         self.message_send.emit('完成归一化概率')   
 
         self.message_send.emit('计算变化表格中...')
-        out_csv = os.path.join(out, 'diff_table.csv')
+        out_csv = os.path.join(out, '{}.csv'.format(int(np.random.rand() * 100000)))
         xblocks = xsize // cell_size[0]
         
         normal_in_ds = gdal.Open(out_normal_tif)
@@ -151,7 +192,11 @@ class BasicMethod(BasicPlugin):
                         center_y = center_y * geo[5] + geo [3]
                         f.write(f'{center_x},{center_y},{block_data_xy.mean()},1\n')
         
-        self.table_result_ok.emit(out_csv)
+       
+        self.result_ok.emit({
+            'layer_id': layer.id,
+            'csv_file': out_csv,
+        })
 
         self.message_send.emit('完成计算变化表格')
                     
@@ -159,10 +204,13 @@ class BasicMethod(BasicPlugin):
 
     def basic_diff_alg(self):
         # layer_select = 
-        layer:PairLayer = list(self.project.layers.values())[0]
-
-        img1 = layer.pth1
-        img2 = layer.pth2
+        layer = None
+        layer_select = MyDialog(self.mainwindow)
+        if(layer_select.exec_()):
+            layer = layer_select.layer_select.current_layer
+        else:
+            return
+        # layer:PairLayer = list(self.project.layers.values())[0]
 
         if not layer.check():
             return
@@ -170,7 +218,7 @@ class BasicMethod(BasicPlugin):
         if not os.path.exists(out_dir):
             os.makedirs(out_dir, exist_ok=True)
 
-        t = Thread(target=self.run_basic_diff_alg, args=(img1, img2, layer.cell_size, out_dir))
+        t = Thread(target=self.run_basic_diff_alg, args=(layer, out_dir))
         t.start()
 
 

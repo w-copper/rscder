@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt,QModelIndex, pyqtSignal
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import (QTableWidgetItem, QTableWidget, QAbstractItemView, QHeaderView, QStyleFactory)
 
-from rscder.utils.project import PairLayer, ResultLayer
+from rscder.utils.project import PairLayer, Project, ResultLayer
 
 class ResultTable(QtWidgets.QWidget):
 
@@ -29,11 +29,15 @@ class ResultTable(QtWidgets.QWidget):
         layout = QtWidgets.QVBoxLayout(self)
         layout.addWidget(self.tablewidget)
         self.setLayout(layout)
+        self.result = None
+        self.is_in_set_data = False
 
     def clear(self):
-        pass
+        self.tablewidget.clear()
     
     def onChanged(self, row, col):
+        if self.is_in_set_data:
+            return
         if col == 3:
             item_idx = row
             item_status = self.tablewidget.item(row, col).checkState() == Qt.Checked
@@ -41,7 +45,8 @@ class ResultTable(QtWidgets.QWidget):
                 self.tablewidget.item(row, col).setBackground(Qt.yellow)
             else:
                 self.tablewidget.item(row, col).setBackground(Qt.green)
-            self.on_item_changed.emit({'idx':item_idx, 'status':item_status})
+            # print(item_idx, item_status)
+            self.result.update({'row':item_idx, 'value':item_status})
 
     def onClicked(self, row, col):
         if col == 3:
@@ -50,9 +55,18 @@ class ResultTable(QtWidgets.QWidget):
     def onDoubleClicked(self, row, col):
         x = self.tablewidget.item(row, 0).text()
         y = self.tablewidget.item(row, 1).text()
-        self.on_item_click.emit({'x':x, 'y':y})
+        self.on_item_click.emit({'x':float(x), 'y':float(y)})
 
+    def on_result(self, layer_id, result_id):
+        self.is_in_set_data = True
+        result = Project().layers[layer_id].results[result_id]
+        self.result = result
+        self.clear()
+        self.set_data(result)
     def set_data(self, data:ResultLayer):
+        self.is_in_set_data = True
+        if data.layer_type != ResultLayer.POINT:
+            return
         self.tablewidget.setRowCount(len(data.data))
         # print(len(data.data))
         self.tablewidget.setVerticalHeaderLabels([ str(i+1) for i in range(len(data.data))])
@@ -73,5 +87,4 @@ class ResultTable(QtWidgets.QWidget):
         self.tablewidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.tablewidget.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
     
-
-
+        self.is_in_set_data = False

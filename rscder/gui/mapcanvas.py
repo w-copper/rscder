@@ -66,8 +66,9 @@ class DoubleCanvas(QWidget):
             action.setChecked(self.grid_show)
             if self.grid_show:
                 for layer in Project().layers.values():
-                    self.mapcanva1.add_grid_layer(layer.grid_layer.grid_layer)
-                    self.mapcanva2.add_grid_layer(layer.grid_layer.grid_layer)
+                    if layer.grid_enable:
+                        self.mapcanva1.add_grid_layer(layer.grid_layer.grid_layer)
+                        self.mapcanva2.add_grid_layer(layer.grid_layer.grid_layer)
             else:
                 self.mapcanva1.remove_grid_layer()
                 self.mapcanva2.remove_grid_layer()
@@ -99,16 +100,48 @@ class DoubleCanvas(QWidget):
             self.mapcanva2.setMapTool(QgsMapToolZoom(self.mapcanva2, True))
 
     def add_layer(self, layer:str):
-        layer = Project().layers[layer]
-        if  not self.mapcanva1.is_main and not self.mapcanva2.is_main:
+        layer:PairLayer = Project().layers[layer]
+        if not layer.enable:
+            return
+        self.clear()
+
+        if not self.mapcanva1.is_main and not self.mapcanva2.is_main:
             self.mapcanva1.is_main = True
-        self.mapcanva1.add_layer(layer.l1)
-        self.mapcanva2.add_layer(layer.l2)
-        if self.grid_show:
+        
+        if layer.l1_enable:
+            self.mapcanva1.add_layer(layer.l1)
+        if layer.l2_enable:
+            self.mapcanva2.add_layer(layer.l2)
+        if layer.grid_enable and self.grid_show:
             self.mapcanva1.add_grid_layer(layer.grid_layer.grid_layer)
             self.mapcanva2.add_grid_layer(layer.grid_layer.grid_layer)
-        
-    
+        for r in layer.results:
+            if r.enable:
+                self.mapcanva1.add_layer(r.layer)
+                self.mapcanva2.add_layer(r.layer)
+        # self.mapcanva1.set_extent(layer.l1.extent())
+        self.mapcanva1.refresh()
+        self.mapcanva2.refresh()
+
+    def zoom_to_result(self, xydict:dict):
+        x = xydict['x']
+        y = xydict['y']
+        if Project().current_layer is not None:
+            layer = Project().current_layer
+        else:
+            layer = Project().layers[list(Project().layers.keys())[0]]
+
+        extent = QgsRectangle(x - layer.cell_size[0] * layer.xres, y - layer.cell_size[1] * layer.yres, x + layer.cell_size[0] * layer.xres, y + layer.cell_size[1] * layer.yres)
+        self.mapcanva1.set_extent(extent)
+        self.mapcanva2.set_extent(extent)
+
+    def zoom_to_layer(self, layer:str):
+        layer:PairLayer = Project().layers[layer]
+        self.mapcanva1.set_extent(layer.l1.extent())
+        self.mapcanva2.set_extent(layer.l2.extent())
+    def layer_changed(self, layer:str):
+        self.add_layer(layer)
+
     def clear(self):
         self.mapcanva1.clear()
         self.mapcanva2.clear()
