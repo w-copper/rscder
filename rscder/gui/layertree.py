@@ -18,9 +18,9 @@ class LayerTree(QtWidgets.QWidget):
     RIGHT_RASTER = 1
     GRID = 3
 
-    tree_changed = QtCore.pyqtSignal(str)
+    tree_changed = QtCore.pyqtSignal()
     zoom_to_layer_signal = QtCore.pyqtSignal(str)
-    result_clicked = QtCore.pyqtSignal(str, int)
+
     def __init__(self, parent=None):
         super().__init__(parent)
         # self.tree_view = QTreeView(self)
@@ -36,17 +36,11 @@ class LayerTree(QtWidgets.QWidget):
         self.root.setText(0,'图层')
         self.root.setIcon(0,QtGui.QIcon(':/icons/layer.png'))
 
-        # child1=QTreeWidgetItem()
-        # child1.setText(0,'child1')
-        # child1.setCheckState(0,Qt.Checked)
 
-        # self.root.addChild(child1)
         self.tree.expandAll()
 
         self.tree.addTopLevelItem(self.root)
 
-        # self.tree.clicked.connect(self.onClicked)
-        self.tree.itemClicked.connect(self.onItemClicked)
         self.tree.itemChanged.connect(self.onItemChanged)
 
         layout = QtWidgets.QGridLayout()
@@ -54,22 +48,7 @@ class LayerTree(QtWidgets.QWidget):
         self.setLayout(layout)
         self.setLayoutDirection(Qt.LeftToRight)
         self.is_in_add_layer = False
-        self.current_item = None
-
-    def onItemClicked(self, item:QtWidgets.QTreeWidgetItem, column):
-        if item == self.root:
-            return
-        root = item
-        if item.data(0, Qt.UserRole) != LayerTree.LAYER_TOOT:
-            root = item.parent()
-        if item.data(0, Qt.UserRole) == LayerTree.LAYER_TOOT:
-            return
-        layer = Project().layers[root.data(0, Qt.UserRole + 1)]
-        Project().current_layer = layer
-        if item.data(0, Qt.UserRole) == LayerTree.RESULT:
-            # result = layer.results[item.data(0, Qt.UserRole + 1)]
-            self.result_clicked.emit(layer.id, item.data(0, Qt.UserRole + 1))
-        
+        self.current_item = None     
         
     def onItemChanged(self, item:QtWidgets.QTreeWidgetItem, column):
         if self.is_in_add_layer:
@@ -94,7 +73,7 @@ class LayerTree(QtWidgets.QWidget):
         if item.data(0, Qt.UserRole) == LayerTree.GRID:
             layer.grid_enable = item.checkState(0) == Qt.Checked
 
-        self.tree_changed.emit(layer.id)
+        self.tree_changed.emit()
 
     def add_layer(self, layer:str):
         # self.tree.it

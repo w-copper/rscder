@@ -146,3 +146,33 @@ class Settings(QSettings):
             with Settings(Settings.General.PRE) as s:
                 return s.value('root', './')
         
+        @property
+        def auto_save(self):
+            with Settings(Settings.General.PRE) as s:
+                return s.value('auto_save', True)
+        
+        @property.setter
+        def auto_save(self, value):
+            if isinstance(value, bool):
+                pass
+            else:
+                if isinstance(value, (int,float)):
+                    value = value != 0
+                else:
+                    value = value is not None
+            with Settings(Settings.General.PRE) as s:
+                s.setValue('auto_save', value)
+            
+        @property
+        def auto_save_intervel(self):
+            with Settings(Settings.General.PRE) as s:
+                return s.value('auto_save_intervel', 30)
+        
+        @property.setter
+        def auto_save_intervel(self, value):
+            if isinstance(value, int) and value > 0:
+                pass
+            else:
+                return
+            with Settings(Settings.General.PRE) as s:
+                s.setValue('auto_save_intervel', value)

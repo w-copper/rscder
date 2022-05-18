@@ -100,6 +100,28 @@ class DoubleCanvas(QWidget):
             self.mapcanva1.setMapTool(QgsMapToolZoom(self.mapcanva1, True))
             self.mapcanva2.setMapTool(QgsMapToolZoom(self.mapcanva2, True))
 
+    def update_layer(self):
+        layers = Project().layers
+        layer_list_1 = []
+        layer_list_2 = []
+        for layer in layers.values():
+            if layer.enable:
+                if layer.grid_enable and self.grid_show:
+                    layer_list_1.append(layer.grid_layer.grid_layer)
+                    layer_list_2.append(layer.grid_layer.grid_layer)
+                if layer.l1_enable:
+                    layer_list_1.append(layer.l1)
+                if layer.l2_enable:
+                    layer_list_2.append(layer.l2)
+                    
+                for result in layer.results:
+                    if result.enable:
+                        layer_list_1.append(result.layer)
+                        layer_list_2.append(result.layer)
+        
+        self.mapcanva1.setLayers(layer_list_1)
+        self.mapcanva2.setLayers(layer_list_2)
+
     def add_layer(self, layer:str):
         if not layer in Project().layers:
             self.clear()

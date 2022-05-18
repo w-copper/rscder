@@ -1,6 +1,8 @@
 from collections import OrderedDict
 import os
 from pathlib import Path
+from threading import Thread
+from time import sleep, time
 from typing import Dict, List
 import uuid
 import numpy as np
@@ -24,6 +26,21 @@ class Project(QObject):
     ABSOLUTE_MODE = 'absolute'
     RELATIVE_MODE = 'relative'
 
+    def run_auto_save(self):
+        
+        t = Thread(target=self.auto_save)
+        t.run()
+        
+    def auto_save(self):
+        # pre = time()
+        while True:
+            if Settings.General().auto_save and self.is_init:
+                self.save()
+            if self.is_closed:
+                break
+            sleep(Settings.General().auto_save_intervel)
+        
+
     def __init__(self, 
                     parent=None):
         super().__init__(parent)
@@ -35,6 +52,8 @@ class Project(QObject):
         self.file_mode = Project.ABSOLUTE_MODE
         self.layers:Dict[str, PairLayer] = OrderedDict()
         self.current_layer = None
+        self.is_closed = False
+        self.run_auto_save()
 
     def connect(self, pair_canvas,
              layer_tree,
@@ -47,8 +66,7 @@ class Project(QObject):
 
         self.layer_load.connect(layer_tree.add_layer)
         self.layer_load.connect(pair_canvas.add_layer)
-        # self.layer_load.connect(message_box.add_layer) 
-        # 
+
     def change_result(self, layer_id, result_id, data):   
         if layer_id in self.layers:
             result = self.layers[layer_id].results[result_id]
@@ -73,7 +91,7 @@ class Project(QObject):
                 pass
         else:
             self.load()
-        self.cmi_dir = str(Path(self.root)/'cmi')
+        # self.cmi_dir = str(Path(self.root)/'cmi')
         # self.project_created.emit()
         self.project_init.emit(True)
 
