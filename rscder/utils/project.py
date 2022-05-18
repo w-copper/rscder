@@ -447,6 +447,9 @@ class PairLayer:
         self.l1_name = os.path.basename(pth1)
         self.l2_name = os.path.basename(pth2)
 
+        self.l1_pres = [] # 预处理数据
+        self.l2_pres = [] 
+
         self.cell_size = cell_size
         self.msg = ''
         self.checked = False
