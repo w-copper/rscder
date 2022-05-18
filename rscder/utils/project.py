@@ -1,3 +1,4 @@
+from collections import OrderedDict
 import os
 from pathlib import Path
 from typing import Dict, List
@@ -32,7 +33,7 @@ class Project(QObject):
         self.max_threads = Settings.Project().max_threads
         self.root = str(Path(Settings.General().root)/'default')
         self.file_mode = Project.ABSOLUTE_MODE
-        self.layers:Dict[str, PairLayer] = dict()
+        self.layers:Dict[str, PairLayer] = OrderedDict()
         self.current_layer = None
 
     def connect(self, pair_canvas,
@@ -72,6 +73,7 @@ class Project(QObject):
                 pass
         else:
             self.load()
+        self.cmi_dir = str(Path(self.root)/'cmi')
         # self.project_created.emit()
         self.project_init.emit(True)
 

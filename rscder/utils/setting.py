@@ -4,6 +4,7 @@ from typing import Tuple
 from PyQt5.QtCore import QSettings
 from rscder.utils.license import LicenseHelper
 import yaml
+
 class Settings(QSettings):
 
     def __init__(self, key):
@@ -41,6 +42,8 @@ class Settings(QSettings):
             plugins_file = os.path.join(self.root, 'plugins.yaml')
             with open(plugins_file, 'w') as f:
                 yaml.safe_dump(value, f)
+
+    
 
     class Project:
 

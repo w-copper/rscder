@@ -32,8 +32,8 @@ class DoubleCanvas(QWidget):
         self.setContextMenuPolicy(Qt.CustomContextMenu)
         self.mapcanva1 = CanvasWidget(self)
         self.mapcanva2 = CanvasWidget(self)
-        self.mapcanva1.setCanvasColor(QColor(255, 255, 255))
-        self.mapcanva2.setCanvasColor(QColor(255, 255, 255))
+        self.mapcanva1.setCanvasColor(QColor(0, 0, 0))
+        self.mapcanva2.setCanvasColor(QColor(0, 0, 0))
         
         self.mapcanva1.update_coordinates_text.connect(self.corr_changed)
         self.mapcanva2.update_coordinates_text.connect(self.corr_changed)
@@ -107,7 +107,7 @@ class DoubleCanvas(QWidget):
         layer:PairLayer = Project().layers[layer]
         if not layer.enable:
             return
-        self.clear()
+        # self.clear()
 
         if not self.mapcanva1.is_main and not self.mapcanva2.is_main:
             self.mapcanva1.is_main = True

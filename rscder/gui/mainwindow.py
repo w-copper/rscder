@@ -1,6 +1,6 @@
 import pdb
 from PyQt5.QtWidgets import  QWidget, QApplication, QMainWindow, QToolBox
-from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtCore import Qt, QSize, QSettings
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui
 from PyQtAds import QtAds
@@ -17,14 +17,14 @@ class MainWindow(QMainWindow):
 
     def __init__(self, parent=None, **kargs):
         super().__init__(parent) 
-        self.current_instance = kargs.get('current_instance', 0)
-        if self.current_instance > 0:   
-            self.setWindowTitle(QApplication.applicationName() + ' ' + str(self.current_instance))
-        else:
-            self.setWindowTitle(QApplication.applicationName())
+        # self.current_instance = kargs.get('current_instance', 0)
+        # if self.current_instance > 0:   
+        #     self.setWindowTitle(QApplication.applicationName() + ' ' + str(self.current_instance))
+        # else:
+        self.setWindowTitle(QApplication.applicationName())
         self.setWindowIcon(QIcon(":/icons/change_detect.png"))
-        
-        self.setAcceptDrops(True) 
+
+        self.setAcceptDrops(False) 
         self.setContextMenuPolicy(Qt.CustomContextMenu)
         self.set_toolbar()
         self.set_pannels()
@@ -67,7 +67,7 @@ class MainWindow(QMainWindow):
 
     def set_toolbar(self):
         self.toolbar = self.addToolBar('Toolbar')
-        self.toolbar.setMovable(False)
+        self.toolbar.setMovable(True)
         self.toolbar.setFloatable(False)
         self.toolbar.setIconSize(QSize(32, 32))
         self.toolbar.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
@@ -93,9 +93,9 @@ class MainWindow(QMainWindow):
         self.follow_box = QWidget(self)
         self.eye_box = QWidget(self)
         left_tool_box.setContextMenuPolicy(Qt.CustomContextMenu)
-        left_tool_box.addItem(self.layer_tree, self.tr("图层树"))
-        left_tool_box.addItem(self.follow_box, self.tr("流程"))
-        left_tool_box.addItem(self.eye_box, self.tr("鹰眼"))
+        left_tool_box.addItem(self.layer_tree, self.tr("图层控制"))
+        left_tool_box.addItem(self.follow_box, self.tr("检测流程"))
+        left_tool_box.addItem(self.eye_box, self.tr("鹰眼视图"))
 
         
         # self.layer_tree.setContextMenuPolicy(Qt.CustomContextMenu)

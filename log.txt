@@ -1,5 +1,6 @@
-2022-05-12 21:03:53,901 - root - INFO - lic data:2022-12-01 00:00:00
-2022-05-12 21:03:53,905 - root - INFO - remain_days: 202
-2022-05-12 21:03:55,251 - root - INFO - lic data:2022-12-01 00:00:00
-2022-05-12 21:03:55,251 - root - INFO - remain_days: 202
-2022-05-12 21:04:11,685 - root - INFO - AAA.tif-BBB.tif
+2022-05-17 16:14:17,007 - root - INFO - lic data:2022-12-01 00:00:00
+2022-05-17 16:14:17,010 - root - INFO - remain_days: 197
+2022-05-17 16:14:18,338 - root - INFO - lic data:2022-12-01 00:00:00
+2022-05-17 16:14:18,338 - root - INFO - remain_days: 197
+2022-05-17 16:35:12,026 - root - INFO - Empty module name
+2022-05-17 16:35:13,397 - root - INFO - None

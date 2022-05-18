@@ -10,3 +10,8 @@ def singleton(cls):
             cls.instance = _instance[cls]
         return _instance[cls]
     return inner
+
+
+# Project.__name__
+
+# Projec
