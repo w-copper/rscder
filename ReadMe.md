@@ -3,13 +3,32 @@
 CVEO团队
 
 # 环境
-Python3 + PyQt + QGIS?
+Python3.7 + PyQt + QGIS
 
-# 当前依赖
-pyqt qgis gdal numpy
+## 配置方式
+conda create -f conda.yaml
+
 
 # 打包方式
-comming soon
+
+1. 打包keygen:
+
+```
+nuitka keygen.py --standalone --plugin-enable=qt-plugins --plugin-enable=numpy --show-progress --include-package=qgis --plugin-enable=pylint-warnings --output-dir=package --windows-disable-console --windows-icon-from-ico=logo.ico --no-pyi-file 
+```
+
+2. 打包主体：
+
+```
+nuitka RSCDer.py --standalone --plugin-enable=qt-plugins --plugin-enable=numpy --show-progress --include-package=qgis --plugin-enable=pylint-warnings --output-dir=package --windows-disable-console --windows-icon-from-ico=logo.ico --no-pyi-file 
+
+```
+
+3. 打包插件：
+
+```
+python setup.py
+```
 
 # 功能
 
