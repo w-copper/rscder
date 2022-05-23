@@ -240,6 +240,7 @@ class BasicLayer(QObject):
         self.path_mode = path_mode
         self.view_mode = view_mode
         self.layer = None
+        self.layer_parent = None
         self.layer_tree_update.connect(Project().layer_tree_update)
         self.layer_show_update.connect(Project().layer_show_update)
         self.zoom_to_layer.connect(Project().zoom_to_layer)
@@ -289,7 +290,12 @@ class BasicLayer(QObject):
         del_action = QAction(IconInstance().DELETE, '删除图层', self)
 
         def del_layer():
-            Project().remove_layer(self)
+            if self.layer_parent is None:
+                Project().layers.pop(self.id)
+            else:
+                self.layer_parent.remove_layer(self)
+            self.layer_tree_update.emit()
+            self.layer_show_update.emit()
         del_action.triggered.connect(del_layer)
         actions.append(del_action)
 
@@ -359,9 +365,7 @@ class GridLayer(BasicLayer):
         lines_layer.commitChanges()
         self.layer = lines_layer
 
-        self.set_render()
-    
-    
+        self.set_render()   
 
 class RasterLayer(BasicLayer):
     
