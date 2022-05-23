@@ -1,5 +1,5 @@
 import shutil
-from rscder.utils.project import Project, PairLayer, ResultLayer
+from rscder.utils.project import Project, PairLayer, ResultPointLayer
 from rscder.plugins.basic import BasicPlugin
 from PyQt5.QtWidgets import QDialog, QHBoxLayout, QFileDialog, QComboBox, QVBoxLayout, QPushButton, QLabel, QLineEdit, QAction
 from PyQt5.QtGui import QIcon
@@ -20,8 +20,8 @@ class ExportDialog(QDialog):
 
         result_layer_select.addItem('---', None)
         for layer in Project().layers.values():
-            for result_layer in layer.results:
-                if result_layer.layer_type == ResultLayer.POINT:
+            for result_layer in layer.layers:
+                if isinstance(result_layer, ResultPointLayer):
                     result_layer_select.addItem( layer.name[:5] + '-' + result_layer.name, result_layer)
         
         for i in range(result_layer_select.count() - 1):

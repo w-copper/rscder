@@ -1,6 +1,6 @@
 import pdb
 from PyQt5.QtWidgets import  QWidget, QApplication, QMainWindow, QToolBox
-from PyQt5.QtCore import Qt, QSize, QSettings
+from PyQt5.QtCore import Qt, QSize, QSettings, pyqtSignal
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui
 from PyQtAds import QtAds
@@ -14,6 +14,8 @@ from rscder.utils import Settings
 from rscder.utils.project import Project
 from rscder.gui.layercombox import LayerCombox
 class MainWindow(QMainWindow):
+
+    closed = pyqtSignal()
 
     def __init__(self, parent=None, **kargs):
         super().__init__(parent) 
@@ -33,11 +35,8 @@ class MainWindow(QMainWindow):
                 self.layer_tree, 
                 self.message_box, 
                 self.result_box)
-        self.layer_tree.tree_changed.connect(self.double_map.layer_changed)
-        self.layer_tree.result_clicked.connect(self.result_box.on_result)
-        self.result_box.on_item_click.connect(self.double_map.zoom_to_result)
-        self.result_box.on_item_changed.connect(Project().change_result)
-        self.layer_tree.zoom_to_layer_signal.connect(self.double_map.zoom_to_layer)
+
+        self.result_box.on_item_click.connect(self.double_map.zoom_to_extent)
 
         self.action_manager = ActionManager(
             self.double_map, 
@@ -126,7 +125,7 @@ class MainWindow(QMainWindow):
         set_docker_fixed(self.message_dock)
 
     def closeEvent(self, event):
-        pass
+        self.closed.emit()
 
     def resizeEvent(self, a0: QtGui.QResizeEvent) -> None:
         Settings.General().size = (a0.size().width(), a0.size().height())

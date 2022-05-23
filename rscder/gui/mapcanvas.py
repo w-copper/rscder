@@ -20,7 +20,7 @@ import tempfile
 import cv2
 import os
 
-from rscder.utils.project import PairLayer, Project
+from rscder.utils.project import BasicLayer, PairLayer, Project
 
 class DoubleCanvas(QWidget):
     corr_changed = pyqtSignal(str)
@@ -106,18 +106,20 @@ class DoubleCanvas(QWidget):
         layer_list_2 = []
         for layer in layers.values():
             if layer.enable:
-                if layer.grid_enable and self.grid_show:
-                    layer_list_1.append(layer.grid_layer.grid_layer)
-                    layer_list_2.append(layer.grid_layer.grid_layer)
-                if layer.l1_enable:
-                    layer_list_1.append(layer.l1)
-                if layer.l2_enable:
-                    layer_list_2.append(layer.l2)
-                    
-                for result in layer.results:
-                    if result.enable:
-                        layer_list_1.append(result.layer)
-                        layer_list_2.append(result.layer)
+                if layer.grid.enable and self.grid_show:
+                    layer_list_1.append(layer.grid.layer)
+                    layer_list_2.append(layer.grid.layer)
+                
+                for sub_layer in layer.layers:
+                    if sub_layer.enable:
+                        if sub_layer.view_mode == BasicLayer.LEFT_VIEW:
+                            layer_list_1.append(sub_layer.layer)
+                        elif sub_layer.view_mode == BasicLayer.RIGHT_VIEW:
+                            layer_list_2.append(sub_layer.layer)
+                        elif sub_layer.view_mode == BasicLayer.BOATH_VIEW:
+                            layer_list_2.append(sub_layer.layer)
+                            layer_list_1.append(sub_layer.layer)
+
         
         self.mapcanva1.setLayers(layer_list_1)
         self.mapcanva2.setLayers(layer_list_2)
@@ -149,22 +151,14 @@ class DoubleCanvas(QWidget):
         self.mapcanva1.refresh()
         self.mapcanva2.refresh()
 
-    def zoom_to_result(self, xydict:dict):
-        x = xydict['x']
-        y = xydict['y']
-        if Project().current_layer is not None:
-            layer = Project().current_layer
-        else:
-            layer = Project().layers[list(Project().layers.keys())[0]]
-
-        extent = QgsRectangle(x - layer.cell_size[0] * layer.xres, y - layer.cell_size[1] * layer.yres, x + layer.cell_size[0] * layer.xres, y + layer.cell_size[1] * layer.yres)
+    def zoom_to_extent(self, extent):
+        # extent = QgsRectangle(x - layer.cell_size[0] * layer.xres, y - layer.cell_size[1] * layer.yres, x + layer.cell_size[0] * layer.xres, y + layer.cell_size[1] * layer.yres)
         self.mapcanva1.set_extent(extent)
         self.mapcanva2.set_extent(extent)
 
-    def zoom_to_layer(self, layer:str):
-        layer:PairLayer = Project().layers[layer]
-        self.mapcanva1.set_extent(layer.l1.extent())
-        self.mapcanva2.set_extent(layer.l2.extent())
+    def zoom_to_layer(self, layer):
+        self.mapcanva1.set_extent(layer.extent())
+        self.mapcanva2.set_extent(layer.extent())
     def layer_changed(self, layer:str):
         self.add_layer(layer)
 

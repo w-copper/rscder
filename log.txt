@@ -1,6 +1,4 @@
-2022-05-17 16:14:17,007 - root - INFO - lic data:2022-12-01 00:00:00
-2022-05-17 16:14:17,010 - root - INFO - remain_days: 197
-2022-05-17 16:14:18,338 - root - INFO - lic data:2022-12-01 00:00:00
-2022-05-17 16:14:18,338 - root - INFO - remain_days: 197
-2022-05-17 16:35:12,026 - root - INFO - Empty module name
-2022-05-17 16:35:13,397 - root - INFO - None
+2022-05-23 19:52:34,008 - root - INFO - lic data:2022-12-01 00:00:00
+2022-05-23 19:52:34,012 - root - INFO - remain_days: 191
+2022-05-23 19:52:35,282 - root - INFO - lic data:2022-12-01 00:00:00
+2022-05-23 19:52:35,282 - root - INFO - remain_days: 191
