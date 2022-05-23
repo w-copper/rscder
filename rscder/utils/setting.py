@@ -151,7 +151,7 @@ class Settings(QSettings):
             with Settings(Settings.General.PRE) as s:
                 return s.value('auto_save', True)
         
-        @property.setter
+        @auto_save.setter
         def auto_save(self, value):
             if isinstance(value, bool):
                 pass
@@ -168,7 +168,7 @@ class Settings(QSettings):
             with Settings(Settings.General.PRE) as s:
                 return s.value('auto_save_intervel', 30)
         
-        @property.setter
+        @auto_save_intervel.setter
         def auto_save_intervel(self, value):
             if isinstance(value, int) and value > 0:
                 pass

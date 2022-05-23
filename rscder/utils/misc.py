@@ -1,4 +1,5 @@
 from functools import wraps
+
 def singleton(cls):
     _instance = {}
     

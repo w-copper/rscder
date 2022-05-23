@@ -34,7 +34,7 @@ class BasicPlugin(QObject):
         self.project = ctx['project']
         self.mainwindow = ctx['mainwindow']
         self.set_action()
-        self.project.layer_load.connect(self.on_data_load)
+        # self.project.layer_load.connect(self.on_data_load)
         self.project.project_init.connect(self.setup)
         
 

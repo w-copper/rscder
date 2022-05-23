@@ -5,7 +5,7 @@ from rscder.plugins.basic import BasicPlugin
 from PyQt5.QtWidgets import QAction, QDialog, QHBoxLayout, QVBoxLayout, QPushButton
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtGui import QIcon
-from rscder.utils.project import Project, PairLayer, ResultLayer
+from rscder.utils.project import BasicLayer, Project, PairLayer, ResultPointLayer, RasterLayer
 from rscder.gui.layercombox import LayerCombox
 from osgeo import gdal, gdal_array
 from threading import Thread
@@ -77,32 +77,19 @@ class BasicMethod(BasicPlugin):
         basic_diff_method.triggered.connect(self.basic_diff_alg)
 
         self.message_send.connect(self.send_message)
-        self.result_ok.connect(self.on_result_ok)
-        # self.result_ok.connect(self.on_result_ok)
+
         self.gap = 250
 
-
-    def on_data_load(self, layer_id):
+    def setup(self):
         self.basic_diff_method.setEnabled(True)
-
+    
     def send_message(self, s):
         self.message_box.info(s)
-    
-    def on_result_ok(self, data):
-        layer = Project().layers[data['layer_id']]
-        csv_result = ResultLayer('basic_diff_result', layer, ResultLayer.POINT)
-        csv_result.load_file(data['csv_file'])
 
-        raster_layer = ResultLayer('basic_diff_result-raster',layer, ResultLayer.RASTER)
-        raster_layer.load_file(data['raster_file'])
-        layer.results.append(csv_result)
-        layer.results.append(raster_layer)
-        self.layer_tree.update_layer(layer.id)
-
-    def run_basic_diff_alg(self, layer:PairLayer, out):
+    def run_basic_diff_alg(self, layer:PairLayer):
         
-        pth1 = layer.pth1
-        pth2 = layer.pth2
+        pth1 = layer.main_l1.path
+        pth2 = layer.main_l2.path
 
         cell_size = layer.cell_size
 
@@ -118,7 +105,7 @@ class BasicMethod(BasicPlugin):
         geo = ds1.GetGeoTransform()
 
         driver = gdal.GetDriverByName('GTiff')
-        out_tif = os.path.join(out, 'temp.tif')
+        out_tif = os.path.join(Project().cmi_path, 'temp.tif')
         out_ds = driver.Create(out_tif, xsize, ysize, 1, gdal.GDT_Float32)
         out_ds.SetGeoTransform(ds1.GetGeoTransform())
         out_ds.SetProjection(ds1.GetProjection())
@@ -155,7 +142,7 @@ class BasicMethod(BasicPlugin):
         self.message_send.emit('归一化概率中...')
         temp_in_ds = gdal.Open(out_tif) 
 
-        out_normal_tif = os.path.join(out, '{}.tif'.format(int(np.random.rand() * 100000)))
+        out_normal_tif = os.path.join(Project().cmi_path, '{}-{}.tif'.format(layer.name, int(np.random.rand() * 100000)))
         out_normal_ds = driver.Create(out_normal_tif, xsize, ysize, 1, gdal.GDT_Byte)
         out_normal_ds.SetGeoTransform(ds1.GetGeoTransform())
         out_normal_ds.SetProjection(ds1.GetProjection())
@@ -188,7 +175,7 @@ class BasicMethod(BasicPlugin):
         self.message_send.emit('完成归一化概率')   
 
         self.message_send.emit('计算变化表格中...')
-        out_csv = os.path.join(out, '{}.csv'.format(int(np.random.rand() * 100000)))
+        out_csv = os.path.join(Project().bcdm_path, '{}-{}.csv'.format(layer.name, int(np.random.rand() * 100000)))
         xblocks = xsize // cell_size[0]
         
         normal_in_ds = gdal.Open(out_normal_tif)
@@ -215,11 +202,11 @@ class BasicMethod(BasicPlugin):
                         f.write(f'{center_x},{center_y},{block_data_xy.mean() / 255 * 100},1\n')
         
        
-        self.result_ok.emit({
-            'layer_id': layer.id,
-            'csv_file': out_csv,
-            'raster_file': out_normal_tif
-        })
+        point_result_lalyer = ResultPointLayer(out_csv, enable=False, proj  = layer.proj, geo = layer.geo)
+        raster_result_layer = RasterLayer(None, True, out_normal_tif, BasicLayer.BOATH_VIEW)
+
+        layer.add_result_layer(point_result_lalyer)
+        layer.add_result_layer(raster_result_layer)
 
         self.message_send.emit('完成计算变化表格')
                     
@@ -237,11 +224,8 @@ class BasicMethod(BasicPlugin):
 
         if not layer.check():
             return
-        out_dir =os.path.join(self.project.root, 'basic_diff_result')
-        if not os.path.exists(out_dir):
-            os.makedirs(out_dir, exist_ok=True)
-
-        t = Thread(target=self.run_basic_diff_alg, args=(layer, out_dir))
+        
+        t = Thread(target=self.run_basic_diff_alg, args=(layer,))
         t.start()
 
 
