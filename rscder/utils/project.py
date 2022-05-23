@@ -15,7 +15,7 @@ from rscder.utils.setting import Settings
 from qgis.core import QgsRasterLayer, QgsMarkerSymbol, QgsUnitTypes, QgsCategorizedSymbolRenderer, QgsRendererCategory,  QgsPalLayerSettings, QgsRuleBasedLabeling, QgsTextFormat, QgsLineSymbol, QgsSingleSymbolRenderer, QgsSimpleLineSymbolLayer, QgsVectorLayer, QgsCoordinateReferenceSystem, QgsFeature, QgsGeometry, QgsPointXY
 from PyQt5.QtCore import QObject, pyqtSignal, Qt, QThread
 from PyQt5.QtWidgets import QTreeWidgetItem, QAction
-from PyQt5.QtGui import QColor, QIcon
+from PyQt5.QtGui import QColor, QIcon, QFont
 import yaml
 from .misc import singleton
 
@@ -265,7 +265,7 @@ class BasicLayer(QObject):
 
     def item_update(self, item:QTreeWidgetItem):
         # item = self._item
-        print('start update')
+        # print('start update')
         self.name = item.text(0)
         self._expand = item.isExpanded()
         pre = self.enable
@@ -273,7 +273,7 @@ class BasicLayer(QObject):
         if pre != cur:
             self.enable = cur
             self.layer_show_update.emit()
-        print('end update')
+        # print('end update')
 
     def set_layer_parent(self, layer):
         self.layer_parent = layer
@@ -326,13 +326,13 @@ class GridLayer(BasicLayer):
         self.x_max = self.x_min + self.x_res * self.x_size
         self.y_max = self.y_min + self.y_res * self.y_size
         self.x_lines = []
-        for xi in range(self.x_size // self.cell_size[0]):
+        for xi in range(self.x_size // self.cell_size[0] +1):
             self.x_lines.append(self.x_min + self.x_res * xi * self.cell_size[0])
         if self.x_lines[-1] == self.x_max:
             self.x_lines.pop()
         self.x_lines.append(self.x_max)
         self.y_lines = []
-        for yi in range(self.y_size // self.cell_size[1]):
+        for yi in range(self.y_size // self.cell_size[1]+1):
             self.y_lines.append(self.y_min + self.y_res * yi * self.cell_size[1])
         if self.y_lines[-1] == self.y_max:
             self.y_lines.pop()
@@ -438,7 +438,7 @@ class ResultPointLayer(BasicLayer):
     def update(self, data):
         row = data['row']
         value = data['value']
-        self.data[row][-1] = value
+        self.data[row][-1] = int(value)
         self.update_point_layer(row)
     
     def format_point_layer(self, layer):
@@ -447,7 +447,9 @@ class ResultPointLayer(BasicLayer):
         lyr.enabled = True
         lyr.fieldName = 'prob'
         lyr.placement = QgsPalLayerSettings.OverPoint
-        lyr.textNamedStyle = 'Medium'
+        lyr.xOffset = 2
+        lyr.yOffset = -2
+        lyr.textFont = QFont('Times New Roman', 16)
         text_format =  QgsTextFormat()
         text_format.color = QColor.fromRgb(255,0,0)
         text_format.background().color = QColor('#000000')
@@ -465,11 +467,11 @@ class ResultPointLayer(BasicLayer):
 
     def set_render(self, layer):
         # xres = self.geo[1]
-        symbol_change = QgsMarkerSymbol.createSimple({'color': '#ffff00', 'size':  5 })
-        symbol_change.setSizeUnit(QgsUnitTypes.RenderUnit.RenderPixels)
+        symbol_change = QgsMarkerSymbol.createSimple({'color': '#ffff00', 'size':  2 })
+        symbol_change.setSizeUnit(QgsUnitTypes.RenderUnit.RenderMillimeters)
         category_change = QgsRendererCategory(1, symbol_change,'change')
 
-        symbol_unchange = QgsMarkerSymbol.createSimple({'color': '#00000000', 'size': '0'})
+        symbol_unchange = QgsMarkerSymbol.createSimple({'color': '#00000000', 'size': 0})
         
         category_unchange = QgsRendererCategory(0, symbol_unchange, 'unchange')
         render = QgsCategorizedSymbolRenderer('status', [category_change, category_unchange])
@@ -503,7 +505,10 @@ class ResultPointLayer(BasicLayer):
             point.setId(i)
             point.setGeometry(QgsGeometry.fromPointXY(QgsPointXY(d[0], d[1])))
             point.setAttribute('status', int(d[-1]))
-            point.setAttribute('prob', '%.2f'%(d[2]))
+            if d[-1] == 0:
+                point.setAttribute('prob', '')
+            else:
+                point.setAttribute('prob', '%.2f'%(d[2]))
             # point.setAttribute('id', i)
             features.append(point)
         layer.addFeatures(features)
@@ -521,13 +526,21 @@ class ResultPointLayer(BasicLayer):
                 feature = self.layer.getFeature(i+1)
                 if feature is None:
                     continue
-                feature.setAttribute('status', d[-1])  
+                feature.setAttribute('status', int(d[-1]))  
+                if d[-1] == 0:
+                    feature.setAttribute('prob', '')
+                else:
+                    feature.setAttribute('prob', '%.2f'%(d[2]))
         else:
             feature = self.layer.getFeature(row+1)
             # print(feature)
             if feature is None:
                 return
             feature.setAttribute('status', int(self.data[row][-1]))
+            if self.data[row][-1] == 0:
+                feature.setAttribute('prob', '')
+            else:
+                feature.setAttribute('prob', '%.2f'%(self.data[row][2]))
             self.layer.updateFeature(feature)
         self.layer.commitChanges()
 
@@ -582,7 +595,7 @@ class PairLayer(BasicLayer):
     
     def add_result_layer(self, result):
         result.set_layer_parent(self)
-        self.layers.append(result)
+        self.layers.insert(0, result)
         self.layer_show_update.emit()
         self.layer_tree_update.emit()
 
@@ -625,5 +638,5 @@ class PairLayer(BasicLayer):
         for layer in data['layers']:
             l = from_dict(layer)
             l.set_layer_parent(player)
-            player.layers.append(l)
+            player.layers.insert(0,l)
         return player

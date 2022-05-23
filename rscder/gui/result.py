@@ -94,7 +94,7 @@ class ResultTable(QtWidgets.QWidget):
         self.tablewidget.setVerticalHeaderLabels([ str(i+1) for i in range(len(data.data))])
         for i, d in enumerate(data.data):
             self.tablewidget.setItem(i, 0, QTableWidgetItem('%.3f,%.3f'%(d[0], d[1]))) # X
-            self.tablewidget.setItem(i, 1, QTableWidgetItem(str(d[2]))) # Y
+            self.tablewidget.setItem(i, 1, QTableWidgetItem('%.2f'%d[2])) # Y
             status_item = QTableWidgetItem('')
             if d[3] == 0:
                 status_item.setBackground(Qt.green)
