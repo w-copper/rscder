@@ -3,12 +3,13 @@ import os
 from pathlib import Path
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QAction, QActionGroup, QLabel, QFileDialog, QMenuBar
+from rscder.gui import project
 from rscder.gui.project import Create
 from rscder.utils.project import Project
 from rscder.utils.misc import singleton
 from rscder.gui.plugins import PluginDialog
 from rscder.utils.setting import Settings
-
+from rscder.gui.load import loader
 def get_action_manager() -> 'ActionManager':
     return ActionManager()
 
@@ -226,14 +227,17 @@ class ActionManager(QtCore.QObject):
     def data_load(self):
         if Project().is_init:
             Project().save()
-
-        file_open = QFileDialog.getOpenFileNames(self.w_parent, '打开数据', Settings.General().last_path, '*.*')  
-        if file_open[0] != '':
-            if len(file_open[0]) != 2:
-                self.message_box.warning('请选择两个数据文件')
-                return
-            Project().add_layer(file_open[0][0], file_open[0][1])
+        file_loader=loader(self.w_parent)
+        if(file_loader.exec_()):
+            Project().add_layer(file_loader.path1,file_loader.path2,file_loader.style1,file_loader.style2)
             self.message_box.info('Data loaded')
+        # file_open = QFileDialog.getOpenFileNames(self.w_parent, '打开数据', Settings.General().last_path, '*.*')  
+        # if file_open[0] != '':
+        #     if len(file_open[0]) != 2:
+        #         self.message_box.warning('请选择两个数据文件')
+        #         return
+        #     Project().add_layer(file_open[0][0], file_open[0][1])
+            
 
     def view_setting(self):
         pass
