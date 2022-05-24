@@ -12,7 +12,7 @@ import numpy as np
 from osgeo import gdal, gdal_array
 from rscder.utils.icons import IconInstance
 from rscder.utils.setting import Settings
-from qgis.core import QgsRasterLayer, QgsMarkerSymbol, QgsUnitTypes, QgsCategorizedSymbolRenderer, QgsRendererCategory,  QgsPalLayerSettings, QgsRuleBasedLabeling, QgsTextFormat, QgsLineSymbol, QgsSingleSymbolRenderer, QgsSimpleLineSymbolLayer, QgsVectorLayer, QgsCoordinateReferenceSystem, QgsFeature, QgsGeometry, QgsPointXY
+from qgis.core import QgsRasterLayer, QgsMarkerSymbol, QgsUnitTypes, QgsCategorizedSymbolRenderer, QgsRendererCategory,  QgsPalLayerSettings, QgsRuleBasedLabeling, QgsTextFormat, QgsLineSymbol, QgsSingleSymbolRenderer, QgsSimpleLineSymbolLayer, QgsVectorLayer, QgsCoordinateReferenceSystem, QgsFeature, QgsGeometry, QgsPointXY,QgsMultiBandColorRenderer
 from PyQt5.QtCore import QObject, pyqtSignal, Qt, QThread
 from PyQt5.QtWidgets import QTreeWidgetItem, QAction
 from PyQt5.QtGui import QColor, QIcon, QFont
@@ -187,8 +187,8 @@ class Project(QObject):
             os.makedirs(pth)
         return pth
 
-    def add_layer(self, pth1, pth2):
-        player = PairLayer(pth1, pth2)
+    def add_layer(self, pth1, pth2,style_info1,style_info2):
+        player = PairLayer(pth1, pth2,style_info1,style_info2)
         if player.check():
             self.layers[player.id] = player
             self.layer_show_update.emit()
@@ -369,13 +369,13 @@ class GridLayer(BasicLayer):
 
 class RasterLayer(BasicLayer):
     
-    def __init__(self, name=None, enable=False, path=None, 
-                view_mode=BasicLayer.BOATH_VIEW):
+    def __init__(self, name=None, enable=False, path=None, view_mode=BasicLayer.BOATH_VIEW,style_info={'r':3,'g':2,'b':1,'NIR':3}):
         if name is None:
             name = os.path.splitext(os.path.basename(path))[0]
         super().__init__(name, enable, ':/icons/raster.png', path, BasicLayer.IN_FILE, view_mode)
         self.layer = QgsRasterLayer(self.path, self.name)
-
+        self.style_info=style_info
+        self.apply_style()
     def compare(self, other:'RasterLayer'):
         ds1 = gdal.Open(self.path)
         ds2 = gdal.Open(other.path)
@@ -415,7 +415,13 @@ class RasterLayer(BasicLayer):
         s = (ds.RasterXSize, ds.RasterYSize)
         del ds
         return s
-
+    def apply_style(self):
+        renderer=QgsMultiBandColorRenderer(self.layer.dataProvider(),self.style_info['r'],self.style_info['g'],self.style_info['b'])
+        self.layer.setRenderer(renderer)
+        self.layer.triggerRepaint()
+    def set_stlye(self,style_info):
+        self.style_info=style_info
+        self.apply_style()
 class VectorLayer(BasicLayer):
     pass
 
@@ -566,13 +572,13 @@ class ResultPointLayer(BasicLayer):
 
 class PairLayer(BasicLayer):
     
-    def __init__(self, pth1, pth2) -> None:
+    def __init__(self, pth1, pth2,style_info1,style_info2) -> None:
         
         self.layers:List[BasicLayer] = []
         self.id = str(uuid.uuid1())
         self.checked = False
-        self.main_l1 = RasterLayer(path = pth1, enable=True, view_mode=BasicLayer.LEFT_VIEW)
-        self.main_l2 = RasterLayer(path = pth2, enable=True, view_mode=BasicLayer.RIGHT_VIEW)
+        self.main_l1 = RasterLayer(path = pth1, enable=True, view_mode=BasicLayer.LEFT_VIEW,style_info=style_info1)
+        self.main_l2 = RasterLayer(path = pth2, enable=True, view_mode=BasicLayer.RIGHT_VIEW,style_info=style_info2)
         self.main_l1.set_layer_parent(self)
         self.main_l2.set_layer_parent(self)
         self.grid = None
