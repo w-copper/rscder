@@ -19,3 +19,10 @@
   name: ExportTo
   path: ./plugin\export_to
   version: 1.0.0
+- author: RSCDER
+  description: MeanFilter
+  enabled: true
+  module: some_filter
+  name: MeanFilter
+  path: ./plugin\some_filter
+  version: 1.0.0

@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QAction, QDialog, QHBoxLayout, QVBoxLayout, QPushBut
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtGui import QIcon
 from rscder.utils.project import BasicLayer, Project, PairLayer, ResultPointLayer, RasterLayer
-from rscder.gui.layercombox import LayerCombox
+from rscder.gui.layercombox import PairLayerCombox
 from osgeo import gdal, gdal_array
 from threading import Thread
 import numpy as np
@@ -21,7 +21,7 @@ class MyDialog(QDialog):
 
         self.setFixedWidth(500)
 
-        self.layer_select = LayerCombox(self)
+        self.layer_select = PairLayerCombox(self)
         self.layer_select.setFixedWidth(400)
 
         # self.number_input = QLineEdit(self)
@@ -45,6 +45,9 @@ class MyDialog(QDialog):
         self.setLayout(self.main_layout)
     
     def on_ok(self):
+        if self.layer_select.layer1 is None or self.layer_select.layer2 is None:
+            self.reject()
+            return
         self.accept()
     
     def on_cancel(self):
@@ -86,17 +89,22 @@ class BasicMethod(BasicPlugin):
     def send_message(self, s):
         self.message_box.info(s)
 
-    def run_basic_diff_alg(self, layer:PairLayer):
+    def run_basic_diff_alg(self, layer1:RasterLayer, layer2:RasterLayer):
         
-        pth1 = layer.main_l1.path
-        pth2 = layer.main_l2.path
+        pth1 = layer1.path
+        pth2 = layer2.path
 
-        cell_size = layer.cell_size
+        
+
+        cell_size = layer1.layer_parent.cell_size
 
         self.message_send.emit('开始计算差分法')
 
         ds1 = gdal.Open(pth1)
         ds2 = gdal.Open(pth2)
+        if not layer1.compare(layer2):
+            self.message_send.emit('两个图层的尺寸不同')
+            return
         xsize = ds1.RasterXSize
         ysize = ds1.RasterYSize
         band = ds1.RasterCount
@@ -142,7 +150,7 @@ class BasicMethod(BasicPlugin):
         self.message_send.emit('归一化概率中...')
         temp_in_ds = gdal.Open(out_tif) 
 
-        out_normal_tif = os.path.join(Project().cmi_path, '{}-{}.tif'.format(layer.name, int(np.random.rand() * 100000)))
+        out_normal_tif = os.path.join(Project().cmi_path, '{}-{}.tif'.format(layer1.layer_parent.name, int(np.random.rand() * 100000)))
         out_normal_ds = driver.Create(out_normal_tif, xsize, ysize, 1, gdal.GDT_Byte)
         out_normal_ds.SetGeoTransform(ds1.GetGeoTransform())
         out_normal_ds.SetProjection(ds1.GetProjection())
@@ -175,7 +183,7 @@ class BasicMethod(BasicPlugin):
         self.message_send.emit('完成归一化概率')   
 
         self.message_send.emit('计算变化表格中...')
-        out_csv = os.path.join(Project().bcdm_path, '{}-{}.csv'.format(layer.name, int(np.random.rand() * 100000)))
+        out_csv = os.path.join(Project().bcdm_path, '{}-{}.csv'.format(layer1.layer_parent.name, int(np.random.rand() * 100000)))
         xblocks = xsize // cell_size[0]
         
         normal_in_ds = gdal.Open(out_normal_tif)
@@ -202,11 +210,11 @@ class BasicMethod(BasicPlugin):
                         f.write(f'{center_x},{center_y},{block_data_xy.mean() / 255 * 100},1\n')
         
        
-        point_result_lalyer = ResultPointLayer(out_csv, enable=False, proj  = layer.proj, geo = layer.geo)
+        point_result_lalyer = ResultPointLayer(out_csv, enable=False, proj  = layer1.proj, geo = layer1.geo)
         raster_result_layer = RasterLayer(None, True, out_normal_tif, BasicLayer.BOATH_VIEW)
 
-        layer.add_result_layer(point_result_lalyer)
-        layer.add_result_layer(raster_result_layer)
+        layer1.layer_parent.add_result_layer(point_result_lalyer)
+        layer1.layer_parent.add_result_layer(raster_result_layer)
 
         self.message_send.emit('完成计算变化表格')
                     
@@ -214,18 +222,18 @@ class BasicMethod(BasicPlugin):
 
     def basic_diff_alg(self):
         # layer_select = 
-        layer = None
+
         layer_select = MyDialog(self.mainwindow)
-        if(layer_select.exec_()):
-            layer = layer_select.layer_select.current_layer
+        if layer_select.exec_():
+            layer1 = layer_select.layer_select.layer1
+            layer2 = layer_select.layer_select.layer2
         else:
             return
         # layer:PairLayer = list(self.project.layers.values())[0]
 
-        if not layer.check():
-            return
+    
         
-        t = Thread(target=self.run_basic_diff_alg, args=(layer,))
+        t = Thread(target=self.run_basic_diff_alg, args=(layer1, layer2))
         t.start()
 
 

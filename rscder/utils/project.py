@@ -369,7 +369,8 @@ class GridLayer(BasicLayer):
 
 class RasterLayer(BasicLayer):
     
-    def __init__(self, name=None, enable=False, path=None, view_mode=BasicLayer.BOATH_VIEW):
+    def __init__(self, name=None, enable=False, path=None, 
+                view_mode=BasicLayer.BOATH_VIEW):
         if name is None:
             name = os.path.splitext(os.path.basename(path))[0]
         super().__init__(name, enable, ':/icons/raster.png', path, BasicLayer.IN_FILE, view_mode)

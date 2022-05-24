@@ -124,32 +124,6 @@ class DoubleCanvas(QWidget):
         self.mapcanva1.setLayers(layer_list_1)
         self.mapcanva2.setLayers(layer_list_2)
 
-    def add_layer(self, layer:str):
-        if not layer in Project().layers:
-            self.clear()
-            return
-        layer:PairLayer = Project().layers[layer]
-        if not layer.enable:
-            return
-        # self.clear()
-
-        if not self.mapcanva1.is_main and not self.mapcanva2.is_main:
-            self.mapcanva1.is_main = True
-        
-        if layer.l1_enable:
-            self.mapcanva1.add_layer(layer.l1)
-        if layer.l2_enable:
-            self.mapcanva2.add_layer(layer.l2)
-        if layer.grid_enable and self.grid_show:
-            self.mapcanva1.add_grid_layer(layer.grid_layer.grid_layer)
-            self.mapcanva2.add_grid_layer(layer.grid_layer.grid_layer)
-        for r in layer.results:
-            if r.enable:
-                self.mapcanva1.add_layer(r.layer)
-                self.mapcanva2.add_layer(r.layer)
-        # self.mapcanva1.set_extent(layer.l1.extent())
-        self.mapcanva1.refresh()
-        self.mapcanva2.refresh()
 
     def zoom_to_extent(self, extent):
         # extent = QgsRectangle(x - layer.cell_size[0] * layer.xres, y - layer.cell_size[1] * layer.yres, x + layer.cell_size[0] * layer.xres, y + layer.cell_size[1] * layer.yres)
@@ -159,8 +133,6 @@ class DoubleCanvas(QWidget):
     def zoom_to_layer(self, layer):
         self.mapcanva1.set_extent(layer.extent())
         self.mapcanva2.set_extent(layer.extent())
-    def layer_changed(self, layer:str):
-        self.add_layer(layer)
 
     def clear(self):
         self.mapcanva1.clear()
