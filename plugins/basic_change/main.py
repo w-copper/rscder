@@ -11,6 +11,7 @@ from osgeo import gdal, gdal_array
 from threading import Thread
 import numpy as np
 from basic_change.otsu import OTSU
+
 class MyDialog(QDialog):
 
     def __init__(self, parent=None):
