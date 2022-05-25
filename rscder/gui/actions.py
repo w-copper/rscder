@@ -191,8 +191,7 @@ class ActionManager(QtCore.QObject):
             if project.is_init:
                 project.save()
                 project.clear()
-            project.setup(projec_create.file, projec_create.name + '.prj')
-            project.is_init = True
+            project.setup(projec_create.file, projec_create.name)
             project.cell_size = projec_create.cell_size
             project.max_memory = projec_create.max_memory
             project.save()

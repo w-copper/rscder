@@ -89,23 +89,31 @@ class Project(QObject):
         self.layer_show_update.connect(self.run_auto_save)
 
     def setup(self, path = None, name = None):
-        
-        if path is not None:
-            self.root = path
-        if name is None:
-            self.file = str(Path(self.root)/'default.prj')
+        '''
+        create: path is not None and name is not None
+        open:   path is file and name is None
+        '''
+        if path is not None and name is not None:
+            self.root = str(Path(path)/name)
+            self.file = str(Path(self.root)/(name + '.prj'))
+        elif name is None:
+            self.file = path
+            self.root = os.path.split(path)[0]
         else:
-            self.file = str(Path(self.root)/name)
-        if not os.path.exists(self.root):
-            os.makedirs(self.root, exist_ok=True)
-        if not os.path.exists(self.file):
-            with open(self.file, 'w') as f:
-                pass
-        else:
-            self.load()
+            self.message_box.error('打开或创建项目失败')
+        try:
+            if not os.path.exists(self.root):
+                os.makedirs(self.root, exist_ok=True)
+            if not os.path.exists(self.file):
+                with open(self.file, 'w') as f:
+                    pass
+            else:
+                self.load()
 
-        self.is_init = True
-        self.project_init.emit(True)
+            self.is_init = True
+            self.project_init.emit(True)
+        except:
+            self.message_box.error('打开或创建项目失败')
 
     def save(self):
         data_dict = {
