@@ -11,7 +11,7 @@ from rscder.utils.project import RasterLayer
 class loader(QDialog):
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
-        self.setWindowTitle('Load Data')
+        self.setWindowTitle('载入数据')
         self.setWindowIcon(QIcon(":/icons/data_load.png"))
         self.path1=''
         self.path2=''

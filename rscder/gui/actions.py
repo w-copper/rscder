@@ -57,8 +57,6 @@ class ActionManager(QtCore.QObject):
         self.plugin_menu = menubar.addMenu('&插件')
         self.help_menu = menubar.addMenu( '&帮助')
 
-    
-    
     @property
     def menus(self):
         return {
@@ -216,8 +214,7 @@ class ActionManager(QtCore.QObject):
             Project().clear()
             parent = str(Path(project_file[0]).parent)
             Settings.General().last_path = parent
-            name = os.path.basename(project_file[0])
-            Project().setup(parent, name)
+            Project().setup(project_file[0])
 
     def project_save(self):
         if Project().is_init:
@@ -230,12 +227,7 @@ class ActionManager(QtCore.QObject):
         if(file_loader.exec_()):
             Project().add_layer(file_loader.path1,file_loader.path2,file_loader.style1,file_loader.style2)
             self.message_box.info('Data loaded')
-        # file_open = QFileDialog.getOpenFileNames(self.w_parent, '打开数据', Settings.General().last_path, '*.*')  
-        # if file_open[0] != '':
-        #     if len(file_open[0]) != 2:
-        #         self.message_box.warning('请选择两个数据文件')
-        #         return
-        #     Project().add_layer(file_open[0][0], file_open[0][1])
+        
             
 
     def view_setting(self):

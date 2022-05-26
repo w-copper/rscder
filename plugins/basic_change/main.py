@@ -5,19 +5,18 @@ from rscder.plugins.basic import BasicPlugin
 from PyQt5.QtWidgets import QAction, QDialog, QHBoxLayout, QVBoxLayout, QPushButton
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtGui import QIcon
-from rscder.utils.project import BasicLayer, Project, PairLayer, ResultPointLayer, RasterLayer
+from rscder.utils.project import BasicLayer, Project, RasterLayer
 from rscder.gui.layercombox import PairLayerCombox
-from osgeo import gdal, gdal_array
+from osgeo import gdal
 from threading import Thread
 import numpy as np
-from basic_change.otsu import OTSU
 
 class MyDialog(QDialog):
 
     def __init__(self, parent=None):
         super().__init__(parent)
 
-        self.setWindowTitle('BasicChange')
+        self.setWindowTitle('差分法')
         self.setWindowIcon(QIcon(":/icons/logo.png"))
 
         self.setFixedWidth(500)
@@ -27,11 +26,11 @@ class MyDialog(QDialog):
 
         # self.number_input = QLineEdit(self)
 
-        self.ok_button = QPushButton('OK', self)
+        self.ok_button = QPushButton('确定', self)
         self.ok_button.setIcon(QIcon(":/icons/ok.svg"))
         self.ok_button.clicked.connect(self.on_ok)
 
-        self.cancel_button = QPushButton('Cancel', self)
+        self.cancel_button = QPushButton('取消', self)
         self.cancel_button.setIcon(QIcon(":/icons/cancel.svg"))
         self.cancel_button.clicked.connect(self.on_cancel)
     
@@ -41,7 +40,7 @@ class MyDialog(QDialog):
 
         self.main_layout = QVBoxLayout()
         self.main_layout.addWidget(self.layer_select)
-        # self.main_layout.addWidget(self.number_input)
+
         self.main_layout.addLayout(self.button_layout)
         self.setLayout(self.main_layout)
     
@@ -82,10 +81,9 @@ class BasicMethod(BasicPlugin):
 
         self.message_send.connect(self.send_message)
 
-        self.gap = 250
-
     def setup(self):
         self.basic_diff_method.setEnabled(True)
+        self.otsu_method.setEnabled(True)
     
     def send_message(self, s):
         self.message_box.info(s)
@@ -110,8 +108,6 @@ class BasicMethod(BasicPlugin):
         ysize = ds1.RasterYSize
         band = ds1.RasterCount
         yblocks = ysize // cell_size[1]
-
-        geo = ds1.GetGeoTransform()
 
         driver = gdal.GetDriverByName('GTiff')
         out_tif = os.path.join(Project().cmi_path, 'temp.tif')
@@ -151,11 +147,11 @@ class BasicMethod(BasicPlugin):
         self.message_send.emit('归一化概率中...')
         temp_in_ds = gdal.Open(out_tif) 
 
-        out_normal_tif = os.path.join(Project().cmi_path, '{}-{}.tif'.format(layer1.layer_parent.name, int(np.random.rand() * 100000)))
+        out_normal_tif = os.path.join(Project().cmi_path, '{}_{}_cmi.tif'.format(layer1.layer_parent.name, int(np.random.rand() * 100000)))
         out_normal_ds = driver.Create(out_normal_tif, xsize, ysize, 1, gdal.GDT_Byte)
         out_normal_ds.SetGeoTransform(ds1.GetGeoTransform())
         out_normal_ds.SetProjection(ds1.GetProjection())
-        hist = np.zeros(256, dtype=np.int32)
+        # hist = np.zeros(256, dtype=np.int32)
         for j in range(yblocks+1):
             block_xy = (0, j * cell_size[1])
             if block_xy[1] > ysize:
@@ -167,57 +163,21 @@ class BasicMethod(BasicPlugin):
             block_data = (block_data - min_diff) / (max_diff - min_diff) * 255
             block_data = block_data.astype(np.uint8)
             out_normal_ds.GetRasterBand(1).WriteArray(block_data, *block_xy)
-            hist_t, _ = np.histogram(block_data, bins=256, range=(0, 256))
-            hist += hist_t
-        print(hist)
+            # hist_t, _ = np.histogram(block_data, bins=256, range=(0, 256))
+            # hist += hist_t
+        # print(hist)
         del temp_in_ds
         try:
             os.remove(out_tif)
         except:
             pass
-        self.gap = OTSU(hist)
 
-        self.message_send.emit('OTSU：' + str(self.gap))
-
-        out_normal_ds.FlushCache()
-        del out_normal_ds
-        self.message_send.emit('完成归一化概率')   
-
-        self.message_send.emit('计算变化表格中...')
-        out_csv = os.path.join(Project().bcdm_path, '{}-{}.csv'.format(layer1.layer_parent.name, int(np.random.rand() * 100000)))
-        xblocks = xsize // cell_size[0]
-        
-        normal_in_ds = gdal.Open(out_normal_tif)
-
-        with open(out_csv, 'w') as f:
-            f.write('x,y,diff,status\n')
-            for j in range(yblocks):
-                block_xy = (0, j * cell_size[1])
-                block_size = (xsize, cell_size[1])
-                if block_xy[1] + block_size[1] > ysize:
-                    block_size = (xsize, ysize - block_xy[1])
-                block_data = normal_in_ds.ReadAsArray(*block_xy, *block_size)
-                for i in range(xblocks):
-                    start_x = i * cell_size[0]
-                    end_x = start_x + cell_size[0]
-                    if end_x > xsize:
-                        end_x = xsize
-                    block_data_xy = block_data[:, start_x:end_x]
-                    if block_data_xy.mean() > self.gap:
-                        center_x = start_x + cell_size[0] // 2
-                        center_y = j * cell_size[1] + cell_size[1] // 2
-                        center_x = center_x * geo[1] + geo [0]
-                        center_y = center_y * geo[5] + geo [3]
-                        f.write(f'{center_x},{center_y},{block_data_xy.mean() / 255 * 100},1\n')
-        
-       
-        point_result_lalyer = ResultPointLayer(out_csv, enable=False, proj  = layer1.proj, geo = layer1.geo)
         raster_result_layer = RasterLayer(None, True, out_normal_tif, BasicLayer.BOATH_VIEW)
 
-        layer1.layer_parent.add_result_layer(point_result_lalyer)
+        # layer1.layer_parent.add_result_layer(point_result_lalyer)
         layer1.layer_parent.add_result_layer(raster_result_layer)
 
-        self.message_send.emit('完成计算变化表格')
+        # self.message_send.emit('完成计算变化表格')
                     
         self.message_send.emit('差分法计算完成')
 
@@ -232,8 +192,6 @@ class BasicMethod(BasicPlugin):
             return
         # layer:PairLayer = list(self.project.layers.values())[0]
 
-    
-        
         t = Thread(target=self.run_basic_diff_alg, args=(layer1, layer2))
         t.start()
 

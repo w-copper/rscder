@@ -12,7 +12,13 @@ import numpy as np
 from osgeo import gdal, gdal_array
 from rscder.utils.icons import IconInstance
 from rscder.utils.setting import Settings
-from qgis.core import QgsRasterLayer, QgsMarkerSymbol, QgsUnitTypes, QgsCategorizedSymbolRenderer, QgsRendererCategory,  QgsPalLayerSettings, QgsRuleBasedLabeling, QgsTextFormat, QgsLineSymbol, QgsSingleSymbolRenderer, QgsSimpleLineSymbolLayer, QgsVectorLayer, QgsCoordinateReferenceSystem, QgsFeature, QgsGeometry, QgsPointXY,QgsMultiBandColorRenderer
+from qgis.core import (\
+    QgsRasterLayer, QgsMarkerSymbol, QgsUnitTypes, 
+    QgsCategorizedSymbolRenderer, QgsRendererCategory, 
+    QgsPalLayerSettings, QgsRuleBasedLabeling, QgsTextFormat, 
+    QgsLineSymbol, QgsSingleSymbolRenderer, QgsSimpleLineSymbolLayer, 
+    QgsVectorLayer, QgsCoordinateReferenceSystem, QgsFeature, 
+    QgsGeometry, QgsPointXY, QgsMultiBandColorRenderer)
 from PyQt5.QtCore import QObject, pyqtSignal, Qt, QThread
 from PyQt5.QtWidgets import QTreeWidgetItem, QAction
 from PyQt5.QtGui import QColor, QIcon, QFont
@@ -375,6 +381,8 @@ class GridLayer(BasicLayer):
 
         self.set_render()   
 
+
+
 class RasterLayer(BasicLayer):
     
     def __init__(self, name=None, enable=False, path=None, view_mode=BasicLayer.BOATH_VIEW,style_info={'r':3,'g':2,'b':1,'NIR':3}):
@@ -430,6 +438,21 @@ class RasterLayer(BasicLayer):
     def set_stlye(self,style_info):
         self.style_info=style_info
         self.apply_style()
+
+
+class BinnaryRasterLayer(RasterLayer):
+    def __init__(self, path, enable=True, name='栅格'):
+        super().__init__(name, enable, icon='')
+        self.path = path
+        self.layer = QgsRasterLayer(path, name)
+        self.set_render()
+    
+    def set_render(self):
+        renderer = QgsSingleBandGrayRenderer(self.layer.dataProvider(), 1)
+        self.layer.setRenderer(renderer)
+        self.layer.triggerRepaint()
+    
+
 class VectorLayer(BasicLayer):
     pass
 
