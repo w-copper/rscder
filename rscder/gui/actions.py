@@ -48,11 +48,26 @@ class ActionManager(QtCore.QObject):
     def set_menus(self, menubar:QMenuBar):
         self.menubar = menubar
         self.file_menu = menubar.addMenu( '&文件')
-        self.basic_menu = menubar.addMenu( '&基本工具')
+        self.basic_menu = menubar.addMenu( '&基础工具')
+        self.filter_menu = self.basic_menu.addMenu('&滤波处理')
         self.change_detection_menu = menubar.addMenu( '&通用变化检测')
+        self.unsupervised_menu = self.change_detection_menu.addMenu('&无监督变化检测')
+        self.supervised_menu = self.change_detection_menu.addMenu('&监督变化检测')
+        self.ai_menu = self.change_detection_menu.addMenu('&AI变化检测')
         self.special_chagne_detec_menu = menubar.addMenu( '&专题变化检测')
+        self.water_menu = self.special_chagne_detec_menu.addMenu('&水体变化检测')
+        self.veg_menu = self.special_chagne_detec_menu.addMenu('&植被变化检测')
+        self.road_menu = self.special_chagne_detec_menu.addMenu('&道路变化检测')
+        self.landslide_menu = self.special_chagne_detec_menu.addMenu('&滑坡变化检测')
+
         self.seg_chagne_detec_menu = menubar.addMenu('&分类后变化检测')
         self.postop_menu = menubar.addMenu( '&检测后处理')
+
+        self.noise_menu = self.postop_menu.addMenu('&噪声处理')
+        self.position_menu = self.postop_menu.addMenu('&变化位置估计')
+        self.evaluation_menu = self.postop_menu.addMenu('&定量评价')
+        self.export_menu = self.postop_menu.addMenu('&结果导出')
+
         self.view_menu = menubar.addMenu('&视图')
         self.plugin_menu = menubar.addMenu('&插件')
         self.help_menu = menubar.addMenu( '&帮助')

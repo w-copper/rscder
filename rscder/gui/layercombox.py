@@ -51,7 +51,20 @@ class PairLayerCombox(QWidget):
         
         self.layer_combox.currentIndexChanged.connect(self.on_group_changed)
 
-        self.setLayout(hbox)
+        hbox1 = QHBoxLayout()
+        hbox1.addWidget(QLabel('时相1:'))
+        hbox1.addWidget(self.raster_layer1)
+
+        hbox2 = QHBoxLayout()
+        hbox2.addWidget(QLabel('时相2:'))
+        hbox2.addWidget(self.raster_layer2)
+
+        vbox = QVBoxLayout()
+        vbox.addLayout(hbox)
+        vbox.addLayout(hbox1)
+        vbox.addLayout(hbox2)
+
+        self.setLayout(vbox)
 
     def on_raster_layer1_changed(self, index):
         if index == 0:
@@ -89,12 +102,12 @@ class RasterLayerCombox(QComboBox):
         self.addItem('---', None)
         if layer is not None:
             for sub in layer.layers:
-                if isinstance(sub, RasterLayer):
+                if issubclass(sub.__class__, RasterLayer):
                     self.addItem(sub.name, sub)
         else:
             for layer in Project().layers.values(): 
                 for sub in layer.layers:
-                    if isinstance(sub, RasterLayer):
+                    if issubclass(sub.__class__, RasterLayer):
                         self.addItem(sub.name, sub)
             # self.addItem(layer.name, layer.id)
         

@@ -1,11 +1,12 @@
 import math
 import os
 import pdb
+from rscder.gui.actions import ActionManager
 from rscder.plugins.basic import BasicPlugin
 from PyQt5.QtWidgets import QAction, QDialog, QHBoxLayout, QVBoxLayout, QPushButton
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtGui import QIcon
-from rscder.utils.project import BasicLayer, Project, RasterLayer
+from rscder.utils.project import BasicLayer, Project, RasterLayer, SingleBandRasterLayer
 from rscder.gui.layercombox import PairLayerCombox
 from osgeo import gdal
 from threading import Thread
@@ -22,8 +23,7 @@ class MyDialog(QDialog):
         self.setFixedWidth(500)
 
         self.layer_select = PairLayerCombox(self)
-        self.layer_select.setFixedWidth(400)
-
+    
         # self.number_input = QLineEdit(self)
 
         self.ok_button = QPushButton('确定', self)
@@ -57,7 +57,6 @@ class MyDialog(QDialog):
 
 class BasicMethod(BasicPlugin):
 
-    message_send  = pyqtSignal(str)
     result_ok = pyqtSignal(dict)
 
     @staticmethod
@@ -70,23 +69,15 @@ class BasicMethod(BasicPlugin):
         }
 
     def set_action(self):
-        basic_change_detection_menu = self.ctx['change_detection_menu']
 
         basic_diff_method = QAction('差分法')
-        basic_change_detection_menu.addAction(basic_diff_method)
-
+        ActionManager().unsupervised_menu.addAction(basic_diff_method)
         basic_diff_method.setEnabled(False)
         self.basic_diff_method = basic_diff_method
         basic_diff_method.triggered.connect(self.basic_diff_alg)
 
-        self.message_send.connect(self.send_message)
-
     def setup(self):
         self.basic_diff_method.setEnabled(True)
-        self.otsu_method.setEnabled(True)
-    
-    def send_message(self, s):
-        self.message_box.info(s)
 
     def run_basic_diff_alg(self, layer1:RasterLayer, layer2:RasterLayer):
         
@@ -97,12 +88,12 @@ class BasicMethod(BasicPlugin):
 
         cell_size = layer1.layer_parent.cell_size
 
-        self.message_send.emit('开始计算差分法')
+        self.send_message.emit('开始计算差分法')
 
         ds1 = gdal.Open(pth1)
         ds2 = gdal.Open(pth2)
         if not layer1.compare(layer2):
-            self.message_send.emit('两个图层的尺寸不同')
+            self.send_message.emit('两个图层的尺寸不同')
             return
         xsize = ds1.RasterXSize
         ysize = ds1.RasterYSize
@@ -140,11 +131,11 @@ class BasicMethod(BasicPlugin):
             max_diff = max(max_diff, block_diff.max())
             out_ds.GetRasterBand(1).WriteArray(block_diff, *block_xy)
 
-            self.message_send.emit(f'完成{j}/{yblocks}')
+            self.send_message.emit(f'完成{j}/{yblocks}')
 
         out_ds.FlushCache()
         del out_ds
-        self.message_send.emit('归一化概率中...')
+        self.send_message.emit('归一化概率中...')
         temp_in_ds = gdal.Open(out_tif) 
 
         out_normal_tif = os.path.join(Project().cmi_path, '{}_{}_cmi.tif'.format(layer1.layer_parent.name, int(np.random.rand() * 100000)))
@@ -172,14 +163,14 @@ class BasicMethod(BasicPlugin):
         except:
             pass
 
-        raster_result_layer = RasterLayer(None, True, out_normal_tif, BasicLayer.BOATH_VIEW)
+        raster_result_layer = SingleBandRasterLayer(None, True, out_normal_tif, BasicLayer.BOATH_VIEW)
 
         # layer1.layer_parent.add_result_layer(point_result_lalyer)
         layer1.layer_parent.add_result_layer(raster_result_layer)
 
-        # self.message_send.emit('完成计算变化表格')
+        # self.send_message.emit('完成计算变化表格')
                     
-        self.message_send.emit('差分法计算完成')
+        self.send_message.emit('差分法计算完成')
 
     def basic_diff_alg(self):
         # layer_select = 

@@ -7,7 +7,7 @@ from PyQt5 import QtGui
 from rscder.utils.setting import Settings
 from rscder.gui.mapcanvas import DoubleCanvas
 from qgis.gui import QgsMapCanvas
-from rscder.utils.project import RasterLayer
+from rscder.utils.project import MultiBandRasterLayer, RasterLayer
 class loader(QDialog):
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
@@ -131,7 +131,7 @@ class loader(QDialog):
         if path1:
             self.path1 = path1[0][0]
             self.path1_input.setText(self.path1)
-        self.left_layer=RasterLayer(path=self.path1)
+        self.left_layer=MultiBandRasterLayer(path=self.path1)
         self.mapcanva1.setLayers([self.left_layer.layer])
         self.mapcanva1.zoomToFeatureExtent(self.left_layer.layer.extent())
 
@@ -140,7 +140,7 @@ class loader(QDialog):
         if path2:
             self.path2 = path2[0][0]
             self.path2_input.setText(self.path2)
-        self.right_layer=RasterLayer(path=self.path2)
+        self.right_layer=MultiBandRasterLayer(path=self.path2)
         self.mapcanva2.setLayers([self.right_layer.layer])
         self.mapcanva2.zoomToFeatureExtent(self.right_layer.layer.extent())
     def ok(self):

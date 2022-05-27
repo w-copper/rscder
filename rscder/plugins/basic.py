@@ -3,6 +3,9 @@ from rscder.utils.project import PairLayer
 
 
 class BasicPlugin(QObject):
+
+    send_message = pyqtSignal(str)
+
     '''
     插件基类
     ctx: 
@@ -36,6 +39,7 @@ class BasicPlugin(QObject):
         self.set_action()
         # self.project.layer_load.connect(self.on_data_load)
         self.project.project_init.connect(self.setup)
+        self.send_message.connect(self.message_box.info)
         
 
     def set_action(self):

@@ -26,3 +26,17 @@
   name: MeanFilter
   path: ./plugin\some_filter
   version: 1.0.0
+- author: RSCDER
+  description: OTSU
+  enabled: true
+  module: threshold
+  name: OTSU
+  path: ./plugin\threshold
+  version: 1.0.0
+- author: RSCDER
+  description: TableResult
+  enabled: true
+  module: table_result
+  name: TableResult
+  path: ./plugin\table_result
+  version: 1.0.0

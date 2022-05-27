@@ -1,4 +1,6 @@
 import os
+import pdb
+from threading import Thread
 import numpy as np
 from rscder.gui.actions import ActionManager
 from rscder.plugins.basic import BasicPlugin
@@ -6,8 +8,9 @@ from PyQt5.QtWidgets import QAction, QDialog, QHBoxLayout, QVBoxLayout, QPushBut
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 from rscder.gui.layercombox import RasterLayerCombox
-from rscder.utils.project import Project, RasterLayer
+from rscder.utils.project import Project, RasterLayer, SingleBandRasterLayer
 from threshold.otsu import OTSU
+from osgeo import gdal
 class OTSUDialog(QDialog):
 
     def __init__(self, parent=None):
@@ -65,15 +68,16 @@ class OTSUPlugin(BasicPlugin):
     def run(self):
         dialog = OTSUDialog(self.mainwindow)
         if dialog.exec_() == QDialog.Accepted:
-            pass
+            t = Thread(target=self.run_alg, args=(dialog.layercombox.current_layer,))
+            t.start()
     
     def run_alg(self, layer:RasterLayer):
         if layer is None or layer.path is None:
             return
-        
         ds = gdal.Open(layer.path)
         band = ds.GetRasterBand(1)
-        if band > 1:
+        band_count = ds.RasterCount
+        if band_count > 1:
             self.message_box.error('请选择符合要求的图层')
             return
         hist = np.zeros(256, dtype=np.int)
@@ -94,7 +98,7 @@ class OTSUPlugin(BasicPlugin):
             hist += np.histogram(block.flatten(), bins=256, range=(0, 255))[0]
         hist = hist.astype(np.float32)
         gap = OTSU(hist)
-        self.message_box.info('阈值为：{}'.format(gap))
+        self.send_message.emit('阈值为：{}'.format(gap))
 
         out_th = os.path.join(Project().bcdm_path, '{}_otsu_bcdm.tif'.format(layer.name))
         out_ds = gdal.GetDriverByName('GTiff').Create(out_th, xsize, ysize, 1, gdal.GDT_Byte)
@@ -110,9 +114,10 @@ class OTSUPlugin(BasicPlugin):
         out_band.FlushCache()
         out_ds = None
         ds = None
-        self.message_box.info('OTSU阈值完成')
+        self.send_message.emit('OTSU阈值完成')
 
-        otsu_layer = RasterLayer(path = out_th, style_info={})
+        otsu_layer = SingleBandRasterLayer(path = out_th, style_info={})
+        layer.layer_parent.add_result_layer(otsu_layer)
 
 
 # otsu_method = QAction('OTSU阈值分割')

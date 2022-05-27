@@ -1,4 +1,5 @@
 import shutil
+from rscder.gui.actions import ActionManager
 from rscder.utils.project import Project, PairLayer, ResultPointLayer
 from rscder.plugins.basic import BasicPlugin
 from PyQt5.QtWidgets import QDialog, QHBoxLayout, QFileDialog, QComboBox, QVBoxLayout, QPushButton, QLabel, QLineEdit, QAction
@@ -26,7 +27,6 @@ class ExportDialog(QDialog):
         
         for i in range(result_layer_select.count() - 1):
             result_layer_select.setItemIcon(i + 1, QIcon(":/icons/layer.png"))
-
 
         def on_result_layer_select(index):
             self.result_layer = result_layer_select.currentData()
@@ -86,9 +86,9 @@ class ExportPlugin(BasicPlugin):
         self.export_txt = QAction(QIcon(":/icons/document.png"), '导出为 Arcgis 兼容的TXT', self.mainwindow)
         self.export_txt.triggered.connect(self.export_txt_action)
 
-        self.ctx['postop_menu'].addAction(self.export_txt)
+        ActionManager().export_menu.addAction(self.export_txt)
 
-        self.ctx['toolbar'].addAction(self.export_txt)
+        # self.ctx['toolbar'].addAction(self.export_txt)
 
     def export_txt_action(self):
         dialog = ExportDialog(self.mainwindow)

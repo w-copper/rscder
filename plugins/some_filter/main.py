@@ -3,6 +3,7 @@ from threading import Thread
 from PyQt5.QtWidgets import QDialog, QAction
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, QModelIndex, pyqtSignal
+from rscder.gui.actions import ActionManager
 from rscder.utils.project import PairLayer, Project, RasterLayer, ResultPointLayer
 from rscder.plugins.basic  import BasicPlugin
 from rscder.gui.layercombox import RasterLayerCombox
@@ -87,7 +88,7 @@ class MainPlugin(BasicPlugin):
         # self.action.setCheckable)
         # self.action.setChecked(False)
         self.action.triggered.connect(self.run)
-        self.ctx['basic_menu'].addAction(self.action)
+        ActionManager().filter_menu.addAction(self.action)
         self.alg_ok.connect(self.alg_oked)
         # basic
     

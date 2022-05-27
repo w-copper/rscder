@@ -432,26 +432,25 @@ class RasterLayer(BasicLayer):
         del ds
         return s
     def apply_style(self):
-        renderer=QgsMultiBandColorRenderer(self.layer.dataProvider(),self.style_info['r'],self.style_info['g'],self.style_info['b'])
-        self.layer.setRenderer(renderer)
-        self.layer.triggerRepaint()
+        pass
+
     def set_stlye(self,style_info):
         self.style_info=style_info
         self.apply_style()
 
 
-class BinnaryRasterLayer(RasterLayer):
-    def __init__(self, path, enable=True, name='栅格'):
-        super().__init__(name, enable, icon='')
-        self.path = path
-        self.layer = QgsRasterLayer(path, name)
-        self.set_render()
-    
-    def set_render(self):
-        renderer = QgsSingleBandGrayRenderer(self.layer.dataProvider(), 1)
+class MultiBandRasterLayer(RasterLayer):
+
+    def apply_style(self):
+        renderer=QgsMultiBandColorRenderer(self.layer.dataProvider(),self.style_info['r'],self.style_info['g'],self.style_info['b'])
         self.layer.setRenderer(renderer)
         self.layer.triggerRepaint()
+
+class SingleBandRasterLayer(RasterLayer):
     
+    def apply_style(self):
+        pass
+
 
 class VectorLayer(BasicLayer):
     pass
@@ -608,8 +607,8 @@ class PairLayer(BasicLayer):
         self.layers:List[BasicLayer] = []
         self.id = str(uuid.uuid1())
         self.checked = False
-        self.main_l1 = RasterLayer(path = pth1, enable=True, view_mode=BasicLayer.LEFT_VIEW,style_info=style_info1)
-        self.main_l2 = RasterLayer(path = pth2, enable=True, view_mode=BasicLayer.RIGHT_VIEW,style_info=style_info2)
+        self.main_l1 = MultiBandRasterLayer(path = pth1, enable=True, view_mode=BasicLayer.LEFT_VIEW,style_info=style_info1)
+        self.main_l2 = MultiBandRasterLayer(path = pth2, enable=True, view_mode=BasicLayer.RIGHT_VIEW,style_info=style_info2)
         self.main_l1.set_layer_parent(self)
         self.main_l2.set_layer_parent(self)
         self.grid = None
@@ -633,7 +632,7 @@ class PairLayer(BasicLayer):
         if self.checked:
             return self.checked
         self.checked = self.main_l1.compare(self.main_l2)
-        return True
+        return self.checked
     
     def add_result_layer(self, result):
         result.set_layer_parent(self)
@@ -668,6 +667,8 @@ class PairLayer(BasicLayer):
             enable=self.enable,
             pth1=self.main_l1.path,
             pth2=self.main_l2.path,
+            style_info1=self.main_l1.style_info,
+            style_info2=self.main_l2.style_info,
             layers=[to_dict(l)  for l in self.layers if not (l is self.grid or l is self.main_l1 or l is self.main_l2) ]
         )
         return data
@@ -675,7 +676,7 @@ class PairLayer(BasicLayer):
 
     @staticmethod
     def from_dict(data):
-        player = PairLayer(data['pth1'], data['pth2'])
+        player = PairLayer(data['pth1'], data['pth2'], data['style_info1'], data['style_info2'])
         player.name = data['name']
         for layer in data['layers']:
             l = from_dict(layer)
