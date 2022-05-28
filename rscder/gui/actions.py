@@ -5,6 +5,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QAction, QActionGroup, QLabel, QFileDialog, QMenuBar
 from rscder.gui import project
 from rscder.gui.project import Create
+from rscder.utils.icons import IconInstance
 from rscder.utils.project import Project
 from rscder.utils.misc import singleton
 from rscder.gui.plugins import PluginDialog
@@ -49,43 +50,28 @@ class ActionManager(QtCore.QObject):
         self.menubar = menubar
         self.file_menu = menubar.addMenu( '&文件')
         self.basic_menu = menubar.addMenu( '&基础工具')
-        self.filter_menu = self.basic_menu.addMenu('&滤波处理')
-        self.change_detection_menu = menubar.addMenu( '&通用变化检测')
-        self.unsupervised_menu = self.change_detection_menu.addMenu('&无监督变化检测')
-        self.supervised_menu = self.change_detection_menu.addMenu('&监督变化检测')
-        self.ai_menu = self.change_detection_menu.addMenu('&AI变化检测')
+        self.filter_menu = self.basic_menu.addMenu(IconInstance().FILTER, '&滤波处理')
+        self.change_detection_menu = menubar.addMenu('&通用变化检测')
+        self.unsupervised_menu = self.change_detection_menu.addMenu(IconInstance().UNSUPERVISED, '&无监督变化检测')
+        self.supervised_menu = self.change_detection_menu.addMenu(IconInstance().SUPERVISED,'&监督变化检测')
+        self.ai_menu = self.change_detection_menu.addMenu(IconInstance().AI_DETECT,'&AI变化检测')
         self.special_chagne_detec_menu = menubar.addMenu( '&专题变化检测')
-        self.water_menu = self.special_chagne_detec_menu.addMenu('&水体变化检测')
-        self.veg_menu = self.special_chagne_detec_menu.addMenu('&植被变化检测')
-        self.road_menu = self.special_chagne_detec_menu.addMenu('&道路变化检测')
-        self.landslide_menu = self.special_chagne_detec_menu.addMenu('&滑坡变化检测')
+        self.water_menu = self.special_chagne_detec_menu.addMenu(IconInstance().WATER_CHANGE,'&水体变化检测')
+        self.veg_menu = self.special_chagne_detec_menu.addMenu(IconInstance().VEGETATION,'&植被变化检测')
+        self.road_menu = self.special_chagne_detec_menu.addMenu(IconInstance().ROAD_CHANGE,'&道路变化检测')
+        self.landslide_menu = self.special_chagne_detec_menu.addMenu(IconInstance().LANDSIDE,'&滑坡变化检测')
 
         self.seg_chagne_detec_menu = menubar.addMenu('&分类后变化检测')
         self.postop_menu = menubar.addMenu( '&检测后处理')
 
-        self.noise_menu = self.postop_menu.addMenu('&噪声处理')
-        self.position_menu = self.postop_menu.addMenu('&变化位置估计')
-        self.evaluation_menu = self.postop_menu.addMenu('&定量评价')
-        self.export_menu = self.postop_menu.addMenu('&结果导出')
+        self.noise_menu = self.postop_menu.addMenu(IconInstance().NOISE,'&噪声处理')
+        self.position_menu = self.postop_menu.addMenu(IconInstance().LOCATION,'&变化位置估计')
+        self.evaluation_menu = self.postop_menu.addMenu(IconInstance().EVALUATION,'&定量评价')
+        self.export_menu = self.postop_menu.addMenu(IconInstance().DOCUMENT,'&结果导出')
 
         self.view_menu = menubar.addMenu('&视图')
         self.plugin_menu = menubar.addMenu('&插件')
         self.help_menu = menubar.addMenu( '&帮助')
-
-    @property
-    def menus(self):
-        return {
-            'file_menu': self.file_menu,
-            'basic_menu': self.basic_menu,
-            'change_detection_menu': self.change_detection_menu,
-            'special_chagne_detec_menu': self.special_chagne_detec_menu,
-            'seg_chagne_detec_menu': self.seg_chagne_detec_menu,
-            'postop_menu': self.postop_menu,
-            'view_menu': self.view_menu,
-            'plugin_menu': self.plugin_menu,
-            'help_menu': self.help_menu,
-            'menu_bar': self.menubar
-        }
 
     def set_toolbar(self, toolbar):
         self.toolbar = toolbar
@@ -98,12 +84,12 @@ class ActionManager(QtCore.QObject):
         '''
         File menu
         '''
-        project_create = self.add_action(QAction(QtGui.QIcon( ':/icons/create.png' ), '&工程创建', self.w_parent), 'File')
-        project_open = self.add_action(QAction(QtGui.QIcon( ':/icons/open.png' ), '&打开工程', self.w_parent), 'File')
-        project_save = self.add_action(QAction(QtGui.QIcon( ':/icons/save.png' ),'&保存工程', self.w_parent), 'File')
-        data_load = self.add_action(QAction(QtGui.QIcon( ':/icons/data_load.png' ),'&数据加载', self.w_parent), 'File')
-        view_setting = self.add_action(QAction(QtGui.QIcon( ':/icons/view.png' ),'&界面定制', self.w_parent), 'File')
-        exit_app = self.add_action(QAction(QtGui.QIcon( ':/icons/exit.png' ),'&退出', self.w_parent), 'File')
+        project_create = self.add_action(QAction(IconInstance().CREATE, '&工程创建', self.w_parent), 'File')
+        project_open = self.add_action(QAction(IconInstance().OPEN, '&打开工程', self.w_parent), 'File')
+        project_save = self.add_action(QAction(IconInstance().SAVE,'&保存工程', self.w_parent), 'File')
+        data_load = self.add_action(QAction(IconInstance().DATA_LOAD,'&数据加载', self.w_parent), 'File')
+        view_setting = self.add_action(QAction(IconInstance().VIEW_SETTING,'&界面定制', self.w_parent), 'File')
+        exit_app = self.add_action(QAction(IconInstance().EXCIT,'&退出', self.w_parent), 'File')
         project_create.triggered.connect(self.project_create)
         project_open.triggered.connect(self.project_open)
         project_save.triggered.connect(self.project_save)
@@ -130,14 +116,14 @@ class ActionManager(QtCore.QObject):
         '''
         Basic menu
         '''
-        grid_line = self.add_action(QAction(QtGui.QIcon( ':/icons/grid.png' ),'&网格线', self.w_parent), 'Basic Line')
+        grid_line = self.add_action(QAction(IconInstance().GRID_ON,'&网格线', self.w_parent), 'Basic Line')
         grid_line.setCheckable(True)
         grid_line.setChecked(True)
         
-        zomm_in = self.add_action(QAction(QtGui.QIcon( ':/icons/zoom_out.png' ),'&放大', self.w_parent), 'Basic')
-        zomm_out = self.add_action(QAction(QtGui.QIcon( ':/icons/zoom_in.png' ),'&缩小', self.w_parent), 'Basic')
-        pan = self.add_action(QAction(QtGui.QIcon( ':/icons/pan_1.png' ),'&漫游', self.w_parent), 'Basic')
-        locate = self.add_action(QAction(QtGui.QIcon( ':/icons/zoom_to.png' ),'&定位', self.w_parent), 'Basic')
+        zomm_in = self.add_action(QAction(IconInstance().ZOOM_OUT,'&放大', self.w_parent), 'Basic')
+        zomm_out = self.add_action(QAction(IconInstance().ZOOM_IN,'&缩小', self.w_parent), 'Basic')
+        pan = self.add_action(QAction(IconInstance().PAN,'&漫游', self.w_parent), 'Basic')
+        locate = self.add_action(QAction(IconInstance().ZOOM_TO,'&定位', self.w_parent), 'Basic')
 
         pan.setCheckable(True)
         pan.setChecked(True)
@@ -159,12 +145,12 @@ class ActionManager(QtCore.QObject):
         '''
         Plugin menu
         '''
-        plugin_list = self.add_action(QAction(QtGui.QIcon( ':/icons/toolbox.png' ),'&插件列表', self.w_parent), 'Plugin')
+        plugin_list = self.add_action(QAction(IconInstance().PLUGINS,'&插件列表', self.w_parent), 'Plugin')
         plugin_list.triggered.connect(self.plugin_list)
 
         self.plugin_menu.addAction(plugin_list)
 
-        self.message_box.info('Menu init finished')
+        self.message_box.info('菜单初始化完成')
         self.message_box.info(self.actions.keys())
 
         '''
@@ -208,17 +194,17 @@ class ActionManager(QtCore.QObject):
             project.cell_size = projec_create.cell_size
             project.max_memory = projec_create.max_memory
             project.save()
-            self.message_box.info('Project created')
+            self.message_box.info('项目创建成功')
     
     def project_init(self, state):
-        self.message_box.info('Project init')
+        # self.message_box.info('项目初始化完成')
         for group in self.action_groups.keys():
             # self.message_box.info('%s:' % (group))
             for action in self.action_groups[group].actions():
                 action.setEnabled(state)
                 # self.message_box.info('\t%s' % (action.text()))
         
-        self.message_box.info('Project init finished')
+        self.message_box.info('项目初始化完成')
 
     def project_open(self):
         if Project().is_init:
@@ -242,8 +228,6 @@ class ActionManager(QtCore.QObject):
         if(file_loader.exec_()):
             Project().add_layer(file_loader.path1,file_loader.path2,file_loader.style1,file_loader.style2)
             self.message_box.info('Data loaded')
-        
-            
 
     def view_setting(self):
         pass

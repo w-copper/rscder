@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QDialog, QAction
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, QModelIndex, pyqtSignal
 from rscder.gui.actions import ActionManager
+from rscder.utils.icons import IconInstance
 from rscder.utils.project import PairLayer, Project, RasterLayer, ResultPointLayer
 from rscder.plugins.basic  import BasicPlugin
 from rscder.gui.layercombox import RasterLayerCombox
@@ -13,12 +14,12 @@ from skimage.morphology import disk, rectangle
 class FilterSetting(QDialog):
     def __init__(self, parent=None):
         super(FilterSetting, self).__init__(parent)
-        self.setWindowTitle('Filter Setting')
+        self.setWindowTitle('滤波设置')
         # self.setWindowFlags(Qt.WindowStaysOnTopHint)
-        self.setFixedSize(300, 200)
+        # self.setFixedSize(300, 200)
         # self.setStyleSheet("QDialog{background-color:rgb(255,255,255);}")
-        self.setWindowIcon(QtGui.QIcon(':/plugins/some_filter/icon.png'))
-        self.setWindowIconText('Filter Setting')
+        self.setWindowIcon(IconInstance().FILTER)
+        # self.setWindowIconText('Filter Setting')
         # self.setWindowModality(Qt.ApplicationModal)
         self.initUI()
         # self.show()

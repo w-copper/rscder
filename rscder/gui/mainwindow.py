@@ -11,6 +11,7 @@ from rscder.gui.messagebox import MessageBox
 from rscder.gui.result import ResultTable
 from rscder.plugins.loader import PluginLoader
 from rscder.utils import Settings
+from rscder.utils.icons import IconInstance
 from rscder.utils.project import Project
 from rscder.gui.layercombox import LayerCombox
 class MainWindow(QMainWindow):
@@ -19,12 +20,9 @@ class MainWindow(QMainWindow):
 
     def __init__(self, parent=None, **kargs):
         super().__init__(parent) 
-        # self.current_instance = kargs.get('current_instance', 0)
-        # if self.current_instance > 0:   
-        #     self.setWindowTitle(QApplication.applicationName() + ' ' + str(self.current_instance))
-        # else:
         self.setWindowTitle(QApplication.applicationName())
-        self.setWindowIcon(QIcon(":/icons/change_detect.png"))
+        IconInstance(self)
+        self.setWindowIcon(IconInstance().LOGO)
 
         self.setAcceptDrops(False) 
         self.setContextMenuPolicy(Qt.CustomContextMenu)
@@ -54,11 +52,9 @@ class MainWindow(QMainWindow):
             pair_canvas=self.double_map,
             message_box=self.message_box,
             result_table=self.result_box,
-            project=Project(self),
             mainwindow=self,
             toolbar=self.toolbar,
             statusbar=self.statusBar(),
-            **self.action_manager.menus
         )).load_plugin()
 
         self.resize(*Settings.General().size)

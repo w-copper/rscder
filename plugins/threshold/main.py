@@ -8,6 +8,7 @@ from PyQt5.QtWidgets import QAction, QDialog, QHBoxLayout, QVBoxLayout, QPushBut
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 from rscder.gui.layercombox import RasterLayerCombox
+from rscder.utils.icons import IconInstance
 from rscder.utils.project import Project, RasterLayer, SingleBandRasterLayer
 from threshold.otsu import OTSU
 from osgeo import gdal
@@ -17,7 +18,7 @@ class OTSUDialog(QDialog):
         super().__init__(parent)
 
         self.setWindowTitle('OTSU阈值')
-        self.setWindowIcon(QIcon(":/icons/logo.png"))
+        self.setWindowIcon(IconInstance().LOGO)
 
         self.setFixedWidth(500)
 
@@ -26,11 +27,11 @@ class OTSUDialog(QDialog):
 
 
         self.ok_button = QPushButton('确定', self)
-        self.ok_button.setIcon(QIcon(":/icons/ok.svg"))
+        self.ok_button.setIcon(IconInstance().OK)
         self.ok_button.clicked.connect(self.on_ok)
 
         self.cancel_button = QPushButton('取消', self)
-        self.cancel_button.setIcon(QIcon(":/icons/cancel.svg"))
+        self.cancel_button.setIcon(IconInstance().CANCEL)
         self.cancel_button.clicked.connect(self.on_cancel)
 
         self.button_layout = QHBoxLayout()

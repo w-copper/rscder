@@ -27,7 +27,7 @@ class MulStart:
 
         
         # pyrcc5 res.qrc -o rc.py
-        import rscder.rc  
+        # import rscder.rc  
 
         app = QgsApplication([], True)
         QgsApplication.initQgis()
@@ -38,7 +38,7 @@ class MulStart:
             else:
                 sys.exit(0)
         # Create and display the splash screen
-        splash_pix = QPixmap(':/icons/splash.png')
+        splash_pix = QPixmap("./icons/splash.png")
         # splash_pix.scaledToWidth(800)
         # splash_pix.scaledToHeight(600)
 

@@ -6,6 +6,7 @@ from rscder.plugins.basic import BasicPlugin
 from PyQt5.QtWidgets import QAction, QDialog, QHBoxLayout, QVBoxLayout, QPushButton
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtGui import QIcon
+from rscder.utils.icons import IconInstance
 from rscder.utils.project import BasicLayer, Project, RasterLayer, SingleBandRasterLayer
 from rscder.gui.layercombox import PairLayerCombox
 from osgeo import gdal
@@ -18,20 +19,20 @@ class MyDialog(QDialog):
         super().__init__(parent)
 
         self.setWindowTitle('差分法')
-        self.setWindowIcon(QIcon(":/icons/logo.png"))
+        self.setWindowIcon(IconInstance().LOGO)
 
-        self.setFixedWidth(500)
+        # self.setFixedWidth(500)
 
         self.layer_select = PairLayerCombox(self)
     
         # self.number_input = QLineEdit(self)
 
         self.ok_button = QPushButton('确定', self)
-        self.ok_button.setIcon(QIcon(":/icons/ok.svg"))
+        self.ok_button.setIcon(IconInstance().OK)
         self.ok_button.clicked.connect(self.on_ok)
 
         self.cancel_button = QPushButton('取消', self)
-        self.cancel_button.setIcon(QIcon(":/icons/cancel.svg"))
+        self.cancel_button.setIcon(IconInstance().CANCEL)
         self.cancel_button.clicked.connect(self.on_cancel)
     
         self.button_layout = QHBoxLayout()

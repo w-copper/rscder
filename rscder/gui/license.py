@@ -3,6 +3,7 @@ from PyQt5 import QtWidgets
 from PyQt5 import QtCore
 from PyQt5.QtGui import QIcon
 import os
+from rscder.utils.icons import IconInstance
 
 from rscder.utils.license import LicenseHelper
 
@@ -10,19 +11,19 @@ class License(QtWidgets.QDialog):
 
     def __init__(self, parent = None, flags = QtCore.Qt.WindowFlags() ) -> None:
         super().__init__(parent, flags)
-        self.setWindowTitle("License")
-        self.setWindowIcon(QIcon(':/icons/logo.png'))
+        self.setWindowTitle("证书")
+        self.setWindowIcon(IconInstance().LOGO)
         self.setWindowFlags(QtCore.Qt.WindowCloseButtonHint)
         self.setFixedSize(600, 400)
 
         self.text = QtWidgets.QLineEdit()
         self.text.setReadOnly(False)
         self.label = QtWidgets.QLabel()
-        self.label.setText("License File Path: ")
+        self.label.setText("证书文件路径: ")
 
         self.setModal(True)
 
-        self.btn_open = QtWidgets.QPushButton("Open")
+        self.btn_open = QtWidgets.QPushButton("打开")
         self.btn_open.clicked.connect(self.open_file)
 
         hlayout = QtWidgets.QHBoxLayout()
@@ -30,7 +31,7 @@ class License(QtWidgets.QDialog):
         hlayout.addWidget(self.text, 0, alignment=QtCore.Qt.AlignTop)
         hlayout.addWidget(self.btn_open, 0, alignment=QtCore.Qt.AlignTop)
 
-        self.btn_ok = QtWidgets.QPushButton("OK")
+        self.btn_ok = QtWidgets.QPushButton("确定")
         self.btn_ok.clicked.connect(self.ok_clicked)
         
         hlayout2 = QtWidgets.QHBoxLayout()
@@ -56,7 +57,7 @@ class License(QtWidgets.QDialog):
         self.setLayout(vlayout)
     
     def open_file(self) -> None:
-        file_path = QtWidgets.QFileDialog.getOpenFileName(self, "Open File", "", "License Files (*.*)")
+        file_path = QtWidgets.QFileDialog.getOpenFileName(self, "打开文件", "", "License Files (*.*)")
         if file_path[0]:
             self.text.setText(file_path[0])
             # self.label.setText("License File Path: " + file_path[0])

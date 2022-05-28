@@ -269,7 +269,7 @@ class BasicLayer(QObject):
         
         item = QTreeWidgetItem(root)
         if self.icon is not None:
-            item.setIcon(0, QIcon(self.icon))
+            item.setIcon(0, self.icon)
         item.setText(0, self.name)
         item.setCheckState(0, Qt.Checked if self.enable else Qt.Unchecked)
         item.item_update = self.item_update
@@ -331,7 +331,7 @@ class GridLayer(BasicLayer):
 
     def __init__(self, proj, geo, x_size, y_size, enable=True, name='格网', cell_size=(100,100), style_opts={}):
 
-        super().__init__(name, enable, icon='')
+        super().__init__(name, enable, icon=IconInstance().GRID_ON)
 
         self.cell_size = cell_size
         self.proj = proj
@@ -388,7 +388,7 @@ class RasterLayer(BasicLayer):
     def __init__(self, name=None, enable=False, path=None, view_mode=BasicLayer.BOATH_VIEW,style_info={'r':3,'g':2,'b':1,'NIR':3}):
         if name is None:
             name = os.path.splitext(os.path.basename(path))[0]
-        super().__init__(name, enable, ':/icons/raster.png', path, BasicLayer.IN_FILE, view_mode)
+        super().__init__(name, enable, IconInstance().RASTER, path, BasicLayer.IN_FILE, view_mode)
         self.layer = QgsRasterLayer(self.path, self.name)
         self.style_info=style_info
         self.apply_style()
@@ -461,7 +461,7 @@ class ResultPointLayer(BasicLayer):
     def __init__(self, path, name=None, enable = False, proj = None, geo = None):
         if name is None:
             name = os.path.splitext(os.path.basename(path))[0]
-        super().__init__(name, enable, icon=':/icons/points.png', path=path, path_mode = BasicLayer.IN_FILE, view_mode=BasicLayer.BOATH_VIEW )
+        super().__init__(name, enable, icon=IconInstance().VECTOR, path=path, path_mode = BasicLayer.IN_FILE, view_mode=BasicLayer.BOATH_VIEW )
         self.data = None
         self.wkt = proj
         self.geo = geo
@@ -616,7 +616,7 @@ class PairLayer(BasicLayer):
         name = os.path.basename(pth1)[:4] + '-' + os.path.basename(pth2)[:4]
         # self.layer_update.connect(Project().layer_updated)
 
-        super().__init__(name, True, ':/icons/document.png')
+        super().__init__(name, True, IconInstance().DOCUMENT)
         self.layer = self.main_l1.layer
         if self.check():
             self.geo = self.main_l1.geo

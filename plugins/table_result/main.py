@@ -6,6 +6,7 @@ from rscder.plugins.basic import BasicPlugin
 from PyQt5.QtWidgets import QAction, QDialog, QLabel, QHBoxLayout, QVBoxLayout, QPushButton
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtGui import QIcon
+from rscder.utils.icons import IconInstance
 
 from rscder.utils.project import Project, ResultPointLayer, SingleBandRasterLayer
 from osgeo import gdal
@@ -15,7 +16,7 @@ class TableResultDialog(QDialog):
         super().__init__(parent)
 
         self.setWindowTitle('表格结果')
-        self.setWindowIcon(QIcon(":/icons/logo.png"))
+        self.setWindowIcon(IconInstance().LOGO)
 
         self.layer_select = RasterLayerCombox(self)
         hbox = QHBoxLayout()
@@ -23,11 +24,11 @@ class TableResultDialog(QDialog):
         hbox.addWidget(self.layer_select)
 
         self.ok_button = QPushButton('确定', self)
-        self.ok_button.setIcon(QIcon(":/icons/ok.svg"))
+        self.ok_button.setIcon(IconInstance().OK)
         self.ok_button.clicked.connect(self.on_ok)
 
         self.cancel_button = QPushButton('取消', self)
-        self.cancel_button.setIcon(QIcon(":/icons/cancel.svg"))
+        self.cancel_button.setIcon(IconInstance().CANCEL)
         self.cancel_button.clicked.connect(self.on_cancel)
 
         self.button_layout = QHBoxLayout()
@@ -58,7 +59,7 @@ class TableResultPlugin(BasicPlugin):
         }
     
     def set_action(self):
-        self.action = QAction(QIcon(":/icons/table_result.svg"), '表格结果', self.mainwindow)
+        self.action = QAction(IconInstance().VECTOR, '表格结果', self.mainwindow)
         self.action.triggered.connect(self.show_dialog)
         ActionManager().position_menu.addAction(self.action)
     

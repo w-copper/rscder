@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QComboBox, QWidget, QLabel, QHBoxLayout, QVBoxLayout
 from PyQt5.QtGui import QIcon
-from rscder.utils.project import Project, RasterLayer, ResultPointLayer
+from rscder.utils.icons import IconInstance
+from rscder.utils.project import PairLayer, Project, RasterLayer, ResultPointLayer
 class LayerCombox(QComboBox):
 
     def __init__(self, parent=None):
@@ -8,12 +9,8 @@ class LayerCombox(QComboBox):
         self.addItem('---', None)
         
         for layer in Project().layers.values(): 
-            self.addItem(layer.name, layer.id)
+            self.addItem(IconInstance().LAYER, layer.name, layer.id)
         
-        for i in range(self.count() - 1):
-            self.setItemIcon(i + 1, QIcon(':/icons/layer.png'))
-
-
         self.currentIndexChanged.connect(self.on_changed)
 
         self.current_layer = None
@@ -90,29 +87,25 @@ class PairLayerCombox(QWidget):
             self.raster_layer1.addItem('---', None)
             self.raster_layer2.addItem('---', None)
             for sub in self.layer_combox.current_layer.layers:
-                if isinstance(sub, RasterLayer):
-                    self.raster_layer1.addItem(QIcon(':/icons/layer.png'), sub.name, sub)
-                    self.raster_layer2.addItem(QIcon(':/icons/layer.png'), sub.name, sub)
+                if issubclass(sub.__class__, RasterLayer):
+                    self.raster_layer1.addItem(IconInstance().RASTER, sub.name, sub)
+                    self.raster_layer2.addItem(IconInstance().RASTER, sub.name, sub)
 
 
 class RasterLayerCombox(QComboBox):
 
-    def __init__(self, parent=None, layer=None):
+    def __init__(self, parent=None, layer:PairLayer=None):
         super().__init__(parent)
         self.addItem('---', None)
         if layer is not None:
             for sub in layer.layers:
                 if issubclass(sub.__class__, RasterLayer):
-                    self.addItem(sub.name, sub)
+                    self.addItem(IconInstance().RASTER, sub.name, sub)
         else:
             for layer in Project().layers.values(): 
                 for sub in layer.layers:
                     if issubclass(sub.__class__, RasterLayer):
-                        self.addItem(sub.name, sub)
-            # self.addItem(layer.name, layer.id)
-        
-        for i in range(self.count() - 1):
-            self.setItemIcon(i + 1, QIcon(':/icons/layer.png'))
+                        self.addItem(IconInstance().RASTER, sub.name, sub)
 
 
         self.currentIndexChanged.connect(self.on_changed)
@@ -134,12 +127,8 @@ class ResultPointLayerCombox(QComboBox):
         for layer in Project().layers.values(): 
             for sub in layer.layers:
                 if isinstance(sub, ResultPointLayer):
-                    self.addItem(sub.name, sub)
+                    self.addItem(IconInstance().VECTOR, sub.name, sub)
         
-        for i in range(self.count() - 1):
-            self.setItemIcon(i + 1, QIcon(':/icons/layer.png'))
-
-
         self.currentIndexChanged.connect(self.on_changed)
 
         self.current_layer = None

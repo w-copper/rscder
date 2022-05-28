@@ -5,14 +5,15 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 from rscder.plugins.loader import PluginLoader
+from rscder.utils.icons import IconInstance
 from rscder.utils.setting import Settings
 
 class PluginDialog(QDialog):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setWindowTitle('Plugins')
-        self.setWindowIcon(QIcon(":/icons/logo.png"))
+        self.setWindowTitle('插件')
+        self.setWindowIcon(IconInstance().PLUGINS)
         self.setMinimumWidth(900)
         self.setMinimumHeight(600)
         self.plugins = list(Settings.Plugin().plugins)
@@ -21,7 +22,7 @@ class PluginDialog(QDialog):
         self.plugin_table.setSelectionMode(QAbstractItemView.ExtendedSelection)
         self.plugin_table.setColumnWidth(0, 200)
         self.plugin_table.setColumnWidth(1, 500)
-        self.plugin_table.setHorizontalHeaderLabels(['Name', 'Module', 'Enabled'])
+        self.plugin_table.setHorizontalHeaderLabels(['名称', '模块ID', '启用'])
         self.plugin_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.plugin_table.cellDoubleClicked.connect(self.edit_plugin)
         for idx, plugin in enumerate(self.plugins):
@@ -34,13 +35,13 @@ class PluginDialog(QDialog):
             self.plugin_table.setItem(idx, 1, module_item)
             self.plugin_table.setItem(idx, 2, enabled_item)
     
-        self.add_button = QPushButton('Add', self)
+        self.add_button = QPushButton('添加', self)
         self.add_button.clicked.connect(self.add_plugin)
-        self.remove_button = QPushButton('Remove', self)
+        self.remove_button = QPushButton('移除', self)
         self.remove_button.clicked.connect(self.remove_plugin)
-        self.save_button = QPushButton('Save', self)
+        self.save_button = QPushButton('保存', self)
         self.save_button.clicked.connect(self.save_plugin)
-        self.cancel_button = QPushButton('Cancel', self)
+        self.cancel_button = QPushButton('取消', self)
         self.cancel_button.clicked.connect(self.close)
     
         layout = QVBoxLayout(self)
@@ -74,7 +75,7 @@ class PluginDialog(QDialog):
                 
                 self.plugin_table.insertRow(self.plugin_table.rowCount())
                 name_item = QTableWidgetItem(info['name'])
-                name_item.setIcon(QIcon(':/icons/tools.png'))
+                name_item.setIcon(IconInstance().TOOLBOX)
                 module_item = QTableWidgetItem(info['module'])
                 enabled_item = QTableWidgetItem('启用')
                 enabled_item.setCheckState(Qt.Checked)

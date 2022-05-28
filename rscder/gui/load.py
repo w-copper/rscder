@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QDialog, QFileDialog, QLineEdit, QPushButton, QVBoxL
 from PyQt5.QtCore import Qt, QSize, QSettings
 from PyQt5.QtGui import QIcon,QColor
 from PyQt5 import QtGui
+from rscder.utils.icons import IconInstance
 from rscder.utils.setting import Settings
 from rscder.gui.mapcanvas import DoubleCanvas
 from qgis.gui import QgsMapCanvas
@@ -12,7 +13,7 @@ class loader(QDialog):
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
         self.setWindowTitle('载入数据')
-        self.setWindowIcon(QIcon(":/icons/data_load.png"))
+        self.setWindowIcon(IconInstance().DATA_LOAD)
         self.path1=''
         self.path2=''
         self.bands=['red:','green:','blue:','NIR:']
@@ -29,11 +30,11 @@ class loader(QDialog):
         maplayout.addWidget(self.mapcanva1)
         maplayout.addWidget(self.mapcanva2)
 
-        path1_label = QLabel('Pic 1:')
+        path1_label = QLabel('时相1影像:')
         path1_label.setFixedWidth(60)
         path1_input = QLineEdit()
-        path1_input.setPlaceholderText('Pic 1')
-        path1_input.setToolTip('Pic 1')
+        path1_input.setPlaceholderText('时相1影像')
+        path1_input.setToolTip('时相1影像')
         path1_input.setReadOnly(True)
         path1_input.setText(self.path1)
         self.path1_input = path1_input
@@ -68,11 +69,11 @@ class loader(QDialog):
             style1_layout.addWidget(style1_inputs[i])
         style1_layout.addWidget(style1_set)
 
-        path2_label = QLabel('Pic 2:')
+        path2_label = QLabel('时相2影像:')
         path2_label.setFixedWidth(60)
         path2_input = QLineEdit()
-        path2_input.setPlaceholderText('Pic 1')
-        path2_input.setToolTip('Pic 1')
+        path2_input.setPlaceholderText('时相2影像')
+        path2_input.setToolTip('时相2影像')
         path2_input.setReadOnly(True)
         path2_input.setText(self.path2)
         self.path2_input = path2_input

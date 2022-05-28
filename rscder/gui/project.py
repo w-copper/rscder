@@ -2,6 +2,7 @@ from pathlib import Path
 from PyQt5.QtWidgets import QDialog, QFileDialog, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QMessageBox
 from PyQt5.QtGui import QIcon, QIntValidator
 from PyQt5.QtCore import Qt
+from rscder.utils.icons import IconInstance
 from rscder.utils.project import Project
 from rscder.utils.setting import Settings
 
@@ -10,7 +11,7 @@ class Create(QDialog):
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
         self.setWindowTitle(self.tr('创建项目'))
-        self.setWindowIcon(QIcon(":/icons/logo.png"))
+        self.setWindowIcon(IconInstance().LOGO)
 
         self.file = str(Path(Settings.General().last_path))
         self.name = '未命名'

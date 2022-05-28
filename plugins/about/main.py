@@ -1,8 +1,11 @@
+from rscder.gui.actions import ActionManager
 from rscder.plugins.basic import BasicPlugin
 
 from PyQt5.QtWidgets import QDialog, QAction, QApplication, QLabel, QTextEdit, QVBoxLayout
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
+
+from rscder.utils.icons import IconInstance
 
 class AboutDialog(QDialog):
     def __init__(self, parent=None):
@@ -56,11 +59,10 @@ class AboutPlugin(BasicPlugin):
         }
 
     def set_action(self):
-        menu = self.ctx['help_menu']
-        action = QAction('&关于', self.ctx['menu_bar'])
+        
+        action = QAction(IconInstance().HELP, '&关于', ActionManager().help_menu)
         action.triggered.connect(self.on_about)
-
-        menu.addAction(action)
+        ActionManager().help_menu.addAction(action)
     
     def on_about(self):
         # print('on_about')

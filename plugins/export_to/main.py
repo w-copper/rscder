@@ -1,5 +1,6 @@
 import shutil
 from rscder.gui.actions import ActionManager
+from rscder.utils.icons import IconInstance
 from rscder.utils.project import Project, PairLayer, ResultPointLayer
 from rscder.plugins.basic import BasicPlugin
 from PyQt5.QtWidgets import QDialog, QHBoxLayout, QFileDialog, QComboBox, QVBoxLayout, QPushButton, QLabel, QLineEdit, QAction
@@ -10,7 +11,7 @@ class ExportDialog(QDialog):
         super().__init__(parent)
 
         self.setWindowTitle('Export')
-        self.setWindowIcon(QIcon(":/icons/logo.png"))
+        self.setWindowIcon(IconInstance().LOGO)
 
         self.out_path = None
         self.result_layer = None
@@ -23,7 +24,7 @@ class ExportDialog(QDialog):
         for layer in Project().layers.values():
             for result_layer in layer.layers:
                 if isinstance(result_layer, ResultPointLayer):
-                    result_layer_select.addItem(QIcon(":/icons/layer.png"), result_layer.name, result_layer)
+                    result_layer_select.addItem(IconInstance().VECTOR, result_layer.name, result_layer)
         
         def on_result_layer_select(index):
             self.result_layer = result_layer_select.currentData()
@@ -43,9 +44,9 @@ class ExportDialog(QDialog):
         out_path_btn = QPushButton('...', self)
         out_path_btn.clicked.connect(on_out_path_btn)
         
-        ok_btn = QPushButton('OK', self)
+        ok_btn = QPushButton('确定', self)
         ok_btn.clicked.connect(self.accept)
-        cancel_btn = QPushButton('Cancel', self)
+        cancel_btn = QPushButton('取消', self)
         cancel_btn.clicked.connect(self.reject)
 
 
@@ -80,7 +81,7 @@ class ExportPlugin(BasicPlugin):
         }
     
     def set_action(self):
-        self.export_txt = QAction(QIcon(":/icons/document.png"), '导出为 Arcgis 兼容的TXT', self.mainwindow)
+        self.export_txt = QAction(IconInstance().DOCUMENT, '导出为 Arcgis 兼容的TXT', self.mainwindow)
         self.export_txt.triggered.connect(self.export_txt_action)
 
         ActionManager().export_menu.addAction(self.export_txt)

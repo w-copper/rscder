@@ -6,6 +6,7 @@ from PyQt5.QtCore import Qt,QModelIndex
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QCursor, QIcon
 from PyQt5.QtWidgets import (QTreeView, QTreeWidgetItem, QAbstractItemView, QHeaderView, QStyleFactory)
 from rscder.gui.actions import get_action_manager
+from rscder.utils.icons import IconInstance
 
 from rscder.utils.project import PairLayer, Project
 
@@ -35,7 +36,7 @@ class LayerTree(QtWidgets.QWidget):
         
         # self.tree.setHeaderLabels(['图层'])
         self.root.setText(0,'图层')
-        self.root.setIcon(0,QtGui.QIcon(':/icons/layer.png'))
+        self.root.setIcon(0,IconInstance().LAYER)
         
         self.tree.expandAll()
 
@@ -90,7 +91,7 @@ class LayerTree(QtWidgets.QWidget):
         self.tree.addTopLevelItem(self.root)
         self.tree.expandAll()
         self.root.setText(0,'图层')
-        self.root.setIcon(0,QtGui.QIcon(':/icons/layer.png'))
+        self.root.setIcon(0,IconInstance().LAYER)
         self.root.setExpanded(self._expand)
 
     def right_menu_show(self, position):

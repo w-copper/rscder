@@ -40,3 +40,10 @@
   name: TableResult
   path: ./plugin\table_result
   version: 1.0.0
+- author: RSCDER
+  description: Evaluation
+  enabled: true
+  module: evaluation
+  name: Evaluation
+  path: ./plugin\evaluation
+  version: 1.0.0

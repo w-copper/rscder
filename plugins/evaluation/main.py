@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 from threading import Thread
 
 import numpy as np
@@ -7,8 +10,17 @@ from rscder.gui.layercombox import RasterLayerCombox
 from PyQt5.QtWidgets import QAction, QFileDialog, QDialog, QLabel, QHBoxLayout, QVBoxLayout, QPushButton
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
-from osgeo import gdal 
-from rscder.utils.project import SingleBandRasterLayer
+from osgeo import gdal
+from rscder.utils.icons import IconInstance 
+from rscder.utils.project import Project, SingleBandRasterLayer
+
+def kappa(confusion_matrix):
+    pe_rows = np.sum(confusion_matrix, axis=0)
+    pe_cols = np.sum(confusion_matrix, axis=1)
+    sum_total = sum(pe_cols)
+    pe = np.dot(pe_rows, pe_cols) / float(sum_total ** 2)
+    po = np.trace(confusion_matrix) / float(sum_total)
+    return (po - pe) / (1 - pe)
 
 class EvalutationDialog(QDialog):
 
@@ -16,7 +28,7 @@ class EvalutationDialog(QDialog):
         super().__init__(parent)
 
         self.setWindowTitle('精度评估')
-        self.setWindowIcon(QIcon(":/icons/logo.png"))
+        self.setWindowIcon(IconInstance().LOGO)
 
         self.layer_select = RasterLayerCombox(self)
         self.gt_file = None
@@ -34,11 +46,11 @@ class EvalutationDialog(QDialog):
         hbox2.addWidget(self.layer_select)
 
         self.ok_button = QPushButton('确定', self)
-        self.ok_button.setIcon(QIcon(":/icons/ok.svg"))
+        self.ok_button.setIcon(IconInstance().OK)
         self.ok_button.clicked.connect(self.on_ok)
 
         self.cancel_button = QPushButton('取消', self)
-        self.cancel_button.setIcon(QIcon(":/icons/cancel.svg"))
+        self.cancel_button.setIcon(IconInstance().CANCEL)
         self.cancel_button.clicked.connect(self.on_cancel)
 
         self.button_layout = QHBoxLayout()
@@ -77,7 +89,7 @@ class EvaluationPlugin(BasicPlugin):
         }
     
     def set_action(self):
-        self.action = QAction(QIcon(":/icons/evaluation.svg"), '精度评估', self.mainwindow)
+        self.action = QAction(IconInstance().EVALUATION, '精度评估', self.mainwindow)
         self.action.triggered.connect(self.show_dialog)
         ActionManager().evaluation_menu.addAction(self.action)
     
@@ -127,6 +139,31 @@ class EvaluationPlugin(BasicPlugin):
                 for l in range(2):
                     cfm[k,l] += np.sum((pred_block == k) & (gt_block == l))
         
+        result_path = os.path.join(Project().other_path, f'{layer.name}_{os.path.basename(gt)}_evaluation.txt')
+        with open(result_path, 'w', encoding='utf-8') as f:
+            f.write(f'预测结果：{layer.path}\n')
+            f.write(f'真值：   {gt}\n')
+            f.write('混淆矩阵结果：\n')
+            f.write(f'''
+                 真实值 | 变化 |  未变化
+            预测值
+            变化       {cfm[1,1]}\t, {cfm[1,0]}
+            未变化     {cfm[0,1]}\t, {cfm[0,0]}
+    
+
+            归一化混淆矩阵：
+                 真实值 | 变化 |  未变化
+            预测值
+            变化       {cfm[1,1]/np.sum(cfm)}\t, {cfm[1,0]/np.sum(cfm)}
+            未变化     {cfm[0,1]/np.sum(cfm)}\t, {cfm[0,0]/np.sum(cfm)}
+
+            OA:  {(cfm[1,1] + cfm[0,0])/np.sum(cfm)}
+            F1:  {cfm[1,1] / (np.sum(cfm[1,:]) + np.sum(cfm[:,1]) - cfm[1,1])}
+            Kappa: {kappa(cfm)}
+            ''')
+            f.flush()
+        
+        os.system(f'c:/windows/notepad.exe "{result_path}"')
 
         self.send_message.emit('精度评估完成')
     
@@ -134,7 +171,7 @@ class EvaluationPlugin(BasicPlugin):
         dialog = EvalutationDialog(self.mainwindow)
         dialog.exec_()
         if dialog.result() == QDialog.Accepted:
-            layer = dialog.layer_select.current_layer()
+            layer = dialog.layer_select.current_layer
             if not isinstance(layer, SingleBandRasterLayer):
                 self.send_message.emit('请选择一个单波段栅格图层')
                 return

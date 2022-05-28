@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QObject, pyqtSignal
-from rscder.utils.project import PairLayer
+from rscder.utils.project import PairLayer, Project
 
 
 class BasicPlugin(QObject):
@@ -34,11 +34,9 @@ class BasicPlugin(QObject):
         self.pair_canvas = ctx['pair_canvas']
         self.message_box = ctx['message_box']
         self.result_table = ctx['result_table']
-        self.project = ctx['project']
         self.mainwindow = ctx['mainwindow']
         self.set_action()
-        # self.project.layer_load.connect(self.on_data_load)
-        self.project.project_init.connect(self.setup)
+        Project().project_init.connect(self.setup)
         self.send_message.connect(self.message_box.info)
         
 
