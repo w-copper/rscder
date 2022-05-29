@@ -4,7 +4,6 @@ from PyQt5 import QtCore
 from PyQt5.QtGui import QIcon
 import os
 from rscder.utils.icons import IconInstance
-
 from rscder.utils.license import LicenseHelper
 
 class License(QtWidgets.QDialog):
@@ -12,7 +11,7 @@ class License(QtWidgets.QDialog):
     def __init__(self, parent = None, flags = QtCore.Qt.WindowFlags() ) -> None:
         super().__init__(parent, flags)
         self.setWindowTitle("证书")
-        self.setWindowIcon(IconInstance().LOGO)
+        self.setWindowIcon(IconInstance(parent).LOGO)
         self.setWindowFlags(QtCore.Qt.WindowCloseButtonHint)
         self.setFixedSize(600, 400)
 

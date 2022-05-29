@@ -1,5 +1,5 @@
-nuitka RSCDer.py --standalone --plugin-enable=qt-plugins --plugin-enable=numpy --show-progress --include-package=qgis --plugin-enable=pylint-warnings --output-dir=package --windows-disable-console --windows-icon-from-ico=logo.ico --no-pyi-file 
-@REM nuitka keygen.py --standalone --plugin-enable=qt-plugins --plugin-enable=numpy --show-progress --include-package=qgis --plugin-enable=pylint-warnings --output-dir=package --windows-disable-console --windows-icon-from-ico=logo.ico --no-pyi-file 
+nuitka ECD.py --standalone --plugin-enable=qt-plugins --plugin-enable=numpy --show-progress --include-package=qgis --plugin-enable=pylint-warnings --output-dir=package --windows-icon-from-ico=logo.ico --no-pyi-file --follow-import-to=rscder --include-package=osgeo --include-package=PyQtAds 
+@REM nuitka keygen.py --standalone --plugin-enable=qt-plugins --plugin-enable=numpy --show-progress --plugin-enable=pylint-warnings --output-dir=package --windows-disable-console --windows-icon-from-ico=logo.ico --no-pyi-file 
 
 
 REM Win7 with console

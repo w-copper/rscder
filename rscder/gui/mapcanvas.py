@@ -58,24 +58,6 @@ class DoubleCanvas(QWidget):
         layout.addWidget(self.mapcanva2)
         
         self.setLayout(layout)
-        self.grid_show = True
-
-    def connect_grid_show(self, action):
-        def show_grid(_):
-            
-            self.grid_show = not self.grid_show
-            action.setChecked(self.grid_show)
-            if self.grid_show:
-                for layer in Project().layers.values():
-                    if layer.grid_enable:
-                        self.mapcanva1.add_grid_layer(layer.grid_layer.grid_layer)
-                        self.mapcanva2.add_grid_layer(layer.grid_layer.grid_layer)
-            else:
-                self.mapcanva1.remove_grid_layer()
-                self.mapcanva2.remove_grid_layer()
-
-        action.triggered.connect(show_grid)
-
 
     def connect_map_tool(self, pan, zoom_in, zoom_out):
         pan.triggered.connect(self.set_pan_tool)

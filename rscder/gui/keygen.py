@@ -11,7 +11,7 @@ class LicenseGen(QDialog):
         super().__init__(parent, flags)
 
         self.setWindowTitle("证书生成器")
-        self.setWindowIcon(IconInstance().LOGO)
+        self.setWindowIcon(IconInstance(parent).LOGO)
 
         mac_address_label = QLabel("MAC地址:")
         self.mac_address_text = QLineEdit()

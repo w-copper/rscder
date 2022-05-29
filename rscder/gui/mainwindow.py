@@ -14,6 +14,11 @@ from rscder.utils import Settings
 from rscder.utils.icons import IconInstance
 from rscder.utils.project import Project
 from rscder.gui.layercombox import LayerCombox
+
+import skimage
+import numpy as np
+import sys
+import scipy
 class MainWindow(QMainWindow):
 
     closed = pyqtSignal()

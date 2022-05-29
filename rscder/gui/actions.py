@@ -116,9 +116,9 @@ class ActionManager(QtCore.QObject):
         '''
         Basic menu
         '''
-        grid_line = self.add_action(QAction(IconInstance().GRID_ON,'&网格线', self.w_parent), 'Basic Line')
-        grid_line.setCheckable(True)
-        grid_line.setChecked(True)
+        # grid_line = self.add_action(QAction(IconInstance().GRID_ON,'&网格线', self.w_parent), 'Basic Line')
+        # grid_line.setCheckable(True)
+        # grid_line.setChecked(True)
         
         zomm_in = self.add_action(QAction(IconInstance().ZOOM_OUT,'&放大', self.w_parent), 'Basic')
         zomm_out = self.add_action(QAction(IconInstance().ZOOM_IN,'&缩小', self.w_parent), 'Basic')
@@ -133,9 +133,9 @@ class ActionManager(QtCore.QObject):
         zomm_in.setChecked(False)
 
         self.double_map.connect_map_tool(pan, zomm_in, zomm_out)
-        self.double_map.connect_grid_show(grid_line)
+        # self.double_map.connect_grid_show(grid_line)
     
-        self.view_menu.addAction(grid_line)
+        # self.view_menu.addAction(grid_line)
         self.view_menu.addSeparator()
         self.view_menu.addAction(pan)
         self.view_menu.addAction(zomm_in)

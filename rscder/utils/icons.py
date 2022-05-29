@@ -53,3 +53,11 @@ class IconInstance(QObject):
 
         self.ZOOM_IN = QIcon('./icons/放大.png')
         self.ZOOM_OUT = QIcon('./icons/缩小.png')
+
+        self.TABLE = QIcon('./icons/table.png')
+    
+    def __getattr__(self, name: str) -> QIcon:
+        try:
+            return getattr(self, name)
+        except:
+            return self.LOGO
