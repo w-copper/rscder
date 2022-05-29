@@ -1,5 +1,5 @@
 import pdb
-from PyQt5.QtWidgets import  QWidget, QApplication, QMainWindow, QToolBox
+from PyQt5.QtWidgets import  QWidget, QApplication, QMainWindow, QToolBox,QVBoxLayout
 from PyQt5.QtCore import Qt, QSize, QSettings, pyqtSignal
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui
@@ -14,7 +14,7 @@ from rscder.utils import Settings
 from rscder.utils.icons import IconInstance
 from rscder.utils.project import Project
 from rscder.gui.layercombox import LayerCombox
-
+from rscder.gui.eagle_eye import eagleEye
 import skimage
 import numpy as np
 import sys
@@ -37,7 +37,9 @@ class MainWindow(QMainWindow):
                 self.double_map,
                 self.layer_tree, 
                 self.message_box, 
-                self.result_box)
+                self.result_box,
+                self.eye
+                )
 
         self.result_box.on_item_click.connect(self.double_map.zoom_to_extent)
 
@@ -92,6 +94,11 @@ class MainWindow(QMainWindow):
         
         self.follow_box = QWidget(self)
         self.eye_box = QWidget(self)
+        self.eye=eagleEye(self)
+        self.double_map.extent.connect(self.eye.draw_extent)
+        eyeLayout=QVBoxLayout()
+        eyeLayout.addWidget(self.eye,Qt.AlignCenter)
+        self.eye_box.setLayout(eyeLayout)
         left_tool_box.setContextMenuPolicy(Qt.CustomContextMenu)
         left_tool_box.addItem(self.layer_tree, self.tr("图层控制"))
         left_tool_box.addItem(self.follow_box, self.tr("检测流程"))

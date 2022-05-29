@@ -25,7 +25,7 @@ from rscder.utils.project import BasicLayer, PairLayer, Project
 class DoubleCanvas(QWidget):
     corr_changed = pyqtSignal(str)
     scale_changed = pyqtSignal(str)
-
+    extent=pyqtSignal(object)
     def __init__(self, parent = None) -> None:
         super().__init__(parent)
         self.setAcceptDrops(False)
@@ -44,10 +44,11 @@ class DoubleCanvas(QWidget):
         def set_map2_extent():
             if self.mapcanva1.is_main:
                 self.mapcanva2.set_extent(self.mapcanva1.extent())
-
+        def sent_extent():
+            self.extent.emit(self.mapcanva1.extent())
         self.mapcanva1.extentsChanged.connect(set_map2_extent)
         self.mapcanva2.extentsChanged.connect(set_map1_extent)
-
+        self.mapcanva1.extentsChanged.connect(sent_extent)
         self.set_pan_tool(True)
 
         self.mapcanva1.update_scale_text.connect(self.scale_changed)
@@ -88,7 +89,7 @@ class DoubleCanvas(QWidget):
         layer_list_2 = []
         for layer in layers.values():
             if layer.enable:
-                if layer.grid.enable and self.grid_show:
+                if layer.grid.enable :
                     layer_list_1.append(layer.grid.layer)
                     layer_list_2.append(layer.grid.layer)
                 
@@ -128,6 +129,7 @@ class CanvasWidget(QgsMapCanvas):
         self.layers.insert(0, layer)
         self.setLayers(self.layers)
         self.zoomToFeatureExtent(layer.extent())
+        self.refresh()
 
     def add_grid_layer(self, layer):
         self.grid_layers.append(layer)
@@ -160,7 +162,8 @@ class CanvasWidget(QgsMapCanvas):
         if self.is_main:
             return
         else:
-            self.zoomToFeatureExtent(extent)
+            self.setExtent(extent)
+            self.refresh()#zoomToFeatureExtent 源码里是rect.scale( 1.05 );setExtent( rect );放大1.05倍
 
     def clear(self) -> None:
         self.setTheme('')

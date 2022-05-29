@@ -83,7 +83,8 @@ class Project(QObject):
              pair_canvas,
              layer_tree,
              message_box,
-             result_table):
+             result_table,
+             eye):
         self.pair_canvas = pair_canvas
         self.layer_tree = layer_tree
         self.message_box = message_box
@@ -91,6 +92,8 @@ class Project(QObject):
         IconInstance(self)
         self.layer_tree_update.connect(layer_tree.update_layer)
         self.layer_show_update.connect(pair_canvas.update_layer)
+        self.layer_show_update.connect(eye.update_layer)
+        eye.extent.connect(pair_canvas.zoom_to_extent)
         self.layer_tree_update.connect(self.run_auto_save)
         self.layer_show_update.connect(self.run_auto_save)
 
