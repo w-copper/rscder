@@ -2,3 +2,7 @@
 2022-05-28 21:40:04,316 - root - INFO - remain_days: 186
 2022-05-28 21:40:05,077 - root - INFO - lic data:2022-12-01 00:00:00
 2022-05-28 21:40:05,077 - root - INFO - remain_days: 186
+2022-05-31 13:03:21,977 - root - INFO - lic data:2022-12-01 00:00:00
+2022-05-31 13:03:21,997 - root - INFO - remain_days: 183
+2022-05-31 13:03:23,512 - root - INFO - lic data:2022-12-01 00:00:00
+2022-05-31 13:03:23,512 - root - INFO - remain_days: 183

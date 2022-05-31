@@ -4,7 +4,7 @@ from typing import Tuple
 from PyQt5.QtCore import QSettings
 from rscder.utils.license import LicenseHelper
 import yaml
-
+BASE_DIR = os.environ['ECD_BASEDIR']
 class Settings(QSettings):
 
     def __init__(self, key):
@@ -23,7 +23,7 @@ class Settings(QSettings):
 
         @property
         def root(self):
-            _r = './plugins'
+            _r = os.path.join(BASE_DIR, '/plugins')
             if not os.path.exists(_r):
                 os.makedirs(_r)
             return _r
@@ -105,10 +105,11 @@ class Settings(QSettings):
 
         @property
         def end_date(self):
-            if not os.path.exists('lic/license.lic'):
+            lic_path = os.path.join(BASE_DIR, 'lic', 'license.lic')
+            if not os.path.exists(lic_path):
                 return datetime.now()
 
-            with open('lic/license.lic', 'r') as f:
+            with open(lic_path, 'r') as f:
                 lic = f.read()[::-1]
             
             lic_helper = LicenseHelper()
@@ -124,10 +125,11 @@ class Settings(QSettings):
 
         @property
         def license(self):
-            if not os.path.exists('lic/license.lic'):
+            lic_path =os.path.join(BASE_DIR, 'lic', 'license.lic')
+            if not os.path.join(lic_path):
                 return False
 
-            with open('lic/license.lic', 'r') as f:
+            with open(lic_path, 'r') as f:
                 lic = f.read()[::-1]
             
             lic_helper = LicenseHelper()
@@ -144,7 +146,7 @@ class Settings(QSettings):
         @property
         def root(self):
             with Settings(Settings.General.PRE) as s:
-                return s.value('root', './')
+                return s.value('root', BASE_DIR)
         
         @property
         def auto_save(self):

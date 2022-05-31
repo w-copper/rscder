@@ -1,4 +1,5 @@
-nuitka ECD.py --standalone --plugin-enable=qt-plugins --plugin-enable=numpy --show-progress --include-package=qgis --plugin-enable=pylint-warnings --output-dir=package --windows-icon-from-ico=logo.ico --no-pyi-file --follow-import-to=rscder --include-package=osgeo --include-package=PyQtAds 
+nuitka ECD.py --standalone --plugin-enable=pyqt5  --include-qt-plugins=sensible,styles --plugin-enable=numpy --show-progress --include-package=qgis --output-dir=package --windows-icon-from-ico=logo.ico
+xcopy /Y icons/* package/ECD.dist/
 @REM nuitka keygen.py --standalone --plugin-enable=qt-plugins --plugin-enable=numpy --show-progress --plugin-enable=pylint-warnings --output-dir=package --windows-disable-console --windows-icon-from-ico=logo.ico --no-pyi-file 
 
 
