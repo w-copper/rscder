@@ -110,7 +110,7 @@ class BasicMethod(BasicPlugin):
         min_diff = math.inf
         for j in range(yblocks + 1):
             
-            self.message_send.emit(f'计算{j}/{yblocks}')
+            self.send_message.emit(f'计算{j}/{yblocks}')
             block_xy = (0, j * cell_size[1])
             if block_xy[1] > ysize:
                 break
@@ -159,6 +159,7 @@ class BasicMethod(BasicPlugin):
             # hist += hist_t
         # print(hist)
         del temp_in_ds
+        del out_normal_ds
         try:
             os.remove(out_tif)
         except:

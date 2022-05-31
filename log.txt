@@ -18,3 +18,19 @@
 2022-05-31 13:08:31,271 - root - INFO - remain_days: 183
 2022-05-31 13:08:32,678 - root - INFO - lic data:2022-12-01 00:00:00
 2022-05-31 13:08:32,679 - root - INFO - remain_days: 183
+2022-05-31 13:11:22,682 - root - INFO - lic data:2022-12-01 00:00:00
+2022-05-31 13:11:22,682 - root - INFO - remain_days: 183
+2022-05-31 13:11:24,048 - root - INFO - lic data:2022-12-01 00:00:00
+2022-05-31 13:11:24,048 - root - INFO - remain_days: 183
+2022-05-31 13:12:18,251 - root - INFO - lic data:2022-12-01 00:00:00
+2022-05-31 13:12:18,251 - root - INFO - remain_days: 183
+2022-05-31 13:12:19,616 - root - INFO - lic data:2022-12-01 00:00:00
+2022-05-31 13:12:19,616 - root - INFO - remain_days: 183
+2022-05-31 13:13:44,594 - root - INFO - lic data:2022-12-01 00:00:00
+2022-05-31 13:13:44,594 - root - INFO - remain_days: 183
+2022-05-31 13:13:45,939 - root - INFO - lic data:2022-12-01 00:00:00
+2022-05-31 13:13:45,939 - root - INFO - remain_days: 183
+2022-05-31 13:20:24,284 - root - INFO - lic data:2022-12-01 00:00:00
+2022-05-31 13:20:24,284 - root - INFO - remain_days: 183
+2022-05-31 13:20:25,661 - root - INFO - lic data:2022-12-01 00:00:00
+2022-05-31 13:20:25,661 - root - INFO - remain_days: 183

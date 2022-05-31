@@ -23,7 +23,7 @@ class Settings(QSettings):
 
         @property
         def root(self):
-            _r = os.path.join(BASE_DIR, '/plugins')
+            _r = os.path.join(BASE_DIR, 'plugins')
             if not os.path.exists(_r):
                 os.makedirs(_r)
             return _r
