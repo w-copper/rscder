@@ -55,7 +55,8 @@ class eagleEye(QgsMapCanvas):
                         elif sub_layer.view_mode == BasicLayer.BOATH_VIEW:
                             layer_list_1.append(sub_layer.layer)
         self.setLayers(layer_list_1)
-        self.zoomToFeatureExtent(layer_list_1[0].extent())
+        if len(layer_list_1) > 0:
+            self.zoomToFeatureExtent(layer_list_1[0].extent())
 
     def draw_extent(self,extent):
         self.Extent=extent

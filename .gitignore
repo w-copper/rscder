@@ -216,3 +216,5 @@ plugin-build/
 3rd/
 default/
 plugins/*/*.c
+
+share/*
