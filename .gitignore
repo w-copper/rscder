@@ -218,3 +218,7 @@ default/
 plugins/*/*.c
 
 share/*
+share
+
+nuitka.help
+log.txt

@@ -1,6 +1,5 @@
 import math
 import os
-import pdb
 from rscder.gui.actions import ActionManager
 from rscder.plugins.basic import BasicPlugin
 from PyQt5.QtWidgets import QAction, QDialog, QHBoxLayout, QVBoxLayout, QPushButton

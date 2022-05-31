@@ -1,14 +1,14 @@
 1. lic文件生成
-点击RSCDer.exe,复制所显示的mac地址
+点击ECD.exe,复制所显示的mac地址
 点击keygen.exe,粘贴mac地址，设置截止日期，并选择保存路径（无需输入后缀名）
 点击Generate
 
 2. lic文件导入
-点击RSCDer.exe，点击Open，选择生成的lic文件
+点击ECD.exe，点击Open，选择生成的lic文件
 点击OK
 
 3. 新建项目与数据导入
-点击RSCDer.exe
+点击ECD.exe
 点击新建项目
 选择路径、名称
 将会在路径下看到与名称相同的文件夹

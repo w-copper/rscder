@@ -126,7 +126,7 @@ class Settings(QSettings):
         @property
         def license(self):
             lic_path =os.path.join(BASE_DIR, 'lic', 'license.lic')
-            if not os.path.join(lic_path):
+            if not os.path.exists(lic_path):
                 return False
 
             with open(lic_path, 'r') as f:
