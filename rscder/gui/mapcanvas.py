@@ -8,6 +8,7 @@ import multiprocessing
 # from gui.default import get_default_category_colors, get_default_category_keys
 # from os import truncate
 from pathlib import Path
+import pdb
 from PyQt5.QtCore import QSettings, QUrl, pyqtSignal, Qt, QVariant
 from PyQt5.QtWidgets import QMessageBox, QWidget, QHBoxLayout
 from PyQt5.QtGui import QColor, QDragEnterEvent, QDropEvent
@@ -32,6 +33,13 @@ class DoubleCanvas(QWidget):
         self.setContextMenuPolicy(Qt.CustomContextMenu)
         self.mapcanva1 = CanvasWidget(self)
         self.mapcanva2 = CanvasWidget(self)
+        self.mapPanTool1 = QgsMapToolPan(self.mapcanva1)
+        self.mapPanTool2 = QgsMapToolPan(self.mapcanva2)
+        self.zoomInTool1 = QgsMapToolZoom(self.mapcanva1, False)
+        self.zoomOutTool1 = QgsMapToolZoom(self.mapcanva1, True)
+        self.zoomInTool2 = QgsMapToolZoom(self.mapcanva2, False)
+        self.zoomOutTool2 = QgsMapToolZoom(self.mapcanva2, True)
+  
         self.mapcanva1.setCanvasColor(QColor(0, 0, 0))
         self.mapcanva2.setCanvasColor(QColor(0, 0, 0))
         
@@ -68,20 +76,20 @@ class DoubleCanvas(QWidget):
     def set_pan_tool(self, s):
         # print('set pan tool')
         if s:
-            self.mapcanva1.setMapTool(QgsMapToolPan(self.mapcanva1))
-            self.mapcanva2.setMapTool(QgsMapToolPan(self.mapcanva2))
+            self.mapcanva1.setMapTool(self.mapPanTool1)
+            self.mapcanva2.setMapTool(self.mapPanTool2)
 
     def set_zoom_in(self, s):
         # print('set zoom in')
         if s:
-            self.mapcanva1.setMapTool(QgsMapToolZoom(self.mapcanva1, False))
-            self.mapcanva2.setMapTool(QgsMapToolZoom(self.mapcanva2, False))
+            self.mapcanva1.setMapTool(self.zoomInTool1)
+            self.mapcanva2.setMapTool(self.zoomInTool2)
 
     def set_zoom_out(self, s):
         # print('set zoom out')
         if s:
-            self.mapcanva1.setMapTool(QgsMapToolZoom(self.mapcanva1, True))
-            self.mapcanva2.setMapTool(QgsMapToolZoom(self.mapcanva2, True))
+            self.mapcanva1.setMapTool(self.zoomOutTool1)
+            self.mapcanva2.setMapTool(self.zoomOutTool2)
 
     def update_layer(self):
         layers = Project().layers
@@ -148,10 +156,13 @@ class CanvasWidget(QgsMapCanvas):
     def enterEvent(self,e):
         self.is_main = True
         # print(e)
+        super().enterEvent(e)
         pass
+
 
     def leaveEvent(self, e):
         self.is_main = False
+        super().leaveEvent(e)
         pass
 
     def set_extent(self, extent:QgsRectangle):
@@ -178,7 +189,7 @@ class CanvasWidget(QgsMapCanvas):
         self.layers = []
         self.grid_layers = []
         self.is_main = False
-        self.setCanvasColor(Qt.white)
+        self.setCanvasColor(Qt.black)
         self.enableAntiAliasing(True)
         self.setAcceptDrops(False)
 
@@ -186,4 +197,4 @@ class CanvasWidget(QgsMapCanvas):
         def coordinates2text(pt:QgsPointXY):
             return self.update_coordinates_text.emit("X: {:.5f}, Y: {:.5f}".format(pt.x(), pt.y()))
         self.xyCoordinates.connect(coordinates2text)
-        self.scaleChanged.connect(lambda _ : self.update_scale_text.emit("1 : {:.3f}".format(self.scale())))  
+        self.scaleChanged.connect(lambda _ : self.update_scale_text.emit("1 : {:.3f}".format(self.scale())))
