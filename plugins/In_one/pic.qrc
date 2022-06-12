@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pic/下箭头.png</file>
+        <file>pic/右箭头.png</file>
+    </qresource>
+</RCC>
