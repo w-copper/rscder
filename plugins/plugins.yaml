@@ -47,3 +47,10 @@
   name: Evaluation
   path: ./plugin\evaluation
   version: 1.0.0
+- author: RSCDER
+  description: AllinOne
+  enabled: true
+  module: In_one
+  name: AllinOne
+  path: ./plugin\In_one
+  version: 1.0.0
