@@ -493,13 +493,14 @@ class ResultPointLayer(BasicLayer):
         lyr.placement = QgsPalLayerSettings.OverPoint
         lyr.xOffset = 2
         lyr.yOffset = -2
-        lyr.textFont = QFont('Times New Roman', 16)
+        lyr.textFont = QFont('Times New Roman', 100)
         text_format =  QgsTextFormat()
-        text_format.color = QColor.fromRgb(255,0,0)
-        text_format.background().color = QColor('#000000')
+        text_format.setFont(lyr.textFont)
+        text_format.color = QColor('#000000')
+        # text_format.background().color = QColor('#000000')
         text_format.buffer().setEnabled(True)
         text_format.buffer().setSize(1)
-        text_format.buffer().setOpacity(0.5)
+        text_format.buffer().setOpacity(1)
         lyr.setFormat(text_format)
         root = QgsRuleBasedLabeling.Rule(QgsPalLayerSettings())
         rule = QgsRuleBasedLabeling.Rule(lyr)
