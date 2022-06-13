@@ -31,8 +31,8 @@ class LockerButton(QPushButton):
         
         mainLayout.addWidget(self.m_imageLabel)
         mainLayout.addWidget(self.m_textLabel)
-        # mainLayout.set
-        # mainLayout.setSpacing(0)
+        mainLayout.setContentsMargins(0,0,0,0)
+        mainLayout.setSpacing(0)
         self.setLayout(mainLayout)
     def SetImageLabel(self, pixmap:QPixmap):
         self.m_imageLabel.setPixmap(pixmap)
@@ -54,7 +54,7 @@ class AllInOne(QDialog):
         filerButton =LockerButton(filterWeight); 
         filerButton.setObjectName("LockerButton")
         filerButton.SetTextLabel("大小")
-        filerButton.SetImageLabel(QPixmap('../pic/右箭头.png'))
+        filerButton.SetImageLabel(QPixmap('plugins/In_one/pic/2.png'))
         filerButton.setStyleSheet("#LockerButton{background-color:transparent;border:none;}"
         "#LockerButton:hover{background-color:rgba(195,195,195,0.4);border:none;}")
         self.layer_combox = RasterLayerCombox(self)
@@ -101,10 +101,10 @@ class AllInOne(QDialog):
     def hide(self,button:LockerButton,weight:QWidget):
         if ((button.hide_)%2)==1:
             weight.setVisible(False)
-            button.SetImageLabel(QPixmap('../pic/右箭头.png'))
+            button.SetImageLabel(QPixmap('plugins/In_one/pic/1.png'))
         else:
             weight.setVisible(True)
-            button.SetImageLabel(QPixmap('../pic/下箭头.png'))
+            button.SetImageLabel(QPixmap('plugins/In_one/pic/2.png'))
         button.hide_=(button.hide_)%2+1
 class InOnePlugin(BasicPlugin):
     @staticmethod
