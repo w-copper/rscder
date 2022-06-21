@@ -211,7 +211,8 @@ class InOnePlugin(BasicPlugin):
     def set_action(self):
 
         basic_diff_method_in_one = QAction('总流程')
-        ActionManager().change_detection_menu.addAction(basic_diff_method_in_one)
+        # ActionManager().change_detection_menu.addAction(basic_diff_method_in_one)
+        ActionManager().unsupervised_menu.addAction(basic_diff_method_in_one)
         self.basic_diff_method_in_one = basic_diff_method_in_one
         basic_diff_method_in_one.triggered.connect(self.run) 
 
@@ -224,6 +225,7 @@ class InOnePlugin(BasicPlugin):
             t.start()
         
     def run_alg(self,w:AllInOne):
+        dict={}
         layer1=w.layer_combox.layer1
         layer2=w.layer_combox.layer2
         if not layer1.compare(layer2):
@@ -246,6 +248,7 @@ class InOnePlugin(BasicPlugin):
         if w.cd_select.choose==self.cd[0]:
             cdpth=basic_cd(pth1,pth2,w.layer_combox.layer1.layer_parent,self.send_message)
             name += '_basic_cd'
+            #dict[name]=cdpth
         else:
             pass
 
@@ -253,12 +256,14 @@ class InOnePlugin(BasicPlugin):
         if w.threshold_select.choose==self.threshold[0]:
             thpth=otsu(cdpth,w.layer_combox.layer1.layer_parent.name,self.send_message)
             name+='_otsu'
+            dict[name]=thpth
         elif w.threshold_select.choose=='手动阈值':
             thpth=thresh(cdpth,float(w.threshold_input.text()),w.layer_combox.layer1.layer_parent.name,self.send_message)
+            dict[name+'_thresh_{:.1f}'.format(float(w.threshold_input.text()))]
         else:
             pass
 
-        table_layer(thpth,layer1,name,self.send_message)
+        table_layer(thpth,layer1,name,self.send_message,dict)
 
 def Meanfilter(x_size,y_size,layer:RasterLayer):
     x_size = int(x_size)
@@ -459,7 +464,7 @@ def thresh(pth,gap,name,send_message):
     #otsu_layer = SingleBandRasterLayer(path = out_th, style_info={})
     #layer.layer_parent.add_result_layer(otsu_layer)
 
-def table_layer(pth,layer,name,send_message):
+def table_layer(pth,layer,name,send_message,dict):
     send_message.emit('正在计算表格结果...')
     cell_size = layer.layer_parent.cell_size
     ds = gdal.Open(pth)
@@ -484,13 +489,15 @@ def table_layer(pth,layer,name,send_message):
                 if end_x > xsize:
                     end_x = xsize
                 block_data_xy = block_data[:, start_x:end_x]
-                if block_data_xy.mean() > 0.5:
-                    center_x = start_x + cell_size[0] // 2
-                    center_y = j * cell_size[1] + cell_size[1] // 2
-                    center_x = center_x * geo[1] + geo [0]
-                    center_y = center_y * geo[5] + geo [3]
-                    f.write(f'{center_x},{center_y},{block_data_xy.mean() * 100},1\n')
+                
+                center_x = start_x + cell_size[0] // 2
+                center_y = j * cell_size[1] + cell_size[1] // 2
+                center_x = center_x * geo[1] + geo [0]
+                center_y = center_y * geo[5] + geo [3]
+                f.write(f'{center_x},{center_y},{block_data_xy.mean() * 100},{int(block_data_xy.mean() > 0.5)}\n')
 
     result_layer = ResultPointLayer(out_csv, enable=True, proj=layer.proj, geo=layer.geo)
+    result_layer.result_path=dict
+    print(result_layer.result_path)
     layer.layer_parent.add_result_layer(result_layer)
     send_message.emit('计算完成')

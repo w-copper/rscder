@@ -461,14 +461,15 @@ class VectorLayer(BasicLayer):
 
 class ResultPointLayer(BasicLayer):
 
-    def __init__(self, path, name=None, enable = False, proj = None, geo = None):
+    def __init__(self, path, name=None, enable = False, proj = None, geo = None,result_path={},dsort=True ):
         if name is None:
             name = os.path.splitext(os.path.basename(path))[0]
         super().__init__(name, enable, icon=IconInstance().VECTOR, path=path, path_mode = BasicLayer.IN_FILE, view_mode=BasicLayer.BOATH_VIEW )
         self.data = None
         self.wkt = proj
         self.geo = geo
-
+        self.dsort=dsort
+        self.result_path=result_path
         self.load_point_file()
     
     def save(self):
@@ -526,6 +527,10 @@ class ResultPointLayer(BasicLayer):
         data = np.loadtxt(self.path, delimiter=',', skiprows=1)
         if data is None:
             return
+        if self.dsort:
+            data=data[data[:,-2].argsort()]
+        else:
+            data=data[-(data[:,-2]).argsort()]
         self.data = data
         self.make_point_layer()
     
@@ -576,6 +581,7 @@ class ResultPointLayer(BasicLayer):
                     feature.setAttribute('prob', '')
                 else:
                     feature.setAttribute('prob', '%.2f'%(d[2]))
+                self.layer.updateFeature(feature)
         else:
             feature = self.layer.getFeature(row+1)
             # print(feature)
@@ -588,6 +594,7 @@ class ResultPointLayer(BasicLayer):
                 feature.setAttribute('prob', '%.2f'%(self.data[row][2]))
             self.layer.updateFeature(feature)
         self.layer.commitChanges()
+        Project().result_table.show_result(self)
 
 
     def get_actions(self):

@@ -6,7 +6,7 @@ from threading import Thread
 import numpy as np
 from rscder.gui.actions import ActionManager
 from rscder.plugins.basic import BasicPlugin
-from rscder.gui.layercombox import RasterLayerCombox
+from rscder.gui.layercombox import RasterLayerCombox,ResultLayercombox
 from PyQt5.QtWidgets import QAction, QFileDialog, QDialog, QLabel, QHBoxLayout, QVBoxLayout, QPushButton
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
@@ -30,7 +30,7 @@ class EvalutationDialog(QDialog):
         self.setWindowTitle('精度评估')
         self.setWindowIcon(IconInstance().LOGO)
 
-        self.layer_select = RasterLayerCombox(self)
+        self.layer_select = ResultLayercombox(self)
         self.gt_file = None
 
         gt_file_select_label = QLabel('真值文件:')
@@ -42,7 +42,7 @@ class EvalutationDialog(QDialog):
         hbox1.addWidget(self.gt_file_select)
 
         hbox2 = QHBoxLayout()
-        hbox2.addWidget(QLabel('二值化结果图层：'))
+        # hbox2.addWidget(QLabel('二值化结果图层：'))
         hbox2.addWidget(self.layer_select)
 
         self.ok_button = QPushButton('确定', self)

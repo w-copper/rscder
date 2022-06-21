@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QComboBox, QWidget, QLabel, QHBoxLayout, QVBoxLayout
 from PyQt5.QtGui import QIcon
 from rscder.utils.icons import IconInstance
-from rscder.utils.project import PairLayer, Project, RasterLayer, ResultPointLayer
+from rscder.utils.project import PairLayer, Project, RasterLayer, ResultPointLayer,SingleBandRasterLayer
 class LayerCombox(QComboBox):
 
     def __init__(self, parent=None):
@@ -139,3 +139,55 @@ class ResultPointLayerCombox(QComboBox):
         else:
             self.current_layer = self.itemData(index)
     
+class ResultLayercombox(QWidget):
+    
+    def __init__(self, parent=None) -> None:
+        super().__init__(parent)
+        self.current_layer = None
+        
+        self.initUI()
+    
+    def initUI(self):
+        self.layer_combox = LayerCombox(self)
+        layer_label = QLabel('图层组:')
+
+        hbox = QHBoxLayout()
+        hbox.addWidget(layer_label)
+        hbox.addWidget(self.layer_combox)
+
+        self.raster_layer1 = QComboBox(self)
+        self.raster_layer1.addItem('---', None)
+
+        self.raster_layer1.currentIndexChanged.connect(self.on_raster_layer1_changed)
+        self.layer_combox.currentIndexChanged.connect(self.on_group_changed)
+
+        hbox1 = QHBoxLayout()
+        hbox1.addWidget(QLabel('二值化结果:'))
+        hbox1.addWidget(self.raster_layer1)
+
+
+        vbox = QVBoxLayout()
+        vbox.addLayout(hbox)
+        vbox.addLayout(hbox1)
+
+
+        self.setLayout(vbox)
+
+    def on_raster_layer1_changed(self, index):
+        if index == 0:
+            self.current_layer = None
+        else:
+            self.current_layer = self.raster_layer1.itemData(index)
+        
+    
+    def on_group_changed(self, index):
+        if index == 0:
+            self.raster_layer1.clear()
+            self.raster_layer1.addItem('---', None)
+        else:
+            self.raster_layer1.clear()
+            self.raster_layer1.addItem('---', None)
+            for l in self.layer_combox.current_layer.layers:
+                if isinstance(l,ResultPointLayer):
+                    for k,v in l.result_path.items():
+                        self.raster_layer1.addItem(IconInstance().RASTER,k,SingleBandRasterLayer(path = v, style_info={}))

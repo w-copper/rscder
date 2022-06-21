@@ -1,7 +1,7 @@
 import os
 from threading import Thread
 from rscder.gui.actions import ActionManager
-from rscder.gui.layercombox import RasterLayerCombox, ResultPointLayerCombox
+from rscder.gui.layercombox import RasterLayerCombox, ResultLayercombox
 from rscder.plugins.basic import BasicPlugin
 from PyQt5.QtWidgets import QAction, QDialog, QLabel, QHBoxLayout, QVBoxLayout, QPushButton
 from PyQt5.QtCore import pyqtSignal
@@ -18,7 +18,7 @@ class TableResultDialog(QDialog):
         self.setWindowTitle('表格结果')
         self.setWindowIcon(IconInstance().LOGO)
 
-        self.layer_select = RasterLayerCombox(self)
+        self.layer_select = ResultLayercombox(self)
         hbox = QHBoxLayout()
         hbox.addWidget(QLabel('二值化结果图层：'))
         hbox.addWidget(self.layer_select)

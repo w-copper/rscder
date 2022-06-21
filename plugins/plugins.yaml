@@ -7,7 +7,7 @@
   version: 1.0.0
 - author: RSCDER
   description: BasicMethod
-  enabled: true
+  enabled: false
   module: basic_change
   name: BasicMethod
   path: ./plugin\basic_change
@@ -28,7 +28,7 @@
   version: 1.0.0
 - author: RSCDER
   description: OTSU
-  enabled: true
+  enabled: false
   module: threshold
   name: OTSU
   path: ./plugin\threshold
@@ -51,6 +51,13 @@
   description: AllinOne
   enabled: true
   module: In_one
-  name: AllinOne
+  name: basic_diff_AllinOne
   path: ./plugin\In_one
+  version: 1.0.0
+- author: RSCDER
+  description: set Change Rate
+  enabled: true
+  module: change_rate
+  name: set_change_rate
+  path: ./plugin\change_rate
   version: 1.0.0
