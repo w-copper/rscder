@@ -109,7 +109,7 @@ class Project(QObject):
             self.file = path
             self.root = os.path.split(path)[0]
         else:
-            self.message_box.error('打开或创建项目失败')
+            self.message_box.error('打开或创建工程失败')
         try:
             if not os.path.exists(self.root):
                 os.makedirs(self.root, exist_ok=True)
@@ -122,7 +122,7 @@ class Project(QObject):
             self.is_init = True
             self.project_init.emit(True)
         except:
-            self.message_box.error('打开或创建项目失败')
+            self.message_box.error('打开或创建工程失败')
 
     def save(self):
         data_dict = {
@@ -461,7 +461,7 @@ class VectorLayer(BasicLayer):
 
 class ResultPointLayer(BasicLayer):
 
-    def __init__(self, path, name=None, enable = False, proj = None, geo = None,result_path={},dsort=True ):
+    def __init__(self, path, name=None, enable = False, proj = None, geo = None,result_path={},dsort=False ):
         if name is None:
             name = os.path.splitext(os.path.basename(path))[0]
         super().__init__(name, enable, icon=IconInstance().VECTOR, path=path, path_mode = BasicLayer.IN_FILE, view_mode=BasicLayer.BOATH_VIEW )
@@ -470,6 +470,7 @@ class ResultPointLayer(BasicLayer):
         self.geo = geo
         self.dsort=dsort
         self.result_path=result_path
+       
         self.load_point_file()
     
     def save(self):
@@ -492,12 +493,13 @@ class ResultPointLayer(BasicLayer):
         lyr.enabled = True
         lyr.fieldName = 'prob'
         lyr.placement = QgsPalLayerSettings.OverPoint
-        lyr.xOffset = 2
+        lyr.xOffset = 25
         lyr.yOffset = -2
         lyr.textFont = QFont('Times New Roman', 100)
         text_format =  QgsTextFormat()
         text_format.setFont(lyr.textFont)
-        text_format.color = QColor('#000000')
+        text_format.setSize(50)
+        text_format.setColor(QColor('#FF0000'))
         # text_format.background().color = QColor('#000000')
         text_format.buffer().setEnabled(True)
         text_format.buffer().setSize(1)
@@ -530,7 +532,7 @@ class ResultPointLayer(BasicLayer):
         if self.dsort:
             data=data[data[:,-2].argsort()]
         else:
-            data=data[-(data[:,-2]).argsort()]
+            data=data[(-data[:,-2]).argsort()]
         self.data = data
         self.make_point_layer()
     

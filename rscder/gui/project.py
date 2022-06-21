@@ -10,7 +10,7 @@ class Create(QDialog):
 
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
-        self.setWindowTitle(self.tr('创建项目'))
+        self.setWindowTitle(self.tr('创建工程'))
         self.setWindowIcon(IconInstance().LOGO)
 
         self.file = str(Path(Settings.General().last_path))
@@ -18,11 +18,11 @@ class Create(QDialog):
         self.max_memory = Settings.Project().max_memory
         self.cell_size = Settings.Project().cell_size        
 
-        file_label = QLabel('项目目录:')
+        file_label = QLabel('工程目录:')
         file_label.setFixedWidth(100)
         file_input = QLineEdit()
-        file_input.setPlaceholderText('项目目录')
-        file_input.setToolTip('项目目录')
+        file_input.setPlaceholderText('工程目录')
+        file_input.setToolTip('工程目录')
         file_input.setReadOnly(True)
         file_input.setText(self.file)
         self.file_input = file_input
@@ -32,11 +32,11 @@ class Create(QDialog):
         file_open.clicked.connect(self.open_file)
 
 
-        name_label = QLabel('项目名称:')
+        name_label = QLabel('工程名称:')
         name_label.setFixedWidth(100)
         name_input = QLineEdit()
-        name_input.setPlaceholderText('项目名称')
-        name_input.setToolTip('项目名称')
+        name_input.setPlaceholderText('工程名称')
+        name_input.setToolTip('工程名称')
         name_input.setText(self.name)
         self.name_input = name_input
 
@@ -116,7 +116,7 @@ class Create(QDialog):
         self.max_memory = self.max_memory_input.text()
         self.cell_size = (self.cell_size_x_input.text(), self.cell_size_y_input.text())
         if self.name == '':
-            QMessageBox.warning(self, 'Warning', '请选择项目目录!')
+            QMessageBox.warning(self, 'Warning', '请选择工程目录!')
             return
         if self.max_memory == '':
             QMessageBox.warning(self, 'Warning', '请输入最大文件大小!')

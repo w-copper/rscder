@@ -6,13 +6,6 @@
   path: ./plugin\about
   version: 1.0.0
 - author: RSCDER
-  description: BasicMethod
-  enabled: false
-  module: basic_change
-  name: BasicMethod
-  path: ./plugin\basic_change
-  version: 1.0.0
-- author: RSCDER
   description: ExportTo
   enabled: true
   module: export_to
@@ -25,20 +18,6 @@
   module: some_filter
   name: MeanFilter
   path: ./plugin\some_filter
-  version: 1.0.0
-- author: RSCDER
-  description: OTSU
-  enabled: false
-  module: threshold
-  name: OTSU
-  path: ./plugin\threshold
-  version: 1.0.0
-- author: RSCDER
-  description: TableResult
-  enabled: true
-  module: table_result
-  name: TableResult
-  path: ./plugin\table_result
   version: 1.0.0
 - author: RSCDER
   description: Evaluation

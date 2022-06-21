@@ -50,12 +50,28 @@ class RateSetdialog(QDialog):
         vlayout.addLayout(h2)
         vlayout.addLayout(self.button_layout)
         self.setLayout(vlayout)
+
+        self.old_data = None
         
     def on_ok(self):
+        self.onclose()
         self.accept()
 
     def on_cancel(self):
+        if self.layer_select.current_layer is not None:
+            self.layer_select.current_layer.data = self.layer_select.current_layer.old_data
+            self.layer_select.current_layer.update_point_layer(-1)
         self.reject()
+    
+    def onclose(self) -> None:
+        if self.layer_select.current_layer is not None:
+            self.layer_select.current_layer.save()
+    
+    def closeEvent(self, a0) -> None:
+        if self.layer_select.current_layer is not None:
+            self.layer_select.current_layer.data = self.layer_select.current_layer.old_data
+            self.layer_select.current_layer.update_point_layer(-1)
+
 
 class RateSetPlugin(BasicPlugin):
     current_layer=None
@@ -81,6 +97,9 @@ class RateSetPlugin(BasicPlugin):
         dialog.show()
     def currentLayer(self,layer):
         self.current_layer=layer
+        if not isinstance(layer,ResultPointLayer):
+            return
+        layer.old_data = layer.data.copy()
 
 
     def setrate(self,input:int):
@@ -96,4 +115,4 @@ class RateSetPlugin(BasicPlugin):
         layer.update_point_layer(-1)
         
 
-        
+    

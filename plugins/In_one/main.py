@@ -5,7 +5,7 @@ import os
 import pdb
 from threading import Thread
 import numpy as np
-from plugins.basic_change.main import MyDialog
+# from plugins.basic_change.main import MyDialog
 from rscder.gui.actions import ActionManager
 from rscder.plugins.basic import BasicPlugin
 from PyQt5.QtWidgets import QAction, QDialog, QHBoxLayout, QVBoxLayout, QPushButton,QWidget,QLabel,QLineEdit,QPushButton,QComboBox

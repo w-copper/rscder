@@ -194,17 +194,17 @@ class ActionManager(QtCore.QObject):
             project.cell_size = projec_create.cell_size
             project.max_memory = projec_create.max_memory
             project.save()
-            self.message_box.info('项目创建成功')
+            self.message_box.info('工程创建成功')
     
     def project_init(self, state):
-        # self.message_box.info('项目初始化完成')
+        # self.message_box.info('工程初始化完成')
         for group in self.action_groups.keys():
             # self.message_box.info('%s:' % (group))
             for action in self.action_groups[group].actions():
                 action.setEnabled(state)
                 # self.message_box.info('\t%s' % (action.text()))
         
-        self.message_box.info('项目初始化完成')
+        self.message_box.info('工程初始化完成')
 
     def project_open(self):
         if Project().is_init:
