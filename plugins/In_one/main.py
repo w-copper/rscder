@@ -210,7 +210,7 @@ class InOnePlugin(BasicPlugin):
 
     def set_action(self):
 
-        basic_diff_method_in_one = QAction('总流程')
+        basic_diff_method_in_one = QAction('差分法')
         # ActionManager().change_detection_menu.addAction(basic_diff_method_in_one)
         ActionManager().unsupervised_menu.addAction(basic_diff_method_in_one)
         self.basic_diff_method_in_one = basic_diff_method_in_one
@@ -498,6 +498,6 @@ def table_layer(pth,layer,name,send_message,dict):
 
     result_layer = ResultPointLayer(out_csv, enable=True, proj=layer.proj, geo=layer.geo)
     result_layer.result_path=dict
-    print(result_layer.result_path)
+    # print(result_layer.result_path)
     layer.layer_parent.add_result_layer(result_layer)
     send_message.emit('计算完成')

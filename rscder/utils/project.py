@@ -493,12 +493,18 @@ class ResultPointLayer(BasicLayer):
         lyr.enabled = True
         lyr.fieldName = 'prob'
         lyr.placement = QgsPalLayerSettings.OverPoint
-        lyr.xOffset = 25
-        lyr.yOffset = -2
+        
         lyr.textFont = QFont('Times New Roman', 100)
         text_format =  QgsTextFormat()
         text_format.setFont(lyr.textFont)
-        text_format.setSize(50)
+        if self.geo is None:
+            res = 1
+        else:
+            res = self.geo[1]
+        # lyr.xOffset = 25 * res
+        # lyr.yOffset = -2 * res
+        text_format.setSize(50 * res)
+        text_format.setSizeUnit(QgsUnitTypes.RenderMapUnits)
         text_format.setColor(QColor('#FF0000'))
         # text_format.background().color = QColor('#000000')
         text_format.buffer().setEnabled(True)
@@ -560,7 +566,7 @@ class ResultPointLayer(BasicLayer):
             if d[-1] == 0:
                 point.setAttribute('prob', '')
             else:
-                point.setAttribute('prob', '%.2f'%(d[2]))
+                point.setAttribute('prob', '%.2f%%'%(d[2]))
             # point.setAttribute('id', i)
             features.append(point)
         layer.addFeatures(features)
@@ -582,7 +588,7 @@ class ResultPointLayer(BasicLayer):
                 if d[-1] == 0:
                     feature.setAttribute('prob', '')
                 else:
-                    feature.setAttribute('prob', '%.2f'%(d[2]))
+                    feature.setAttribute('prob', '%.2f%%'%(d[2]))
                 self.layer.updateFeature(feature)
         else:
             feature = self.layer.getFeature(row+1)
@@ -593,7 +599,7 @@ class ResultPointLayer(BasicLayer):
             if self.data[row][-1] == 0:
                 feature.setAttribute('prob', '')
             else:
-                feature.setAttribute('prob', '%.2f'%(self.data[row][2]))
+                feature.setAttribute('prob', '%.2f%%'%(self.data[row][2]))
             self.layer.updateFeature(feature)
         self.layer.commitChanges()
         Project().result_table.show_result(self)
