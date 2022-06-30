@@ -102,7 +102,7 @@ class Create(QDialog):
         main_layout.addLayout(button_layout)
 
         self.setLayout(main_layout)
-    
+
 
     def open_file(self):
         file = QFileDialog.getExistingDirectory(self, '选择文件夹', self.file)

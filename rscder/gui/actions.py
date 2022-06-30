@@ -225,6 +225,7 @@ class ActionManager(QtCore.QObject):
         if Project().is_init:
             Project().save()
         file_loader=loader(self.w_parent)
+        file_loader.setModal(True)
         if(file_loader.exec_()):
             Project().add_layer(file_loader.path1,file_loader.path2,file_loader.style1,file_loader.style2)
             self.message_box.info('Data loaded')
