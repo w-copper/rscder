@@ -322,12 +322,15 @@ class GridLayer(BasicLayer):
     
     def set_render(self):
         symbol_layer = QgsSimpleLineSymbolLayer()
-        symbol_layer.setWidth(1)
-        symbol_layer.setColor(QColor.fromRgb(255,255,255, 200))
+        width = 1
+        if self.geo is not None:
+            width = self.geo[1]
+        symbol_layer.setWidth(width)
+        symbol_layer.setColor(QColor.fromRgb(255,255,255, 255))
 
         symbol = QgsLineSymbol()
         symbol.changeSymbolLayer(0, symbol_layer)
-        # symbol.setWidthUnit(QgsUnitTypes.RenderMapUnits)
+        symbol.setWidthUnit(QgsUnitTypes.RenderMapUnits)
         render = QgsSingleSymbolRenderer(symbol)
         self.layer.setRenderer(render)
         
