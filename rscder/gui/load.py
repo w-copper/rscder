@@ -148,8 +148,8 @@ class loader(QDialog):
 
         button_layout = QHBoxLayout()
         button_layout.setDirection(QHBoxLayout.RightToLeft)
-        button_layout.addWidget(ok_button, 0, Qt.AlignRight)
         button_layout.addWidget(cancel_button, 0, Qt.AlignRight)
+        button_layout.addWidget(ok_button, 0, Qt.AlignRight)
 
         main_layout = QVBoxLayout()
         main_layout.addLayout(path1_layout)
@@ -169,14 +169,14 @@ class loader(QDialog):
                 self.path1_input.setText(self.path1)
                 result=QMessageBox.question(self, '提示', '是否创建图像金字塔', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)  #默认关闭界面选择No
                 if result==QMessageBox.Yes:
-                    progress1=progressDialog(self,'加载时相一')
+                    progress1:QDialog=progressDialog(self,'加载时相一')
                     progress1.setModal(False)
                     self.temp1=os.path.join(Project().other_path,'temp1.tif')
-                    t1=GdalPreviewImage(self.path1,self.temp1,1024,self)
+                    t1=GdalPreviewImage(self.path1,self.temp1,1024,self.parent())
                     # t1.started.connect(progress1.show)
                     t1.finished.connect(self.loadfile1)
-                    t1.finished.connect(lambda :progress1.setlabel('创建影像金字塔..'))
-                    t2=build_pyramids_overviews(self.path1,self)
+                    t1.finished.connect(lambda :self.setlabel(progress1) )
+                    t2=build_pyramids_overviews(self.path1,self.parent())
                     t2.finished.connect(progress1.hide)
                     t1.start()
                     t1.finished.connect(t2.start)
@@ -186,7 +186,7 @@ class loader(QDialog):
                     progress1=progressDialog(self,'加载时相一')
                     progress1.setModal(False)
                     self.temp1=os.path.join(Project().other_path,'temp1.tif')
-                    t1=GdalPreviewImage(self.path1,self.temp1,1024)
+                    t1=GdalPreviewImage(self.path1,self.temp1,1024,self.parent())
                     # t1.started.connect(progress1.show)
                     t1.finished.connect(self.loadfile1)
                     t1.finished.connect(progress1.hide)
@@ -217,11 +217,12 @@ class loader(QDialog):
                 progress2.setModal(False)
                 # progress1.show
                 self.temp2=os.path.join(Project().other_path,'temp2.tif')
-                t1=GdalPreviewImage(self.path2,self.temp2,1024,self)
+                t1=GdalPreviewImage(self.path2,self.temp2,1024,self.parent())
+                
                 # t1.started.connect(progress1.show)
                 t1.finished.connect(self.loadfile2)
-                t1.finished.connect(lambda :progress2.setlabel('创建影像金字塔..'))
-                t2=build_pyramids_overviews(self.path2,self)
+                t1.finished.connect(lambda :self.setlabel(progress2))
+                t2=build_pyramids_overviews(self.path2,self.parent())
                 t2.finished.connect(progress2.hide)
                 t1.start()
                 t1.finished.connect(t2.start)
@@ -230,7 +231,7 @@ class loader(QDialog):
                 progress2=progressDialog(self,'加载时相二')
                 progress2.setModal(False)
                 self.temp2=os.path.join(Project().other_path,'temp2.tif')
-                t1=GdalPreviewImage(self.path2,self.temp2,1024)
+                t1=GdalPreviewImage(self.path2,self.temp2,1024,self.parent())
                 # t1.started.connect(progress1.show)
                 t1.finished.connect(self.loadfile2)
                 t1.finished.connect(progress2.hide)
@@ -266,7 +267,11 @@ class loader(QDialog):
 
     def open_alg(self,path):
         pass
-
+    def setlabel(self,s):
+        try:
+            s.setlabel('创建影像金字塔..')
+        except:
+            pass
     def set_style1(self):
         self.bandsorder1=[int(q.text()) for q in self.style1_inputs ]
         self.style1={'r':self.bandsorder1[0],'g':self.bandsorder1[1],'b':self.bandsorder1[2],'NIR':self.bandsorder1[3]}
@@ -335,6 +340,7 @@ class GdalPreviewImage(QThread):
             del outDataset
         except:
             pass
+        
         # return outFilePath
 
 
@@ -346,11 +352,9 @@ class build_pyramids_overviews(QThread):
         try:
             filename=self.filename
             image:gdal.Dataset = gdal.Open(filename, 0)
-            # 如果第二个参数设置为0，则金字塔文件建立在外面
-            # 如果第二个参数缺省或者为1，则金字塔文件建立在文件内
             gdal.SetConfigOption('COMPRESS_OVERVIEW', 'DEFLATE')
             ov_list = [2, 4,6, 8, 12,16,24, 32, 48,64,96,128]
-            image.BuildOverviews("NEAREST", len(ov_list),overviewlist=ov_list)
+            image.BuildOverviews("NEAREST",overviewlist=ov_list)
             del image
         except:
             pass
