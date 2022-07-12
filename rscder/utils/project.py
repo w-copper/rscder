@@ -89,6 +89,7 @@ class Project(QObject):
         self.layer_tree = layer_tree
         self.message_box = message_box
         self.result_table = result_table
+        self.eye=eye
         IconInstance(self)
         self.layer_tree_update.connect(layer_tree.update_layer)
         self.layer_show_update.connect(pair_canvas.update_layer)
@@ -176,6 +177,7 @@ class Project(QObject):
 
     def zoom_to_layer(self, data):
         self.pair_canvas.zoom_to_layer(data['layer'])
+        self.eye.zoom(data['layer'])
 
     @property
     def cmi_path(self):
