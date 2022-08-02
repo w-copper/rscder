@@ -241,6 +241,7 @@ class InOnePlugin(BasicPlugin):
             pth2=Meanfilter(w.x_size_input.text(),w.y_size_input.text(),w.layer_combox.layer2)
             self.send_message.emit('均值滤波图像{}'.format(w.layer_combox.layer2.name))
             name=name+'_mean_filter'
+            dict['预处理']=['均值滤波','|'.format(pth1,pth2)]
         else:
             pass
 
@@ -248,18 +249,18 @@ class InOnePlugin(BasicPlugin):
         if w.cd_select.choose==self.cd[0]:
             cdpth=basic_cd(pth1,pth2,w.layer_combox.layer1.layer_parent,self.send_message)
             name += '_basic_cd'
-            #dict[name]=cdpth
+            dict['变化检测算法']=['差分法',cdpth]
         else:
             pass
 
         thpth=None
         if w.threshold_select.choose==self.threshold[0]:
-            thpth=otsu(cdpth,w.layer_combox.layer1.layer_parent.name,self.send_message)
+            thpth,gap=otsu(cdpth,w.layer_combox.layer1.layer_parent.name,self.send_message)
             name+='_otsu'
-            dict[name]=thpth
+            dict['后处理']=['OTSU阈值',gap,cdpth]
         elif w.threshold_select.choose=='手动阈值':
             thpth=thresh(cdpth,float(w.threshold_input.text()),w.layer_combox.layer1.layer_parent.name,self.send_message)
-            dict[name+'_thresh_{:.1f}'.format(float(w.threshold_input.text()))]
+            dict['后处理']=['手动阈值',[float(w.threshold_input.text())],thpth]
         else:
             pass
 
@@ -417,7 +418,7 @@ def otsu(pth,name,send_message):
     out_ds = None
     ds = None
     send_message.emit('OTSU阈值完成')
-    return out_th
+    return out_th,gap
     #otsu_layer = SingleBandRasterLayer(path = out_th, style_info={})
     #layer.layer_parent.add_result_layer(otsu_layer)
 
@@ -496,8 +497,7 @@ def table_layer(pth,layer,name,send_message,dict):
                 center_y = center_y * geo[5] + geo [3]
                 f.write(f'{center_x},{center_y},{block_data_xy.mean() * 100},{int(block_data_xy.mean() > 0.5)}\n')
 
-    result_layer = ResultPointLayer(out_csv, enable=True, proj=layer.proj, geo=layer.geo)
-    result_layer.result_path=dict
+    result_layer = ResultPointLayer(out_csv, enable=True, proj=layer.proj, geo=layer.geo,result_path=dict)
     # print(result_layer.result_path)
     layer.layer_parent.add_result_layer(result_layer)
     send_message.emit('计算完成')

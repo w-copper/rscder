@@ -57,7 +57,8 @@ class eagleEye(QgsMapCanvas):
         self.setLayers(layer_list_1)
         if len(layer_list_1) > 0:
             self.zoomToFeatureExtent(layer_list_1[0].extent())
-
+    def zoom(self,layer):
+        self.zoomToFeatureExtent(layer.extent())
     def draw_extent(self,extent):
         self.Extent=extent
         self.rubber.draw_extent(self.Extent)

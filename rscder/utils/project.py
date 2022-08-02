@@ -1,16 +1,21 @@
 from cgitb import enable
 from collections import OrderedDict
+from email.message import Message
+import imp
 import inspect
 import os
 from pathlib import Path
+from pydoc import render_doc
 import shutil
+from statistics import stdev
 from threading import Thread
 from time import sleep, time
 from typing import Dict, List
 import uuid
 import numpy as np
-from osgeo import gdal, gdal_array
+from osgeo import gdal, gdal_array,osr
 from rscder.utils.icons import IconInstance
+from rscder.gui.info import InfoBox
 from rscder.utils.setting import Settings
 from qgis.core import (\
     QgsRasterLayer, QgsMarkerSymbol, QgsUnitTypes, 
@@ -19,12 +24,12 @@ from qgis.core import (\
     QgsLineSymbol, QgsSingleSymbolRenderer, QgsSimpleLineSymbolLayer, 
     QgsVectorLayer, QgsCoordinateReferenceSystem, QgsFeature, 
     QgsGeometry, QgsPointXY, QgsMultiBandColorRenderer)
-from PyQt5.QtCore import QObject, pyqtSignal, Qt, QThread
-from PyQt5.QtWidgets import QTreeWidgetItem, QAction
+from PyQt5.QtCore import QObject, pyqtSignal, Qt, QThread,QSize
+from PyQt5.QtWidgets import QTreeWidgetItem, QAction,QMessageBox
 from PyQt5.QtGui import QColor, QIcon, QFont
 import yaml
-from .misc import singleton
 
+from .misc import singleton
 def relative_path(path: str, root:str) -> str:
     return os.path.relpath(path, root)
 
@@ -89,6 +94,7 @@ class Project(QObject):
         self.layer_tree = layer_tree
         self.message_box = message_box
         self.result_table = result_table
+        self.eye=eye
         IconInstance(self)
         self.layer_tree_update.connect(layer_tree.update_layer)
         self.layer_show_update.connect(pair_canvas.update_layer)
@@ -176,6 +182,7 @@ class Project(QObject):
 
     def zoom_to_layer(self, data):
         self.pair_canvas.zoom_to_layer(data['layer'])
+        self.eye.zoom(data['layer'])
 
     @property
     def cmi_path(self):
@@ -316,7 +323,21 @@ class BasicLayer(QObject):
         del_action.triggered.connect(del_layer)
         actions.append(del_action)
 
+        if self.info:
+            show_info=QAction(IconInstance().HELP,'属性信息')
+            actions.append(show_info)
+            def showIofn(info):
+                #print(info)
+                a=InfoBox(info)
+                a.exec_()
+
+            show_info.triggered.connect(lambda :showIofn(self.info))
         return actions
+
+        return actions
+    @property
+    def info(self):
+        return None
 
 class GridLayer(BasicLayer):
     
@@ -391,7 +412,7 @@ class GridLayer(BasicLayer):
 
 class RasterLayer(BasicLayer):
     
-    def __init__(self, name=None, enable=False, path=None, view_mode=BasicLayer.BOATH_VIEW,style_info={'r':3,'g':2,'b':1,'NIR':3}):
+    def __init__(self, name=None, enable=False, path=None, view_mode=BasicLayer.BOATH_VIEW,style_info={'r':3,'g':2,'b':1,'NIR':0}):
         if name is None:
             name = os.path.splitext(os.path.basename(path))[0]
         super().__init__(name, enable, IconInstance().RASTER, path, BasicLayer.IN_FILE, view_mode)
@@ -439,11 +460,44 @@ class RasterLayer(BasicLayer):
         return s
     def apply_style(self):
         pass
+    
+    @property
+    def bandinfo(self):
+        ds :gdal.Dataset=  gdal.Open(self.path)
+        bands=ds.RasterCount
+        bandinfo_={}
+        for i in range(1,bands+1) :
+            min,max,mean,stdev=ds.GetRasterBand(i).ComputeStatistics(True)
+            bandinfo_['波段{}'.format(i)]=['最小值：{}'.format(min),'最大值：{}'.format(max),'均值：{}'.format(mean),'方差：{}'.format(stdev)]
+        ds=None
+        return bandinfo_
 
     def set_stlye(self,style_info):
         self.style_info=style_info
         self.apply_style()
 
+    @property
+    def info(self):
+        #基础属性
+        basic={}
+        basic['文件名']=self.path
+
+        basic['文件大小']="{} Mb".format(os.path.getsize(self.path)//(1024*1024))
+        basic['波段信息']=self.bandinfo
+        #渲染属性
+        render=self.style_info
+
+        mapinfo={
+            '基础属性':basic,
+            '渲染属性':render,
+            'prewmap':self.preview
+        }
+        return mapinfo
+    @property
+    def preview(self,width=400):
+        w=self.layer.width()
+        h=self.layer.height()
+        return self.layer.previewAsImage(QSize(width,int(width*h/w)))
 
 class MultiBandRasterLayer(RasterLayer):
 
@@ -451,7 +505,10 @@ class MultiBandRasterLayer(RasterLayer):
         renderer=QgsMultiBandColorRenderer(self.layer.dataProvider(),self.style_info['r'],self.style_info['g'],self.style_info['b'])
         self.layer.setRenderer(renderer)
         self.layer.triggerRepaint()
-
+    # @property
+    # def info(self):
+    #     mapinfo=super().info
+    #     mapinfo['渲染属性']['波段']='单波段'
 class SingleBandRasterLayer(RasterLayer):
     
     def apply_style(self):
@@ -464,7 +521,7 @@ class VectorLayer(BasicLayer):
 
 class ResultPointLayer(BasicLayer):
 
-    def __init__(self, path, name=None, enable = False, proj = None, geo = None,result_path={},dsort=False ):
+    def __init__(self, path, name=None, enable = False, proj = None, geo = None,result_path={},dsort=False):
         if name is None:
             name = os.path.splitext(os.path.basename(path))[0]
         super().__init__(name, enable, icon=IconInstance().VECTOR, path=path, path_mode = BasicLayer.IN_FILE, view_mode=BasicLayer.BOATH_VIEW )
@@ -472,8 +529,8 @@ class ResultPointLayer(BasicLayer):
         self.wkt = proj
         self.geo = geo
         self.dsort=dsort
-        self.result_path=result_path
-       
+        self.result_path:dict=result_path
+        # self.methods=
         self.load_point_file()
     
     def save(self):
@@ -620,8 +677,23 @@ class ResultPointLayer(BasicLayer):
 
         return actions
     # def load_file(self, path):
+    
+    @property
+    def info(self):
+        #基础属性
+        basic={}
+        basic['文件路径']=self.path
 
+        #中间算法信息：
+        methods={ k:v[0]  for k ,v in self.result_path.items()}
+        basic['变化检测算法']=methods
+        #渲染信息
+        render={}
+        render['标注字体大小']=2
+        render['标注颜色']='#ffff00'
+        render['阈值']=self.result_path['后处理'][1]
 
+        return {'基础属性':basic,'渲染属性':render}
 class PairLayer(BasicLayer):
     
     def __init__(self, pth1, pth2,style_info1,style_info2) -> None:
@@ -695,7 +767,41 @@ class PairLayer(BasicLayer):
         )
         return data
     
+    @property
+    def info(self):
+        
+        ds= gdal.Open(self.main_l1.path)
+        srs= osr.SpatialReference(ds.GetProjectionRef())
+        metadata={}
+        # 空间参考系统
+        metadata['proj4'] = srs.ExportToProj4()
+        metadata['wkt'] = srs.ExportToWkt()
+		# 地理坐标系
+        metadata['geocs'] = srs.GetAttrValue('GEOGCS')
+        metadata['uom'] = srs.GetAttrValue('UNIT')
+		# 投影坐标系
+        metadata['projcs'] = srs.GetAttrValue('PROJCS')  # if projected
+        metadata['epsg'] = srs.GetAuthorityCode(None)
+        ds=None
 
+        #格网信息
+        gridData={}
+        gridData['格网大小']='{}像素'.format(self.grid.cell_size)
+        gridData['格网线']=['宽度：1像素', '颜色：白色']
+
+        #公共掩模
+        maskData={}
+        
+
+        mapinfo={
+        '坐标系':metadata,
+        '格网':gridData,
+        '公共掩膜':maskData
+        }
+        
+        return mapinfo
+
+        
     @staticmethod
     def from_dict(data):
         player = PairLayer(data['pth1'], data['pth2'], data['style_info1'], data['style_info2'])
