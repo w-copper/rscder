@@ -42,8 +42,13 @@ class RateSetdialog(QDialog):
         self.cancel_button.clicked.connect(self.on_cancel)
 
         self.button_layout = QHBoxLayout()
-        self.button_layout.addWidget(self.ok_button)
-        self.button_layout.addWidget(self.cancel_button)
+        okl=QHBoxLayout()
+        okl.addWidget(self.ok_button,alignment=Qt.AlignCenter)
+        cll=QHBoxLayout()
+        cll.addWidget(self.cancel_button,alignment=Qt.AlignCenter)
+        self.button_layout.addLayout(okl)
+        self.button_layout.addLayout(cll)
+        
         vlayout=QVBoxLayout()
         vlayout.addLayout(h1)
         vlayout.addWidget(QLabel('设置阈值'))

@@ -53,10 +53,9 @@ class EvalutationDialog(QDialog):
         self.cancel_button = QPushButton('取消', self)
         self.cancel_button.setIcon(IconInstance().CANCEL)
         self.cancel_button.clicked.connect(self.on_cancel)
-
         self.button_layout = QHBoxLayout()
-        self.button_layout.addWidget(self.ok_button)
-        self.button_layout.addWidget(self.cancel_button)
+        self.button_layout.addWidget(self.ok_button,0,alignment=Qt.AlignHCenter)
+        self.button_layout.addLayout(self.cancel_button,0,alignment=Qt.AlignHCenter)
 
         self.main_layout = QVBoxLayout()
         self.main_layout.addLayout(hbox1)

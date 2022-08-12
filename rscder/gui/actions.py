@@ -20,12 +20,12 @@ class ActionManager(QtCore.QObject):
     instance = None
 
     def __init__(self,
-             double_map,
-             layer_tree,
-             follow_box,
-             result_box,
-             message_box,
-             parent=None):
+            double_map,
+            layer_tree,
+            follow_box,
+            result_box,
+            message_box,
+            parent=None):
         super().__init__(parent)
         self.w_parent = parent
         self.actions = {}

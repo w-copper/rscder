@@ -5,6 +5,7 @@ from rscder.utils.project import Project, PairLayer, ResultPointLayer
 from rscder.plugins.basic import BasicPlugin
 from PyQt5.QtWidgets import QDialog, QHBoxLayout, QFileDialog, QComboBox, QVBoxLayout, QPushButton, QLabel, QLineEdit, QAction
 from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import Qt
 class ExportDialog(QDialog):
 
     def __init__(self, parent=None):
@@ -60,9 +61,9 @@ class ExportDialog(QDialog):
         hbox2.addWidget(out_path_btn)
 
         hbox3 = QHBoxLayout()
-        hbox3.addWidget(ok_btn)
-        hbox3.addWidget(cancel_btn)
-
+        hbox3.addWidget(ok_btn,0,alignment=Qt.AlignHCenter)
+        hbox3.addWidget(cancel_btn,0,alignment=Qt.AlignHCenter)
+        
         vbox = QVBoxLayout()
         vbox.addLayout(hbox1)
         vbox.addLayout(hbox2)

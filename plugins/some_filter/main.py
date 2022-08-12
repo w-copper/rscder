@@ -61,8 +61,8 @@ class FilterSetting(QDialog):
         cancel_button.clicked.connect(self.reject)
 
         hlayout2 = QtWidgets.QHBoxLayout()
-        hlayout2.addWidget(ok_button)
-        hlayout2.addWidget(cancel_button)
+        hlayout2.addWidget(ok_button,0,alignment=Qt.AlignHCenter)
+        hlayout2.addWidget(cancel_button,0,alignment=Qt.AlignHCenter)
 
         vlayout = QtWidgets.QVBoxLayout()
         vlayout.addLayout(hbox)
