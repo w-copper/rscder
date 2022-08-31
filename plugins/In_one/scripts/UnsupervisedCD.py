@@ -6,7 +6,9 @@ from rscder.utils.geomath import geo2imageRC, imageRC2geo
 from rscder.utils.project import Project, PairLayer
 import numpy as np
 from .USCD import ACD
-
+from .AHT import AHT
+from .OCD import OCD
+from .LHBA import LHBA
 def warp(file,ds:gdal.Dataset,srcWin=[0,0,0,0]):
     driver = gdal.GetDriverByName('GTiff')
     xsize=ds.RasterXSize
@@ -33,7 +35,7 @@ def basic_cd(pth1:str,pth2:str,layer_parent:PairLayer,send_message):
     yblocks = ysize // cell_size[1]
 
     driver = gdal.GetDriverByName('GTiff')
-    out_tif = os.path.join(Project().cmi_path, 'temp.tif')
+    out_tif = os.path.join(Project().other_path, 'temp.tif')
     out_ds = driver.Create(out_tif, xsize, ysize, 1, gdal.GDT_Float32)
     geo=layer_parent.grid.geo
     proj=layer_parent.grid.proj
@@ -129,7 +131,7 @@ def LSTS(pth1:str,pth2:str,layer_parent:PairLayer,send_message,n=5,w_size=(3,3))
     yblocks = ysize // cell_size[1]
 
     driver = gdal.GetDriverByName('GTiff')
-    out_tif = os.path.join(Project().cmi_path, 'temp.tif')
+    out_tif = os.path.join(Project().other_path, 'temp.tif')
     out_ds = driver.Create(out_tif, xsize, ysize, 1, gdal.GDT_Float32)
     geo=layer_parent.grid.geo
     proj=layer_parent.grid.proj
@@ -262,7 +264,7 @@ def CVA(pth1:str,pth2:str,layer_parent:PairLayer,send_message):
     yblocks = ysize // cell_size[1]
 
     driver = gdal.GetDriverByName('GTiff')
-    out_tif = os.path.join(Project().cmi_path, 'temp.tif')
+    out_tif = os.path.join(Project().other_path, 'temp.tif')
     out_ds = driver.Create(out_tif, xsize, ysize, 1, gdal.GDT_Float32)
     geo=layer_parent.grid.geo
     proj=layer_parent.grid.proj
@@ -343,7 +345,7 @@ def CVA(pth1:str,pth2:str,layer_parent:PairLayer,send_message):
     send_message.emit('欧式距离计算完成')
     return out_normal_tif
 
-def ACD_(pth1:str,pth2:str,layer_parent:PairLayer,send_message):
+def acd(pth1:str,pth2:str,layer_parent:PairLayer,send_message):
     xsize = layer_parent.size[0]
     ysize = layer_parent.size[1]
     geo=layer_parent.grid.geo
@@ -352,7 +354,7 @@ def ACD_(pth1:str,pth2:str,layer_parent:PairLayer,send_message):
     send_message.emit('提取重叠区域数据.....')
 
     ds2:gdal.Dataset=gdal.Open(pth2)
-    temp_tif2 = os.path.join(Project().cmi_path,'temp2.tif')
+    temp_tif2 = os.path.join(Project().other_path,'temp2.tif')
     start2x,start2y=geo2imageRC(ds2.GetGeoTransform(),layer_parent.mask.xy[0],layer_parent.mask.xy[1])
     end2x,end2y=geo2imageRC(ds2.GetGeoTransform(),layer_parent.mask.xy[2],layer_parent.mask.xy[3])
     warp(temp_tif2,ds2,srcWin=[start2x,start2y,xsize,ysize])
@@ -361,7 +363,7 @@ def ACD_(pth1:str,pth2:str,layer_parent:PairLayer,send_message):
     
 
     ds1:gdal.Dataset=gdal.Open(pth1)
-    temp_tif1 = os.path.join(Project().cmi_path, 'temp1.tif')
+    temp_tif1 = os.path.join(Project().other_path, 'temp1.tif')
     start1x,start1y=geo2imageRC(ds1.GetGeoTransform(),layer_parent.mask.xy[0],layer_parent.mask.xy[1])
     end1x,end1y=geo2imageRC(ds1.GetGeoTransform(),layer_parent.mask.xy[2],layer_parent.mask.xy[3])
     warp(temp_tif1,ds1,srcWin=[start1x,start1y,xsize,ysize])
@@ -377,9 +379,133 @@ def ACD_(pth1:str,pth2:str,layer_parent:PairLayer,send_message):
     ACD(temp_tif1,temp_tif2,out_normal_tif)
     #添加投影
     send_message.emit('录入投影信息.....')
-    ds=gdal.Open(out_normal_tif)
+    time.sleep(0.1)
+    ds=gdal.Open(out_normal_tif,1)
     ds.SetGeoTransform(geo)
     ds.SetProjection(proj)
     del ds
     
+    return out_normal_tif
+
+def aht(pth1:str,pth2:str,layer_parent:PairLayer,send_message):
+    xsize = layer_parent.size[0]
+    ysize = layer_parent.size[1]
+    geo=layer_parent.grid.geo
+    proj=layer_parent.grid.proj
+    #提取公共部分
+    send_message.emit('提取重叠区域数据.....')
+
+    ds2:gdal.Dataset=gdal.Open(pth2)
+    temp_tif2 = os.path.join(Project().other_path,'temp2.tif')
+    start2x,start2y=geo2imageRC(ds2.GetGeoTransform(),layer_parent.mask.xy[0],layer_parent.mask.xy[1])
+    end2x,end2y=geo2imageRC(ds2.GetGeoTransform(),layer_parent.mask.xy[2],layer_parent.mask.xy[3])
+    warp(temp_tif2,ds2,srcWin=[start2x,start2y,xsize,ysize])
+    del ds2
+    send_message.emit('图像二提取完成')
+    
+
+    ds1:gdal.Dataset=gdal.Open(pth1)
+    temp_tif1 = os.path.join(Project().other_path, 'temp1.tif')
+    start1x,start1y=geo2imageRC(ds1.GetGeoTransform(),layer_parent.mask.xy[0],layer_parent.mask.xy[1])
+    end1x,end1y=geo2imageRC(ds1.GetGeoTransform(),layer_parent.mask.xy[2],layer_parent.mask.xy[3])
+    warp(temp_tif1,ds1,srcWin=[start1x,start1y,xsize,ysize])
+    del ds1
+    send_message.emit('图像一提取完成')
+    
+    
+    
+    #运算
+    send_message.emit('开始AHT计算.....')
+    time.sleep(0.1)
+    out_normal_tif = os.path.join(Project().cmi_path, '{}_{}_cmi.tif'.format(layer_parent.name, int(np.random.rand() * 100000)))
+    AHT(temp_tif1,temp_tif2,out_normal_tif)
+    #添加投影
+    send_message.emit('录入投影信息.....')
+    time.sleep(0.1)
+    ds=gdal.Open(out_normal_tif,1)
+    ds.SetGeoTransform(geo)
+    ds.SetProjection(proj)
+    del ds
+    
+    return out_normal_tif
+
+def ocd(pth1:str,pth2:str,layer_parent:PairLayer,send_message):
+    xsize = layer_parent.size[0]
+    ysize = layer_parent.size[1]
+    geo=layer_parent.grid.geo
+    proj=layer_parent.grid.proj
+    #提取公共部分
+    send_message.emit('提取重叠区域数据.....')
+
+    ds2:gdal.Dataset=gdal.Open(pth2)
+    temp_tif2 = os.path.join(Project().other_path,'temp2.tif')
+    start2x,start2y=geo2imageRC(ds2.GetGeoTransform(),layer_parent.mask.xy[0],layer_parent.mask.xy[1])
+    end2x,end2y=geo2imageRC(ds2.GetGeoTransform(),layer_parent.mask.xy[2],layer_parent.mask.xy[3])
+    warp(temp_tif2,ds2,srcWin=[start2x,start2y,xsize,ysize])
+    del ds2
+    send_message.emit('图像二提取完成')
+    
+
+    ds1:gdal.Dataset=gdal.Open(pth1)
+    temp_tif1 = os.path.join(Project().other_path, 'temp1.tif')
+    start1x,start1y=geo2imageRC(ds1.GetGeoTransform(),layer_parent.mask.xy[0],layer_parent.mask.xy[1])
+    end1x,end1y=geo2imageRC(ds1.GetGeoTransform(),layer_parent.mask.xy[2],layer_parent.mask.xy[3])
+    warp(temp_tif1,ds1,srcWin=[start1x,start1y,xsize,ysize])
+    del ds1
+    send_message.emit('图像一提取完成')
+    
+    
+    
+    #运算
+    send_message.emit('开始OCD计算.....')
+    time.sleep(0.1)
+    out_normal_tif = os.path.join(Project().cmi_path, '{}_{}_cmi.tif'.format(layer_parent.name, int(np.random.rand() * 100000)))
+    OCD(temp_tif1,temp_tif2,out_normal_tif,Project().other_path)
+    #添加投影
+    send_message.emit('录入投影信息.....')
+    time.sleep(0.1)
+    ds=gdal.Open(out_normal_tif,1)
+    ds.SetGeoTransform(geo)
+    ds.SetProjection(proj)
+    del ds
+    
+    return out_normal_tif
+
+def lhba(pth1:str,pth2:str,layer_parent:PairLayer,send_message):
+    xsize = layer_parent.size[0]
+    ysize = layer_parent.size[1]
+    geo=layer_parent.grid.geo
+    proj=layer_parent.grid.proj
+    #提取公共部分
+    send_message.emit('提取重叠区域数据.....')
+
+    ds2:gdal.Dataset=gdal.Open(pth2)
+    temp_tif2 = os.path.join(Project().other_path,'temp2.tif')
+    start2x,start2y=geo2imageRC(ds2.GetGeoTransform(),layer_parent.mask.xy[0],layer_parent.mask.xy[1])
+    end2x,end2y=geo2imageRC(ds2.GetGeoTransform(),layer_parent.mask.xy[2],layer_parent.mask.xy[3])
+    warp(temp_tif2,ds2,srcWin=[start2x,start2y,xsize,ysize])
+    del ds2
+    send_message.emit('图像二提取完成')
+
+
+    ds1:gdal.Dataset=gdal.Open(pth1)
+    temp_tif1 = os.path.join(Project().other_path, 'temp1.tif')
+    start1x,start1y=geo2imageRC(ds1.GetGeoTransform(),layer_parent.mask.xy[0],layer_parent.mask.xy[1])
+    end1x,end1y=geo2imageRC(ds1.GetGeoTransform(),layer_parent.mask.xy[2],layer_parent.mask.xy[3])
+    warp(temp_tif1,ds1,srcWin=[start1x,start1y,xsize,ysize])
+    del ds1
+    send_message.emit('图像一提取完成')
+
+    #运算
+    send_message.emit('开始LHBA计算.....')
+    time.sleep(0.1)
+    out_normal_tif = os.path.join(Project().cmi_path, '{}_{}_cmi.tif'.format(layer_parent.name, int(np.random.rand() * 100000)))
+    LHBA(temp_tif1,temp_tif2,out_normal_tif)
+    #添加投影
+    send_message.emit('录入投影信息.....')
+    time.sleep(0.1)
+    ds=gdal.Open(out_normal_tif,1)
+    ds.SetGeoTransform(geo)
+    ds.SetProjection(proj)
+    del ds
     return out_normal_tif
