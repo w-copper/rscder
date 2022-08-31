@@ -17,7 +17,7 @@ from In_one import pic
 import math
 from skimage.filters import rank
 from skimage.morphology import disk, rectangle
-from In_one.scripts.UnsupervisedCD import LSTS,CVA,acd,aht,ocd,lhba
+from In_one.scripts.UnsupervisedCD import LSTS,CVA,acd,aht,ocd,lhba,sh
 def Meanfilter(x_size,y_size,layer:MultiBandRasterLayer):
     x_size = int(x_size)
     y_size = int(y_size)
@@ -473,7 +473,7 @@ class AllInOne(QDialog):
         return p
 class InOnePlugin(BasicPlugin):
     pre={"均值滤波":Meanfilter}#可添加其他方法
-    cd={'差分法':basic_cd,'LSTS':LSTS,'CVA':CVA,'ACD':acd,'AHT':aht,'OCD':ocd,'LHBA':lhba}#可添加其他方法
+    cd={'差分法':basic_cd,'LSTS':LSTS,'CVA':CVA,'ACD':acd,'AHT':aht,'OCD':ocd,'LHBA':lhba,'SH':sh}#可添加其他方法
     threshold={'OTSU阈值':otsu}#可添加其他方法
 
 

@@ -9,6 +9,7 @@ from .USCD import ACD
 from .AHT import AHT
 from .OCD import OCD
 from .LHBA import LHBA
+from .SH import SH
 def warp(file,ds:gdal.Dataset,srcWin=[0,0,0,0]):
     driver = gdal.GetDriverByName('GTiff')
     xsize=ds.RasterXSize
@@ -501,6 +502,45 @@ def lhba(pth1:str,pth2:str,layer_parent:PairLayer,send_message):
     time.sleep(0.1)
     out_normal_tif = os.path.join(Project().cmi_path, '{}_{}_cmi.tif'.format(layer_parent.name, int(np.random.rand() * 100000)))
     LHBA(temp_tif1,temp_tif2,out_normal_tif)
+    #添加投影
+    send_message.emit('录入投影信息.....')
+    time.sleep(0.1)
+    ds=gdal.Open(out_normal_tif,1)
+    ds.SetGeoTransform(geo)
+    ds.SetProjection(proj)
+    del ds
+    return out_normal_tif
+
+def sh(pth1:str,pth2:str,layer_parent:PairLayer,send_message):
+    xsize = layer_parent.size[0]
+    ysize = layer_parent.size[1]
+    geo=layer_parent.grid.geo
+    proj=layer_parent.grid.proj
+    #提取公共部分
+    send_message.emit('提取重叠区域数据.....')
+
+    ds2:gdal.Dataset=gdal.Open(pth2)
+    temp_tif2 = os.path.join(Project().other_path,'temp2.tif')
+    start2x,start2y=geo2imageRC(ds2.GetGeoTransform(),layer_parent.mask.xy[0],layer_parent.mask.xy[1])
+    end2x,end2y=geo2imageRC(ds2.GetGeoTransform(),layer_parent.mask.xy[2],layer_parent.mask.xy[3])
+    warp(temp_tif2,ds2,srcWin=[start2x,start2y,xsize,ysize])
+    del ds2
+    send_message.emit('图像二提取完成')
+
+
+    ds1:gdal.Dataset=gdal.Open(pth1)
+    temp_tif1 = os.path.join(Project().other_path, 'temp1.tif')
+    start1x,start1y=geo2imageRC(ds1.GetGeoTransform(),layer_parent.mask.xy[0],layer_parent.mask.xy[1])
+    end1x,end1y=geo2imageRC(ds1.GetGeoTransform(),layer_parent.mask.xy[2],layer_parent.mask.xy[3])
+    warp(temp_tif1,ds1,srcWin=[start1x,start1y,xsize,ysize])
+    del ds1
+    send_message.emit('图像一提取完成')
+
+    #运算
+    send_message.emit('开始SH计算.....')
+    time.sleep(0.1)
+    out_normal_tif = os.path.join(Project().cmi_path, '{}_{}_cmi.tif'.format(layer_parent.name, int(np.random.rand() * 100000)))
+    SH(temp_tif1,temp_tif2,out_normal_tif)
     #添加投影
     send_message.emit('录入投影信息.....')
     time.sleep(0.1)
