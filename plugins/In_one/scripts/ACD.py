@@ -10,9 +10,9 @@ if _swig_python_version_info < (2, 7, 0):
 
 # Import the low-level C/C++ module
 if __package__ or "." in __name__:
-    from . import _USCD
+    from . import _ACD
 else:
-    import _USCD
+    import _ACD
 
 try:
     import builtins as __builtin__
@@ -71,165 +71,165 @@ else:
 _cv_numpy_typestr_map = {}
 _cv_numpy_bla = {}
 
-CV_VERSION_MAJOR = _USCD.CV_VERSION_MAJOR
-CV_VERSION_MINOR = _USCD.CV_VERSION_MINOR
-CV_VERSION_REVISION = _USCD.CV_VERSION_REVISION
-CV_VERSION_STATUS = _USCD.CV_VERSION_STATUS
-CV_VERSION = _USCD.CV_VERSION
-CV_MAJOR_VERSION = _USCD.CV_MAJOR_VERSION
-CV_MINOR_VERSION = _USCD.CV_MINOR_VERSION
-CV_SUBMINOR_VERSION = _USCD.CV_SUBMINOR_VERSION
+CV_VERSION_MAJOR = _ACD.CV_VERSION_MAJOR
+CV_VERSION_MINOR = _ACD.CV_VERSION_MINOR
+CV_VERSION_REVISION = _ACD.CV_VERSION_REVISION
+CV_VERSION_STATUS = _ACD.CV_VERSION_STATUS
+CV_VERSION = _ACD.CV_VERSION
+CV_MAJOR_VERSION = _ACD.CV_MAJOR_VERSION
+CV_MINOR_VERSION = _ACD.CV_MINOR_VERSION
+CV_SUBMINOR_VERSION = _ACD.CV_SUBMINOR_VERSION
 class DataType_bool(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD.DataType_bool_generic_type
-    channels = _USCD.DataType_bool_channels
-    fmt = _USCD.DataType_bool_fmt
+    generic_type = _ACD.DataType_bool_generic_type
+    channels = _ACD.DataType_bool_channels
+    fmt = _ACD.DataType_bool_fmt
 
     def __init__(self):
-        _USCD.DataType_bool_swiginit(self, _USCD.new_DataType_bool())
-    __swig_destroy__ = _USCD.delete_DataType_bool
+        _ACD.DataType_bool_swiginit(self, _ACD.new_DataType_bool())
+    __swig_destroy__ = _ACD.delete_DataType_bool
 
-# Register DataType_bool in _USCD:
-_USCD.DataType_bool_swigregister(DataType_bool)
+# Register DataType_bool in _ACD:
+_ACD.DataType_bool_swigregister(DataType_bool)
 
 class DataType_uchar(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD.DataType_uchar_generic_type
-    channels = _USCD.DataType_uchar_channels
-    fmt = _USCD.DataType_uchar_fmt
+    generic_type = _ACD.DataType_uchar_generic_type
+    channels = _ACD.DataType_uchar_channels
+    fmt = _ACD.DataType_uchar_fmt
 
     def __init__(self):
-        _USCD.DataType_uchar_swiginit(self, _USCD.new_DataType_uchar())
-    __swig_destroy__ = _USCD.delete_DataType_uchar
+        _ACD.DataType_uchar_swiginit(self, _ACD.new_DataType_uchar())
+    __swig_destroy__ = _ACD.delete_DataType_uchar
 
-# Register DataType_uchar in _USCD:
-_USCD.DataType_uchar_swigregister(DataType_uchar)
+# Register DataType_uchar in _ACD:
+_ACD.DataType_uchar_swigregister(DataType_uchar)
 
 class DataType_schar(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD.DataType_schar_generic_type
-    channels = _USCD.DataType_schar_channels
-    fmt = _USCD.DataType_schar_fmt
+    generic_type = _ACD.DataType_schar_generic_type
+    channels = _ACD.DataType_schar_channels
+    fmt = _ACD.DataType_schar_fmt
 
     def __init__(self):
-        _USCD.DataType_schar_swiginit(self, _USCD.new_DataType_schar())
-    __swig_destroy__ = _USCD.delete_DataType_schar
+        _ACD.DataType_schar_swiginit(self, _ACD.new_DataType_schar())
+    __swig_destroy__ = _ACD.delete_DataType_schar
 
-# Register DataType_schar in _USCD:
-_USCD.DataType_schar_swigregister(DataType_schar)
+# Register DataType_schar in _ACD:
+_ACD.DataType_schar_swigregister(DataType_schar)
 
 class DataType_char(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD.DataType_char_generic_type
-    channels = _USCD.DataType_char_channels
-    fmt = _USCD.DataType_char_fmt
+    generic_type = _ACD.DataType_char_generic_type
+    channels = _ACD.DataType_char_channels
+    fmt = _ACD.DataType_char_fmt
 
     def __init__(self):
-        _USCD.DataType_char_swiginit(self, _USCD.new_DataType_char())
-    __swig_destroy__ = _USCD.delete_DataType_char
+        _ACD.DataType_char_swiginit(self, _ACD.new_DataType_char())
+    __swig_destroy__ = _ACD.delete_DataType_char
 
-# Register DataType_char in _USCD:
-_USCD.DataType_char_swigregister(DataType_char)
+# Register DataType_char in _ACD:
+_ACD.DataType_char_swigregister(DataType_char)
 
 class DataType_ushort(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD.DataType_ushort_generic_type
-    channels = _USCD.DataType_ushort_channels
-    fmt = _USCD.DataType_ushort_fmt
+    generic_type = _ACD.DataType_ushort_generic_type
+    channels = _ACD.DataType_ushort_channels
+    fmt = _ACD.DataType_ushort_fmt
 
     def __init__(self):
-        _USCD.DataType_ushort_swiginit(self, _USCD.new_DataType_ushort())
-    __swig_destroy__ = _USCD.delete_DataType_ushort
+        _ACD.DataType_ushort_swiginit(self, _ACD.new_DataType_ushort())
+    __swig_destroy__ = _ACD.delete_DataType_ushort
 
-# Register DataType_ushort in _USCD:
-_USCD.DataType_ushort_swigregister(DataType_ushort)
+# Register DataType_ushort in _ACD:
+_ACD.DataType_ushort_swigregister(DataType_ushort)
 
 class DataType_short(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD.DataType_short_generic_type
-    channels = _USCD.DataType_short_channels
-    fmt = _USCD.DataType_short_fmt
+    generic_type = _ACD.DataType_short_generic_type
+    channels = _ACD.DataType_short_channels
+    fmt = _ACD.DataType_short_fmt
 
     def __init__(self):
-        _USCD.DataType_short_swiginit(self, _USCD.new_DataType_short())
-    __swig_destroy__ = _USCD.delete_DataType_short
+        _ACD.DataType_short_swiginit(self, _ACD.new_DataType_short())
+    __swig_destroy__ = _ACD.delete_DataType_short
 
-# Register DataType_short in _USCD:
-_USCD.DataType_short_swigregister(DataType_short)
+# Register DataType_short in _ACD:
+_ACD.DataType_short_swigregister(DataType_short)
 
 class DataType_int(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD.DataType_int_generic_type
-    channels = _USCD.DataType_int_channels
-    fmt = _USCD.DataType_int_fmt
+    generic_type = _ACD.DataType_int_generic_type
+    channels = _ACD.DataType_int_channels
+    fmt = _ACD.DataType_int_fmt
 
     def __init__(self):
-        _USCD.DataType_int_swiginit(self, _USCD.new_DataType_int())
-    __swig_destroy__ = _USCD.delete_DataType_int
+        _ACD.DataType_int_swiginit(self, _ACD.new_DataType_int())
+    __swig_destroy__ = _ACD.delete_DataType_int
 
-# Register DataType_int in _USCD:
-_USCD.DataType_int_swigregister(DataType_int)
+# Register DataType_int in _ACD:
+_ACD.DataType_int_swigregister(DataType_int)
 
 class DataType_float(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD.DataType_float_generic_type
-    channels = _USCD.DataType_float_channels
-    fmt = _USCD.DataType_float_fmt
+    generic_type = _ACD.DataType_float_generic_type
+    channels = _ACD.DataType_float_channels
+    fmt = _ACD.DataType_float_fmt
 
     def __init__(self):
-        _USCD.DataType_float_swiginit(self, _USCD.new_DataType_float())
-    __swig_destroy__ = _USCD.delete_DataType_float
+        _ACD.DataType_float_swiginit(self, _ACD.new_DataType_float())
+    __swig_destroy__ = _ACD.delete_DataType_float
 
-# Register DataType_float in _USCD:
-_USCD.DataType_float_swigregister(DataType_float)
+# Register DataType_float in _ACD:
+_ACD.DataType_float_swigregister(DataType_float)
 
 class DataType_double(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD.DataType_double_generic_type
-    channels = _USCD.DataType_double_channels
-    fmt = _USCD.DataType_double_fmt
+    generic_type = _ACD.DataType_double_generic_type
+    channels = _ACD.DataType_double_channels
+    fmt = _ACD.DataType_double_fmt
 
     def __init__(self):
-        _USCD.DataType_double_swiginit(self, _USCD.new_DataType_double())
-    __swig_destroy__ = _USCD.delete_DataType_double
+        _ACD.DataType_double_swiginit(self, _ACD.new_DataType_double())
+    __swig_destroy__ = _ACD.delete_DataType_double
 
-# Register DataType_double in _USCD:
-_USCD.DataType_double_swigregister(DataType_double)
+# Register DataType_double in _ACD:
+_ACD.DataType_double_swigregister(DataType_double)
 
 class Range(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self, *args):
-        _USCD.Range_swiginit(self, _USCD.new_Range(*args))
+        _ACD.Range_swiginit(self, _ACD.new_Range(*args))
 
     def size(self):
-        return _USCD.Range_size(self)
+        return _ACD.Range_size(self)
 
     def empty(self):
-        return _USCD.Range_empty(self)
+        return _ACD.Range_empty(self)
 
     @staticmethod
     def all():
-        return _USCD.Range_all()
-    start = property(_USCD.Range_start_get, _USCD.Range_start_set)
-    end = property(_USCD.Range_end_get, _USCD.Range_end_set)
-    __swig_destroy__ = _USCD.delete_Range
+        return _ACD.Range_all()
+    start = property(_ACD.Range_start_get, _ACD.Range_start_set)
+    end = property(_ACD.Range_end_get, _ACD.Range_end_set)
+    __swig_destroy__ = _ACD.delete_Range
 
-# Register Range in _USCD:
-_USCD.Range_swigregister(Range)
+# Register Range in _ACD:
+_ACD.Range_swigregister(Range)
 
 def Range_all():
-    return _USCD.Range_all()
+    return _ACD.Range_all()
 
 class SwigPyIterator(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
@@ -237,60 +237,60 @@ class SwigPyIterator(object):
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
-    __swig_destroy__ = _USCD.delete_SwigPyIterator
+    __swig_destroy__ = _ACD.delete_SwigPyIterator
 
     def value(self):
-        return _USCD.SwigPyIterator_value(self)
+        return _ACD.SwigPyIterator_value(self)
 
     def incr(self, n=1):
-        return _USCD.SwigPyIterator_incr(self, n)
+        return _ACD.SwigPyIterator_incr(self, n)
 
     def decr(self, n=1):
-        return _USCD.SwigPyIterator_decr(self, n)
+        return _ACD.SwigPyIterator_decr(self, n)
 
     def distance(self, x):
-        return _USCD.SwigPyIterator_distance(self, x)
+        return _ACD.SwigPyIterator_distance(self, x)
 
     def equal(self, x):
-        return _USCD.SwigPyIterator_equal(self, x)
+        return _ACD.SwigPyIterator_equal(self, x)
 
     def copy(self):
-        return _USCD.SwigPyIterator_copy(self)
+        return _ACD.SwigPyIterator_copy(self)
 
     def next(self):
-        return _USCD.SwigPyIterator_next(self)
+        return _ACD.SwigPyIterator_next(self)
 
     def __next__(self):
-        return _USCD.SwigPyIterator___next__(self)
+        return _ACD.SwigPyIterator___next__(self)
 
     def previous(self):
-        return _USCD.SwigPyIterator_previous(self)
+        return _ACD.SwigPyIterator_previous(self)
 
     def advance(self, n):
-        return _USCD.SwigPyIterator_advance(self, n)
+        return _ACD.SwigPyIterator_advance(self, n)
 
     def __eq__(self, x):
-        return _USCD.SwigPyIterator___eq__(self, x)
+        return _ACD.SwigPyIterator___eq__(self, x)
 
     def __ne__(self, x):
-        return _USCD.SwigPyIterator___ne__(self, x)
+        return _ACD.SwigPyIterator___ne__(self, x)
 
     def __iadd__(self, n):
-        return _USCD.SwigPyIterator___iadd__(self, n)
+        return _ACD.SwigPyIterator___iadd__(self, n)
 
     def __isub__(self, n):
-        return _USCD.SwigPyIterator___isub__(self, n)
+        return _ACD.SwigPyIterator___isub__(self, n)
 
     def __add__(self, n):
-        return _USCD.SwigPyIterator___add__(self, n)
+        return _ACD.SwigPyIterator___add__(self, n)
 
     def __sub__(self, *args):
-        return _USCD.SwigPyIterator___sub__(self, *args)
+        return _ACD.SwigPyIterator___sub__(self, *args)
     def __iter__(self):
         return self
 
-# Register SwigPyIterator in _USCD:
-_USCD.SwigPyIterator_swigregister(SwigPyIterator)
+# Register SwigPyIterator in _ACD:
+_ACD.SwigPyIterator_swigregister(SwigPyIterator)
 
 
 _array_map = {}
@@ -300,199 +300,199 @@ class Matx_AddOp(object):
     __repr__ = _swig_repr
 
     def __init__(self):
-        _USCD.Matx_AddOp_swiginit(self, _USCD.new_Matx_AddOp())
-    __swig_destroy__ = _USCD.delete_Matx_AddOp
+        _ACD.Matx_AddOp_swiginit(self, _ACD.new_Matx_AddOp())
+    __swig_destroy__ = _ACD.delete_Matx_AddOp
 
-# Register Matx_AddOp in _USCD:
-_USCD.Matx_AddOp_swigregister(Matx_AddOp)
+# Register Matx_AddOp in _ACD:
+_ACD.Matx_AddOp_swigregister(Matx_AddOp)
 
 class Matx_SubOp(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self):
-        _USCD.Matx_SubOp_swiginit(self, _USCD.new_Matx_SubOp())
-    __swig_destroy__ = _USCD.delete_Matx_SubOp
+        _ACD.Matx_SubOp_swiginit(self, _ACD.new_Matx_SubOp())
+    __swig_destroy__ = _ACD.delete_Matx_SubOp
 
-# Register Matx_SubOp in _USCD:
-_USCD.Matx_SubOp_swigregister(Matx_SubOp)
+# Register Matx_SubOp in _ACD:
+_ACD.Matx_SubOp_swigregister(Matx_SubOp)
 
 class Matx_ScaleOp(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self):
-        _USCD.Matx_ScaleOp_swiginit(self, _USCD.new_Matx_ScaleOp())
-    __swig_destroy__ = _USCD.delete_Matx_ScaleOp
+        _ACD.Matx_ScaleOp_swiginit(self, _ACD.new_Matx_ScaleOp())
+    __swig_destroy__ = _ACD.delete_Matx_ScaleOp
 
-# Register Matx_ScaleOp in _USCD:
-_USCD.Matx_ScaleOp_swigregister(Matx_ScaleOp)
+# Register Matx_ScaleOp in _ACD:
+_ACD.Matx_ScaleOp_swigregister(Matx_ScaleOp)
 
 class Matx_MulOp(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self):
-        _USCD.Matx_MulOp_swiginit(self, _USCD.new_Matx_MulOp())
-    __swig_destroy__ = _USCD.delete_Matx_MulOp
+        _ACD.Matx_MulOp_swiginit(self, _ACD.new_Matx_MulOp())
+    __swig_destroy__ = _ACD.delete_Matx_MulOp
 
-# Register Matx_MulOp in _USCD:
-_USCD.Matx_MulOp_swigregister(Matx_MulOp)
+# Register Matx_MulOp in _ACD:
+_ACD.Matx_MulOp_swigregister(Matx_MulOp)
 
 class Matx_DivOp(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self):
-        _USCD.Matx_DivOp_swiginit(self, _USCD.new_Matx_DivOp())
-    __swig_destroy__ = _USCD.delete_Matx_DivOp
+        _ACD.Matx_DivOp_swiginit(self, _ACD.new_Matx_DivOp())
+    __swig_destroy__ = _ACD.delete_Matx_DivOp
 
-# Register Matx_DivOp in _USCD:
-_USCD.Matx_DivOp_swigregister(Matx_DivOp)
+# Register Matx_DivOp in _ACD:
+_ACD.Matx_DivOp_swigregister(Matx_DivOp)
 
 class Matx_MatMulOp(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self):
-        _USCD.Matx_MatMulOp_swiginit(self, _USCD.new_Matx_MatMulOp())
-    __swig_destroy__ = _USCD.delete_Matx_MatMulOp
+        _ACD.Matx_MatMulOp_swiginit(self, _ACD.new_Matx_MatMulOp())
+    __swig_destroy__ = _ACD.delete_Matx_MatMulOp
 
-# Register Matx_MatMulOp in _USCD:
-_USCD.Matx_MatMulOp_swigregister(Matx_MatMulOp)
+# Register Matx_MatMulOp in _ACD:
+_ACD.Matx_MatMulOp_swigregister(Matx_MatMulOp)
 
 class Matx_TOp(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self):
-        _USCD.Matx_TOp_swiginit(self, _USCD.new_Matx_TOp())
-    __swig_destroy__ = _USCD.delete_Matx_TOp
+        _ACD.Matx_TOp_swiginit(self, _ACD.new_Matx_TOp())
+    __swig_destroy__ = _ACD.delete_Matx_TOp
 
-# Register Matx_TOp in _USCD:
-_USCD.Matx_TOp_swigregister(Matx_TOp)
+# Register Matx_TOp in _ACD:
+_ACD.Matx_TOp_swigregister(Matx_TOp)
 
 class Mat(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    __swig_destroy__ = _USCD.delete_Mat
+    __swig_destroy__ = _ACD.delete_Mat
 
     def row(self, y):
-        return _USCD.Mat_row(self, y)
+        return _ACD.Mat_row(self, y)
 
     def col(self, x):
-        return _USCD.Mat_col(self, x)
+        return _ACD.Mat_col(self, x)
 
     def rowRange(self, *args):
-        return _USCD.Mat_rowRange(self, *args)
+        return _ACD.Mat_rowRange(self, *args)
 
     def colRange(self, *args):
-        return _USCD.Mat_colRange(self, *args)
+        return _ACD.Mat_colRange(self, *args)
 
     def diag(self, d=0):
-        return _USCD.Mat_diag(self, d)
+        return _ACD.Mat_diag(self, d)
 
     def clone(self):
-        return _USCD.Mat_clone(self)
+        return _ACD.Mat_clone(self)
 
     def assignTo(self, m, type=-1):
-        return _USCD.Mat_assignTo(self, m, type)
+        return _ACD.Mat_assignTo(self, m, type)
 
     def reshape(self, *args):
-        return _USCD.Mat_reshape(self, *args)
+        return _ACD.Mat_reshape(self, *args)
 
     def create(self, *args):
-        return _USCD.Mat_create(self, *args)
+        return _ACD.Mat_create(self, *args)
 
     def addref(self):
-        return _USCD.Mat_addref(self)
+        return _ACD.Mat_addref(self)
 
     def release(self):
-        return _USCD.Mat_release(self)
+        return _ACD.Mat_release(self)
 
     def deallocate(self):
-        return _USCD.Mat_deallocate(self)
+        return _ACD.Mat_deallocate(self)
 
     def copySize(self, m):
-        return _USCD.Mat_copySize(self, m)
+        return _ACD.Mat_copySize(self, m)
 
     def reserve(self, sz):
-        return _USCD.Mat_reserve(self, sz)
+        return _ACD.Mat_reserve(self, sz)
 
     def resize(self, *args):
-        return _USCD.Mat_resize(self, *args)
+        return _ACD.Mat_resize(self, *args)
 
     def push_back_(self, elem):
-        return _USCD.Mat_push_back_(self, elem)
+        return _ACD.Mat_push_back_(self, elem)
 
     def push_back(self, m):
-        return _USCD.Mat_push_back(self, m)
+        return _ACD.Mat_push_back(self, m)
 
     def pop_back(self, nelems=1):
-        return _USCD.Mat_pop_back(self, nelems)
+        return _ACD.Mat_pop_back(self, nelems)
 
     def locateROI(self, wholeSize, ofs):
-        return _USCD.Mat_locateROI(self, wholeSize, ofs)
+        return _ACD.Mat_locateROI(self, wholeSize, ofs)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD.Mat_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD.Mat_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD.Mat___call__(self, *args)
+        return _ACD.Mat___call__(self, *args)
 
     def isContinuous(self):
-        return _USCD.Mat_isContinuous(self)
+        return _ACD.Mat_isContinuous(self)
 
     def isSubmatrix(self):
-        return _USCD.Mat_isSubmatrix(self)
+        return _ACD.Mat_isSubmatrix(self)
 
     def elemSize(self):
-        return _USCD.Mat_elemSize(self)
+        return _ACD.Mat_elemSize(self)
 
     def elemSize1(self):
-        return _USCD.Mat_elemSize1(self)
+        return _ACD.Mat_elemSize1(self)
 
     def type(self):
-        return _USCD.Mat_type(self)
+        return _ACD.Mat_type(self)
 
     def depth(self):
-        return _USCD.Mat_depth(self)
+        return _ACD.Mat_depth(self)
 
     def channels(self):
-        return _USCD.Mat_channels(self)
+        return _ACD.Mat_channels(self)
 
     def step1(self, i=0):
-        return _USCD.Mat_step1(self, i)
+        return _ACD.Mat_step1(self, i)
 
     def empty(self):
-        return _USCD.Mat_empty(self)
+        return _ACD.Mat_empty(self)
 
     def total(self):
-        return _USCD.Mat_total(self)
+        return _ACD.Mat_total(self)
 
     def checkVector(self, elemChannels, depth=-1, requireContinuous=True):
-        return _USCD.Mat_checkVector(self, elemChannels, depth, requireContinuous)
+        return _ACD.Mat_checkVector(self, elemChannels, depth, requireContinuous)
 
     def ptr(self, *args):
-        return _USCD.Mat_ptr(self, *args)
-    MAGIC_VAL = _USCD.Mat_MAGIC_VAL
-    AUTO_STEP = _USCD.Mat_AUTO_STEP
-    CONTINUOUS_FLAG = _USCD.Mat_CONTINUOUS_FLAG
-    SUBMATRIX_FLAG = _USCD.Mat_SUBMATRIX_FLAG
-    MAGIC_MASK = _USCD.Mat_MAGIC_MASK
-    TYPE_MASK = _USCD.Mat_TYPE_MASK
-    DEPTH_MASK = _USCD.Mat_DEPTH_MASK
-    flags = property(_USCD.Mat_flags_get, _USCD.Mat_flags_set)
-    dims = property(_USCD.Mat_dims_get, _USCD.Mat_dims_set)
-    rows = property(_USCD.Mat_rows_get, _USCD.Mat_rows_set)
-    cols = property(_USCD.Mat_cols_get, _USCD.Mat_cols_set)
-    data = property(_USCD.Mat_data_get, _USCD.Mat_data_set)
-    datastart = property(_USCD.Mat_datastart_get, _USCD.Mat_datastart_set)
-    dataend = property(_USCD.Mat_dataend_get, _USCD.Mat_dataend_set)
-    datalimit = property(_USCD.Mat_datalimit_get, _USCD.Mat_datalimit_set)
+        return _ACD.Mat_ptr(self, *args)
+    MAGIC_VAL = _ACD.Mat_MAGIC_VAL
+    AUTO_STEP = _ACD.Mat_AUTO_STEP
+    CONTINUOUS_FLAG = _ACD.Mat_CONTINUOUS_FLAG
+    SUBMATRIX_FLAG = _ACD.Mat_SUBMATRIX_FLAG
+    MAGIC_MASK = _ACD.Mat_MAGIC_MASK
+    TYPE_MASK = _ACD.Mat_TYPE_MASK
+    DEPTH_MASK = _ACD.Mat_DEPTH_MASK
+    flags = property(_ACD.Mat_flags_get, _ACD.Mat_flags_set)
+    dims = property(_ACD.Mat_dims_get, _ACD.Mat_dims_set)
+    rows = property(_ACD.Mat_rows_get, _ACD.Mat_rows_set)
+    cols = property(_ACD.Mat_cols_get, _ACD.Mat_cols_set)
+    data = property(_ACD.Mat_data_get, _ACD.Mat_data_set)
+    datastart = property(_ACD.Mat_datastart_get, _ACD.Mat_datastart_set)
+    dataend = property(_ACD.Mat_dataend_get, _ACD.Mat_dataend_set)
+    datalimit = property(_ACD.Mat_datalimit_get, _ACD.Mat_datalimit_set)
 
     def __init__(self, *args):
-        _USCD.Mat_swiginit(self, _USCD.new_Mat(*args))
+        _ACD.Mat_swiginit(self, _ACD.new_Mat(*args))
 
     def _typestr(self):
         typestr = _depthToDtype(self.depth())
@@ -555,22 +555,22 @@ class Mat(object):
 
 
     def __str__(self):
-        return _USCD.Mat___str__(self)
+        return _ACD.Mat___str__(self)
 
-# Register Mat in _USCD:
-_USCD.Mat_swigregister(Mat)
+# Register Mat in _ACD:
+_ACD.Mat_swigregister(Mat)
 
 class _cv_numpy_sizeof_uint8_t(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_uint8_t_value
+    value = _ACD._cv_numpy_sizeof_uint8_t_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_uint8_t_swiginit(self, _USCD.new__cv_numpy_sizeof_uint8_t())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_uint8_t
+        _ACD._cv_numpy_sizeof_uint8_t_swiginit(self, _ACD.new__cv_numpy_sizeof_uint8_t())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_uint8_t
 
-# Register _cv_numpy_sizeof_uint8_t in _USCD:
-_USCD._cv_numpy_sizeof_uint8_t_swigregister(_cv_numpy_sizeof_uint8_t)
+# Register _cv_numpy_sizeof_uint8_t in _ACD:
+_ACD._cv_numpy_sizeof_uint8_t_swigregister(_cv_numpy_sizeof_uint8_t)
 
 
 if _cv_numpy_sizeof_uint8_t.value == 1:
@@ -583,106 +583,106 @@ class uint8_tArray(object):
     __repr__ = _swig_repr
 
     def iterator(self):
-        return _USCD.uint8_tArray_iterator(self)
+        return _ACD.uint8_tArray_iterator(self)
     def __iter__(self):
         return self.iterator()
 
     def __nonzero__(self):
-        return _USCD.uint8_tArray___nonzero__(self)
+        return _ACD.uint8_tArray___nonzero__(self)
 
     def __bool__(self):
-        return _USCD.uint8_tArray___bool__(self)
+        return _ACD.uint8_tArray___bool__(self)
 
     def __len__(self):
-        return _USCD.uint8_tArray___len__(self)
+        return _ACD.uint8_tArray___len__(self)
 
     def __getslice__(self, i, j):
-        return _USCD.uint8_tArray___getslice__(self, i, j)
+        return _ACD.uint8_tArray___getslice__(self, i, j)
 
     def __setslice__(self, *args):
-        return _USCD.uint8_tArray___setslice__(self, *args)
+        return _ACD.uint8_tArray___setslice__(self, *args)
 
     def __delslice__(self, i, j):
-        return _USCD.uint8_tArray___delslice__(self, i, j)
+        return _ACD.uint8_tArray___delslice__(self, i, j)
 
     def __delitem__(self, *args):
-        return _USCD.uint8_tArray___delitem__(self, *args)
+        return _ACD.uint8_tArray___delitem__(self, *args)
 
     def __getitem__(self, *args):
-        return _USCD.uint8_tArray___getitem__(self, *args)
+        return _ACD.uint8_tArray___getitem__(self, *args)
 
     def __setitem__(self, *args):
-        return _USCD.uint8_tArray___setitem__(self, *args)
+        return _ACD.uint8_tArray___setitem__(self, *args)
 
     def pop(self):
-        return _USCD.uint8_tArray_pop(self)
+        return _ACD.uint8_tArray_pop(self)
 
     def append(self, x):
-        return _USCD.uint8_tArray_append(self, x)
+        return _ACD.uint8_tArray_append(self, x)
 
     def empty(self):
-        return _USCD.uint8_tArray_empty(self)
+        return _ACD.uint8_tArray_empty(self)
 
     def size(self):
-        return _USCD.uint8_tArray_size(self)
+        return _ACD.uint8_tArray_size(self)
 
     def swap(self, v):
-        return _USCD.uint8_tArray_swap(self, v)
+        return _ACD.uint8_tArray_swap(self, v)
 
     def begin(self):
-        return _USCD.uint8_tArray_begin(self)
+        return _ACD.uint8_tArray_begin(self)
 
     def end(self):
-        return _USCD.uint8_tArray_end(self)
+        return _ACD.uint8_tArray_end(self)
 
     def rbegin(self):
-        return _USCD.uint8_tArray_rbegin(self)
+        return _ACD.uint8_tArray_rbegin(self)
 
     def rend(self):
-        return _USCD.uint8_tArray_rend(self)
+        return _ACD.uint8_tArray_rend(self)
 
     def clear(self):
-        return _USCD.uint8_tArray_clear(self)
+        return _ACD.uint8_tArray_clear(self)
 
     def get_allocator(self):
-        return _USCD.uint8_tArray_get_allocator(self)
+        return _ACD.uint8_tArray_get_allocator(self)
 
     def pop_back(self):
-        return _USCD.uint8_tArray_pop_back(self)
+        return _ACD.uint8_tArray_pop_back(self)
 
     def erase(self, *args):
-        return _USCD.uint8_tArray_erase(self, *args)
+        return _ACD.uint8_tArray_erase(self, *args)
 
     def __init__(self, *args):
-        _USCD.uint8_tArray_swiginit(self, _USCD.new_uint8_tArray(*args))
+        _ACD.uint8_tArray_swiginit(self, _ACD.new_uint8_tArray(*args))
 
     def push_back(self, x):
-        return _USCD.uint8_tArray_push_back(self, x)
+        return _ACD.uint8_tArray_push_back(self, x)
 
     def front(self):
-        return _USCD.uint8_tArray_front(self)
+        return _ACD.uint8_tArray_front(self)
 
     def back(self):
-        return _USCD.uint8_tArray_back(self)
+        return _ACD.uint8_tArray_back(self)
 
     def assign(self, n, x):
-        return _USCD.uint8_tArray_assign(self, n, x)
+        return _ACD.uint8_tArray_assign(self, n, x)
 
     def resize(self, *args):
-        return _USCD.uint8_tArray_resize(self, *args)
+        return _ACD.uint8_tArray_resize(self, *args)
 
     def insert(self, *args):
-        return _USCD.uint8_tArray_insert(self, *args)
+        return _ACD.uint8_tArray_insert(self, *args)
 
     def reserve(self, n):
-        return _USCD.uint8_tArray_reserve(self, n)
+        return _ACD.uint8_tArray_reserve(self, n)
 
     def capacity(self):
-        return _USCD.uint8_tArray_capacity(self)
-    __swig_destroy__ = _USCD.delete_uint8_tArray
+        return _ACD.uint8_tArray_capacity(self)
+    __swig_destroy__ = _ACD.delete_uint8_tArray
 
-# Register uint8_tArray in _USCD:
-_USCD.uint8_tArray_swigregister(uint8_tArray)
+# Register uint8_tArray in _ACD:
+_ACD.uint8_tArray_swigregister(uint8_tArray)
 
 
 _array_map["uint8_t"] =uint8_tArray
@@ -690,53 +690,53 @@ _array_map["uint8_t"] =uint8_tArray
 class _Matx_uint8_t_2_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_uint8_t_2_1_rows
-    cols = _USCD._Matx_uint8_t_2_1_cols
-    channels = _USCD._Matx_uint8_t_2_1_channels
-    shortdim = _USCD._Matx_uint8_t_2_1_shortdim
+    rows = _ACD._Matx_uint8_t_2_1_rows
+    cols = _ACD._Matx_uint8_t_2_1_cols
+    channels = _ACD._Matx_uint8_t_2_1_channels
+    shortdim = _ACD._Matx_uint8_t_2_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_uint8_t_2_1_all(alpha)
+        return _ACD._Matx_uint8_t_2_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_uint8_t_2_1_zeros()
+        return _ACD._Matx_uint8_t_2_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_uint8_t_2_1_ones()
+        return _ACD._Matx_uint8_t_2_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_uint8_t_2_1_eye()
+        return _ACD._Matx_uint8_t_2_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_uint8_t_2_1_randu(a, b)
+        return _ACD._Matx_uint8_t_2_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_uint8_t_2_1_randn(a, b)
+        return _ACD._Matx_uint8_t_2_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_uint8_t_2_1_dot(self, v)
+        return _ACD._Matx_uint8_t_2_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_uint8_t_2_1_ddot(self, v)
+        return _ACD._Matx_uint8_t_2_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_uint8_t_2_1_t(self)
+        return _ACD._Matx_uint8_t_2_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_uint8_t_2_1_mul(self, a)
+        return _ACD._Matx_uint8_t_2_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_uint8_t_2_1_div(self, a)
+        return _ACD._Matx_uint8_t_2_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_uint8_t_2_1___call__(self, i, j)
-    val = property(_USCD._Matx_uint8_t_2_1_val_get, _USCD._Matx_uint8_t_2_1_val_set)
+        return _ACD._Matx_uint8_t_2_1___call__(self, i, j)
+    val = property(_ACD._Matx_uint8_t_2_1_val_get, _ACD._Matx_uint8_t_2_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -756,7 +756,7 @@ class _Matx_uint8_t_2_1(object):
         args = [array]
 
 
-        _USCD._Matx_uint8_t_2_1_swiginit(self, _USCD.new__Matx_uint8_t_2_1(*args))
+        _ACD._Matx_uint8_t_2_1_swiginit(self, _ACD.new__Matx_uint8_t_2_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -794,29 +794,29 @@ class _Matx_uint8_t_2_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_uint8_t_2_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_uint8_t_2_1
+        return _ACD._Matx_uint8_t_2_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_uint8_t_2_1
 
-# Register _Matx_uint8_t_2_1 in _USCD:
-_USCD._Matx_uint8_t_2_1_swigregister(_Matx_uint8_t_2_1)
+# Register _Matx_uint8_t_2_1 in _ACD:
+_ACD._Matx_uint8_t_2_1_swigregister(_Matx_uint8_t_2_1)
 
 def _Matx_uint8_t_2_1_all(alpha):
-    return _USCD._Matx_uint8_t_2_1_all(alpha)
+    return _ACD._Matx_uint8_t_2_1_all(alpha)
 
 def _Matx_uint8_t_2_1_zeros():
-    return _USCD._Matx_uint8_t_2_1_zeros()
+    return _ACD._Matx_uint8_t_2_1_zeros()
 
 def _Matx_uint8_t_2_1_ones():
-    return _USCD._Matx_uint8_t_2_1_ones()
+    return _ACD._Matx_uint8_t_2_1_ones()
 
 def _Matx_uint8_t_2_1_eye():
-    return _USCD._Matx_uint8_t_2_1_eye()
+    return _ACD._Matx_uint8_t_2_1_eye()
 
 def _Matx_uint8_t_2_1_randu(a, b):
-    return _USCD._Matx_uint8_t_2_1_randu(a, b)
+    return _ACD._Matx_uint8_t_2_1_randu(a, b)
 
 def _Matx_uint8_t_2_1_randn(a, b):
-    return _USCD._Matx_uint8_t_2_1_randn(a, b)
+    return _ACD._Matx_uint8_t_2_1_randn(a, b)
 
 
 Matx21b = _Matx_uint8_t_2_1
@@ -824,17 +824,17 @@ Matx21b = _Matx_uint8_t_2_1
 class _Vec_uint8_t_2(_Matx_uint8_t_2_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_uint8_t_2_channels
+    channels = _ACD._Vec_uint8_t_2_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_uint8_t_2_all(alpha)
+        return _ACD._Vec_uint8_t_2_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_uint8_t_2_mul(self, v)
+        return _ACD._Vec_uint8_t_2_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_uint8_t_2___call__(self, i)
+        return _ACD._Vec_uint8_t_2___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -853,7 +853,7 @@ class _Vec_uint8_t_2(_Matx_uint8_t_2_1):
         args = [array]
 
 
-        _USCD._Vec_uint8_t_2_swiginit(self, _USCD.new__Vec_uint8_t_2(*args))
+        _ACD._Vec_uint8_t_2_swiginit(self, _ACD.new__Vec_uint8_t_2(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -880,28 +880,28 @@ class _Vec_uint8_t_2(_Matx_uint8_t_2_1):
 
 
     def __str__(self):
-        return _USCD._Vec_uint8_t_2___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_uint8_t_2
+        return _ACD._Vec_uint8_t_2___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_uint8_t_2
 
-# Register _Vec_uint8_t_2 in _USCD:
-_USCD._Vec_uint8_t_2_swigregister(_Vec_uint8_t_2)
+# Register _Vec_uint8_t_2 in _ACD:
+_ACD._Vec_uint8_t_2_swigregister(_Vec_uint8_t_2)
 
 def _Vec_uint8_t_2_all(alpha):
-    return _USCD._Vec_uint8_t_2_all(alpha)
+    return _ACD._Vec_uint8_t_2_all(alpha)
 
 class _DataType_Vec_uint8_t_2(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_uint8_t_2_generic_type
-    channels = _USCD._DataType_Vec_uint8_t_2_channels
-    fmt = _USCD._DataType_Vec_uint8_t_2_fmt
+    generic_type = _ACD._DataType_Vec_uint8_t_2_generic_type
+    channels = _ACD._DataType_Vec_uint8_t_2_channels
+    fmt = _ACD._DataType_Vec_uint8_t_2_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_uint8_t_2_swiginit(self, _USCD.new__DataType_Vec_uint8_t_2())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_uint8_t_2
+        _ACD._DataType_Vec_uint8_t_2_swiginit(self, _ACD.new__DataType_Vec_uint8_t_2())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_uint8_t_2
 
-# Register _DataType_Vec_uint8_t_2 in _USCD:
-_USCD._DataType_Vec_uint8_t_2_swigregister(_DataType_Vec_uint8_t_2)
+# Register _DataType_Vec_uint8_t_2 in _ACD:
+_ACD._DataType_Vec_uint8_t_2_swigregister(_DataType_Vec_uint8_t_2)
 
 
 Vec2b = _Vec_uint8_t_2
@@ -910,53 +910,53 @@ DataType_Vec2b = _DataType_Vec_uint8_t_2
 class _Matx_uint8_t_3_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_uint8_t_3_1_rows
-    cols = _USCD._Matx_uint8_t_3_1_cols
-    channels = _USCD._Matx_uint8_t_3_1_channels
-    shortdim = _USCD._Matx_uint8_t_3_1_shortdim
+    rows = _ACD._Matx_uint8_t_3_1_rows
+    cols = _ACD._Matx_uint8_t_3_1_cols
+    channels = _ACD._Matx_uint8_t_3_1_channels
+    shortdim = _ACD._Matx_uint8_t_3_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_uint8_t_3_1_all(alpha)
+        return _ACD._Matx_uint8_t_3_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_uint8_t_3_1_zeros()
+        return _ACD._Matx_uint8_t_3_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_uint8_t_3_1_ones()
+        return _ACD._Matx_uint8_t_3_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_uint8_t_3_1_eye()
+        return _ACD._Matx_uint8_t_3_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_uint8_t_3_1_randu(a, b)
+        return _ACD._Matx_uint8_t_3_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_uint8_t_3_1_randn(a, b)
+        return _ACD._Matx_uint8_t_3_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_uint8_t_3_1_dot(self, v)
+        return _ACD._Matx_uint8_t_3_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_uint8_t_3_1_ddot(self, v)
+        return _ACD._Matx_uint8_t_3_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_uint8_t_3_1_t(self)
+        return _ACD._Matx_uint8_t_3_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_uint8_t_3_1_mul(self, a)
+        return _ACD._Matx_uint8_t_3_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_uint8_t_3_1_div(self, a)
+        return _ACD._Matx_uint8_t_3_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_uint8_t_3_1___call__(self, i, j)
-    val = property(_USCD._Matx_uint8_t_3_1_val_get, _USCD._Matx_uint8_t_3_1_val_set)
+        return _ACD._Matx_uint8_t_3_1___call__(self, i, j)
+    val = property(_ACD._Matx_uint8_t_3_1_val_get, _ACD._Matx_uint8_t_3_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -976,7 +976,7 @@ class _Matx_uint8_t_3_1(object):
         args = [array]
 
 
-        _USCD._Matx_uint8_t_3_1_swiginit(self, _USCD.new__Matx_uint8_t_3_1(*args))
+        _ACD._Matx_uint8_t_3_1_swiginit(self, _ACD.new__Matx_uint8_t_3_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -1014,29 +1014,29 @@ class _Matx_uint8_t_3_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_uint8_t_3_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_uint8_t_3_1
+        return _ACD._Matx_uint8_t_3_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_uint8_t_3_1
 
-# Register _Matx_uint8_t_3_1 in _USCD:
-_USCD._Matx_uint8_t_3_1_swigregister(_Matx_uint8_t_3_1)
+# Register _Matx_uint8_t_3_1 in _ACD:
+_ACD._Matx_uint8_t_3_1_swigregister(_Matx_uint8_t_3_1)
 
 def _Matx_uint8_t_3_1_all(alpha):
-    return _USCD._Matx_uint8_t_3_1_all(alpha)
+    return _ACD._Matx_uint8_t_3_1_all(alpha)
 
 def _Matx_uint8_t_3_1_zeros():
-    return _USCD._Matx_uint8_t_3_1_zeros()
+    return _ACD._Matx_uint8_t_3_1_zeros()
 
 def _Matx_uint8_t_3_1_ones():
-    return _USCD._Matx_uint8_t_3_1_ones()
+    return _ACD._Matx_uint8_t_3_1_ones()
 
 def _Matx_uint8_t_3_1_eye():
-    return _USCD._Matx_uint8_t_3_1_eye()
+    return _ACD._Matx_uint8_t_3_1_eye()
 
 def _Matx_uint8_t_3_1_randu(a, b):
-    return _USCD._Matx_uint8_t_3_1_randu(a, b)
+    return _ACD._Matx_uint8_t_3_1_randu(a, b)
 
 def _Matx_uint8_t_3_1_randn(a, b):
-    return _USCD._Matx_uint8_t_3_1_randn(a, b)
+    return _ACD._Matx_uint8_t_3_1_randn(a, b)
 
 
 Matx31b = _Matx_uint8_t_3_1
@@ -1044,17 +1044,17 @@ Matx31b = _Matx_uint8_t_3_1
 class _Vec_uint8_t_3(_Matx_uint8_t_3_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_uint8_t_3_channels
+    channels = _ACD._Vec_uint8_t_3_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_uint8_t_3_all(alpha)
+        return _ACD._Vec_uint8_t_3_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_uint8_t_3_mul(self, v)
+        return _ACD._Vec_uint8_t_3_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_uint8_t_3___call__(self, i)
+        return _ACD._Vec_uint8_t_3___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -1073,7 +1073,7 @@ class _Vec_uint8_t_3(_Matx_uint8_t_3_1):
         args = [array]
 
 
-        _USCD._Vec_uint8_t_3_swiginit(self, _USCD.new__Vec_uint8_t_3(*args))
+        _ACD._Vec_uint8_t_3_swiginit(self, _ACD.new__Vec_uint8_t_3(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -1100,28 +1100,28 @@ class _Vec_uint8_t_3(_Matx_uint8_t_3_1):
 
 
     def __str__(self):
-        return _USCD._Vec_uint8_t_3___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_uint8_t_3
+        return _ACD._Vec_uint8_t_3___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_uint8_t_3
 
-# Register _Vec_uint8_t_3 in _USCD:
-_USCD._Vec_uint8_t_3_swigregister(_Vec_uint8_t_3)
+# Register _Vec_uint8_t_3 in _ACD:
+_ACD._Vec_uint8_t_3_swigregister(_Vec_uint8_t_3)
 
 def _Vec_uint8_t_3_all(alpha):
-    return _USCD._Vec_uint8_t_3_all(alpha)
+    return _ACD._Vec_uint8_t_3_all(alpha)
 
 class _DataType_Vec_uint8_t_3(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_uint8_t_3_generic_type
-    channels = _USCD._DataType_Vec_uint8_t_3_channels
-    fmt = _USCD._DataType_Vec_uint8_t_3_fmt
+    generic_type = _ACD._DataType_Vec_uint8_t_3_generic_type
+    channels = _ACD._DataType_Vec_uint8_t_3_channels
+    fmt = _ACD._DataType_Vec_uint8_t_3_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_uint8_t_3_swiginit(self, _USCD.new__DataType_Vec_uint8_t_3())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_uint8_t_3
+        _ACD._DataType_Vec_uint8_t_3_swiginit(self, _ACD.new__DataType_Vec_uint8_t_3())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_uint8_t_3
 
-# Register _DataType_Vec_uint8_t_3 in _USCD:
-_USCD._DataType_Vec_uint8_t_3_swigregister(_DataType_Vec_uint8_t_3)
+# Register _DataType_Vec_uint8_t_3 in _ACD:
+_ACD._DataType_Vec_uint8_t_3_swigregister(_DataType_Vec_uint8_t_3)
 
 
 Vec3b = _Vec_uint8_t_3
@@ -1130,53 +1130,53 @@ DataType_Vec3b = _DataType_Vec_uint8_t_3
 class _Matx_uint8_t_4_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_uint8_t_4_1_rows
-    cols = _USCD._Matx_uint8_t_4_1_cols
-    channels = _USCD._Matx_uint8_t_4_1_channels
-    shortdim = _USCD._Matx_uint8_t_4_1_shortdim
+    rows = _ACD._Matx_uint8_t_4_1_rows
+    cols = _ACD._Matx_uint8_t_4_1_cols
+    channels = _ACD._Matx_uint8_t_4_1_channels
+    shortdim = _ACD._Matx_uint8_t_4_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_uint8_t_4_1_all(alpha)
+        return _ACD._Matx_uint8_t_4_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_uint8_t_4_1_zeros()
+        return _ACD._Matx_uint8_t_4_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_uint8_t_4_1_ones()
+        return _ACD._Matx_uint8_t_4_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_uint8_t_4_1_eye()
+        return _ACD._Matx_uint8_t_4_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_uint8_t_4_1_randu(a, b)
+        return _ACD._Matx_uint8_t_4_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_uint8_t_4_1_randn(a, b)
+        return _ACD._Matx_uint8_t_4_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_uint8_t_4_1_dot(self, v)
+        return _ACD._Matx_uint8_t_4_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_uint8_t_4_1_ddot(self, v)
+        return _ACD._Matx_uint8_t_4_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_uint8_t_4_1_t(self)
+        return _ACD._Matx_uint8_t_4_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_uint8_t_4_1_mul(self, a)
+        return _ACD._Matx_uint8_t_4_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_uint8_t_4_1_div(self, a)
+        return _ACD._Matx_uint8_t_4_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_uint8_t_4_1___call__(self, i, j)
-    val = property(_USCD._Matx_uint8_t_4_1_val_get, _USCD._Matx_uint8_t_4_1_val_set)
+        return _ACD._Matx_uint8_t_4_1___call__(self, i, j)
+    val = property(_ACD._Matx_uint8_t_4_1_val_get, _ACD._Matx_uint8_t_4_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -1196,7 +1196,7 @@ class _Matx_uint8_t_4_1(object):
         args = [array]
 
 
-        _USCD._Matx_uint8_t_4_1_swiginit(self, _USCD.new__Matx_uint8_t_4_1(*args))
+        _ACD._Matx_uint8_t_4_1_swiginit(self, _ACD.new__Matx_uint8_t_4_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -1234,29 +1234,29 @@ class _Matx_uint8_t_4_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_uint8_t_4_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_uint8_t_4_1
+        return _ACD._Matx_uint8_t_4_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_uint8_t_4_1
 
-# Register _Matx_uint8_t_4_1 in _USCD:
-_USCD._Matx_uint8_t_4_1_swigregister(_Matx_uint8_t_4_1)
+# Register _Matx_uint8_t_4_1 in _ACD:
+_ACD._Matx_uint8_t_4_1_swigregister(_Matx_uint8_t_4_1)
 
 def _Matx_uint8_t_4_1_all(alpha):
-    return _USCD._Matx_uint8_t_4_1_all(alpha)
+    return _ACD._Matx_uint8_t_4_1_all(alpha)
 
 def _Matx_uint8_t_4_1_zeros():
-    return _USCD._Matx_uint8_t_4_1_zeros()
+    return _ACD._Matx_uint8_t_4_1_zeros()
 
 def _Matx_uint8_t_4_1_ones():
-    return _USCD._Matx_uint8_t_4_1_ones()
+    return _ACD._Matx_uint8_t_4_1_ones()
 
 def _Matx_uint8_t_4_1_eye():
-    return _USCD._Matx_uint8_t_4_1_eye()
+    return _ACD._Matx_uint8_t_4_1_eye()
 
 def _Matx_uint8_t_4_1_randu(a, b):
-    return _USCD._Matx_uint8_t_4_1_randu(a, b)
+    return _ACD._Matx_uint8_t_4_1_randu(a, b)
 
 def _Matx_uint8_t_4_1_randn(a, b):
-    return _USCD._Matx_uint8_t_4_1_randn(a, b)
+    return _ACD._Matx_uint8_t_4_1_randn(a, b)
 
 
 Matx41b = _Matx_uint8_t_4_1
@@ -1264,17 +1264,17 @@ Matx41b = _Matx_uint8_t_4_1
 class _Vec_uint8_t_4(_Matx_uint8_t_4_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_uint8_t_4_channels
+    channels = _ACD._Vec_uint8_t_4_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_uint8_t_4_all(alpha)
+        return _ACD._Vec_uint8_t_4_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_uint8_t_4_mul(self, v)
+        return _ACD._Vec_uint8_t_4_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_uint8_t_4___call__(self, i)
+        return _ACD._Vec_uint8_t_4___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -1293,7 +1293,7 @@ class _Vec_uint8_t_4(_Matx_uint8_t_4_1):
         args = [array]
 
 
-        _USCD._Vec_uint8_t_4_swiginit(self, _USCD.new__Vec_uint8_t_4(*args))
+        _ACD._Vec_uint8_t_4_swiginit(self, _ACD.new__Vec_uint8_t_4(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -1320,28 +1320,28 @@ class _Vec_uint8_t_4(_Matx_uint8_t_4_1):
 
 
     def __str__(self):
-        return _USCD._Vec_uint8_t_4___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_uint8_t_4
+        return _ACD._Vec_uint8_t_4___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_uint8_t_4
 
-# Register _Vec_uint8_t_4 in _USCD:
-_USCD._Vec_uint8_t_4_swigregister(_Vec_uint8_t_4)
+# Register _Vec_uint8_t_4 in _ACD:
+_ACD._Vec_uint8_t_4_swigregister(_Vec_uint8_t_4)
 
 def _Vec_uint8_t_4_all(alpha):
-    return _USCD._Vec_uint8_t_4_all(alpha)
+    return _ACD._Vec_uint8_t_4_all(alpha)
 
 class _DataType_Vec_uint8_t_4(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_uint8_t_4_generic_type
-    channels = _USCD._DataType_Vec_uint8_t_4_channels
-    fmt = _USCD._DataType_Vec_uint8_t_4_fmt
+    generic_type = _ACD._DataType_Vec_uint8_t_4_generic_type
+    channels = _ACD._DataType_Vec_uint8_t_4_channels
+    fmt = _ACD._DataType_Vec_uint8_t_4_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_uint8_t_4_swiginit(self, _USCD.new__DataType_Vec_uint8_t_4())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_uint8_t_4
+        _ACD._DataType_Vec_uint8_t_4_swiginit(self, _ACD.new__DataType_Vec_uint8_t_4())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_uint8_t_4
 
-# Register _DataType_Vec_uint8_t_4 in _USCD:
-_USCD._DataType_Vec_uint8_t_4_swigregister(_DataType_Vec_uint8_t_4)
+# Register _DataType_Vec_uint8_t_4 in _ACD:
+_ACD._DataType_Vec_uint8_t_4_swigregister(_DataType_Vec_uint8_t_4)
 
 
 Vec4b = _Vec_uint8_t_4
@@ -1350,14 +1350,14 @@ DataType_Vec4b = _DataType_Vec_uint8_t_4
 class _cv_numpy_sizeof_short(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_short_value
+    value = _ACD._cv_numpy_sizeof_short_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_short_swiginit(self, _USCD.new__cv_numpy_sizeof_short())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_short
+        _ACD._cv_numpy_sizeof_short_swiginit(self, _ACD.new__cv_numpy_sizeof_short())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_short
 
-# Register _cv_numpy_sizeof_short in _USCD:
-_USCD._cv_numpy_sizeof_short_swigregister(_cv_numpy_sizeof_short)
+# Register _cv_numpy_sizeof_short in _ACD:
+_ACD._cv_numpy_sizeof_short_swigregister(_cv_numpy_sizeof_short)
 
 
 if _cv_numpy_sizeof_short.value == 1:
@@ -1370,106 +1370,106 @@ class shortArray(object):
     __repr__ = _swig_repr
 
     def iterator(self):
-        return _USCD.shortArray_iterator(self)
+        return _ACD.shortArray_iterator(self)
     def __iter__(self):
         return self.iterator()
 
     def __nonzero__(self):
-        return _USCD.shortArray___nonzero__(self)
+        return _ACD.shortArray___nonzero__(self)
 
     def __bool__(self):
-        return _USCD.shortArray___bool__(self)
+        return _ACD.shortArray___bool__(self)
 
     def __len__(self):
-        return _USCD.shortArray___len__(self)
+        return _ACD.shortArray___len__(self)
 
     def __getslice__(self, i, j):
-        return _USCD.shortArray___getslice__(self, i, j)
+        return _ACD.shortArray___getslice__(self, i, j)
 
     def __setslice__(self, *args):
-        return _USCD.shortArray___setslice__(self, *args)
+        return _ACD.shortArray___setslice__(self, *args)
 
     def __delslice__(self, i, j):
-        return _USCD.shortArray___delslice__(self, i, j)
+        return _ACD.shortArray___delslice__(self, i, j)
 
     def __delitem__(self, *args):
-        return _USCD.shortArray___delitem__(self, *args)
+        return _ACD.shortArray___delitem__(self, *args)
 
     def __getitem__(self, *args):
-        return _USCD.shortArray___getitem__(self, *args)
+        return _ACD.shortArray___getitem__(self, *args)
 
     def __setitem__(self, *args):
-        return _USCD.shortArray___setitem__(self, *args)
+        return _ACD.shortArray___setitem__(self, *args)
 
     def pop(self):
-        return _USCD.shortArray_pop(self)
+        return _ACD.shortArray_pop(self)
 
     def append(self, x):
-        return _USCD.shortArray_append(self, x)
+        return _ACD.shortArray_append(self, x)
 
     def empty(self):
-        return _USCD.shortArray_empty(self)
+        return _ACD.shortArray_empty(self)
 
     def size(self):
-        return _USCD.shortArray_size(self)
+        return _ACD.shortArray_size(self)
 
     def swap(self, v):
-        return _USCD.shortArray_swap(self, v)
+        return _ACD.shortArray_swap(self, v)
 
     def begin(self):
-        return _USCD.shortArray_begin(self)
+        return _ACD.shortArray_begin(self)
 
     def end(self):
-        return _USCD.shortArray_end(self)
+        return _ACD.shortArray_end(self)
 
     def rbegin(self):
-        return _USCD.shortArray_rbegin(self)
+        return _ACD.shortArray_rbegin(self)
 
     def rend(self):
-        return _USCD.shortArray_rend(self)
+        return _ACD.shortArray_rend(self)
 
     def clear(self):
-        return _USCD.shortArray_clear(self)
+        return _ACD.shortArray_clear(self)
 
     def get_allocator(self):
-        return _USCD.shortArray_get_allocator(self)
+        return _ACD.shortArray_get_allocator(self)
 
     def pop_back(self):
-        return _USCD.shortArray_pop_back(self)
+        return _ACD.shortArray_pop_back(self)
 
     def erase(self, *args):
-        return _USCD.shortArray_erase(self, *args)
+        return _ACD.shortArray_erase(self, *args)
 
     def __init__(self, *args):
-        _USCD.shortArray_swiginit(self, _USCD.new_shortArray(*args))
+        _ACD.shortArray_swiginit(self, _ACD.new_shortArray(*args))
 
     def push_back(self, x):
-        return _USCD.shortArray_push_back(self, x)
+        return _ACD.shortArray_push_back(self, x)
 
     def front(self):
-        return _USCD.shortArray_front(self)
+        return _ACD.shortArray_front(self)
 
     def back(self):
-        return _USCD.shortArray_back(self)
+        return _ACD.shortArray_back(self)
 
     def assign(self, n, x):
-        return _USCD.shortArray_assign(self, n, x)
+        return _ACD.shortArray_assign(self, n, x)
 
     def resize(self, *args):
-        return _USCD.shortArray_resize(self, *args)
+        return _ACD.shortArray_resize(self, *args)
 
     def insert(self, *args):
-        return _USCD.shortArray_insert(self, *args)
+        return _ACD.shortArray_insert(self, *args)
 
     def reserve(self, n):
-        return _USCD.shortArray_reserve(self, n)
+        return _ACD.shortArray_reserve(self, n)
 
     def capacity(self):
-        return _USCD.shortArray_capacity(self)
-    __swig_destroy__ = _USCD.delete_shortArray
+        return _ACD.shortArray_capacity(self)
+    __swig_destroy__ = _ACD.delete_shortArray
 
-# Register shortArray in _USCD:
-_USCD.shortArray_swigregister(shortArray)
+# Register shortArray in _ACD:
+_ACD.shortArray_swigregister(shortArray)
 
 
 _array_map["short"] =shortArray
@@ -1477,53 +1477,53 @@ _array_map["short"] =shortArray
 class _Matx_short_2_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_short_2_1_rows
-    cols = _USCD._Matx_short_2_1_cols
-    channels = _USCD._Matx_short_2_1_channels
-    shortdim = _USCD._Matx_short_2_1_shortdim
+    rows = _ACD._Matx_short_2_1_rows
+    cols = _ACD._Matx_short_2_1_cols
+    channels = _ACD._Matx_short_2_1_channels
+    shortdim = _ACD._Matx_short_2_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_short_2_1_all(alpha)
+        return _ACD._Matx_short_2_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_short_2_1_zeros()
+        return _ACD._Matx_short_2_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_short_2_1_ones()
+        return _ACD._Matx_short_2_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_short_2_1_eye()
+        return _ACD._Matx_short_2_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_short_2_1_randu(a, b)
+        return _ACD._Matx_short_2_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_short_2_1_randn(a, b)
+        return _ACD._Matx_short_2_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_short_2_1_dot(self, v)
+        return _ACD._Matx_short_2_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_short_2_1_ddot(self, v)
+        return _ACD._Matx_short_2_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_short_2_1_t(self)
+        return _ACD._Matx_short_2_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_short_2_1_mul(self, a)
+        return _ACD._Matx_short_2_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_short_2_1_div(self, a)
+        return _ACD._Matx_short_2_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_short_2_1___call__(self, i, j)
-    val = property(_USCD._Matx_short_2_1_val_get, _USCD._Matx_short_2_1_val_set)
+        return _ACD._Matx_short_2_1___call__(self, i, j)
+    val = property(_ACD._Matx_short_2_1_val_get, _ACD._Matx_short_2_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -1543,7 +1543,7 @@ class _Matx_short_2_1(object):
         args = [array]
 
 
-        _USCD._Matx_short_2_1_swiginit(self, _USCD.new__Matx_short_2_1(*args))
+        _ACD._Matx_short_2_1_swiginit(self, _ACD.new__Matx_short_2_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -1581,29 +1581,29 @@ class _Matx_short_2_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_short_2_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_short_2_1
+        return _ACD._Matx_short_2_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_short_2_1
 
-# Register _Matx_short_2_1 in _USCD:
-_USCD._Matx_short_2_1_swigregister(_Matx_short_2_1)
+# Register _Matx_short_2_1 in _ACD:
+_ACD._Matx_short_2_1_swigregister(_Matx_short_2_1)
 
 def _Matx_short_2_1_all(alpha):
-    return _USCD._Matx_short_2_1_all(alpha)
+    return _ACD._Matx_short_2_1_all(alpha)
 
 def _Matx_short_2_1_zeros():
-    return _USCD._Matx_short_2_1_zeros()
+    return _ACD._Matx_short_2_1_zeros()
 
 def _Matx_short_2_1_ones():
-    return _USCD._Matx_short_2_1_ones()
+    return _ACD._Matx_short_2_1_ones()
 
 def _Matx_short_2_1_eye():
-    return _USCD._Matx_short_2_1_eye()
+    return _ACD._Matx_short_2_1_eye()
 
 def _Matx_short_2_1_randu(a, b):
-    return _USCD._Matx_short_2_1_randu(a, b)
+    return _ACD._Matx_short_2_1_randu(a, b)
 
 def _Matx_short_2_1_randn(a, b):
-    return _USCD._Matx_short_2_1_randn(a, b)
+    return _ACD._Matx_short_2_1_randn(a, b)
 
 
 Matx21s = _Matx_short_2_1
@@ -1611,17 +1611,17 @@ Matx21s = _Matx_short_2_1
 class _Vec_short_2(_Matx_short_2_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_short_2_channels
+    channels = _ACD._Vec_short_2_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_short_2_all(alpha)
+        return _ACD._Vec_short_2_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_short_2_mul(self, v)
+        return _ACD._Vec_short_2_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_short_2___call__(self, i)
+        return _ACD._Vec_short_2___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -1640,7 +1640,7 @@ class _Vec_short_2(_Matx_short_2_1):
         args = [array]
 
 
-        _USCD._Vec_short_2_swiginit(self, _USCD.new__Vec_short_2(*args))
+        _ACD._Vec_short_2_swiginit(self, _ACD.new__Vec_short_2(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -1667,28 +1667,28 @@ class _Vec_short_2(_Matx_short_2_1):
 
 
     def __str__(self):
-        return _USCD._Vec_short_2___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_short_2
+        return _ACD._Vec_short_2___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_short_2
 
-# Register _Vec_short_2 in _USCD:
-_USCD._Vec_short_2_swigregister(_Vec_short_2)
+# Register _Vec_short_2 in _ACD:
+_ACD._Vec_short_2_swigregister(_Vec_short_2)
 
 def _Vec_short_2_all(alpha):
-    return _USCD._Vec_short_2_all(alpha)
+    return _ACD._Vec_short_2_all(alpha)
 
 class _DataType_Vec_short_2(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_short_2_generic_type
-    channels = _USCD._DataType_Vec_short_2_channels
-    fmt = _USCD._DataType_Vec_short_2_fmt
+    generic_type = _ACD._DataType_Vec_short_2_generic_type
+    channels = _ACD._DataType_Vec_short_2_channels
+    fmt = _ACD._DataType_Vec_short_2_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_short_2_swiginit(self, _USCD.new__DataType_Vec_short_2())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_short_2
+        _ACD._DataType_Vec_short_2_swiginit(self, _ACD.new__DataType_Vec_short_2())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_short_2
 
-# Register _DataType_Vec_short_2 in _USCD:
-_USCD._DataType_Vec_short_2_swigregister(_DataType_Vec_short_2)
+# Register _DataType_Vec_short_2 in _ACD:
+_ACD._DataType_Vec_short_2_swigregister(_DataType_Vec_short_2)
 
 
 Vec2s = _Vec_short_2
@@ -1697,53 +1697,53 @@ DataType_Vec2s = _DataType_Vec_short_2
 class _Matx_short_3_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_short_3_1_rows
-    cols = _USCD._Matx_short_3_1_cols
-    channels = _USCD._Matx_short_3_1_channels
-    shortdim = _USCD._Matx_short_3_1_shortdim
+    rows = _ACD._Matx_short_3_1_rows
+    cols = _ACD._Matx_short_3_1_cols
+    channels = _ACD._Matx_short_3_1_channels
+    shortdim = _ACD._Matx_short_3_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_short_3_1_all(alpha)
+        return _ACD._Matx_short_3_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_short_3_1_zeros()
+        return _ACD._Matx_short_3_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_short_3_1_ones()
+        return _ACD._Matx_short_3_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_short_3_1_eye()
+        return _ACD._Matx_short_3_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_short_3_1_randu(a, b)
+        return _ACD._Matx_short_3_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_short_3_1_randn(a, b)
+        return _ACD._Matx_short_3_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_short_3_1_dot(self, v)
+        return _ACD._Matx_short_3_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_short_3_1_ddot(self, v)
+        return _ACD._Matx_short_3_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_short_3_1_t(self)
+        return _ACD._Matx_short_3_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_short_3_1_mul(self, a)
+        return _ACD._Matx_short_3_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_short_3_1_div(self, a)
+        return _ACD._Matx_short_3_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_short_3_1___call__(self, i, j)
-    val = property(_USCD._Matx_short_3_1_val_get, _USCD._Matx_short_3_1_val_set)
+        return _ACD._Matx_short_3_1___call__(self, i, j)
+    val = property(_ACD._Matx_short_3_1_val_get, _ACD._Matx_short_3_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -1763,7 +1763,7 @@ class _Matx_short_3_1(object):
         args = [array]
 
 
-        _USCD._Matx_short_3_1_swiginit(self, _USCD.new__Matx_short_3_1(*args))
+        _ACD._Matx_short_3_1_swiginit(self, _ACD.new__Matx_short_3_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -1801,29 +1801,29 @@ class _Matx_short_3_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_short_3_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_short_3_1
+        return _ACD._Matx_short_3_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_short_3_1
 
-# Register _Matx_short_3_1 in _USCD:
-_USCD._Matx_short_3_1_swigregister(_Matx_short_3_1)
+# Register _Matx_short_3_1 in _ACD:
+_ACD._Matx_short_3_1_swigregister(_Matx_short_3_1)
 
 def _Matx_short_3_1_all(alpha):
-    return _USCD._Matx_short_3_1_all(alpha)
+    return _ACD._Matx_short_3_1_all(alpha)
 
 def _Matx_short_3_1_zeros():
-    return _USCD._Matx_short_3_1_zeros()
+    return _ACD._Matx_short_3_1_zeros()
 
 def _Matx_short_3_1_ones():
-    return _USCD._Matx_short_3_1_ones()
+    return _ACD._Matx_short_3_1_ones()
 
 def _Matx_short_3_1_eye():
-    return _USCD._Matx_short_3_1_eye()
+    return _ACD._Matx_short_3_1_eye()
 
 def _Matx_short_3_1_randu(a, b):
-    return _USCD._Matx_short_3_1_randu(a, b)
+    return _ACD._Matx_short_3_1_randu(a, b)
 
 def _Matx_short_3_1_randn(a, b):
-    return _USCD._Matx_short_3_1_randn(a, b)
+    return _ACD._Matx_short_3_1_randn(a, b)
 
 
 Matx31s = _Matx_short_3_1
@@ -1831,17 +1831,17 @@ Matx31s = _Matx_short_3_1
 class _Vec_short_3(_Matx_short_3_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_short_3_channels
+    channels = _ACD._Vec_short_3_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_short_3_all(alpha)
+        return _ACD._Vec_short_3_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_short_3_mul(self, v)
+        return _ACD._Vec_short_3_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_short_3___call__(self, i)
+        return _ACD._Vec_short_3___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -1860,7 +1860,7 @@ class _Vec_short_3(_Matx_short_3_1):
         args = [array]
 
 
-        _USCD._Vec_short_3_swiginit(self, _USCD.new__Vec_short_3(*args))
+        _ACD._Vec_short_3_swiginit(self, _ACD.new__Vec_short_3(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -1887,28 +1887,28 @@ class _Vec_short_3(_Matx_short_3_1):
 
 
     def __str__(self):
-        return _USCD._Vec_short_3___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_short_3
+        return _ACD._Vec_short_3___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_short_3
 
-# Register _Vec_short_3 in _USCD:
-_USCD._Vec_short_3_swigregister(_Vec_short_3)
+# Register _Vec_short_3 in _ACD:
+_ACD._Vec_short_3_swigregister(_Vec_short_3)
 
 def _Vec_short_3_all(alpha):
-    return _USCD._Vec_short_3_all(alpha)
+    return _ACD._Vec_short_3_all(alpha)
 
 class _DataType_Vec_short_3(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_short_3_generic_type
-    channels = _USCD._DataType_Vec_short_3_channels
-    fmt = _USCD._DataType_Vec_short_3_fmt
+    generic_type = _ACD._DataType_Vec_short_3_generic_type
+    channels = _ACD._DataType_Vec_short_3_channels
+    fmt = _ACD._DataType_Vec_short_3_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_short_3_swiginit(self, _USCD.new__DataType_Vec_short_3())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_short_3
+        _ACD._DataType_Vec_short_3_swiginit(self, _ACD.new__DataType_Vec_short_3())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_short_3
 
-# Register _DataType_Vec_short_3 in _USCD:
-_USCD._DataType_Vec_short_3_swigregister(_DataType_Vec_short_3)
+# Register _DataType_Vec_short_3 in _ACD:
+_ACD._DataType_Vec_short_3_swigregister(_DataType_Vec_short_3)
 
 
 Vec3s = _Vec_short_3
@@ -1917,53 +1917,53 @@ DataType_Vec3s = _DataType_Vec_short_3
 class _Matx_short_4_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_short_4_1_rows
-    cols = _USCD._Matx_short_4_1_cols
-    channels = _USCD._Matx_short_4_1_channels
-    shortdim = _USCD._Matx_short_4_1_shortdim
+    rows = _ACD._Matx_short_4_1_rows
+    cols = _ACD._Matx_short_4_1_cols
+    channels = _ACD._Matx_short_4_1_channels
+    shortdim = _ACD._Matx_short_4_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_short_4_1_all(alpha)
+        return _ACD._Matx_short_4_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_short_4_1_zeros()
+        return _ACD._Matx_short_4_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_short_4_1_ones()
+        return _ACD._Matx_short_4_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_short_4_1_eye()
+        return _ACD._Matx_short_4_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_short_4_1_randu(a, b)
+        return _ACD._Matx_short_4_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_short_4_1_randn(a, b)
+        return _ACD._Matx_short_4_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_short_4_1_dot(self, v)
+        return _ACD._Matx_short_4_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_short_4_1_ddot(self, v)
+        return _ACD._Matx_short_4_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_short_4_1_t(self)
+        return _ACD._Matx_short_4_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_short_4_1_mul(self, a)
+        return _ACD._Matx_short_4_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_short_4_1_div(self, a)
+        return _ACD._Matx_short_4_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_short_4_1___call__(self, i, j)
-    val = property(_USCD._Matx_short_4_1_val_get, _USCD._Matx_short_4_1_val_set)
+        return _ACD._Matx_short_4_1___call__(self, i, j)
+    val = property(_ACD._Matx_short_4_1_val_get, _ACD._Matx_short_4_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -1983,7 +1983,7 @@ class _Matx_short_4_1(object):
         args = [array]
 
 
-        _USCD._Matx_short_4_1_swiginit(self, _USCD.new__Matx_short_4_1(*args))
+        _ACD._Matx_short_4_1_swiginit(self, _ACD.new__Matx_short_4_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -2021,29 +2021,29 @@ class _Matx_short_4_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_short_4_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_short_4_1
+        return _ACD._Matx_short_4_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_short_4_1
 
-# Register _Matx_short_4_1 in _USCD:
-_USCD._Matx_short_4_1_swigregister(_Matx_short_4_1)
+# Register _Matx_short_4_1 in _ACD:
+_ACD._Matx_short_4_1_swigregister(_Matx_short_4_1)
 
 def _Matx_short_4_1_all(alpha):
-    return _USCD._Matx_short_4_1_all(alpha)
+    return _ACD._Matx_short_4_1_all(alpha)
 
 def _Matx_short_4_1_zeros():
-    return _USCD._Matx_short_4_1_zeros()
+    return _ACD._Matx_short_4_1_zeros()
 
 def _Matx_short_4_1_ones():
-    return _USCD._Matx_short_4_1_ones()
+    return _ACD._Matx_short_4_1_ones()
 
 def _Matx_short_4_1_eye():
-    return _USCD._Matx_short_4_1_eye()
+    return _ACD._Matx_short_4_1_eye()
 
 def _Matx_short_4_1_randu(a, b):
-    return _USCD._Matx_short_4_1_randu(a, b)
+    return _ACD._Matx_short_4_1_randu(a, b)
 
 def _Matx_short_4_1_randn(a, b):
-    return _USCD._Matx_short_4_1_randn(a, b)
+    return _ACD._Matx_short_4_1_randn(a, b)
 
 
 Matx41s = _Matx_short_4_1
@@ -2051,17 +2051,17 @@ Matx41s = _Matx_short_4_1
 class _Vec_short_4(_Matx_short_4_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_short_4_channels
+    channels = _ACD._Vec_short_4_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_short_4_all(alpha)
+        return _ACD._Vec_short_4_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_short_4_mul(self, v)
+        return _ACD._Vec_short_4_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_short_4___call__(self, i)
+        return _ACD._Vec_short_4___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -2080,7 +2080,7 @@ class _Vec_short_4(_Matx_short_4_1):
         args = [array]
 
 
-        _USCD._Vec_short_4_swiginit(self, _USCD.new__Vec_short_4(*args))
+        _ACD._Vec_short_4_swiginit(self, _ACD.new__Vec_short_4(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -2107,28 +2107,28 @@ class _Vec_short_4(_Matx_short_4_1):
 
 
     def __str__(self):
-        return _USCD._Vec_short_4___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_short_4
+        return _ACD._Vec_short_4___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_short_4
 
-# Register _Vec_short_4 in _USCD:
-_USCD._Vec_short_4_swigregister(_Vec_short_4)
+# Register _Vec_short_4 in _ACD:
+_ACD._Vec_short_4_swigregister(_Vec_short_4)
 
 def _Vec_short_4_all(alpha):
-    return _USCD._Vec_short_4_all(alpha)
+    return _ACD._Vec_short_4_all(alpha)
 
 class _DataType_Vec_short_4(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_short_4_generic_type
-    channels = _USCD._DataType_Vec_short_4_channels
-    fmt = _USCD._DataType_Vec_short_4_fmt
+    generic_type = _ACD._DataType_Vec_short_4_generic_type
+    channels = _ACD._DataType_Vec_short_4_channels
+    fmt = _ACD._DataType_Vec_short_4_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_short_4_swiginit(self, _USCD.new__DataType_Vec_short_4())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_short_4
+        _ACD._DataType_Vec_short_4_swiginit(self, _ACD.new__DataType_Vec_short_4())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_short_4
 
-# Register _DataType_Vec_short_4 in _USCD:
-_USCD._DataType_Vec_short_4_swigregister(_DataType_Vec_short_4)
+# Register _DataType_Vec_short_4 in _ACD:
+_ACD._DataType_Vec_short_4_swigregister(_DataType_Vec_short_4)
 
 
 Vec4s = _Vec_short_4
@@ -2137,14 +2137,14 @@ DataType_Vec4s = _DataType_Vec_short_4
 class _cv_numpy_sizeof_ushort(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_ushort_value
+    value = _ACD._cv_numpy_sizeof_ushort_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_ushort_swiginit(self, _USCD.new__cv_numpy_sizeof_ushort())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_ushort
+        _ACD._cv_numpy_sizeof_ushort_swiginit(self, _ACD.new__cv_numpy_sizeof_ushort())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_ushort
 
-# Register _cv_numpy_sizeof_ushort in _USCD:
-_USCD._cv_numpy_sizeof_ushort_swigregister(_cv_numpy_sizeof_ushort)
+# Register _cv_numpy_sizeof_ushort in _ACD:
+_ACD._cv_numpy_sizeof_ushort_swigregister(_cv_numpy_sizeof_ushort)
 
 
 if _cv_numpy_sizeof_ushort.value == 1:
@@ -2157,106 +2157,106 @@ class ushortArray(object):
     __repr__ = _swig_repr
 
     def iterator(self):
-        return _USCD.ushortArray_iterator(self)
+        return _ACD.ushortArray_iterator(self)
     def __iter__(self):
         return self.iterator()
 
     def __nonzero__(self):
-        return _USCD.ushortArray___nonzero__(self)
+        return _ACD.ushortArray___nonzero__(self)
 
     def __bool__(self):
-        return _USCD.ushortArray___bool__(self)
+        return _ACD.ushortArray___bool__(self)
 
     def __len__(self):
-        return _USCD.ushortArray___len__(self)
+        return _ACD.ushortArray___len__(self)
 
     def __getslice__(self, i, j):
-        return _USCD.ushortArray___getslice__(self, i, j)
+        return _ACD.ushortArray___getslice__(self, i, j)
 
     def __setslice__(self, *args):
-        return _USCD.ushortArray___setslice__(self, *args)
+        return _ACD.ushortArray___setslice__(self, *args)
 
     def __delslice__(self, i, j):
-        return _USCD.ushortArray___delslice__(self, i, j)
+        return _ACD.ushortArray___delslice__(self, i, j)
 
     def __delitem__(self, *args):
-        return _USCD.ushortArray___delitem__(self, *args)
+        return _ACD.ushortArray___delitem__(self, *args)
 
     def __getitem__(self, *args):
-        return _USCD.ushortArray___getitem__(self, *args)
+        return _ACD.ushortArray___getitem__(self, *args)
 
     def __setitem__(self, *args):
-        return _USCD.ushortArray___setitem__(self, *args)
+        return _ACD.ushortArray___setitem__(self, *args)
 
     def pop(self):
-        return _USCD.ushortArray_pop(self)
+        return _ACD.ushortArray_pop(self)
 
     def append(self, x):
-        return _USCD.ushortArray_append(self, x)
+        return _ACD.ushortArray_append(self, x)
 
     def empty(self):
-        return _USCD.ushortArray_empty(self)
+        return _ACD.ushortArray_empty(self)
 
     def size(self):
-        return _USCD.ushortArray_size(self)
+        return _ACD.ushortArray_size(self)
 
     def swap(self, v):
-        return _USCD.ushortArray_swap(self, v)
+        return _ACD.ushortArray_swap(self, v)
 
     def begin(self):
-        return _USCD.ushortArray_begin(self)
+        return _ACD.ushortArray_begin(self)
 
     def end(self):
-        return _USCD.ushortArray_end(self)
+        return _ACD.ushortArray_end(self)
 
     def rbegin(self):
-        return _USCD.ushortArray_rbegin(self)
+        return _ACD.ushortArray_rbegin(self)
 
     def rend(self):
-        return _USCD.ushortArray_rend(self)
+        return _ACD.ushortArray_rend(self)
 
     def clear(self):
-        return _USCD.ushortArray_clear(self)
+        return _ACD.ushortArray_clear(self)
 
     def get_allocator(self):
-        return _USCD.ushortArray_get_allocator(self)
+        return _ACD.ushortArray_get_allocator(self)
 
     def pop_back(self):
-        return _USCD.ushortArray_pop_back(self)
+        return _ACD.ushortArray_pop_back(self)
 
     def erase(self, *args):
-        return _USCD.ushortArray_erase(self, *args)
+        return _ACD.ushortArray_erase(self, *args)
 
     def __init__(self, *args):
-        _USCD.ushortArray_swiginit(self, _USCD.new_ushortArray(*args))
+        _ACD.ushortArray_swiginit(self, _ACD.new_ushortArray(*args))
 
     def push_back(self, x):
-        return _USCD.ushortArray_push_back(self, x)
+        return _ACD.ushortArray_push_back(self, x)
 
     def front(self):
-        return _USCD.ushortArray_front(self)
+        return _ACD.ushortArray_front(self)
 
     def back(self):
-        return _USCD.ushortArray_back(self)
+        return _ACD.ushortArray_back(self)
 
     def assign(self, n, x):
-        return _USCD.ushortArray_assign(self, n, x)
+        return _ACD.ushortArray_assign(self, n, x)
 
     def resize(self, *args):
-        return _USCD.ushortArray_resize(self, *args)
+        return _ACD.ushortArray_resize(self, *args)
 
     def insert(self, *args):
-        return _USCD.ushortArray_insert(self, *args)
+        return _ACD.ushortArray_insert(self, *args)
 
     def reserve(self, n):
-        return _USCD.ushortArray_reserve(self, n)
+        return _ACD.ushortArray_reserve(self, n)
 
     def capacity(self):
-        return _USCD.ushortArray_capacity(self)
-    __swig_destroy__ = _USCD.delete_ushortArray
+        return _ACD.ushortArray_capacity(self)
+    __swig_destroy__ = _ACD.delete_ushortArray
 
-# Register ushortArray in _USCD:
-_USCD.ushortArray_swigregister(ushortArray)
+# Register ushortArray in _ACD:
+_ACD.ushortArray_swigregister(ushortArray)
 
 
 _array_map["ushort"] =ushortArray
@@ -2264,53 +2264,53 @@ _array_map["ushort"] =ushortArray
 class _Matx_ushort_2_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_ushort_2_1_rows
-    cols = _USCD._Matx_ushort_2_1_cols
-    channels = _USCD._Matx_ushort_2_1_channels
-    shortdim = _USCD._Matx_ushort_2_1_shortdim
+    rows = _ACD._Matx_ushort_2_1_rows
+    cols = _ACD._Matx_ushort_2_1_cols
+    channels = _ACD._Matx_ushort_2_1_channels
+    shortdim = _ACD._Matx_ushort_2_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_ushort_2_1_all(alpha)
+        return _ACD._Matx_ushort_2_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_ushort_2_1_zeros()
+        return _ACD._Matx_ushort_2_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_ushort_2_1_ones()
+        return _ACD._Matx_ushort_2_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_ushort_2_1_eye()
+        return _ACD._Matx_ushort_2_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_ushort_2_1_randu(a, b)
+        return _ACD._Matx_ushort_2_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_ushort_2_1_randn(a, b)
+        return _ACD._Matx_ushort_2_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_ushort_2_1_dot(self, v)
+        return _ACD._Matx_ushort_2_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_ushort_2_1_ddot(self, v)
+        return _ACD._Matx_ushort_2_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_ushort_2_1_t(self)
+        return _ACD._Matx_ushort_2_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_ushort_2_1_mul(self, a)
+        return _ACD._Matx_ushort_2_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_ushort_2_1_div(self, a)
+        return _ACD._Matx_ushort_2_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_ushort_2_1___call__(self, i, j)
-    val = property(_USCD._Matx_ushort_2_1_val_get, _USCD._Matx_ushort_2_1_val_set)
+        return _ACD._Matx_ushort_2_1___call__(self, i, j)
+    val = property(_ACD._Matx_ushort_2_1_val_get, _ACD._Matx_ushort_2_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -2330,7 +2330,7 @@ class _Matx_ushort_2_1(object):
         args = [array]
 
 
-        _USCD._Matx_ushort_2_1_swiginit(self, _USCD.new__Matx_ushort_2_1(*args))
+        _ACD._Matx_ushort_2_1_swiginit(self, _ACD.new__Matx_ushort_2_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -2368,29 +2368,29 @@ class _Matx_ushort_2_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_ushort_2_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_ushort_2_1
+        return _ACD._Matx_ushort_2_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_ushort_2_1
 
-# Register _Matx_ushort_2_1 in _USCD:
-_USCD._Matx_ushort_2_1_swigregister(_Matx_ushort_2_1)
+# Register _Matx_ushort_2_1 in _ACD:
+_ACD._Matx_ushort_2_1_swigregister(_Matx_ushort_2_1)
 
 def _Matx_ushort_2_1_all(alpha):
-    return _USCD._Matx_ushort_2_1_all(alpha)
+    return _ACD._Matx_ushort_2_1_all(alpha)
 
 def _Matx_ushort_2_1_zeros():
-    return _USCD._Matx_ushort_2_1_zeros()
+    return _ACD._Matx_ushort_2_1_zeros()
 
 def _Matx_ushort_2_1_ones():
-    return _USCD._Matx_ushort_2_1_ones()
+    return _ACD._Matx_ushort_2_1_ones()
 
 def _Matx_ushort_2_1_eye():
-    return _USCD._Matx_ushort_2_1_eye()
+    return _ACD._Matx_ushort_2_1_eye()
 
 def _Matx_ushort_2_1_randu(a, b):
-    return _USCD._Matx_ushort_2_1_randu(a, b)
+    return _ACD._Matx_ushort_2_1_randu(a, b)
 
 def _Matx_ushort_2_1_randn(a, b):
-    return _USCD._Matx_ushort_2_1_randn(a, b)
+    return _ACD._Matx_ushort_2_1_randn(a, b)
 
 
 Matx21w = _Matx_ushort_2_1
@@ -2398,17 +2398,17 @@ Matx21w = _Matx_ushort_2_1
 class _Vec_ushort_2(_Matx_ushort_2_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_ushort_2_channels
+    channels = _ACD._Vec_ushort_2_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_ushort_2_all(alpha)
+        return _ACD._Vec_ushort_2_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_ushort_2_mul(self, v)
+        return _ACD._Vec_ushort_2_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_ushort_2___call__(self, i)
+        return _ACD._Vec_ushort_2___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -2427,7 +2427,7 @@ class _Vec_ushort_2(_Matx_ushort_2_1):
         args = [array]
 
 
-        _USCD._Vec_ushort_2_swiginit(self, _USCD.new__Vec_ushort_2(*args))
+        _ACD._Vec_ushort_2_swiginit(self, _ACD.new__Vec_ushort_2(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -2454,28 +2454,28 @@ class _Vec_ushort_2(_Matx_ushort_2_1):
 
 
     def __str__(self):
-        return _USCD._Vec_ushort_2___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_ushort_2
+        return _ACD._Vec_ushort_2___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_ushort_2
 
-# Register _Vec_ushort_2 in _USCD:
-_USCD._Vec_ushort_2_swigregister(_Vec_ushort_2)
+# Register _Vec_ushort_2 in _ACD:
+_ACD._Vec_ushort_2_swigregister(_Vec_ushort_2)
 
 def _Vec_ushort_2_all(alpha):
-    return _USCD._Vec_ushort_2_all(alpha)
+    return _ACD._Vec_ushort_2_all(alpha)
 
 class _DataType_Vec_ushort_2(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_ushort_2_generic_type
-    channels = _USCD._DataType_Vec_ushort_2_channels
-    fmt = _USCD._DataType_Vec_ushort_2_fmt
+    generic_type = _ACD._DataType_Vec_ushort_2_generic_type
+    channels = _ACD._DataType_Vec_ushort_2_channels
+    fmt = _ACD._DataType_Vec_ushort_2_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_ushort_2_swiginit(self, _USCD.new__DataType_Vec_ushort_2())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_ushort_2
+        _ACD._DataType_Vec_ushort_2_swiginit(self, _ACD.new__DataType_Vec_ushort_2())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_ushort_2
 
-# Register _DataType_Vec_ushort_2 in _USCD:
-_USCD._DataType_Vec_ushort_2_swigregister(_DataType_Vec_ushort_2)
+# Register _DataType_Vec_ushort_2 in _ACD:
+_ACD._DataType_Vec_ushort_2_swigregister(_DataType_Vec_ushort_2)
 
 
 Vec2w = _Vec_ushort_2
@@ -2484,53 +2484,53 @@ DataType_Vec2w = _DataType_Vec_ushort_2
 class _Matx_ushort_3_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_ushort_3_1_rows
-    cols = _USCD._Matx_ushort_3_1_cols
-    channels = _USCD._Matx_ushort_3_1_channels
-    shortdim = _USCD._Matx_ushort_3_1_shortdim
+    rows = _ACD._Matx_ushort_3_1_rows
+    cols = _ACD._Matx_ushort_3_1_cols
+    channels = _ACD._Matx_ushort_3_1_channels
+    shortdim = _ACD._Matx_ushort_3_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_ushort_3_1_all(alpha)
+        return _ACD._Matx_ushort_3_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_ushort_3_1_zeros()
+        return _ACD._Matx_ushort_3_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_ushort_3_1_ones()
+        return _ACD._Matx_ushort_3_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_ushort_3_1_eye()
+        return _ACD._Matx_ushort_3_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_ushort_3_1_randu(a, b)
+        return _ACD._Matx_ushort_3_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_ushort_3_1_randn(a, b)
+        return _ACD._Matx_ushort_3_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_ushort_3_1_dot(self, v)
+        return _ACD._Matx_ushort_3_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_ushort_3_1_ddot(self, v)
+        return _ACD._Matx_ushort_3_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_ushort_3_1_t(self)
+        return _ACD._Matx_ushort_3_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_ushort_3_1_mul(self, a)
+        return _ACD._Matx_ushort_3_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_ushort_3_1_div(self, a)
+        return _ACD._Matx_ushort_3_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_ushort_3_1___call__(self, i, j)
-    val = property(_USCD._Matx_ushort_3_1_val_get, _USCD._Matx_ushort_3_1_val_set)
+        return _ACD._Matx_ushort_3_1___call__(self, i, j)
+    val = property(_ACD._Matx_ushort_3_1_val_get, _ACD._Matx_ushort_3_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -2550,7 +2550,7 @@ class _Matx_ushort_3_1(object):
         args = [array]
 
 
-        _USCD._Matx_ushort_3_1_swiginit(self, _USCD.new__Matx_ushort_3_1(*args))
+        _ACD._Matx_ushort_3_1_swiginit(self, _ACD.new__Matx_ushort_3_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -2588,29 +2588,29 @@ class _Matx_ushort_3_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_ushort_3_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_ushort_3_1
+        return _ACD._Matx_ushort_3_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_ushort_3_1
 
-# Register _Matx_ushort_3_1 in _USCD:
-_USCD._Matx_ushort_3_1_swigregister(_Matx_ushort_3_1)
+# Register _Matx_ushort_3_1 in _ACD:
+_ACD._Matx_ushort_3_1_swigregister(_Matx_ushort_3_1)
 
 def _Matx_ushort_3_1_all(alpha):
-    return _USCD._Matx_ushort_3_1_all(alpha)
+    return _ACD._Matx_ushort_3_1_all(alpha)
 
 def _Matx_ushort_3_1_zeros():
-    return _USCD._Matx_ushort_3_1_zeros()
+    return _ACD._Matx_ushort_3_1_zeros()
 
 def _Matx_ushort_3_1_ones():
-    return _USCD._Matx_ushort_3_1_ones()
+    return _ACD._Matx_ushort_3_1_ones()
 
 def _Matx_ushort_3_1_eye():
-    return _USCD._Matx_ushort_3_1_eye()
+    return _ACD._Matx_ushort_3_1_eye()
 
 def _Matx_ushort_3_1_randu(a, b):
-    return _USCD._Matx_ushort_3_1_randu(a, b)
+    return _ACD._Matx_ushort_3_1_randu(a, b)
 
 def _Matx_ushort_3_1_randn(a, b):
-    return _USCD._Matx_ushort_3_1_randn(a, b)
+    return _ACD._Matx_ushort_3_1_randn(a, b)
 
 
 Matx31w = _Matx_ushort_3_1
@@ -2618,17 +2618,17 @@ Matx31w = _Matx_ushort_3_1
 class _Vec_ushort_3(_Matx_ushort_3_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_ushort_3_channels
+    channels = _ACD._Vec_ushort_3_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_ushort_3_all(alpha)
+        return _ACD._Vec_ushort_3_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_ushort_3_mul(self, v)
+        return _ACD._Vec_ushort_3_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_ushort_3___call__(self, i)
+        return _ACD._Vec_ushort_3___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -2647,7 +2647,7 @@ class _Vec_ushort_3(_Matx_ushort_3_1):
         args = [array]
 
 
-        _USCD._Vec_ushort_3_swiginit(self, _USCD.new__Vec_ushort_3(*args))
+        _ACD._Vec_ushort_3_swiginit(self, _ACD.new__Vec_ushort_3(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -2674,28 +2674,28 @@ class _Vec_ushort_3(_Matx_ushort_3_1):
 
 
     def __str__(self):
-        return _USCD._Vec_ushort_3___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_ushort_3
+        return _ACD._Vec_ushort_3___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_ushort_3
 
-# Register _Vec_ushort_3 in _USCD:
-_USCD._Vec_ushort_3_swigregister(_Vec_ushort_3)
+# Register _Vec_ushort_3 in _ACD:
+_ACD._Vec_ushort_3_swigregister(_Vec_ushort_3)
 
 def _Vec_ushort_3_all(alpha):
-    return _USCD._Vec_ushort_3_all(alpha)
+    return _ACD._Vec_ushort_3_all(alpha)
 
 class _DataType_Vec_ushort_3(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_ushort_3_generic_type
-    channels = _USCD._DataType_Vec_ushort_3_channels
-    fmt = _USCD._DataType_Vec_ushort_3_fmt
+    generic_type = _ACD._DataType_Vec_ushort_3_generic_type
+    channels = _ACD._DataType_Vec_ushort_3_channels
+    fmt = _ACD._DataType_Vec_ushort_3_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_ushort_3_swiginit(self, _USCD.new__DataType_Vec_ushort_3())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_ushort_3
+        _ACD._DataType_Vec_ushort_3_swiginit(self, _ACD.new__DataType_Vec_ushort_3())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_ushort_3
 
-# Register _DataType_Vec_ushort_3 in _USCD:
-_USCD._DataType_Vec_ushort_3_swigregister(_DataType_Vec_ushort_3)
+# Register _DataType_Vec_ushort_3 in _ACD:
+_ACD._DataType_Vec_ushort_3_swigregister(_DataType_Vec_ushort_3)
 
 
 Vec3w = _Vec_ushort_3
@@ -2704,53 +2704,53 @@ DataType_Vec3w = _DataType_Vec_ushort_3
 class _Matx_ushort_4_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_ushort_4_1_rows
-    cols = _USCD._Matx_ushort_4_1_cols
-    channels = _USCD._Matx_ushort_4_1_channels
-    shortdim = _USCD._Matx_ushort_4_1_shortdim
+    rows = _ACD._Matx_ushort_4_1_rows
+    cols = _ACD._Matx_ushort_4_1_cols
+    channels = _ACD._Matx_ushort_4_1_channels
+    shortdim = _ACD._Matx_ushort_4_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_ushort_4_1_all(alpha)
+        return _ACD._Matx_ushort_4_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_ushort_4_1_zeros()
+        return _ACD._Matx_ushort_4_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_ushort_4_1_ones()
+        return _ACD._Matx_ushort_4_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_ushort_4_1_eye()
+        return _ACD._Matx_ushort_4_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_ushort_4_1_randu(a, b)
+        return _ACD._Matx_ushort_4_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_ushort_4_1_randn(a, b)
+        return _ACD._Matx_ushort_4_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_ushort_4_1_dot(self, v)
+        return _ACD._Matx_ushort_4_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_ushort_4_1_ddot(self, v)
+        return _ACD._Matx_ushort_4_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_ushort_4_1_t(self)
+        return _ACD._Matx_ushort_4_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_ushort_4_1_mul(self, a)
+        return _ACD._Matx_ushort_4_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_ushort_4_1_div(self, a)
+        return _ACD._Matx_ushort_4_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_ushort_4_1___call__(self, i, j)
-    val = property(_USCD._Matx_ushort_4_1_val_get, _USCD._Matx_ushort_4_1_val_set)
+        return _ACD._Matx_ushort_4_1___call__(self, i, j)
+    val = property(_ACD._Matx_ushort_4_1_val_get, _ACD._Matx_ushort_4_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -2770,7 +2770,7 @@ class _Matx_ushort_4_1(object):
         args = [array]
 
 
-        _USCD._Matx_ushort_4_1_swiginit(self, _USCD.new__Matx_ushort_4_1(*args))
+        _ACD._Matx_ushort_4_1_swiginit(self, _ACD.new__Matx_ushort_4_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -2808,29 +2808,29 @@ class _Matx_ushort_4_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_ushort_4_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_ushort_4_1
+        return _ACD._Matx_ushort_4_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_ushort_4_1
 
-# Register _Matx_ushort_4_1 in _USCD:
-_USCD._Matx_ushort_4_1_swigregister(_Matx_ushort_4_1)
+# Register _Matx_ushort_4_1 in _ACD:
+_ACD._Matx_ushort_4_1_swigregister(_Matx_ushort_4_1)
 
 def _Matx_ushort_4_1_all(alpha):
-    return _USCD._Matx_ushort_4_1_all(alpha)
+    return _ACD._Matx_ushort_4_1_all(alpha)
 
 def _Matx_ushort_4_1_zeros():
-    return _USCD._Matx_ushort_4_1_zeros()
+    return _ACD._Matx_ushort_4_1_zeros()
 
 def _Matx_ushort_4_1_ones():
-    return _USCD._Matx_ushort_4_1_ones()
+    return _ACD._Matx_ushort_4_1_ones()
 
 def _Matx_ushort_4_1_eye():
-    return _USCD._Matx_ushort_4_1_eye()
+    return _ACD._Matx_ushort_4_1_eye()
 
 def _Matx_ushort_4_1_randu(a, b):
-    return _USCD._Matx_ushort_4_1_randu(a, b)
+    return _ACD._Matx_ushort_4_1_randu(a, b)
 
 def _Matx_ushort_4_1_randn(a, b):
-    return _USCD._Matx_ushort_4_1_randn(a, b)
+    return _ACD._Matx_ushort_4_1_randn(a, b)
 
 
 Matx41w = _Matx_ushort_4_1
@@ -2838,17 +2838,17 @@ Matx41w = _Matx_ushort_4_1
 class _Vec_ushort_4(_Matx_ushort_4_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_ushort_4_channels
+    channels = _ACD._Vec_ushort_4_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_ushort_4_all(alpha)
+        return _ACD._Vec_ushort_4_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_ushort_4_mul(self, v)
+        return _ACD._Vec_ushort_4_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_ushort_4___call__(self, i)
+        return _ACD._Vec_ushort_4___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -2867,7 +2867,7 @@ class _Vec_ushort_4(_Matx_ushort_4_1):
         args = [array]
 
 
-        _USCD._Vec_ushort_4_swiginit(self, _USCD.new__Vec_ushort_4(*args))
+        _ACD._Vec_ushort_4_swiginit(self, _ACD.new__Vec_ushort_4(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -2894,28 +2894,28 @@ class _Vec_ushort_4(_Matx_ushort_4_1):
 
 
     def __str__(self):
-        return _USCD._Vec_ushort_4___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_ushort_4
+        return _ACD._Vec_ushort_4___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_ushort_4
 
-# Register _Vec_ushort_4 in _USCD:
-_USCD._Vec_ushort_4_swigregister(_Vec_ushort_4)
+# Register _Vec_ushort_4 in _ACD:
+_ACD._Vec_ushort_4_swigregister(_Vec_ushort_4)
 
 def _Vec_ushort_4_all(alpha):
-    return _USCD._Vec_ushort_4_all(alpha)
+    return _ACD._Vec_ushort_4_all(alpha)
 
 class _DataType_Vec_ushort_4(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_ushort_4_generic_type
-    channels = _USCD._DataType_Vec_ushort_4_channels
-    fmt = _USCD._DataType_Vec_ushort_4_fmt
+    generic_type = _ACD._DataType_Vec_ushort_4_generic_type
+    channels = _ACD._DataType_Vec_ushort_4_channels
+    fmt = _ACD._DataType_Vec_ushort_4_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_ushort_4_swiginit(self, _USCD.new__DataType_Vec_ushort_4())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_ushort_4
+        _ACD._DataType_Vec_ushort_4_swiginit(self, _ACD.new__DataType_Vec_ushort_4())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_ushort_4
 
-# Register _DataType_Vec_ushort_4 in _USCD:
-_USCD._DataType_Vec_ushort_4_swigregister(_DataType_Vec_ushort_4)
+# Register _DataType_Vec_ushort_4 in _ACD:
+_ACD._DataType_Vec_ushort_4_swigregister(_DataType_Vec_ushort_4)
 
 
 Vec4w = _Vec_ushort_4
@@ -2924,14 +2924,14 @@ DataType_Vec4w = _DataType_Vec_ushort_4
 class _cv_numpy_sizeof_int(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_int_value
+    value = _ACD._cv_numpy_sizeof_int_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_int_swiginit(self, _USCD.new__cv_numpy_sizeof_int())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_int
+        _ACD._cv_numpy_sizeof_int_swiginit(self, _ACD.new__cv_numpy_sizeof_int())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_int
 
-# Register _cv_numpy_sizeof_int in _USCD:
-_USCD._cv_numpy_sizeof_int_swigregister(_cv_numpy_sizeof_int)
+# Register _cv_numpy_sizeof_int in _ACD:
+_ACD._cv_numpy_sizeof_int_swigregister(_cv_numpy_sizeof_int)
 
 
 if _cv_numpy_sizeof_int.value == 1:
@@ -2944,106 +2944,106 @@ class intArray(object):
     __repr__ = _swig_repr
 
     def iterator(self):
-        return _USCD.intArray_iterator(self)
+        return _ACD.intArray_iterator(self)
     def __iter__(self):
         return self.iterator()
 
     def __nonzero__(self):
-        return _USCD.intArray___nonzero__(self)
+        return _ACD.intArray___nonzero__(self)
 
     def __bool__(self):
-        return _USCD.intArray___bool__(self)
+        return _ACD.intArray___bool__(self)
 
     def __len__(self):
-        return _USCD.intArray___len__(self)
+        return _ACD.intArray___len__(self)
 
     def __getslice__(self, i, j):
-        return _USCD.intArray___getslice__(self, i, j)
+        return _ACD.intArray___getslice__(self, i, j)
 
     def __setslice__(self, *args):
-        return _USCD.intArray___setslice__(self, *args)
+        return _ACD.intArray___setslice__(self, *args)
 
     def __delslice__(self, i, j):
-        return _USCD.intArray___delslice__(self, i, j)
+        return _ACD.intArray___delslice__(self, i, j)
 
     def __delitem__(self, *args):
-        return _USCD.intArray___delitem__(self, *args)
+        return _ACD.intArray___delitem__(self, *args)
 
     def __getitem__(self, *args):
-        return _USCD.intArray___getitem__(self, *args)
+        return _ACD.intArray___getitem__(self, *args)
 
     def __setitem__(self, *args):
-        return _USCD.intArray___setitem__(self, *args)
+        return _ACD.intArray___setitem__(self, *args)
 
     def pop(self):
-        return _USCD.intArray_pop(self)
+        return _ACD.intArray_pop(self)
 
     def append(self, x):
-        return _USCD.intArray_append(self, x)
+        return _ACD.intArray_append(self, x)
 
     def empty(self):
-        return _USCD.intArray_empty(self)
+        return _ACD.intArray_empty(self)
 
     def size(self):
-        return _USCD.intArray_size(self)
+        return _ACD.intArray_size(self)
 
     def swap(self, v):
-        return _USCD.intArray_swap(self, v)
+        return _ACD.intArray_swap(self, v)
 
     def begin(self):
-        return _USCD.intArray_begin(self)
+        return _ACD.intArray_begin(self)
 
     def end(self):
-        return _USCD.intArray_end(self)
+        return _ACD.intArray_end(self)
 
     def rbegin(self):
-        return _USCD.intArray_rbegin(self)
+        return _ACD.intArray_rbegin(self)
 
     def rend(self):
-        return _USCD.intArray_rend(self)
+        return _ACD.intArray_rend(self)
 
     def clear(self):
-        return _USCD.intArray_clear(self)
+        return _ACD.intArray_clear(self)
 
     def get_allocator(self):
-        return _USCD.intArray_get_allocator(self)
+        return _ACD.intArray_get_allocator(self)
 
     def pop_back(self):
-        return _USCD.intArray_pop_back(self)
+        return _ACD.intArray_pop_back(self)
 
     def erase(self, *args):
-        return _USCD.intArray_erase(self, *args)
+        return _ACD.intArray_erase(self, *args)
 
     def __init__(self, *args):
-        _USCD.intArray_swiginit(self, _USCD.new_intArray(*args))
+        _ACD.intArray_swiginit(self, _ACD.new_intArray(*args))
 
     def push_back(self, x):
-        return _USCD.intArray_push_back(self, x)
+        return _ACD.intArray_push_back(self, x)
 
     def front(self):
-        return _USCD.intArray_front(self)
+        return _ACD.intArray_front(self)
 
     def back(self):
-        return _USCD.intArray_back(self)
+        return _ACD.intArray_back(self)
 
     def assign(self, n, x):
-        return _USCD.intArray_assign(self, n, x)
+        return _ACD.intArray_assign(self, n, x)
 
     def resize(self, *args):
-        return _USCD.intArray_resize(self, *args)
+        return _ACD.intArray_resize(self, *args)
 
     def insert(self, *args):
-        return _USCD.intArray_insert(self, *args)
+        return _ACD.intArray_insert(self, *args)
 
     def reserve(self, n):
-        return _USCD.intArray_reserve(self, n)
+        return _ACD.intArray_reserve(self, n)
 
     def capacity(self):
-        return _USCD.intArray_capacity(self)
-    __swig_destroy__ = _USCD.delete_intArray
+        return _ACD.intArray_capacity(self)
+    __swig_destroy__ = _ACD.delete_intArray
 
-# Register intArray in _USCD:
-_USCD.intArray_swigregister(intArray)
+# Register intArray in _ACD:
+_ACD.intArray_swigregister(intArray)
 
 
 _array_map["int"] =intArray
@@ -3051,53 +3051,53 @@ _array_map["int"] =intArray
 class _Matx_int_2_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_int_2_1_rows
-    cols = _USCD._Matx_int_2_1_cols
-    channels = _USCD._Matx_int_2_1_channels
-    shortdim = _USCD._Matx_int_2_1_shortdim
+    rows = _ACD._Matx_int_2_1_rows
+    cols = _ACD._Matx_int_2_1_cols
+    channels = _ACD._Matx_int_2_1_channels
+    shortdim = _ACD._Matx_int_2_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_int_2_1_all(alpha)
+        return _ACD._Matx_int_2_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_int_2_1_zeros()
+        return _ACD._Matx_int_2_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_int_2_1_ones()
+        return _ACD._Matx_int_2_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_int_2_1_eye()
+        return _ACD._Matx_int_2_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_int_2_1_randu(a, b)
+        return _ACD._Matx_int_2_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_int_2_1_randn(a, b)
+        return _ACD._Matx_int_2_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_int_2_1_dot(self, v)
+        return _ACD._Matx_int_2_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_int_2_1_ddot(self, v)
+        return _ACD._Matx_int_2_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_int_2_1_t(self)
+        return _ACD._Matx_int_2_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_int_2_1_mul(self, a)
+        return _ACD._Matx_int_2_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_int_2_1_div(self, a)
+        return _ACD._Matx_int_2_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_int_2_1___call__(self, i, j)
-    val = property(_USCD._Matx_int_2_1_val_get, _USCD._Matx_int_2_1_val_set)
+        return _ACD._Matx_int_2_1___call__(self, i, j)
+    val = property(_ACD._Matx_int_2_1_val_get, _ACD._Matx_int_2_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -3117,7 +3117,7 @@ class _Matx_int_2_1(object):
         args = [array]
 
 
-        _USCD._Matx_int_2_1_swiginit(self, _USCD.new__Matx_int_2_1(*args))
+        _ACD._Matx_int_2_1_swiginit(self, _ACD.new__Matx_int_2_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -3155,29 +3155,29 @@ class _Matx_int_2_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_int_2_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_int_2_1
+        return _ACD._Matx_int_2_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_int_2_1
 
-# Register _Matx_int_2_1 in _USCD:
-_USCD._Matx_int_2_1_swigregister(_Matx_int_2_1)
+# Register _Matx_int_2_1 in _ACD:
+_ACD._Matx_int_2_1_swigregister(_Matx_int_2_1)
 
 def _Matx_int_2_1_all(alpha):
-    return _USCD._Matx_int_2_1_all(alpha)
+    return _ACD._Matx_int_2_1_all(alpha)
 
 def _Matx_int_2_1_zeros():
-    return _USCD._Matx_int_2_1_zeros()
+    return _ACD._Matx_int_2_1_zeros()
 
 def _Matx_int_2_1_ones():
-    return _USCD._Matx_int_2_1_ones()
+    return _ACD._Matx_int_2_1_ones()
 
 def _Matx_int_2_1_eye():
-    return _USCD._Matx_int_2_1_eye()
+    return _ACD._Matx_int_2_1_eye()
 
 def _Matx_int_2_1_randu(a, b):
-    return _USCD._Matx_int_2_1_randu(a, b)
+    return _ACD._Matx_int_2_1_randu(a, b)
 
 def _Matx_int_2_1_randn(a, b):
-    return _USCD._Matx_int_2_1_randn(a, b)
+    return _ACD._Matx_int_2_1_randn(a, b)
 
 
 Matx21i = _Matx_int_2_1
@@ -3185,17 +3185,17 @@ Matx21i = _Matx_int_2_1
 class _Vec_int_2(_Matx_int_2_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_int_2_channels
+    channels = _ACD._Vec_int_2_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_int_2_all(alpha)
+        return _ACD._Vec_int_2_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_int_2_mul(self, v)
+        return _ACD._Vec_int_2_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_int_2___call__(self, i)
+        return _ACD._Vec_int_2___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -3214,7 +3214,7 @@ class _Vec_int_2(_Matx_int_2_1):
         args = [array]
 
 
-        _USCD._Vec_int_2_swiginit(self, _USCD.new__Vec_int_2(*args))
+        _ACD._Vec_int_2_swiginit(self, _ACD.new__Vec_int_2(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -3241,28 +3241,28 @@ class _Vec_int_2(_Matx_int_2_1):
 
 
     def __str__(self):
-        return _USCD._Vec_int_2___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_int_2
+        return _ACD._Vec_int_2___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_int_2
 
-# Register _Vec_int_2 in _USCD:
-_USCD._Vec_int_2_swigregister(_Vec_int_2)
+# Register _Vec_int_2 in _ACD:
+_ACD._Vec_int_2_swigregister(_Vec_int_2)
 
 def _Vec_int_2_all(alpha):
-    return _USCD._Vec_int_2_all(alpha)
+    return _ACD._Vec_int_2_all(alpha)
 
 class _DataType_Vec_int_2(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_int_2_generic_type
-    channels = _USCD._DataType_Vec_int_2_channels
-    fmt = _USCD._DataType_Vec_int_2_fmt
+    generic_type = _ACD._DataType_Vec_int_2_generic_type
+    channels = _ACD._DataType_Vec_int_2_channels
+    fmt = _ACD._DataType_Vec_int_2_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_int_2_swiginit(self, _USCD.new__DataType_Vec_int_2())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_int_2
+        _ACD._DataType_Vec_int_2_swiginit(self, _ACD.new__DataType_Vec_int_2())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_int_2
 
-# Register _DataType_Vec_int_2 in _USCD:
-_USCD._DataType_Vec_int_2_swigregister(_DataType_Vec_int_2)
+# Register _DataType_Vec_int_2 in _ACD:
+_ACD._DataType_Vec_int_2_swigregister(_DataType_Vec_int_2)
 
 
 Vec2i = _Vec_int_2
@@ -3271,53 +3271,53 @@ DataType_Vec2i = _DataType_Vec_int_2
 class _Matx_int_3_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_int_3_1_rows
-    cols = _USCD._Matx_int_3_1_cols
-    channels = _USCD._Matx_int_3_1_channels
-    shortdim = _USCD._Matx_int_3_1_shortdim
+    rows = _ACD._Matx_int_3_1_rows
+    cols = _ACD._Matx_int_3_1_cols
+    channels = _ACD._Matx_int_3_1_channels
+    shortdim = _ACD._Matx_int_3_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_int_3_1_all(alpha)
+        return _ACD._Matx_int_3_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_int_3_1_zeros()
+        return _ACD._Matx_int_3_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_int_3_1_ones()
+        return _ACD._Matx_int_3_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_int_3_1_eye()
+        return _ACD._Matx_int_3_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_int_3_1_randu(a, b)
+        return _ACD._Matx_int_3_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_int_3_1_randn(a, b)
+        return _ACD._Matx_int_3_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_int_3_1_dot(self, v)
+        return _ACD._Matx_int_3_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_int_3_1_ddot(self, v)
+        return _ACD._Matx_int_3_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_int_3_1_t(self)
+        return _ACD._Matx_int_3_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_int_3_1_mul(self, a)
+        return _ACD._Matx_int_3_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_int_3_1_div(self, a)
+        return _ACD._Matx_int_3_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_int_3_1___call__(self, i, j)
-    val = property(_USCD._Matx_int_3_1_val_get, _USCD._Matx_int_3_1_val_set)
+        return _ACD._Matx_int_3_1___call__(self, i, j)
+    val = property(_ACD._Matx_int_3_1_val_get, _ACD._Matx_int_3_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -3337,7 +3337,7 @@ class _Matx_int_3_1(object):
         args = [array]
 
 
-        _USCD._Matx_int_3_1_swiginit(self, _USCD.new__Matx_int_3_1(*args))
+        _ACD._Matx_int_3_1_swiginit(self, _ACD.new__Matx_int_3_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -3375,29 +3375,29 @@ class _Matx_int_3_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_int_3_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_int_3_1
+        return _ACD._Matx_int_3_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_int_3_1
 
-# Register _Matx_int_3_1 in _USCD:
-_USCD._Matx_int_3_1_swigregister(_Matx_int_3_1)
+# Register _Matx_int_3_1 in _ACD:
+_ACD._Matx_int_3_1_swigregister(_Matx_int_3_1)
 
 def _Matx_int_3_1_all(alpha):
-    return _USCD._Matx_int_3_1_all(alpha)
+    return _ACD._Matx_int_3_1_all(alpha)
 
 def _Matx_int_3_1_zeros():
-    return _USCD._Matx_int_3_1_zeros()
+    return _ACD._Matx_int_3_1_zeros()
 
 def _Matx_int_3_1_ones():
-    return _USCD._Matx_int_3_1_ones()
+    return _ACD._Matx_int_3_1_ones()
 
 def _Matx_int_3_1_eye():
-    return _USCD._Matx_int_3_1_eye()
+    return _ACD._Matx_int_3_1_eye()
 
 def _Matx_int_3_1_randu(a, b):
-    return _USCD._Matx_int_3_1_randu(a, b)
+    return _ACD._Matx_int_3_1_randu(a, b)
 
 def _Matx_int_3_1_randn(a, b):
-    return _USCD._Matx_int_3_1_randn(a, b)
+    return _ACD._Matx_int_3_1_randn(a, b)
 
 
 Matx31i = _Matx_int_3_1
@@ -3405,17 +3405,17 @@ Matx31i = _Matx_int_3_1
 class _Vec_int_3(_Matx_int_3_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_int_3_channels
+    channels = _ACD._Vec_int_3_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_int_3_all(alpha)
+        return _ACD._Vec_int_3_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_int_3_mul(self, v)
+        return _ACD._Vec_int_3_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_int_3___call__(self, i)
+        return _ACD._Vec_int_3___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -3434,7 +3434,7 @@ class _Vec_int_3(_Matx_int_3_1):
         args = [array]
 
 
-        _USCD._Vec_int_3_swiginit(self, _USCD.new__Vec_int_3(*args))
+        _ACD._Vec_int_3_swiginit(self, _ACD.new__Vec_int_3(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -3461,28 +3461,28 @@ class _Vec_int_3(_Matx_int_3_1):
 
 
     def __str__(self):
-        return _USCD._Vec_int_3___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_int_3
+        return _ACD._Vec_int_3___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_int_3
 
-# Register _Vec_int_3 in _USCD:
-_USCD._Vec_int_3_swigregister(_Vec_int_3)
+# Register _Vec_int_3 in _ACD:
+_ACD._Vec_int_3_swigregister(_Vec_int_3)
 
 def _Vec_int_3_all(alpha):
-    return _USCD._Vec_int_3_all(alpha)
+    return _ACD._Vec_int_3_all(alpha)
 
 class _DataType_Vec_int_3(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_int_3_generic_type
-    channels = _USCD._DataType_Vec_int_3_channels
-    fmt = _USCD._DataType_Vec_int_3_fmt
+    generic_type = _ACD._DataType_Vec_int_3_generic_type
+    channels = _ACD._DataType_Vec_int_3_channels
+    fmt = _ACD._DataType_Vec_int_3_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_int_3_swiginit(self, _USCD.new__DataType_Vec_int_3())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_int_3
+        _ACD._DataType_Vec_int_3_swiginit(self, _ACD.new__DataType_Vec_int_3())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_int_3
 
-# Register _DataType_Vec_int_3 in _USCD:
-_USCD._DataType_Vec_int_3_swigregister(_DataType_Vec_int_3)
+# Register _DataType_Vec_int_3 in _ACD:
+_ACD._DataType_Vec_int_3_swigregister(_DataType_Vec_int_3)
 
 
 Vec3i = _Vec_int_3
@@ -3491,53 +3491,53 @@ DataType_Vec3i = _DataType_Vec_int_3
 class _Matx_int_4_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_int_4_1_rows
-    cols = _USCD._Matx_int_4_1_cols
-    channels = _USCD._Matx_int_4_1_channels
-    shortdim = _USCD._Matx_int_4_1_shortdim
+    rows = _ACD._Matx_int_4_1_rows
+    cols = _ACD._Matx_int_4_1_cols
+    channels = _ACD._Matx_int_4_1_channels
+    shortdim = _ACD._Matx_int_4_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_int_4_1_all(alpha)
+        return _ACD._Matx_int_4_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_int_4_1_zeros()
+        return _ACD._Matx_int_4_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_int_4_1_ones()
+        return _ACD._Matx_int_4_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_int_4_1_eye()
+        return _ACD._Matx_int_4_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_int_4_1_randu(a, b)
+        return _ACD._Matx_int_4_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_int_4_1_randn(a, b)
+        return _ACD._Matx_int_4_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_int_4_1_dot(self, v)
+        return _ACD._Matx_int_4_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_int_4_1_ddot(self, v)
+        return _ACD._Matx_int_4_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_int_4_1_t(self)
+        return _ACD._Matx_int_4_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_int_4_1_mul(self, a)
+        return _ACD._Matx_int_4_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_int_4_1_div(self, a)
+        return _ACD._Matx_int_4_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_int_4_1___call__(self, i, j)
-    val = property(_USCD._Matx_int_4_1_val_get, _USCD._Matx_int_4_1_val_set)
+        return _ACD._Matx_int_4_1___call__(self, i, j)
+    val = property(_ACD._Matx_int_4_1_val_get, _ACD._Matx_int_4_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -3557,7 +3557,7 @@ class _Matx_int_4_1(object):
         args = [array]
 
 
-        _USCD._Matx_int_4_1_swiginit(self, _USCD.new__Matx_int_4_1(*args))
+        _ACD._Matx_int_4_1_swiginit(self, _ACD.new__Matx_int_4_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -3595,29 +3595,29 @@ class _Matx_int_4_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_int_4_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_int_4_1
+        return _ACD._Matx_int_4_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_int_4_1
 
-# Register _Matx_int_4_1 in _USCD:
-_USCD._Matx_int_4_1_swigregister(_Matx_int_4_1)
+# Register _Matx_int_4_1 in _ACD:
+_ACD._Matx_int_4_1_swigregister(_Matx_int_4_1)
 
 def _Matx_int_4_1_all(alpha):
-    return _USCD._Matx_int_4_1_all(alpha)
+    return _ACD._Matx_int_4_1_all(alpha)
 
 def _Matx_int_4_1_zeros():
-    return _USCD._Matx_int_4_1_zeros()
+    return _ACD._Matx_int_4_1_zeros()
 
 def _Matx_int_4_1_ones():
-    return _USCD._Matx_int_4_1_ones()
+    return _ACD._Matx_int_4_1_ones()
 
 def _Matx_int_4_1_eye():
-    return _USCD._Matx_int_4_1_eye()
+    return _ACD._Matx_int_4_1_eye()
 
 def _Matx_int_4_1_randu(a, b):
-    return _USCD._Matx_int_4_1_randu(a, b)
+    return _ACD._Matx_int_4_1_randu(a, b)
 
 def _Matx_int_4_1_randn(a, b):
-    return _USCD._Matx_int_4_1_randn(a, b)
+    return _ACD._Matx_int_4_1_randn(a, b)
 
 
 Matx41i = _Matx_int_4_1
@@ -3625,17 +3625,17 @@ Matx41i = _Matx_int_4_1
 class _Vec_int_4(_Matx_int_4_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_int_4_channels
+    channels = _ACD._Vec_int_4_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_int_4_all(alpha)
+        return _ACD._Vec_int_4_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_int_4_mul(self, v)
+        return _ACD._Vec_int_4_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_int_4___call__(self, i)
+        return _ACD._Vec_int_4___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -3654,7 +3654,7 @@ class _Vec_int_4(_Matx_int_4_1):
         args = [array]
 
 
-        _USCD._Vec_int_4_swiginit(self, _USCD.new__Vec_int_4(*args))
+        _ACD._Vec_int_4_swiginit(self, _ACD.new__Vec_int_4(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -3681,28 +3681,28 @@ class _Vec_int_4(_Matx_int_4_1):
 
 
     def __str__(self):
-        return _USCD._Vec_int_4___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_int_4
+        return _ACD._Vec_int_4___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_int_4
 
-# Register _Vec_int_4 in _USCD:
-_USCD._Vec_int_4_swigregister(_Vec_int_4)
+# Register _Vec_int_4 in _ACD:
+_ACD._Vec_int_4_swigregister(_Vec_int_4)
 
 def _Vec_int_4_all(alpha):
-    return _USCD._Vec_int_4_all(alpha)
+    return _ACD._Vec_int_4_all(alpha)
 
 class _DataType_Vec_int_4(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_int_4_generic_type
-    channels = _USCD._DataType_Vec_int_4_channels
-    fmt = _USCD._DataType_Vec_int_4_fmt
+    generic_type = _ACD._DataType_Vec_int_4_generic_type
+    channels = _ACD._DataType_Vec_int_4_channels
+    fmt = _ACD._DataType_Vec_int_4_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_int_4_swiginit(self, _USCD.new__DataType_Vec_int_4())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_int_4
+        _ACD._DataType_Vec_int_4_swiginit(self, _ACD.new__DataType_Vec_int_4())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_int_4
 
-# Register _DataType_Vec_int_4 in _USCD:
-_USCD._DataType_Vec_int_4_swigregister(_DataType_Vec_int_4)
+# Register _DataType_Vec_int_4 in _ACD:
+_ACD._DataType_Vec_int_4_swigregister(_DataType_Vec_int_4)
 
 
 Vec4i = _Vec_int_4
@@ -3711,53 +3711,53 @@ DataType_Vec4i = _DataType_Vec_int_4
 class _Matx_int_6_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_int_6_1_rows
-    cols = _USCD._Matx_int_6_1_cols
-    channels = _USCD._Matx_int_6_1_channels
-    shortdim = _USCD._Matx_int_6_1_shortdim
+    rows = _ACD._Matx_int_6_1_rows
+    cols = _ACD._Matx_int_6_1_cols
+    channels = _ACD._Matx_int_6_1_channels
+    shortdim = _ACD._Matx_int_6_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_int_6_1_all(alpha)
+        return _ACD._Matx_int_6_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_int_6_1_zeros()
+        return _ACD._Matx_int_6_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_int_6_1_ones()
+        return _ACD._Matx_int_6_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_int_6_1_eye()
+        return _ACD._Matx_int_6_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_int_6_1_randu(a, b)
+        return _ACD._Matx_int_6_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_int_6_1_randn(a, b)
+        return _ACD._Matx_int_6_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_int_6_1_dot(self, v)
+        return _ACD._Matx_int_6_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_int_6_1_ddot(self, v)
+        return _ACD._Matx_int_6_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_int_6_1_t(self)
+        return _ACD._Matx_int_6_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_int_6_1_mul(self, a)
+        return _ACD._Matx_int_6_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_int_6_1_div(self, a)
+        return _ACD._Matx_int_6_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_int_6_1___call__(self, i, j)
-    val = property(_USCD._Matx_int_6_1_val_get, _USCD._Matx_int_6_1_val_set)
+        return _ACD._Matx_int_6_1___call__(self, i, j)
+    val = property(_ACD._Matx_int_6_1_val_get, _ACD._Matx_int_6_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -3777,7 +3777,7 @@ class _Matx_int_6_1(object):
         args = [array]
 
 
-        _USCD._Matx_int_6_1_swiginit(self, _USCD.new__Matx_int_6_1(*args))
+        _ACD._Matx_int_6_1_swiginit(self, _ACD.new__Matx_int_6_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -3815,29 +3815,29 @@ class _Matx_int_6_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_int_6_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_int_6_1
+        return _ACD._Matx_int_6_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_int_6_1
 
-# Register _Matx_int_6_1 in _USCD:
-_USCD._Matx_int_6_1_swigregister(_Matx_int_6_1)
+# Register _Matx_int_6_1 in _ACD:
+_ACD._Matx_int_6_1_swigregister(_Matx_int_6_1)
 
 def _Matx_int_6_1_all(alpha):
-    return _USCD._Matx_int_6_1_all(alpha)
+    return _ACD._Matx_int_6_1_all(alpha)
 
 def _Matx_int_6_1_zeros():
-    return _USCD._Matx_int_6_1_zeros()
+    return _ACD._Matx_int_6_1_zeros()
 
 def _Matx_int_6_1_ones():
-    return _USCD._Matx_int_6_1_ones()
+    return _ACD._Matx_int_6_1_ones()
 
 def _Matx_int_6_1_eye():
-    return _USCD._Matx_int_6_1_eye()
+    return _ACD._Matx_int_6_1_eye()
 
 def _Matx_int_6_1_randu(a, b):
-    return _USCD._Matx_int_6_1_randu(a, b)
+    return _ACD._Matx_int_6_1_randu(a, b)
 
 def _Matx_int_6_1_randn(a, b):
-    return _USCD._Matx_int_6_1_randn(a, b)
+    return _ACD._Matx_int_6_1_randn(a, b)
 
 
 Matx61i = _Matx_int_6_1
@@ -3845,17 +3845,17 @@ Matx61i = _Matx_int_6_1
 class _Vec_int_6(_Matx_int_6_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_int_6_channels
+    channels = _ACD._Vec_int_6_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_int_6_all(alpha)
+        return _ACD._Vec_int_6_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_int_6_mul(self, v)
+        return _ACD._Vec_int_6_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_int_6___call__(self, i)
+        return _ACD._Vec_int_6___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -3874,7 +3874,7 @@ class _Vec_int_6(_Matx_int_6_1):
         args = [array]
 
 
-        _USCD._Vec_int_6_swiginit(self, _USCD.new__Vec_int_6(*args))
+        _ACD._Vec_int_6_swiginit(self, _ACD.new__Vec_int_6(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -3901,28 +3901,28 @@ class _Vec_int_6(_Matx_int_6_1):
 
 
     def __str__(self):
-        return _USCD._Vec_int_6___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_int_6
+        return _ACD._Vec_int_6___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_int_6
 
-# Register _Vec_int_6 in _USCD:
-_USCD._Vec_int_6_swigregister(_Vec_int_6)
+# Register _Vec_int_6 in _ACD:
+_ACD._Vec_int_6_swigregister(_Vec_int_6)
 
 def _Vec_int_6_all(alpha):
-    return _USCD._Vec_int_6_all(alpha)
+    return _ACD._Vec_int_6_all(alpha)
 
 class _DataType_Vec_int_6(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_int_6_generic_type
-    channels = _USCD._DataType_Vec_int_6_channels
-    fmt = _USCD._DataType_Vec_int_6_fmt
+    generic_type = _ACD._DataType_Vec_int_6_generic_type
+    channels = _ACD._DataType_Vec_int_6_channels
+    fmt = _ACD._DataType_Vec_int_6_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_int_6_swiginit(self, _USCD.new__DataType_Vec_int_6())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_int_6
+        _ACD._DataType_Vec_int_6_swiginit(self, _ACD.new__DataType_Vec_int_6())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_int_6
 
-# Register _DataType_Vec_int_6 in _USCD:
-_USCD._DataType_Vec_int_6_swigregister(_DataType_Vec_int_6)
+# Register _DataType_Vec_int_6 in _ACD:
+_ACD._DataType_Vec_int_6_swigregister(_DataType_Vec_int_6)
 
 
 Vec6i = _Vec_int_6
@@ -3931,53 +3931,53 @@ DataType_Vec6i = _DataType_Vec_int_6
 class _Matx_int_8_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_int_8_1_rows
-    cols = _USCD._Matx_int_8_1_cols
-    channels = _USCD._Matx_int_8_1_channels
-    shortdim = _USCD._Matx_int_8_1_shortdim
+    rows = _ACD._Matx_int_8_1_rows
+    cols = _ACD._Matx_int_8_1_cols
+    channels = _ACD._Matx_int_8_1_channels
+    shortdim = _ACD._Matx_int_8_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_int_8_1_all(alpha)
+        return _ACD._Matx_int_8_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_int_8_1_zeros()
+        return _ACD._Matx_int_8_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_int_8_1_ones()
+        return _ACD._Matx_int_8_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_int_8_1_eye()
+        return _ACD._Matx_int_8_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_int_8_1_randu(a, b)
+        return _ACD._Matx_int_8_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_int_8_1_randn(a, b)
+        return _ACD._Matx_int_8_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_int_8_1_dot(self, v)
+        return _ACD._Matx_int_8_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_int_8_1_ddot(self, v)
+        return _ACD._Matx_int_8_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_int_8_1_t(self)
+        return _ACD._Matx_int_8_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_int_8_1_mul(self, a)
+        return _ACD._Matx_int_8_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_int_8_1_div(self, a)
+        return _ACD._Matx_int_8_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_int_8_1___call__(self, i, j)
-    val = property(_USCD._Matx_int_8_1_val_get, _USCD._Matx_int_8_1_val_set)
+        return _ACD._Matx_int_8_1___call__(self, i, j)
+    val = property(_ACD._Matx_int_8_1_val_get, _ACD._Matx_int_8_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -3997,7 +3997,7 @@ class _Matx_int_8_1(object):
         args = [array]
 
 
-        _USCD._Matx_int_8_1_swiginit(self, _USCD.new__Matx_int_8_1(*args))
+        _ACD._Matx_int_8_1_swiginit(self, _ACD.new__Matx_int_8_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -4035,29 +4035,29 @@ class _Matx_int_8_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_int_8_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_int_8_1
+        return _ACD._Matx_int_8_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_int_8_1
 
-# Register _Matx_int_8_1 in _USCD:
-_USCD._Matx_int_8_1_swigregister(_Matx_int_8_1)
+# Register _Matx_int_8_1 in _ACD:
+_ACD._Matx_int_8_1_swigregister(_Matx_int_8_1)
 
 def _Matx_int_8_1_all(alpha):
-    return _USCD._Matx_int_8_1_all(alpha)
+    return _ACD._Matx_int_8_1_all(alpha)
 
 def _Matx_int_8_1_zeros():
-    return _USCD._Matx_int_8_1_zeros()
+    return _ACD._Matx_int_8_1_zeros()
 
 def _Matx_int_8_1_ones():
-    return _USCD._Matx_int_8_1_ones()
+    return _ACD._Matx_int_8_1_ones()
 
 def _Matx_int_8_1_eye():
-    return _USCD._Matx_int_8_1_eye()
+    return _ACD._Matx_int_8_1_eye()
 
 def _Matx_int_8_1_randu(a, b):
-    return _USCD._Matx_int_8_1_randu(a, b)
+    return _ACD._Matx_int_8_1_randu(a, b)
 
 def _Matx_int_8_1_randn(a, b):
-    return _USCD._Matx_int_8_1_randn(a, b)
+    return _ACD._Matx_int_8_1_randn(a, b)
 
 
 Matx81i = _Matx_int_8_1
@@ -4065,17 +4065,17 @@ Matx81i = _Matx_int_8_1
 class _Vec_int_8(_Matx_int_8_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_int_8_channels
+    channels = _ACD._Vec_int_8_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_int_8_all(alpha)
+        return _ACD._Vec_int_8_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_int_8_mul(self, v)
+        return _ACD._Vec_int_8_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_int_8___call__(self, i)
+        return _ACD._Vec_int_8___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -4094,7 +4094,7 @@ class _Vec_int_8(_Matx_int_8_1):
         args = [array]
 
 
-        _USCD._Vec_int_8_swiginit(self, _USCD.new__Vec_int_8(*args))
+        _ACD._Vec_int_8_swiginit(self, _ACD.new__Vec_int_8(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -4121,28 +4121,28 @@ class _Vec_int_8(_Matx_int_8_1):
 
 
     def __str__(self):
-        return _USCD._Vec_int_8___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_int_8
+        return _ACD._Vec_int_8___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_int_8
 
-# Register _Vec_int_8 in _USCD:
-_USCD._Vec_int_8_swigregister(_Vec_int_8)
+# Register _Vec_int_8 in _ACD:
+_ACD._Vec_int_8_swigregister(_Vec_int_8)
 
 def _Vec_int_8_all(alpha):
-    return _USCD._Vec_int_8_all(alpha)
+    return _ACD._Vec_int_8_all(alpha)
 
 class _DataType_Vec_int_8(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_int_8_generic_type
-    channels = _USCD._DataType_Vec_int_8_channels
-    fmt = _USCD._DataType_Vec_int_8_fmt
+    generic_type = _ACD._DataType_Vec_int_8_generic_type
+    channels = _ACD._DataType_Vec_int_8_channels
+    fmt = _ACD._DataType_Vec_int_8_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_int_8_swiginit(self, _USCD.new__DataType_Vec_int_8())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_int_8
+        _ACD._DataType_Vec_int_8_swiginit(self, _ACD.new__DataType_Vec_int_8())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_int_8
 
-# Register _DataType_Vec_int_8 in _USCD:
-_USCD._DataType_Vec_int_8_swigregister(_DataType_Vec_int_8)
+# Register _DataType_Vec_int_8 in _ACD:
+_ACD._DataType_Vec_int_8_swigregister(_DataType_Vec_int_8)
 
 
 Vec8i = _Vec_int_8
@@ -4151,14 +4151,14 @@ DataType_Vec8i = _DataType_Vec_int_8
 class _cv_numpy_sizeof_float(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_float_value
+    value = _ACD._cv_numpy_sizeof_float_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_float_swiginit(self, _USCD.new__cv_numpy_sizeof_float())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_float
+        _ACD._cv_numpy_sizeof_float_swiginit(self, _ACD.new__cv_numpy_sizeof_float())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_float
 
-# Register _cv_numpy_sizeof_float in _USCD:
-_USCD._cv_numpy_sizeof_float_swigregister(_cv_numpy_sizeof_float)
+# Register _cv_numpy_sizeof_float in _ACD:
+_ACD._cv_numpy_sizeof_float_swigregister(_cv_numpy_sizeof_float)
 
 
 if _cv_numpy_sizeof_float.value == 1:
@@ -4171,106 +4171,106 @@ class floatArray(object):
     __repr__ = _swig_repr
 
     def iterator(self):
-        return _USCD.floatArray_iterator(self)
+        return _ACD.floatArray_iterator(self)
     def __iter__(self):
         return self.iterator()
 
     def __nonzero__(self):
-        return _USCD.floatArray___nonzero__(self)
+        return _ACD.floatArray___nonzero__(self)
 
     def __bool__(self):
-        return _USCD.floatArray___bool__(self)
+        return _ACD.floatArray___bool__(self)
 
     def __len__(self):
-        return _USCD.floatArray___len__(self)
+        return _ACD.floatArray___len__(self)
 
     def __getslice__(self, i, j):
-        return _USCD.floatArray___getslice__(self, i, j)
+        return _ACD.floatArray___getslice__(self, i, j)
 
     def __setslice__(self, *args):
-        return _USCD.floatArray___setslice__(self, *args)
+        return _ACD.floatArray___setslice__(self, *args)
 
     def __delslice__(self, i, j):
-        return _USCD.floatArray___delslice__(self, i, j)
+        return _ACD.floatArray___delslice__(self, i, j)
 
     def __delitem__(self, *args):
-        return _USCD.floatArray___delitem__(self, *args)
+        return _ACD.floatArray___delitem__(self, *args)
 
     def __getitem__(self, *args):
-        return _USCD.floatArray___getitem__(self, *args)
+        return _ACD.floatArray___getitem__(self, *args)
 
     def __setitem__(self, *args):
-        return _USCD.floatArray___setitem__(self, *args)
+        return _ACD.floatArray___setitem__(self, *args)
 
     def pop(self):
-        return _USCD.floatArray_pop(self)
+        return _ACD.floatArray_pop(self)
 
     def append(self, x):
-        return _USCD.floatArray_append(self, x)
+        return _ACD.floatArray_append(self, x)
 
     def empty(self):
-        return _USCD.floatArray_empty(self)
+        return _ACD.floatArray_empty(self)
 
     def size(self):
-        return _USCD.floatArray_size(self)
+        return _ACD.floatArray_size(self)
 
     def swap(self, v):
-        return _USCD.floatArray_swap(self, v)
+        return _ACD.floatArray_swap(self, v)
 
     def begin(self):
-        return _USCD.floatArray_begin(self)
+        return _ACD.floatArray_begin(self)
 
     def end(self):
-        return _USCD.floatArray_end(self)
+        return _ACD.floatArray_end(self)
 
     def rbegin(self):
-        return _USCD.floatArray_rbegin(self)
+        return _ACD.floatArray_rbegin(self)
 
     def rend(self):
-        return _USCD.floatArray_rend(self)
+        return _ACD.floatArray_rend(self)
 
     def clear(self):
-        return _USCD.floatArray_clear(self)
+        return _ACD.floatArray_clear(self)
 
     def get_allocator(self):
-        return _USCD.floatArray_get_allocator(self)
+        return _ACD.floatArray_get_allocator(self)
 
     def pop_back(self):
-        return _USCD.floatArray_pop_back(self)
+        return _ACD.floatArray_pop_back(self)
 
     def erase(self, *args):
-        return _USCD.floatArray_erase(self, *args)
+        return _ACD.floatArray_erase(self, *args)
 
     def __init__(self, *args):
-        _USCD.floatArray_swiginit(self, _USCD.new_floatArray(*args))
+        _ACD.floatArray_swiginit(self, _ACD.new_floatArray(*args))
 
     def push_back(self, x):
-        return _USCD.floatArray_push_back(self, x)
+        return _ACD.floatArray_push_back(self, x)
 
     def front(self):
-        return _USCD.floatArray_front(self)
+        return _ACD.floatArray_front(self)
 
     def back(self):
-        return _USCD.floatArray_back(self)
+        return _ACD.floatArray_back(self)
 
     def assign(self, n, x):
-        return _USCD.floatArray_assign(self, n, x)
+        return _ACD.floatArray_assign(self, n, x)
 
     def resize(self, *args):
-        return _USCD.floatArray_resize(self, *args)
+        return _ACD.floatArray_resize(self, *args)
 
     def insert(self, *args):
-        return _USCD.floatArray_insert(self, *args)
+        return _ACD.floatArray_insert(self, *args)
 
     def reserve(self, n):
-        return _USCD.floatArray_reserve(self, n)
+        return _ACD.floatArray_reserve(self, n)
 
     def capacity(self):
-        return _USCD.floatArray_capacity(self)
-    __swig_destroy__ = _USCD.delete_floatArray
+        return _ACD.floatArray_capacity(self)
+    __swig_destroy__ = _ACD.delete_floatArray
 
-# Register floatArray in _USCD:
-_USCD.floatArray_swigregister(floatArray)
+# Register floatArray in _ACD:
+_ACD.floatArray_swigregister(floatArray)
 
 
 _array_map["float"] =floatArray
@@ -4278,53 +4278,53 @@ _array_map["float"] =floatArray
 class _Matx_float_2_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_float_2_1_rows
-    cols = _USCD._Matx_float_2_1_cols
-    channels = _USCD._Matx_float_2_1_channels
-    shortdim = _USCD._Matx_float_2_1_shortdim
+    rows = _ACD._Matx_float_2_1_rows
+    cols = _ACD._Matx_float_2_1_cols
+    channels = _ACD._Matx_float_2_1_channels
+    shortdim = _ACD._Matx_float_2_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_float_2_1_all(alpha)
+        return _ACD._Matx_float_2_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_float_2_1_zeros()
+        return _ACD._Matx_float_2_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_float_2_1_ones()
+        return _ACD._Matx_float_2_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_float_2_1_eye()
+        return _ACD._Matx_float_2_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_float_2_1_randu(a, b)
+        return _ACD._Matx_float_2_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_float_2_1_randn(a, b)
+        return _ACD._Matx_float_2_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_float_2_1_dot(self, v)
+        return _ACD._Matx_float_2_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_float_2_1_ddot(self, v)
+        return _ACD._Matx_float_2_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_float_2_1_t(self)
+        return _ACD._Matx_float_2_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_float_2_1_mul(self, a)
+        return _ACD._Matx_float_2_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_float_2_1_div(self, a)
+        return _ACD._Matx_float_2_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_float_2_1___call__(self, i, j)
-    val = property(_USCD._Matx_float_2_1_val_get, _USCD._Matx_float_2_1_val_set)
+        return _ACD._Matx_float_2_1___call__(self, i, j)
+    val = property(_ACD._Matx_float_2_1_val_get, _ACD._Matx_float_2_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -4344,7 +4344,7 @@ class _Matx_float_2_1(object):
         args = [array]
 
 
-        _USCD._Matx_float_2_1_swiginit(self, _USCD.new__Matx_float_2_1(*args))
+        _ACD._Matx_float_2_1_swiginit(self, _ACD.new__Matx_float_2_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -4382,29 +4382,29 @@ class _Matx_float_2_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_float_2_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_float_2_1
+        return _ACD._Matx_float_2_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_float_2_1
 
-# Register _Matx_float_2_1 in _USCD:
-_USCD._Matx_float_2_1_swigregister(_Matx_float_2_1)
+# Register _Matx_float_2_1 in _ACD:
+_ACD._Matx_float_2_1_swigregister(_Matx_float_2_1)
 
 def _Matx_float_2_1_all(alpha):
-    return _USCD._Matx_float_2_1_all(alpha)
+    return _ACD._Matx_float_2_1_all(alpha)
 
 def _Matx_float_2_1_zeros():
-    return _USCD._Matx_float_2_1_zeros()
+    return _ACD._Matx_float_2_1_zeros()
 
 def _Matx_float_2_1_ones():
-    return _USCD._Matx_float_2_1_ones()
+    return _ACD._Matx_float_2_1_ones()
 
 def _Matx_float_2_1_eye():
-    return _USCD._Matx_float_2_1_eye()
+    return _ACD._Matx_float_2_1_eye()
 
 def _Matx_float_2_1_randu(a, b):
-    return _USCD._Matx_float_2_1_randu(a, b)
+    return _ACD._Matx_float_2_1_randu(a, b)
 
 def _Matx_float_2_1_randn(a, b):
-    return _USCD._Matx_float_2_1_randn(a, b)
+    return _ACD._Matx_float_2_1_randn(a, b)
 
 
 Matx21f = _Matx_float_2_1
@@ -4412,17 +4412,17 @@ Matx21f = _Matx_float_2_1
 class _Vec_float_2(_Matx_float_2_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_float_2_channels
+    channels = _ACD._Vec_float_2_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_float_2_all(alpha)
+        return _ACD._Vec_float_2_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_float_2_mul(self, v)
+        return _ACD._Vec_float_2_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_float_2___call__(self, i)
+        return _ACD._Vec_float_2___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -4441,7 +4441,7 @@ class _Vec_float_2(_Matx_float_2_1):
         args = [array]
 
 
-        _USCD._Vec_float_2_swiginit(self, _USCD.new__Vec_float_2(*args))
+        _ACD._Vec_float_2_swiginit(self, _ACD.new__Vec_float_2(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -4468,28 +4468,28 @@ class _Vec_float_2(_Matx_float_2_1):
 
 
     def __str__(self):
-        return _USCD._Vec_float_2___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_float_2
+        return _ACD._Vec_float_2___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_float_2
 
-# Register _Vec_float_2 in _USCD:
-_USCD._Vec_float_2_swigregister(_Vec_float_2)
+# Register _Vec_float_2 in _ACD:
+_ACD._Vec_float_2_swigregister(_Vec_float_2)
 
 def _Vec_float_2_all(alpha):
-    return _USCD._Vec_float_2_all(alpha)
+    return _ACD._Vec_float_2_all(alpha)
 
 class _DataType_Vec_float_2(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_float_2_generic_type
-    channels = _USCD._DataType_Vec_float_2_channels
-    fmt = _USCD._DataType_Vec_float_2_fmt
+    generic_type = _ACD._DataType_Vec_float_2_generic_type
+    channels = _ACD._DataType_Vec_float_2_channels
+    fmt = _ACD._DataType_Vec_float_2_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_float_2_swiginit(self, _USCD.new__DataType_Vec_float_2())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_float_2
+        _ACD._DataType_Vec_float_2_swiginit(self, _ACD.new__DataType_Vec_float_2())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_float_2
 
-# Register _DataType_Vec_float_2 in _USCD:
-_USCD._DataType_Vec_float_2_swigregister(_DataType_Vec_float_2)
+# Register _DataType_Vec_float_2 in _ACD:
+_ACD._DataType_Vec_float_2_swigregister(_DataType_Vec_float_2)
 
 
 Vec2f = _Vec_float_2
@@ -4498,53 +4498,53 @@ DataType_Vec2f = _DataType_Vec_float_2
 class _Matx_float_3_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_float_3_1_rows
-    cols = _USCD._Matx_float_3_1_cols
-    channels = _USCD._Matx_float_3_1_channels
-    shortdim = _USCD._Matx_float_3_1_shortdim
+    rows = _ACD._Matx_float_3_1_rows
+    cols = _ACD._Matx_float_3_1_cols
+    channels = _ACD._Matx_float_3_1_channels
+    shortdim = _ACD._Matx_float_3_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_float_3_1_all(alpha)
+        return _ACD._Matx_float_3_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_float_3_1_zeros()
+        return _ACD._Matx_float_3_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_float_3_1_ones()
+        return _ACD._Matx_float_3_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_float_3_1_eye()
+        return _ACD._Matx_float_3_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_float_3_1_randu(a, b)
+        return _ACD._Matx_float_3_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_float_3_1_randn(a, b)
+        return _ACD._Matx_float_3_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_float_3_1_dot(self, v)
+        return _ACD._Matx_float_3_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_float_3_1_ddot(self, v)
+        return _ACD._Matx_float_3_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_float_3_1_t(self)
+        return _ACD._Matx_float_3_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_float_3_1_mul(self, a)
+        return _ACD._Matx_float_3_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_float_3_1_div(self, a)
+        return _ACD._Matx_float_3_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_float_3_1___call__(self, i, j)
-    val = property(_USCD._Matx_float_3_1_val_get, _USCD._Matx_float_3_1_val_set)
+        return _ACD._Matx_float_3_1___call__(self, i, j)
+    val = property(_ACD._Matx_float_3_1_val_get, _ACD._Matx_float_3_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -4564,7 +4564,7 @@ class _Matx_float_3_1(object):
         args = [array]
 
 
-        _USCD._Matx_float_3_1_swiginit(self, _USCD.new__Matx_float_3_1(*args))
+        _ACD._Matx_float_3_1_swiginit(self, _ACD.new__Matx_float_3_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -4602,29 +4602,29 @@ class _Matx_float_3_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_float_3_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_float_3_1
+        return _ACD._Matx_float_3_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_float_3_1
 
-# Register _Matx_float_3_1 in _USCD:
-_USCD._Matx_float_3_1_swigregister(_Matx_float_3_1)
+# Register _Matx_float_3_1 in _ACD:
+_ACD._Matx_float_3_1_swigregister(_Matx_float_3_1)
 
 def _Matx_float_3_1_all(alpha):
-    return _USCD._Matx_float_3_1_all(alpha)
+    return _ACD._Matx_float_3_1_all(alpha)
 
 def _Matx_float_3_1_zeros():
-    return _USCD._Matx_float_3_1_zeros()
+    return _ACD._Matx_float_3_1_zeros()
 
 def _Matx_float_3_1_ones():
-    return _USCD._Matx_float_3_1_ones()
+    return _ACD._Matx_float_3_1_ones()
 
 def _Matx_float_3_1_eye():
-    return _USCD._Matx_float_3_1_eye()
+    return _ACD._Matx_float_3_1_eye()
 
 def _Matx_float_3_1_randu(a, b):
-    return _USCD._Matx_float_3_1_randu(a, b)
+    return _ACD._Matx_float_3_1_randu(a, b)
 
 def _Matx_float_3_1_randn(a, b):
-    return _USCD._Matx_float_3_1_randn(a, b)
+    return _ACD._Matx_float_3_1_randn(a, b)
 
 
 Matx31f = _Matx_float_3_1
@@ -4632,17 +4632,17 @@ Matx31f = _Matx_float_3_1
 class _Vec_float_3(_Matx_float_3_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_float_3_channels
+    channels = _ACD._Vec_float_3_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_float_3_all(alpha)
+        return _ACD._Vec_float_3_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_float_3_mul(self, v)
+        return _ACD._Vec_float_3_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_float_3___call__(self, i)
+        return _ACD._Vec_float_3___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -4661,7 +4661,7 @@ class _Vec_float_3(_Matx_float_3_1):
         args = [array]
 
 
-        _USCD._Vec_float_3_swiginit(self, _USCD.new__Vec_float_3(*args))
+        _ACD._Vec_float_3_swiginit(self, _ACD.new__Vec_float_3(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -4688,28 +4688,28 @@ class _Vec_float_3(_Matx_float_3_1):
 
 
     def __str__(self):
-        return _USCD._Vec_float_3___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_float_3
+        return _ACD._Vec_float_3___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_float_3
 
-# Register _Vec_float_3 in _USCD:
-_USCD._Vec_float_3_swigregister(_Vec_float_3)
+# Register _Vec_float_3 in _ACD:
+_ACD._Vec_float_3_swigregister(_Vec_float_3)
 
 def _Vec_float_3_all(alpha):
-    return _USCD._Vec_float_3_all(alpha)
+    return _ACD._Vec_float_3_all(alpha)
 
 class _DataType_Vec_float_3(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_float_3_generic_type
-    channels = _USCD._DataType_Vec_float_3_channels
-    fmt = _USCD._DataType_Vec_float_3_fmt
+    generic_type = _ACD._DataType_Vec_float_3_generic_type
+    channels = _ACD._DataType_Vec_float_3_channels
+    fmt = _ACD._DataType_Vec_float_3_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_float_3_swiginit(self, _USCD.new__DataType_Vec_float_3())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_float_3
+        _ACD._DataType_Vec_float_3_swiginit(self, _ACD.new__DataType_Vec_float_3())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_float_3
 
-# Register _DataType_Vec_float_3 in _USCD:
-_USCD._DataType_Vec_float_3_swigregister(_DataType_Vec_float_3)
+# Register _DataType_Vec_float_3 in _ACD:
+_ACD._DataType_Vec_float_3_swigregister(_DataType_Vec_float_3)
 
 
 Vec3f = _Vec_float_3
@@ -4718,53 +4718,53 @@ DataType_Vec3f = _DataType_Vec_float_3
 class _Matx_float_4_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_float_4_1_rows
-    cols = _USCD._Matx_float_4_1_cols
-    channels = _USCD._Matx_float_4_1_channels
-    shortdim = _USCD._Matx_float_4_1_shortdim
+    rows = _ACD._Matx_float_4_1_rows
+    cols = _ACD._Matx_float_4_1_cols
+    channels = _ACD._Matx_float_4_1_channels
+    shortdim = _ACD._Matx_float_4_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_float_4_1_all(alpha)
+        return _ACD._Matx_float_4_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_float_4_1_zeros()
+        return _ACD._Matx_float_4_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_float_4_1_ones()
+        return _ACD._Matx_float_4_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_float_4_1_eye()
+        return _ACD._Matx_float_4_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_float_4_1_randu(a, b)
+        return _ACD._Matx_float_4_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_float_4_1_randn(a, b)
+        return _ACD._Matx_float_4_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_float_4_1_dot(self, v)
+        return _ACD._Matx_float_4_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_float_4_1_ddot(self, v)
+        return _ACD._Matx_float_4_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_float_4_1_t(self)
+        return _ACD._Matx_float_4_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_float_4_1_mul(self, a)
+        return _ACD._Matx_float_4_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_float_4_1_div(self, a)
+        return _ACD._Matx_float_4_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_float_4_1___call__(self, i, j)
-    val = property(_USCD._Matx_float_4_1_val_get, _USCD._Matx_float_4_1_val_set)
+        return _ACD._Matx_float_4_1___call__(self, i, j)
+    val = property(_ACD._Matx_float_4_1_val_get, _ACD._Matx_float_4_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -4784,7 +4784,7 @@ class _Matx_float_4_1(object):
         args = [array]
 
 
-        _USCD._Matx_float_4_1_swiginit(self, _USCD.new__Matx_float_4_1(*args))
+        _ACD._Matx_float_4_1_swiginit(self, _ACD.new__Matx_float_4_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -4822,29 +4822,29 @@ class _Matx_float_4_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_float_4_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_float_4_1
+        return _ACD._Matx_float_4_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_float_4_1
 
-# Register _Matx_float_4_1 in _USCD:
-_USCD._Matx_float_4_1_swigregister(_Matx_float_4_1)
+# Register _Matx_float_4_1 in _ACD:
+_ACD._Matx_float_4_1_swigregister(_Matx_float_4_1)
 
 def _Matx_float_4_1_all(alpha):
-    return _USCD._Matx_float_4_1_all(alpha)
+    return _ACD._Matx_float_4_1_all(alpha)
 
 def _Matx_float_4_1_zeros():
-    return _USCD._Matx_float_4_1_zeros()
+    return _ACD._Matx_float_4_1_zeros()
 
 def _Matx_float_4_1_ones():
-    return _USCD._Matx_float_4_1_ones()
+    return _ACD._Matx_float_4_1_ones()
 
 def _Matx_float_4_1_eye():
-    return _USCD._Matx_float_4_1_eye()
+    return _ACD._Matx_float_4_1_eye()
 
 def _Matx_float_4_1_randu(a, b):
-    return _USCD._Matx_float_4_1_randu(a, b)
+    return _ACD._Matx_float_4_1_randu(a, b)
 
 def _Matx_float_4_1_randn(a, b):
-    return _USCD._Matx_float_4_1_randn(a, b)
+    return _ACD._Matx_float_4_1_randn(a, b)
 
 
 Matx41f = _Matx_float_4_1
@@ -4852,17 +4852,17 @@ Matx41f = _Matx_float_4_1
 class _Vec_float_4(_Matx_float_4_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_float_4_channels
+    channels = _ACD._Vec_float_4_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_float_4_all(alpha)
+        return _ACD._Vec_float_4_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_float_4_mul(self, v)
+        return _ACD._Vec_float_4_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_float_4___call__(self, i)
+        return _ACD._Vec_float_4___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -4881,7 +4881,7 @@ class _Vec_float_4(_Matx_float_4_1):
         args = [array]
 
 
-        _USCD._Vec_float_4_swiginit(self, _USCD.new__Vec_float_4(*args))
+        _ACD._Vec_float_4_swiginit(self, _ACD.new__Vec_float_4(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -4908,28 +4908,28 @@ class _Vec_float_4(_Matx_float_4_1):
 
 
     def __str__(self):
-        return _USCD._Vec_float_4___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_float_4
+        return _ACD._Vec_float_4___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_float_4
 
-# Register _Vec_float_4 in _USCD:
-_USCD._Vec_float_4_swigregister(_Vec_float_4)
+# Register _Vec_float_4 in _ACD:
+_ACD._Vec_float_4_swigregister(_Vec_float_4)
 
 def _Vec_float_4_all(alpha):
-    return _USCD._Vec_float_4_all(alpha)
+    return _ACD._Vec_float_4_all(alpha)
 
 class _DataType_Vec_float_4(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_float_4_generic_type
-    channels = _USCD._DataType_Vec_float_4_channels
-    fmt = _USCD._DataType_Vec_float_4_fmt
+    generic_type = _ACD._DataType_Vec_float_4_generic_type
+    channels = _ACD._DataType_Vec_float_4_channels
+    fmt = _ACD._DataType_Vec_float_4_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_float_4_swiginit(self, _USCD.new__DataType_Vec_float_4())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_float_4
+        _ACD._DataType_Vec_float_4_swiginit(self, _ACD.new__DataType_Vec_float_4())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_float_4
 
-# Register _DataType_Vec_float_4 in _USCD:
-_USCD._DataType_Vec_float_4_swigregister(_DataType_Vec_float_4)
+# Register _DataType_Vec_float_4 in _ACD:
+_ACD._DataType_Vec_float_4_swigregister(_DataType_Vec_float_4)
 
 
 Vec4f = _Vec_float_4
@@ -4938,53 +4938,53 @@ DataType_Vec4f = _DataType_Vec_float_4
 class _Matx_float_6_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_float_6_1_rows
-    cols = _USCD._Matx_float_6_1_cols
-    channels = _USCD._Matx_float_6_1_channels
-    shortdim = _USCD._Matx_float_6_1_shortdim
+    rows = _ACD._Matx_float_6_1_rows
+    cols = _ACD._Matx_float_6_1_cols
+    channels = _ACD._Matx_float_6_1_channels
+    shortdim = _ACD._Matx_float_6_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_float_6_1_all(alpha)
+        return _ACD._Matx_float_6_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_float_6_1_zeros()
+        return _ACD._Matx_float_6_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_float_6_1_ones()
+        return _ACD._Matx_float_6_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_float_6_1_eye()
+        return _ACD._Matx_float_6_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_float_6_1_randu(a, b)
+        return _ACD._Matx_float_6_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_float_6_1_randn(a, b)
+        return _ACD._Matx_float_6_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_float_6_1_dot(self, v)
+        return _ACD._Matx_float_6_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_float_6_1_ddot(self, v)
+        return _ACD._Matx_float_6_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_float_6_1_t(self)
+        return _ACD._Matx_float_6_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_float_6_1_mul(self, a)
+        return _ACD._Matx_float_6_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_float_6_1_div(self, a)
+        return _ACD._Matx_float_6_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_float_6_1___call__(self, i, j)
-    val = property(_USCD._Matx_float_6_1_val_get, _USCD._Matx_float_6_1_val_set)
+        return _ACD._Matx_float_6_1___call__(self, i, j)
+    val = property(_ACD._Matx_float_6_1_val_get, _ACD._Matx_float_6_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -5004,7 +5004,7 @@ class _Matx_float_6_1(object):
         args = [array]
 
 
-        _USCD._Matx_float_6_1_swiginit(self, _USCD.new__Matx_float_6_1(*args))
+        _ACD._Matx_float_6_1_swiginit(self, _ACD.new__Matx_float_6_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -5042,29 +5042,29 @@ class _Matx_float_6_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_float_6_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_float_6_1
+        return _ACD._Matx_float_6_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_float_6_1
 
-# Register _Matx_float_6_1 in _USCD:
-_USCD._Matx_float_6_1_swigregister(_Matx_float_6_1)
+# Register _Matx_float_6_1 in _ACD:
+_ACD._Matx_float_6_1_swigregister(_Matx_float_6_1)
 
 def _Matx_float_6_1_all(alpha):
-    return _USCD._Matx_float_6_1_all(alpha)
+    return _ACD._Matx_float_6_1_all(alpha)
 
 def _Matx_float_6_1_zeros():
-    return _USCD._Matx_float_6_1_zeros()
+    return _ACD._Matx_float_6_1_zeros()
 
 def _Matx_float_6_1_ones():
-    return _USCD._Matx_float_6_1_ones()
+    return _ACD._Matx_float_6_1_ones()
 
 def _Matx_float_6_1_eye():
-    return _USCD._Matx_float_6_1_eye()
+    return _ACD._Matx_float_6_1_eye()
 
 def _Matx_float_6_1_randu(a, b):
-    return _USCD._Matx_float_6_1_randu(a, b)
+    return _ACD._Matx_float_6_1_randu(a, b)
 
 def _Matx_float_6_1_randn(a, b):
-    return _USCD._Matx_float_6_1_randn(a, b)
+    return _ACD._Matx_float_6_1_randn(a, b)
 
 
 Matx61f = _Matx_float_6_1
@@ -5072,17 +5072,17 @@ Matx61f = _Matx_float_6_1
 class _Vec_float_6(_Matx_float_6_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_float_6_channels
+    channels = _ACD._Vec_float_6_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_float_6_all(alpha)
+        return _ACD._Vec_float_6_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_float_6_mul(self, v)
+        return _ACD._Vec_float_6_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_float_6___call__(self, i)
+        return _ACD._Vec_float_6___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -5101,7 +5101,7 @@ class _Vec_float_6(_Matx_float_6_1):
         args = [array]
 
 
-        _USCD._Vec_float_6_swiginit(self, _USCD.new__Vec_float_6(*args))
+        _ACD._Vec_float_6_swiginit(self, _ACD.new__Vec_float_6(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -5128,28 +5128,28 @@ class _Vec_float_6(_Matx_float_6_1):
 
 
     def __str__(self):
-        return _USCD._Vec_float_6___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_float_6
+        return _ACD._Vec_float_6___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_float_6
 
-# Register _Vec_float_6 in _USCD:
-_USCD._Vec_float_6_swigregister(_Vec_float_6)
+# Register _Vec_float_6 in _ACD:
+_ACD._Vec_float_6_swigregister(_Vec_float_6)
 
 def _Vec_float_6_all(alpha):
-    return _USCD._Vec_float_6_all(alpha)
+    return _ACD._Vec_float_6_all(alpha)
 
 class _DataType_Vec_float_6(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_float_6_generic_type
-    channels = _USCD._DataType_Vec_float_6_channels
-    fmt = _USCD._DataType_Vec_float_6_fmt
+    generic_type = _ACD._DataType_Vec_float_6_generic_type
+    channels = _ACD._DataType_Vec_float_6_channels
+    fmt = _ACD._DataType_Vec_float_6_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_float_6_swiginit(self, _USCD.new__DataType_Vec_float_6())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_float_6
+        _ACD._DataType_Vec_float_6_swiginit(self, _ACD.new__DataType_Vec_float_6())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_float_6
 
-# Register _DataType_Vec_float_6 in _USCD:
-_USCD._DataType_Vec_float_6_swigregister(_DataType_Vec_float_6)
+# Register _DataType_Vec_float_6 in _ACD:
+_ACD._DataType_Vec_float_6_swigregister(_DataType_Vec_float_6)
 
 
 Vec6f = _Vec_float_6
@@ -5158,14 +5158,14 @@ DataType_Vec6f = _DataType_Vec_float_6
 class _cv_numpy_sizeof_double(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_double_value
+    value = _ACD._cv_numpy_sizeof_double_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_double_swiginit(self, _USCD.new__cv_numpy_sizeof_double())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_double
+        _ACD._cv_numpy_sizeof_double_swiginit(self, _ACD.new__cv_numpy_sizeof_double())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_double
 
-# Register _cv_numpy_sizeof_double in _USCD:
-_USCD._cv_numpy_sizeof_double_swigregister(_cv_numpy_sizeof_double)
+# Register _cv_numpy_sizeof_double in _ACD:
+_ACD._cv_numpy_sizeof_double_swigregister(_cv_numpy_sizeof_double)
 
 
 if _cv_numpy_sizeof_double.value == 1:
@@ -5178,106 +5178,106 @@ class doubleArray(object):
     __repr__ = _swig_repr
 
     def iterator(self):
-        return _USCD.doubleArray_iterator(self)
+        return _ACD.doubleArray_iterator(self)
     def __iter__(self):
         return self.iterator()
 
     def __nonzero__(self):
-        return _USCD.doubleArray___nonzero__(self)
+        return _ACD.doubleArray___nonzero__(self)
 
     def __bool__(self):
-        return _USCD.doubleArray___bool__(self)
+        return _ACD.doubleArray___bool__(self)
 
     def __len__(self):
-        return _USCD.doubleArray___len__(self)
+        return _ACD.doubleArray___len__(self)
 
     def __getslice__(self, i, j):
-        return _USCD.doubleArray___getslice__(self, i, j)
+        return _ACD.doubleArray___getslice__(self, i, j)
 
     def __setslice__(self, *args):
-        return _USCD.doubleArray___setslice__(self, *args)
+        return _ACD.doubleArray___setslice__(self, *args)
 
     def __delslice__(self, i, j):
-        return _USCD.doubleArray___delslice__(self, i, j)
+        return _ACD.doubleArray___delslice__(self, i, j)
 
     def __delitem__(self, *args):
-        return _USCD.doubleArray___delitem__(self, *args)
+        return _ACD.doubleArray___delitem__(self, *args)
 
     def __getitem__(self, *args):
-        return _USCD.doubleArray___getitem__(self, *args)
+        return _ACD.doubleArray___getitem__(self, *args)
 
     def __setitem__(self, *args):
-        return _USCD.doubleArray___setitem__(self, *args)
+        return _ACD.doubleArray___setitem__(self, *args)
 
     def pop(self):
-        return _USCD.doubleArray_pop(self)
+        return _ACD.doubleArray_pop(self)
 
     def append(self, x):
-        return _USCD.doubleArray_append(self, x)
+        return _ACD.doubleArray_append(self, x)
 
     def empty(self):
-        return _USCD.doubleArray_empty(self)
+        return _ACD.doubleArray_empty(self)
 
     def size(self):
-        return _USCD.doubleArray_size(self)
+        return _ACD.doubleArray_size(self)
 
     def swap(self, v):
-        return _USCD.doubleArray_swap(self, v)
+        return _ACD.doubleArray_swap(self, v)
 
     def begin(self):
-        return _USCD.doubleArray_begin(self)
+        return _ACD.doubleArray_begin(self)
 
     def end(self):
-        return _USCD.doubleArray_end(self)
+        return _ACD.doubleArray_end(self)
 
     def rbegin(self):
-        return _USCD.doubleArray_rbegin(self)
+        return _ACD.doubleArray_rbegin(self)
 
     def rend(self):
-        return _USCD.doubleArray_rend(self)
+        return _ACD.doubleArray_rend(self)
 
     def clear(self):
-        return _USCD.doubleArray_clear(self)
+        return _ACD.doubleArray_clear(self)
 
     def get_allocator(self):
-        return _USCD.doubleArray_get_allocator(self)
+        return _ACD.doubleArray_get_allocator(self)
 
     def pop_back(self):
-        return _USCD.doubleArray_pop_back(self)
+        return _ACD.doubleArray_pop_back(self)
 
     def erase(self, *args):
-        return _USCD.doubleArray_erase(self, *args)
+        return _ACD.doubleArray_erase(self, *args)
 
     def __init__(self, *args):
-        _USCD.doubleArray_swiginit(self, _USCD.new_doubleArray(*args))
+        _ACD.doubleArray_swiginit(self, _ACD.new_doubleArray(*args))
 
     def push_back(self, x):
-        return _USCD.doubleArray_push_back(self, x)
+        return _ACD.doubleArray_push_back(self, x)
 
     def front(self):
-        return _USCD.doubleArray_front(self)
+        return _ACD.doubleArray_front(self)
 
     def back(self):
-        return _USCD.doubleArray_back(self)
+        return _ACD.doubleArray_back(self)
 
     def assign(self, n, x):
-        return _USCD.doubleArray_assign(self, n, x)
+        return _ACD.doubleArray_assign(self, n, x)
 
     def resize(self, *args):
-        return _USCD.doubleArray_resize(self, *args)
+        return _ACD.doubleArray_resize(self, *args)
 
     def insert(self, *args):
-        return _USCD.doubleArray_insert(self, *args)
+        return _ACD.doubleArray_insert(self, *args)
 
     def reserve(self, n):
-        return _USCD.doubleArray_reserve(self, n)
+        return _ACD.doubleArray_reserve(self, n)
 
     def capacity(self):
-        return _USCD.doubleArray_capacity(self)
-    __swig_destroy__ = _USCD.delete_doubleArray
+        return _ACD.doubleArray_capacity(self)
+    __swig_destroy__ = _ACD.delete_doubleArray
 
-# Register doubleArray in _USCD:
-_USCD.doubleArray_swigregister(doubleArray)
+# Register doubleArray in _ACD:
+_ACD.doubleArray_swigregister(doubleArray)
 
 
 _array_map["double"] =doubleArray
@@ -5285,53 +5285,53 @@ _array_map["double"] =doubleArray
 class _Matx_double_2_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_double_2_1_rows
-    cols = _USCD._Matx_double_2_1_cols
-    channels = _USCD._Matx_double_2_1_channels
-    shortdim = _USCD._Matx_double_2_1_shortdim
+    rows = _ACD._Matx_double_2_1_rows
+    cols = _ACD._Matx_double_2_1_cols
+    channels = _ACD._Matx_double_2_1_channels
+    shortdim = _ACD._Matx_double_2_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_double_2_1_all(alpha)
+        return _ACD._Matx_double_2_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_double_2_1_zeros()
+        return _ACD._Matx_double_2_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_double_2_1_ones()
+        return _ACD._Matx_double_2_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_double_2_1_eye()
+        return _ACD._Matx_double_2_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_double_2_1_randu(a, b)
+        return _ACD._Matx_double_2_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_double_2_1_randn(a, b)
+        return _ACD._Matx_double_2_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_double_2_1_dot(self, v)
+        return _ACD._Matx_double_2_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_double_2_1_ddot(self, v)
+        return _ACD._Matx_double_2_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_double_2_1_t(self)
+        return _ACD._Matx_double_2_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_double_2_1_mul(self, a)
+        return _ACD._Matx_double_2_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_double_2_1_div(self, a)
+        return _ACD._Matx_double_2_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_double_2_1___call__(self, i, j)
-    val = property(_USCD._Matx_double_2_1_val_get, _USCD._Matx_double_2_1_val_set)
+        return _ACD._Matx_double_2_1___call__(self, i, j)
+    val = property(_ACD._Matx_double_2_1_val_get, _ACD._Matx_double_2_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -5351,7 +5351,7 @@ class _Matx_double_2_1(object):
         args = [array]
 
 
-        _USCD._Matx_double_2_1_swiginit(self, _USCD.new__Matx_double_2_1(*args))
+        _ACD._Matx_double_2_1_swiginit(self, _ACD.new__Matx_double_2_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -5389,29 +5389,29 @@ class _Matx_double_2_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_double_2_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_double_2_1
+        return _ACD._Matx_double_2_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_double_2_1
 
-# Register _Matx_double_2_1 in _USCD:
-_USCD._Matx_double_2_1_swigregister(_Matx_double_2_1)
+# Register _Matx_double_2_1 in _ACD:
+_ACD._Matx_double_2_1_swigregister(_Matx_double_2_1)
 
 def _Matx_double_2_1_all(alpha):
-    return _USCD._Matx_double_2_1_all(alpha)
+    return _ACD._Matx_double_2_1_all(alpha)
 
 def _Matx_double_2_1_zeros():
-    return _USCD._Matx_double_2_1_zeros()
+    return _ACD._Matx_double_2_1_zeros()
 
 def _Matx_double_2_1_ones():
-    return _USCD._Matx_double_2_1_ones()
+    return _ACD._Matx_double_2_1_ones()
 
 def _Matx_double_2_1_eye():
-    return _USCD._Matx_double_2_1_eye()
+    return _ACD._Matx_double_2_1_eye()
 
 def _Matx_double_2_1_randu(a, b):
-    return _USCD._Matx_double_2_1_randu(a, b)
+    return _ACD._Matx_double_2_1_randu(a, b)
 
 def _Matx_double_2_1_randn(a, b):
-    return _USCD._Matx_double_2_1_randn(a, b)
+    return _ACD._Matx_double_2_1_randn(a, b)
 
 
 Matx21d = _Matx_double_2_1
@@ -5419,17 +5419,17 @@ Matx21d = _Matx_double_2_1
 class _Vec_double_2(_Matx_double_2_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_double_2_channels
+    channels = _ACD._Vec_double_2_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_double_2_all(alpha)
+        return _ACD._Vec_double_2_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_double_2_mul(self, v)
+        return _ACD._Vec_double_2_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_double_2___call__(self, i)
+        return _ACD._Vec_double_2___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -5448,7 +5448,7 @@ class _Vec_double_2(_Matx_double_2_1):
         args = [array]
 
 
-        _USCD._Vec_double_2_swiginit(self, _USCD.new__Vec_double_2(*args))
+        _ACD._Vec_double_2_swiginit(self, _ACD.new__Vec_double_2(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -5475,28 +5475,28 @@ class _Vec_double_2(_Matx_double_2_1):
 
 
     def __str__(self):
-        return _USCD._Vec_double_2___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_double_2
+        return _ACD._Vec_double_2___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_double_2
 
-# Register _Vec_double_2 in _USCD:
-_USCD._Vec_double_2_swigregister(_Vec_double_2)
+# Register _Vec_double_2 in _ACD:
+_ACD._Vec_double_2_swigregister(_Vec_double_2)
 
 def _Vec_double_2_all(alpha):
-    return _USCD._Vec_double_2_all(alpha)
+    return _ACD._Vec_double_2_all(alpha)
 
 class _DataType_Vec_double_2(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_double_2_generic_type
-    channels = _USCD._DataType_Vec_double_2_channels
-    fmt = _USCD._DataType_Vec_double_2_fmt
+    generic_type = _ACD._DataType_Vec_double_2_generic_type
+    channels = _ACD._DataType_Vec_double_2_channels
+    fmt = _ACD._DataType_Vec_double_2_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_double_2_swiginit(self, _USCD.new__DataType_Vec_double_2())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_double_2
+        _ACD._DataType_Vec_double_2_swiginit(self, _ACD.new__DataType_Vec_double_2())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_double_2
 
-# Register _DataType_Vec_double_2 in _USCD:
-_USCD._DataType_Vec_double_2_swigregister(_DataType_Vec_double_2)
+# Register _DataType_Vec_double_2 in _ACD:
+_ACD._DataType_Vec_double_2_swigregister(_DataType_Vec_double_2)
 
 
 Vec2d = _Vec_double_2
@@ -5505,53 +5505,53 @@ DataType_Vec2d = _DataType_Vec_double_2
 class _Matx_double_3_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_double_3_1_rows
-    cols = _USCD._Matx_double_3_1_cols
-    channels = _USCD._Matx_double_3_1_channels
-    shortdim = _USCD._Matx_double_3_1_shortdim
+    rows = _ACD._Matx_double_3_1_rows
+    cols = _ACD._Matx_double_3_1_cols
+    channels = _ACD._Matx_double_3_1_channels
+    shortdim = _ACD._Matx_double_3_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_double_3_1_all(alpha)
+        return _ACD._Matx_double_3_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_double_3_1_zeros()
+        return _ACD._Matx_double_3_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_double_3_1_ones()
+        return _ACD._Matx_double_3_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_double_3_1_eye()
+        return _ACD._Matx_double_3_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_double_3_1_randu(a, b)
+        return _ACD._Matx_double_3_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_double_3_1_randn(a, b)
+        return _ACD._Matx_double_3_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_double_3_1_dot(self, v)
+        return _ACD._Matx_double_3_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_double_3_1_ddot(self, v)
+        return _ACD._Matx_double_3_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_double_3_1_t(self)
+        return _ACD._Matx_double_3_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_double_3_1_mul(self, a)
+        return _ACD._Matx_double_3_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_double_3_1_div(self, a)
+        return _ACD._Matx_double_3_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_double_3_1___call__(self, i, j)
-    val = property(_USCD._Matx_double_3_1_val_get, _USCD._Matx_double_3_1_val_set)
+        return _ACD._Matx_double_3_1___call__(self, i, j)
+    val = property(_ACD._Matx_double_3_1_val_get, _ACD._Matx_double_3_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -5571,7 +5571,7 @@ class _Matx_double_3_1(object):
         args = [array]
 
 
-        _USCD._Matx_double_3_1_swiginit(self, _USCD.new__Matx_double_3_1(*args))
+        _ACD._Matx_double_3_1_swiginit(self, _ACD.new__Matx_double_3_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -5609,29 +5609,29 @@ class _Matx_double_3_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_double_3_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_double_3_1
+        return _ACD._Matx_double_3_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_double_3_1
 
-# Register _Matx_double_3_1 in _USCD:
-_USCD._Matx_double_3_1_swigregister(_Matx_double_3_1)
+# Register _Matx_double_3_1 in _ACD:
+_ACD._Matx_double_3_1_swigregister(_Matx_double_3_1)
 
 def _Matx_double_3_1_all(alpha):
-    return _USCD._Matx_double_3_1_all(alpha)
+    return _ACD._Matx_double_3_1_all(alpha)
 
 def _Matx_double_3_1_zeros():
-    return _USCD._Matx_double_3_1_zeros()
+    return _ACD._Matx_double_3_1_zeros()
 
 def _Matx_double_3_1_ones():
-    return _USCD._Matx_double_3_1_ones()
+    return _ACD._Matx_double_3_1_ones()
 
 def _Matx_double_3_1_eye():
-    return _USCD._Matx_double_3_1_eye()
+    return _ACD._Matx_double_3_1_eye()
 
 def _Matx_double_3_1_randu(a, b):
-    return _USCD._Matx_double_3_1_randu(a, b)
+    return _ACD._Matx_double_3_1_randu(a, b)
 
 def _Matx_double_3_1_randn(a, b):
-    return _USCD._Matx_double_3_1_randn(a, b)
+    return _ACD._Matx_double_3_1_randn(a, b)
 
 
 Matx31d = _Matx_double_3_1
@@ -5639,17 +5639,17 @@ Matx31d = _Matx_double_3_1
 class _Vec_double_3(_Matx_double_3_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_double_3_channels
+    channels = _ACD._Vec_double_3_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_double_3_all(alpha)
+        return _ACD._Vec_double_3_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_double_3_mul(self, v)
+        return _ACD._Vec_double_3_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_double_3___call__(self, i)
+        return _ACD._Vec_double_3___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -5668,7 +5668,7 @@ class _Vec_double_3(_Matx_double_3_1):
         args = [array]
 
 
-        _USCD._Vec_double_3_swiginit(self, _USCD.new__Vec_double_3(*args))
+        _ACD._Vec_double_3_swiginit(self, _ACD.new__Vec_double_3(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -5695,28 +5695,28 @@ class _Vec_double_3(_Matx_double_3_1):
 
 
     def __str__(self):
-        return _USCD._Vec_double_3___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_double_3
+        return _ACD._Vec_double_3___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_double_3
 
-# Register _Vec_double_3 in _USCD:
-_USCD._Vec_double_3_swigregister(_Vec_double_3)
+# Register _Vec_double_3 in _ACD:
+_ACD._Vec_double_3_swigregister(_Vec_double_3)
 
 def _Vec_double_3_all(alpha):
-    return _USCD._Vec_double_3_all(alpha)
+    return _ACD._Vec_double_3_all(alpha)
 
 class _DataType_Vec_double_3(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_double_3_generic_type
-    channels = _USCD._DataType_Vec_double_3_channels
-    fmt = _USCD._DataType_Vec_double_3_fmt
+    generic_type = _ACD._DataType_Vec_double_3_generic_type
+    channels = _ACD._DataType_Vec_double_3_channels
+    fmt = _ACD._DataType_Vec_double_3_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_double_3_swiginit(self, _USCD.new__DataType_Vec_double_3())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_double_3
+        _ACD._DataType_Vec_double_3_swiginit(self, _ACD.new__DataType_Vec_double_3())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_double_3
 
-# Register _DataType_Vec_double_3 in _USCD:
-_USCD._DataType_Vec_double_3_swigregister(_DataType_Vec_double_3)
+# Register _DataType_Vec_double_3 in _ACD:
+_ACD._DataType_Vec_double_3_swigregister(_DataType_Vec_double_3)
 
 
 Vec3d = _Vec_double_3
@@ -5725,53 +5725,53 @@ DataType_Vec3d = _DataType_Vec_double_3
 class _Matx_double_4_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_double_4_1_rows
-    cols = _USCD._Matx_double_4_1_cols
-    channels = _USCD._Matx_double_4_1_channels
-    shortdim = _USCD._Matx_double_4_1_shortdim
+    rows = _ACD._Matx_double_4_1_rows
+    cols = _ACD._Matx_double_4_1_cols
+    channels = _ACD._Matx_double_4_1_channels
+    shortdim = _ACD._Matx_double_4_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_double_4_1_all(alpha)
+        return _ACD._Matx_double_4_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_double_4_1_zeros()
+        return _ACD._Matx_double_4_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_double_4_1_ones()
+        return _ACD._Matx_double_4_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_double_4_1_eye()
+        return _ACD._Matx_double_4_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_double_4_1_randu(a, b)
+        return _ACD._Matx_double_4_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_double_4_1_randn(a, b)
+        return _ACD._Matx_double_4_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_double_4_1_dot(self, v)
+        return _ACD._Matx_double_4_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_double_4_1_ddot(self, v)
+        return _ACD._Matx_double_4_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_double_4_1_t(self)
+        return _ACD._Matx_double_4_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_double_4_1_mul(self, a)
+        return _ACD._Matx_double_4_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_double_4_1_div(self, a)
+        return _ACD._Matx_double_4_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_double_4_1___call__(self, i, j)
-    val = property(_USCD._Matx_double_4_1_val_get, _USCD._Matx_double_4_1_val_set)
+        return _ACD._Matx_double_4_1___call__(self, i, j)
+    val = property(_ACD._Matx_double_4_1_val_get, _ACD._Matx_double_4_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -5791,7 +5791,7 @@ class _Matx_double_4_1(object):
         args = [array]
 
 
-        _USCD._Matx_double_4_1_swiginit(self, _USCD.new__Matx_double_4_1(*args))
+        _ACD._Matx_double_4_1_swiginit(self, _ACD.new__Matx_double_4_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -5829,29 +5829,29 @@ class _Matx_double_4_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_double_4_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_double_4_1
+        return _ACD._Matx_double_4_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_double_4_1
 
-# Register _Matx_double_4_1 in _USCD:
-_USCD._Matx_double_4_1_swigregister(_Matx_double_4_1)
+# Register _Matx_double_4_1 in _ACD:
+_ACD._Matx_double_4_1_swigregister(_Matx_double_4_1)
 
 def _Matx_double_4_1_all(alpha):
-    return _USCD._Matx_double_4_1_all(alpha)
+    return _ACD._Matx_double_4_1_all(alpha)
 
 def _Matx_double_4_1_zeros():
-    return _USCD._Matx_double_4_1_zeros()
+    return _ACD._Matx_double_4_1_zeros()
 
 def _Matx_double_4_1_ones():
-    return _USCD._Matx_double_4_1_ones()
+    return _ACD._Matx_double_4_1_ones()
 
 def _Matx_double_4_1_eye():
-    return _USCD._Matx_double_4_1_eye()
+    return _ACD._Matx_double_4_1_eye()
 
 def _Matx_double_4_1_randu(a, b):
-    return _USCD._Matx_double_4_1_randu(a, b)
+    return _ACD._Matx_double_4_1_randu(a, b)
 
 def _Matx_double_4_1_randn(a, b):
-    return _USCD._Matx_double_4_1_randn(a, b)
+    return _ACD._Matx_double_4_1_randn(a, b)
 
 
 Matx41d = _Matx_double_4_1
@@ -5859,17 +5859,17 @@ Matx41d = _Matx_double_4_1
 class _Vec_double_4(_Matx_double_4_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_double_4_channels
+    channels = _ACD._Vec_double_4_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_double_4_all(alpha)
+        return _ACD._Vec_double_4_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_double_4_mul(self, v)
+        return _ACD._Vec_double_4_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_double_4___call__(self, i)
+        return _ACD._Vec_double_4___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -5888,7 +5888,7 @@ class _Vec_double_4(_Matx_double_4_1):
         args = [array]
 
 
-        _USCD._Vec_double_4_swiginit(self, _USCD.new__Vec_double_4(*args))
+        _ACD._Vec_double_4_swiginit(self, _ACD.new__Vec_double_4(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -5915,28 +5915,28 @@ class _Vec_double_4(_Matx_double_4_1):
 
 
     def __str__(self):
-        return _USCD._Vec_double_4___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_double_4
+        return _ACD._Vec_double_4___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_double_4
 
-# Register _Vec_double_4 in _USCD:
-_USCD._Vec_double_4_swigregister(_Vec_double_4)
+# Register _Vec_double_4 in _ACD:
+_ACD._Vec_double_4_swigregister(_Vec_double_4)
 
 def _Vec_double_4_all(alpha):
-    return _USCD._Vec_double_4_all(alpha)
+    return _ACD._Vec_double_4_all(alpha)
 
 class _DataType_Vec_double_4(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_double_4_generic_type
-    channels = _USCD._DataType_Vec_double_4_channels
-    fmt = _USCD._DataType_Vec_double_4_fmt
+    generic_type = _ACD._DataType_Vec_double_4_generic_type
+    channels = _ACD._DataType_Vec_double_4_channels
+    fmt = _ACD._DataType_Vec_double_4_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_double_4_swiginit(self, _USCD.new__DataType_Vec_double_4())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_double_4
+        _ACD._DataType_Vec_double_4_swiginit(self, _ACD.new__DataType_Vec_double_4())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_double_4
 
-# Register _DataType_Vec_double_4 in _USCD:
-_USCD._DataType_Vec_double_4_swigregister(_DataType_Vec_double_4)
+# Register _DataType_Vec_double_4 in _ACD:
+_ACD._DataType_Vec_double_4_swigregister(_DataType_Vec_double_4)
 
 
 Vec4d = _Vec_double_4
@@ -5945,53 +5945,53 @@ DataType_Vec4d = _DataType_Vec_double_4
 class _Matx_double_6_1(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_double_6_1_rows
-    cols = _USCD._Matx_double_6_1_cols
-    channels = _USCD._Matx_double_6_1_channels
-    shortdim = _USCD._Matx_double_6_1_shortdim
+    rows = _ACD._Matx_double_6_1_rows
+    cols = _ACD._Matx_double_6_1_cols
+    channels = _ACD._Matx_double_6_1_channels
+    shortdim = _ACD._Matx_double_6_1_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_double_6_1_all(alpha)
+        return _ACD._Matx_double_6_1_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_double_6_1_zeros()
+        return _ACD._Matx_double_6_1_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_double_6_1_ones()
+        return _ACD._Matx_double_6_1_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_double_6_1_eye()
+        return _ACD._Matx_double_6_1_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_double_6_1_randu(a, b)
+        return _ACD._Matx_double_6_1_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_double_6_1_randn(a, b)
+        return _ACD._Matx_double_6_1_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_double_6_1_dot(self, v)
+        return _ACD._Matx_double_6_1_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_double_6_1_ddot(self, v)
+        return _ACD._Matx_double_6_1_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_double_6_1_t(self)
+        return _ACD._Matx_double_6_1_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_double_6_1_mul(self, a)
+        return _ACD._Matx_double_6_1_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_double_6_1_div(self, a)
+        return _ACD._Matx_double_6_1_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_double_6_1___call__(self, i, j)
-    val = property(_USCD._Matx_double_6_1_val_get, _USCD._Matx_double_6_1_val_set)
+        return _ACD._Matx_double_6_1___call__(self, i, j)
+    val = property(_ACD._Matx_double_6_1_val_get, _ACD._Matx_double_6_1_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -6011,7 +6011,7 @@ class _Matx_double_6_1(object):
         args = [array]
 
 
-        _USCD._Matx_double_6_1_swiginit(self, _USCD.new__Matx_double_6_1(*args))
+        _ACD._Matx_double_6_1_swiginit(self, _ACD.new__Matx_double_6_1(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -6049,29 +6049,29 @@ class _Matx_double_6_1(object):
 
 
     def __str__(self):
-        return _USCD._Matx_double_6_1___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_double_6_1
+        return _ACD._Matx_double_6_1___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_double_6_1
 
-# Register _Matx_double_6_1 in _USCD:
-_USCD._Matx_double_6_1_swigregister(_Matx_double_6_1)
+# Register _Matx_double_6_1 in _ACD:
+_ACD._Matx_double_6_1_swigregister(_Matx_double_6_1)
 
 def _Matx_double_6_1_all(alpha):
-    return _USCD._Matx_double_6_1_all(alpha)
+    return _ACD._Matx_double_6_1_all(alpha)
 
 def _Matx_double_6_1_zeros():
-    return _USCD._Matx_double_6_1_zeros()
+    return _ACD._Matx_double_6_1_zeros()
 
 def _Matx_double_6_1_ones():
-    return _USCD._Matx_double_6_1_ones()
+    return _ACD._Matx_double_6_1_ones()
 
 def _Matx_double_6_1_eye():
-    return _USCD._Matx_double_6_1_eye()
+    return _ACD._Matx_double_6_1_eye()
 
 def _Matx_double_6_1_randu(a, b):
-    return _USCD._Matx_double_6_1_randu(a, b)
+    return _ACD._Matx_double_6_1_randu(a, b)
 
 def _Matx_double_6_1_randn(a, b):
-    return _USCD._Matx_double_6_1_randn(a, b)
+    return _ACD._Matx_double_6_1_randn(a, b)
 
 
 Matx61d = _Matx_double_6_1
@@ -6079,17 +6079,17 @@ Matx61d = _Matx_double_6_1
 class _Vec_double_6(_Matx_double_6_1):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    channels = _USCD._Vec_double_6_channels
+    channels = _ACD._Vec_double_6_channels
 
     @staticmethod
     def all(alpha):
-        return _USCD._Vec_double_6_all(alpha)
+        return _ACD._Vec_double_6_all(alpha)
 
     def mul(self, v):
-        return _USCD._Vec_double_6_mul(self, v)
+        return _ACD._Vec_double_6_mul(self, v)
 
     def __call__(self, i):
-        return _USCD._Vec_double_6___call__(self, i)
+        return _ACD._Vec_double_6___call__(self, i)
 
     import re
     _re_pattern = re.compile("^_Vec_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)$")
@@ -6108,7 +6108,7 @@ class _Vec_double_6(_Matx_double_6_1):
         args = [array]
 
 
-        _USCD._Vec_double_6_swiginit(self, _USCD.new__Vec_double_6(*args))
+        _ACD._Vec_double_6_swiginit(self, _ACD.new__Vec_double_6(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -6135,28 +6135,28 @@ class _Vec_double_6(_Matx_double_6_1):
 
 
     def __str__(self):
-        return _USCD._Vec_double_6___str__(self)
-    __swig_destroy__ = _USCD.delete__Vec_double_6
+        return _ACD._Vec_double_6___str__(self)
+    __swig_destroy__ = _ACD.delete__Vec_double_6
 
-# Register _Vec_double_6 in _USCD:
-_USCD._Vec_double_6_swigregister(_Vec_double_6)
+# Register _Vec_double_6 in _ACD:
+_ACD._Vec_double_6_swigregister(_Vec_double_6)
 
 def _Vec_double_6_all(alpha):
-    return _USCD._Vec_double_6_all(alpha)
+    return _ACD._Vec_double_6_all(alpha)
 
 class _DataType_Vec_double_6(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    generic_type = _USCD._DataType_Vec_double_6_generic_type
-    channels = _USCD._DataType_Vec_double_6_channels
-    fmt = _USCD._DataType_Vec_double_6_fmt
+    generic_type = _ACD._DataType_Vec_double_6_generic_type
+    channels = _ACD._DataType_Vec_double_6_channels
+    fmt = _ACD._DataType_Vec_double_6_fmt
 
     def __init__(self):
-        _USCD._DataType_Vec_double_6_swiginit(self, _USCD.new__DataType_Vec_double_6())
-    __swig_destroy__ = _USCD.delete__DataType_Vec_double_6
+        _ACD._DataType_Vec_double_6_swiginit(self, _ACD.new__DataType_Vec_double_6())
+    __swig_destroy__ = _ACD.delete__DataType_Vec_double_6
 
-# Register _DataType_Vec_double_6 in _USCD:
-_USCD._DataType_Vec_double_6_swigregister(_DataType_Vec_double_6)
+# Register _DataType_Vec_double_6 in _ACD:
+_ACD._DataType_Vec_double_6_swigregister(_DataType_Vec_double_6)
 
 
 Vec6d = _Vec_double_6
@@ -6167,29 +6167,29 @@ class _mat__np_array_constructor(object):
     __repr__ = _swig_repr
 
     def __init__(self):
-        _USCD._mat__np_array_constructor_swiginit(self, _USCD.new__mat__np_array_constructor())
-    __swig_destroy__ = _USCD.delete__mat__np_array_constructor
+        _ACD._mat__np_array_constructor_swiginit(self, _ACD.new__mat__np_array_constructor())
+    __swig_destroy__ = _ACD.delete__mat__np_array_constructor
 
-# Register _mat__np_array_constructor in _USCD:
-_USCD._mat__np_array_constructor_swigregister(_mat__np_array_constructor)
+# Register _mat__np_array_constructor in _ACD:
+_ACD._mat__np_array_constructor_swigregister(_mat__np_array_constructor)
 
 
 def _depthToDtype(depth):
-    return _USCD._depthToDtype(depth)
+    return _ACD._depthToDtype(depth)
 
 def _toCvType(dtype, nChannel):
-    return _USCD._toCvType(dtype, nChannel)
+    return _ACD._toCvType(dtype, nChannel)
 class _cv_numpy_sizeof_uchar(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_uchar_value
+    value = _ACD._cv_numpy_sizeof_uchar_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_uchar_swiginit(self, _USCD.new__cv_numpy_sizeof_uchar())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_uchar
+        _ACD._cv_numpy_sizeof_uchar_swiginit(self, _ACD.new__cv_numpy_sizeof_uchar())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_uchar
 
-# Register _cv_numpy_sizeof_uchar in _USCD:
-_USCD._cv_numpy_sizeof_uchar_swigregister(_cv_numpy_sizeof_uchar)
+# Register _cv_numpy_sizeof_uchar in _ACD:
+_ACD._cv_numpy_sizeof_uchar_swigregister(_cv_numpy_sizeof_uchar)
 
 
 if _cv_numpy_sizeof_uchar.value == 1:
@@ -6202,52 +6202,52 @@ class _Mat__uchar(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__uchar_create(self, *args)
+        return _ACD._Mat__uchar_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__uchar_cross(self, m)
+        return _ACD._Mat__uchar_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__uchar_row(self, y)
+        return _ACD._Mat__uchar_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__uchar_col(self, x)
+        return _ACD._Mat__uchar_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__uchar_diag(self, d)
+        return _ACD._Mat__uchar_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__uchar_clone(self)
+        return _ACD._Mat__uchar_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__uchar_elemSize(self)
+        return _ACD._Mat__uchar_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__uchar_elemSize1(self)
+        return _ACD._Mat__uchar_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__uchar_type(self)
+        return _ACD._Mat__uchar_type(self)
 
     def depth(self):
-        return _USCD._Mat__uchar_depth(self)
+        return _ACD._Mat__uchar_depth(self)
 
     def channels(self):
-        return _USCD._Mat__uchar_channels(self)
+        return _ACD._Mat__uchar_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__uchar_step1(self, i)
+        return _ACD._Mat__uchar_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__uchar_stepT(self, i)
+        return _ACD._Mat__uchar_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__uchar_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__uchar_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__uchar___call__(self, *args)
+        return _ACD._Mat__uchar___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__uchar_swiginit(self, _USCD.new__Mat__uchar(*args))
+        _ACD._Mat__uchar_swiginit(self, _ACD.new__Mat__uchar(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -6285,11 +6285,11 @@ class _Mat__uchar(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__uchar___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__uchar
+        return _ACD._Mat__uchar___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__uchar
 
-# Register _Mat__uchar in _USCD:
-_USCD._Mat__uchar_swigregister(_Mat__uchar)
+# Register _Mat__uchar in _ACD:
+_ACD._Mat__uchar_swigregister(_Mat__uchar)
 
 
 Mat1b = _Mat__uchar
@@ -6297,14 +6297,14 @@ Mat1b = _Mat__uchar
 class _cv_numpy_sizeof_Vec2b(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec2b_value
+    value = _ACD._cv_numpy_sizeof_Vec2b_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec2b_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec2b())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec2b
+        _ACD._cv_numpy_sizeof_Vec2b_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec2b())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec2b
 
-# Register _cv_numpy_sizeof_Vec2b in _USCD:
-_USCD._cv_numpy_sizeof_Vec2b_swigregister(_cv_numpy_sizeof_Vec2b)
+# Register _cv_numpy_sizeof_Vec2b in _ACD:
+_ACD._cv_numpy_sizeof_Vec2b_swigregister(_cv_numpy_sizeof_Vec2b)
 
 
 if _cv_numpy_sizeof_Vec2b.value == 1:
@@ -6317,52 +6317,52 @@ class _Mat__Vec2b(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec2b_create(self, *args)
+        return _ACD._Mat__Vec2b_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec2b_cross(self, m)
+        return _ACD._Mat__Vec2b_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec2b_row(self, y)
+        return _ACD._Mat__Vec2b_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec2b_col(self, x)
+        return _ACD._Mat__Vec2b_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec2b_diag(self, d)
+        return _ACD._Mat__Vec2b_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec2b_clone(self)
+        return _ACD._Mat__Vec2b_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec2b_elemSize(self)
+        return _ACD._Mat__Vec2b_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec2b_elemSize1(self)
+        return _ACD._Mat__Vec2b_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec2b_type(self)
+        return _ACD._Mat__Vec2b_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec2b_depth(self)
+        return _ACD._Mat__Vec2b_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec2b_channels(self)
+        return _ACD._Mat__Vec2b_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec2b_step1(self, i)
+        return _ACD._Mat__Vec2b_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec2b_stepT(self, i)
+        return _ACD._Mat__Vec2b_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec2b_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec2b_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec2b___call__(self, *args)
+        return _ACD._Mat__Vec2b___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec2b_swiginit(self, _USCD.new__Mat__Vec2b(*args))
+        _ACD._Mat__Vec2b_swiginit(self, _ACD.new__Mat__Vec2b(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -6400,11 +6400,11 @@ class _Mat__Vec2b(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec2b___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec2b
+        return _ACD._Mat__Vec2b___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec2b
 
-# Register _Mat__Vec2b in _USCD:
-_USCD._Mat__Vec2b_swigregister(_Mat__Vec2b)
+# Register _Mat__Vec2b in _ACD:
+_ACD._Mat__Vec2b_swigregister(_Mat__Vec2b)
 
 
 Mat2b = _Mat__Vec2b
@@ -6412,14 +6412,14 @@ Mat2b = _Mat__Vec2b
 class _cv_numpy_sizeof_Vec3b(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec3b_value
+    value = _ACD._cv_numpy_sizeof_Vec3b_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec3b_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec3b())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec3b
+        _ACD._cv_numpy_sizeof_Vec3b_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec3b())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec3b
 
-# Register _cv_numpy_sizeof_Vec3b in _USCD:
-_USCD._cv_numpy_sizeof_Vec3b_swigregister(_cv_numpy_sizeof_Vec3b)
+# Register _cv_numpy_sizeof_Vec3b in _ACD:
+_ACD._cv_numpy_sizeof_Vec3b_swigregister(_cv_numpy_sizeof_Vec3b)
 
 
 if _cv_numpy_sizeof_Vec3b.value == 1:
@@ -6432,52 +6432,52 @@ class _Mat__Vec3b(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec3b_create(self, *args)
+        return _ACD._Mat__Vec3b_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec3b_cross(self, m)
+        return _ACD._Mat__Vec3b_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec3b_row(self, y)
+        return _ACD._Mat__Vec3b_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec3b_col(self, x)
+        return _ACD._Mat__Vec3b_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec3b_diag(self, d)
+        return _ACD._Mat__Vec3b_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec3b_clone(self)
+        return _ACD._Mat__Vec3b_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec3b_elemSize(self)
+        return _ACD._Mat__Vec3b_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec3b_elemSize1(self)
+        return _ACD._Mat__Vec3b_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec3b_type(self)
+        return _ACD._Mat__Vec3b_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec3b_depth(self)
+        return _ACD._Mat__Vec3b_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec3b_channels(self)
+        return _ACD._Mat__Vec3b_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec3b_step1(self, i)
+        return _ACD._Mat__Vec3b_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec3b_stepT(self, i)
+        return _ACD._Mat__Vec3b_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec3b_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec3b_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec3b___call__(self, *args)
+        return _ACD._Mat__Vec3b___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec3b_swiginit(self, _USCD.new__Mat__Vec3b(*args))
+        _ACD._Mat__Vec3b_swiginit(self, _ACD.new__Mat__Vec3b(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -6515,11 +6515,11 @@ class _Mat__Vec3b(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec3b___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec3b
+        return _ACD._Mat__Vec3b___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec3b
 
-# Register _Mat__Vec3b in _USCD:
-_USCD._Mat__Vec3b_swigregister(_Mat__Vec3b)
+# Register _Mat__Vec3b in _ACD:
+_ACD._Mat__Vec3b_swigregister(_Mat__Vec3b)
 
 
 Mat3b = _Mat__Vec3b
@@ -6527,14 +6527,14 @@ Mat3b = _Mat__Vec3b
 class _cv_numpy_sizeof_Vec4b(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec4b_value
+    value = _ACD._cv_numpy_sizeof_Vec4b_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec4b_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec4b())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec4b
+        _ACD._cv_numpy_sizeof_Vec4b_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec4b())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec4b
 
-# Register _cv_numpy_sizeof_Vec4b in _USCD:
-_USCD._cv_numpy_sizeof_Vec4b_swigregister(_cv_numpy_sizeof_Vec4b)
+# Register _cv_numpy_sizeof_Vec4b in _ACD:
+_ACD._cv_numpy_sizeof_Vec4b_swigregister(_cv_numpy_sizeof_Vec4b)
 
 
 if _cv_numpy_sizeof_Vec4b.value == 1:
@@ -6547,52 +6547,52 @@ class _Mat__Vec4b(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec4b_create(self, *args)
+        return _ACD._Mat__Vec4b_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec4b_cross(self, m)
+        return _ACD._Mat__Vec4b_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec4b_row(self, y)
+        return _ACD._Mat__Vec4b_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec4b_col(self, x)
+        return _ACD._Mat__Vec4b_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec4b_diag(self, d)
+        return _ACD._Mat__Vec4b_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec4b_clone(self)
+        return _ACD._Mat__Vec4b_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec4b_elemSize(self)
+        return _ACD._Mat__Vec4b_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec4b_elemSize1(self)
+        return _ACD._Mat__Vec4b_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec4b_type(self)
+        return _ACD._Mat__Vec4b_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec4b_depth(self)
+        return _ACD._Mat__Vec4b_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec4b_channels(self)
+        return _ACD._Mat__Vec4b_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec4b_step1(self, i)
+        return _ACD._Mat__Vec4b_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec4b_stepT(self, i)
+        return _ACD._Mat__Vec4b_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec4b_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec4b_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec4b___call__(self, *args)
+        return _ACD._Mat__Vec4b___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec4b_swiginit(self, _USCD.new__Mat__Vec4b(*args))
+        _ACD._Mat__Vec4b_swiginit(self, _ACD.new__Mat__Vec4b(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -6630,11 +6630,11 @@ class _Mat__Vec4b(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec4b___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec4b
+        return _ACD._Mat__Vec4b___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec4b
 
-# Register _Mat__Vec4b in _USCD:
-_USCD._Mat__Vec4b_swigregister(_Mat__Vec4b)
+# Register _Mat__Vec4b in _ACD:
+_ACD._Mat__Vec4b_swigregister(_Mat__Vec4b)
 
 
 Mat4b = _Mat__Vec4b
@@ -6644,52 +6644,52 @@ class _Mat__short(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__short_create(self, *args)
+        return _ACD._Mat__short_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__short_cross(self, m)
+        return _ACD._Mat__short_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__short_row(self, y)
+        return _ACD._Mat__short_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__short_col(self, x)
+        return _ACD._Mat__short_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__short_diag(self, d)
+        return _ACD._Mat__short_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__short_clone(self)
+        return _ACD._Mat__short_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__short_elemSize(self)
+        return _ACD._Mat__short_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__short_elemSize1(self)
+        return _ACD._Mat__short_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__short_type(self)
+        return _ACD._Mat__short_type(self)
 
     def depth(self):
-        return _USCD._Mat__short_depth(self)
+        return _ACD._Mat__short_depth(self)
 
     def channels(self):
-        return _USCD._Mat__short_channels(self)
+        return _ACD._Mat__short_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__short_step1(self, i)
+        return _ACD._Mat__short_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__short_stepT(self, i)
+        return _ACD._Mat__short_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__short_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__short_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__short___call__(self, *args)
+        return _ACD._Mat__short___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__short_swiginit(self, _USCD.new__Mat__short(*args))
+        _ACD._Mat__short_swiginit(self, _ACD.new__Mat__short(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -6727,11 +6727,11 @@ class _Mat__short(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__short___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__short
+        return _ACD._Mat__short___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__short
 
-# Register _Mat__short in _USCD:
-_USCD._Mat__short_swigregister(_Mat__short)
+# Register _Mat__short in _ACD:
+_ACD._Mat__short_swigregister(_Mat__short)
 
 
 Mat1s = _Mat__short
@@ -6739,14 +6739,14 @@ Mat1s = _Mat__short
 class _cv_numpy_sizeof_Vec2s(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec2s_value
+    value = _ACD._cv_numpy_sizeof_Vec2s_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec2s_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec2s())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec2s
+        _ACD._cv_numpy_sizeof_Vec2s_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec2s())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec2s
 
-# Register _cv_numpy_sizeof_Vec2s in _USCD:
-_USCD._cv_numpy_sizeof_Vec2s_swigregister(_cv_numpy_sizeof_Vec2s)
+# Register _cv_numpy_sizeof_Vec2s in _ACD:
+_ACD._cv_numpy_sizeof_Vec2s_swigregister(_cv_numpy_sizeof_Vec2s)
 
 
 if _cv_numpy_sizeof_Vec2s.value == 1:
@@ -6759,52 +6759,52 @@ class _Mat__Vec2s(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec2s_create(self, *args)
+        return _ACD._Mat__Vec2s_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec2s_cross(self, m)
+        return _ACD._Mat__Vec2s_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec2s_row(self, y)
+        return _ACD._Mat__Vec2s_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec2s_col(self, x)
+        return _ACD._Mat__Vec2s_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec2s_diag(self, d)
+        return _ACD._Mat__Vec2s_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec2s_clone(self)
+        return _ACD._Mat__Vec2s_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec2s_elemSize(self)
+        return _ACD._Mat__Vec2s_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec2s_elemSize1(self)
+        return _ACD._Mat__Vec2s_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec2s_type(self)
+        return _ACD._Mat__Vec2s_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec2s_depth(self)
+        return _ACD._Mat__Vec2s_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec2s_channels(self)
+        return _ACD._Mat__Vec2s_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec2s_step1(self, i)
+        return _ACD._Mat__Vec2s_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec2s_stepT(self, i)
+        return _ACD._Mat__Vec2s_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec2s_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec2s_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec2s___call__(self, *args)
+        return _ACD._Mat__Vec2s___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec2s_swiginit(self, _USCD.new__Mat__Vec2s(*args))
+        _ACD._Mat__Vec2s_swiginit(self, _ACD.new__Mat__Vec2s(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -6842,11 +6842,11 @@ class _Mat__Vec2s(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec2s___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec2s
+        return _ACD._Mat__Vec2s___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec2s
 
-# Register _Mat__Vec2s in _USCD:
-_USCD._Mat__Vec2s_swigregister(_Mat__Vec2s)
+# Register _Mat__Vec2s in _ACD:
+_ACD._Mat__Vec2s_swigregister(_Mat__Vec2s)
 
 
 Mat2s = _Mat__Vec2s
@@ -6854,14 +6854,14 @@ Mat2s = _Mat__Vec2s
 class _cv_numpy_sizeof_Vec3s(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec3s_value
+    value = _ACD._cv_numpy_sizeof_Vec3s_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec3s_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec3s())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec3s
+        _ACD._cv_numpy_sizeof_Vec3s_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec3s())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec3s
 
-# Register _cv_numpy_sizeof_Vec3s in _USCD:
-_USCD._cv_numpy_sizeof_Vec3s_swigregister(_cv_numpy_sizeof_Vec3s)
+# Register _cv_numpy_sizeof_Vec3s in _ACD:
+_ACD._cv_numpy_sizeof_Vec3s_swigregister(_cv_numpy_sizeof_Vec3s)
 
 
 if _cv_numpy_sizeof_Vec3s.value == 1:
@@ -6874,52 +6874,52 @@ class _Mat__Vec3s(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec3s_create(self, *args)
+        return _ACD._Mat__Vec3s_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec3s_cross(self, m)
+        return _ACD._Mat__Vec3s_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec3s_row(self, y)
+        return _ACD._Mat__Vec3s_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec3s_col(self, x)
+        return _ACD._Mat__Vec3s_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec3s_diag(self, d)
+        return _ACD._Mat__Vec3s_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec3s_clone(self)
+        return _ACD._Mat__Vec3s_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec3s_elemSize(self)
+        return _ACD._Mat__Vec3s_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec3s_elemSize1(self)
+        return _ACD._Mat__Vec3s_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec3s_type(self)
+        return _ACD._Mat__Vec3s_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec3s_depth(self)
+        return _ACD._Mat__Vec3s_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec3s_channels(self)
+        return _ACD._Mat__Vec3s_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec3s_step1(self, i)
+        return _ACD._Mat__Vec3s_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec3s_stepT(self, i)
+        return _ACD._Mat__Vec3s_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec3s_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec3s_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec3s___call__(self, *args)
+        return _ACD._Mat__Vec3s___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec3s_swiginit(self, _USCD.new__Mat__Vec3s(*args))
+        _ACD._Mat__Vec3s_swiginit(self, _ACD.new__Mat__Vec3s(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -6957,11 +6957,11 @@ class _Mat__Vec3s(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec3s___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec3s
+        return _ACD._Mat__Vec3s___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec3s
 
-# Register _Mat__Vec3s in _USCD:
-_USCD._Mat__Vec3s_swigregister(_Mat__Vec3s)
+# Register _Mat__Vec3s in _ACD:
+_ACD._Mat__Vec3s_swigregister(_Mat__Vec3s)
 
 
 Mat3s = _Mat__Vec3s
@@ -6969,14 +6969,14 @@ Mat3s = _Mat__Vec3s
 class _cv_numpy_sizeof_Vec4s(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec4s_value
+    value = _ACD._cv_numpy_sizeof_Vec4s_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec4s_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec4s())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec4s
+        _ACD._cv_numpy_sizeof_Vec4s_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec4s())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec4s
 
-# Register _cv_numpy_sizeof_Vec4s in _USCD:
-_USCD._cv_numpy_sizeof_Vec4s_swigregister(_cv_numpy_sizeof_Vec4s)
+# Register _cv_numpy_sizeof_Vec4s in _ACD:
+_ACD._cv_numpy_sizeof_Vec4s_swigregister(_cv_numpy_sizeof_Vec4s)
 
 
 if _cv_numpy_sizeof_Vec4s.value == 1:
@@ -6989,52 +6989,52 @@ class _Mat__Vec4s(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec4s_create(self, *args)
+        return _ACD._Mat__Vec4s_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec4s_cross(self, m)
+        return _ACD._Mat__Vec4s_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec4s_row(self, y)
+        return _ACD._Mat__Vec4s_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec4s_col(self, x)
+        return _ACD._Mat__Vec4s_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec4s_diag(self, d)
+        return _ACD._Mat__Vec4s_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec4s_clone(self)
+        return _ACD._Mat__Vec4s_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec4s_elemSize(self)
+        return _ACD._Mat__Vec4s_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec4s_elemSize1(self)
+        return _ACD._Mat__Vec4s_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec4s_type(self)
+        return _ACD._Mat__Vec4s_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec4s_depth(self)
+        return _ACD._Mat__Vec4s_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec4s_channels(self)
+        return _ACD._Mat__Vec4s_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec4s_step1(self, i)
+        return _ACD._Mat__Vec4s_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec4s_stepT(self, i)
+        return _ACD._Mat__Vec4s_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec4s_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec4s_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec4s___call__(self, *args)
+        return _ACD._Mat__Vec4s___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec4s_swiginit(self, _USCD.new__Mat__Vec4s(*args))
+        _ACD._Mat__Vec4s_swiginit(self, _ACD.new__Mat__Vec4s(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -7072,11 +7072,11 @@ class _Mat__Vec4s(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec4s___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec4s
+        return _ACD._Mat__Vec4s___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec4s
 
-# Register _Mat__Vec4s in _USCD:
-_USCD._Mat__Vec4s_swigregister(_Mat__Vec4s)
+# Register _Mat__Vec4s in _ACD:
+_ACD._Mat__Vec4s_swigregister(_Mat__Vec4s)
 
 
 Mat4s = _Mat__Vec4s
@@ -7086,52 +7086,52 @@ class _Mat__ushort(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__ushort_create(self, *args)
+        return _ACD._Mat__ushort_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__ushort_cross(self, m)
+        return _ACD._Mat__ushort_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__ushort_row(self, y)
+        return _ACD._Mat__ushort_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__ushort_col(self, x)
+        return _ACD._Mat__ushort_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__ushort_diag(self, d)
+        return _ACD._Mat__ushort_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__ushort_clone(self)
+        return _ACD._Mat__ushort_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__ushort_elemSize(self)
+        return _ACD._Mat__ushort_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__ushort_elemSize1(self)
+        return _ACD._Mat__ushort_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__ushort_type(self)
+        return _ACD._Mat__ushort_type(self)
 
     def depth(self):
-        return _USCD._Mat__ushort_depth(self)
+        return _ACD._Mat__ushort_depth(self)
 
     def channels(self):
-        return _USCD._Mat__ushort_channels(self)
+        return _ACD._Mat__ushort_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__ushort_step1(self, i)
+        return _ACD._Mat__ushort_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__ushort_stepT(self, i)
+        return _ACD._Mat__ushort_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__ushort_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__ushort_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__ushort___call__(self, *args)
+        return _ACD._Mat__ushort___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__ushort_swiginit(self, _USCD.new__Mat__ushort(*args))
+        _ACD._Mat__ushort_swiginit(self, _ACD.new__Mat__ushort(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -7169,11 +7169,11 @@ class _Mat__ushort(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__ushort___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__ushort
+        return _ACD._Mat__ushort___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__ushort
 
-# Register _Mat__ushort in _USCD:
-_USCD._Mat__ushort_swigregister(_Mat__ushort)
+# Register _Mat__ushort in _ACD:
+_ACD._Mat__ushort_swigregister(_Mat__ushort)
 
 
 Mat1w = _Mat__ushort
@@ -7181,14 +7181,14 @@ Mat1w = _Mat__ushort
 class _cv_numpy_sizeof_Vec2w(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec2w_value
+    value = _ACD._cv_numpy_sizeof_Vec2w_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec2w_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec2w())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec2w
+        _ACD._cv_numpy_sizeof_Vec2w_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec2w())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec2w
 
-# Register _cv_numpy_sizeof_Vec2w in _USCD:
-_USCD._cv_numpy_sizeof_Vec2w_swigregister(_cv_numpy_sizeof_Vec2w)
+# Register _cv_numpy_sizeof_Vec2w in _ACD:
+_ACD._cv_numpy_sizeof_Vec2w_swigregister(_cv_numpy_sizeof_Vec2w)
 
 
 if _cv_numpy_sizeof_Vec2w.value == 1:
@@ -7201,52 +7201,52 @@ class _Mat__Vec2w(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec2w_create(self, *args)
+        return _ACD._Mat__Vec2w_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec2w_cross(self, m)
+        return _ACD._Mat__Vec2w_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec2w_row(self, y)
+        return _ACD._Mat__Vec2w_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec2w_col(self, x)
+        return _ACD._Mat__Vec2w_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec2w_diag(self, d)
+        return _ACD._Mat__Vec2w_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec2w_clone(self)
+        return _ACD._Mat__Vec2w_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec2w_elemSize(self)
+        return _ACD._Mat__Vec2w_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec2w_elemSize1(self)
+        return _ACD._Mat__Vec2w_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec2w_type(self)
+        return _ACD._Mat__Vec2w_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec2w_depth(self)
+        return _ACD._Mat__Vec2w_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec2w_channels(self)
+        return _ACD._Mat__Vec2w_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec2w_step1(self, i)
+        return _ACD._Mat__Vec2w_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec2w_stepT(self, i)
+        return _ACD._Mat__Vec2w_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec2w_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec2w_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec2w___call__(self, *args)
+        return _ACD._Mat__Vec2w___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec2w_swiginit(self, _USCD.new__Mat__Vec2w(*args))
+        _ACD._Mat__Vec2w_swiginit(self, _ACD.new__Mat__Vec2w(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -7284,11 +7284,11 @@ class _Mat__Vec2w(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec2w___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec2w
+        return _ACD._Mat__Vec2w___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec2w
 
-# Register _Mat__Vec2w in _USCD:
-_USCD._Mat__Vec2w_swigregister(_Mat__Vec2w)
+# Register _Mat__Vec2w in _ACD:
+_ACD._Mat__Vec2w_swigregister(_Mat__Vec2w)
 
 
 Mat2w = _Mat__Vec2w
@@ -7296,14 +7296,14 @@ Mat2w = _Mat__Vec2w
 class _cv_numpy_sizeof_Vec3w(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec3w_value
+    value = _ACD._cv_numpy_sizeof_Vec3w_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec3w_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec3w())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec3w
+        _ACD._cv_numpy_sizeof_Vec3w_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec3w())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec3w
 
-# Register _cv_numpy_sizeof_Vec3w in _USCD:
-_USCD._cv_numpy_sizeof_Vec3w_swigregister(_cv_numpy_sizeof_Vec3w)
+# Register _cv_numpy_sizeof_Vec3w in _ACD:
+_ACD._cv_numpy_sizeof_Vec3w_swigregister(_cv_numpy_sizeof_Vec3w)
 
 
 if _cv_numpy_sizeof_Vec3w.value == 1:
@@ -7316,52 +7316,52 @@ class _Mat__Vec3w(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec3w_create(self, *args)
+        return _ACD._Mat__Vec3w_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec3w_cross(self, m)
+        return _ACD._Mat__Vec3w_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec3w_row(self, y)
+        return _ACD._Mat__Vec3w_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec3w_col(self, x)
+        return _ACD._Mat__Vec3w_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec3w_diag(self, d)
+        return _ACD._Mat__Vec3w_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec3w_clone(self)
+        return _ACD._Mat__Vec3w_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec3w_elemSize(self)
+        return _ACD._Mat__Vec3w_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec3w_elemSize1(self)
+        return _ACD._Mat__Vec3w_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec3w_type(self)
+        return _ACD._Mat__Vec3w_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec3w_depth(self)
+        return _ACD._Mat__Vec3w_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec3w_channels(self)
+        return _ACD._Mat__Vec3w_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec3w_step1(self, i)
+        return _ACD._Mat__Vec3w_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec3w_stepT(self, i)
+        return _ACD._Mat__Vec3w_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec3w_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec3w_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec3w___call__(self, *args)
+        return _ACD._Mat__Vec3w___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec3w_swiginit(self, _USCD.new__Mat__Vec3w(*args))
+        _ACD._Mat__Vec3w_swiginit(self, _ACD.new__Mat__Vec3w(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -7399,11 +7399,11 @@ class _Mat__Vec3w(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec3w___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec3w
+        return _ACD._Mat__Vec3w___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec3w
 
-# Register _Mat__Vec3w in _USCD:
-_USCD._Mat__Vec3w_swigregister(_Mat__Vec3w)
+# Register _Mat__Vec3w in _ACD:
+_ACD._Mat__Vec3w_swigregister(_Mat__Vec3w)
 
 
 Mat3w = _Mat__Vec3w
@@ -7411,14 +7411,14 @@ Mat3w = _Mat__Vec3w
 class _cv_numpy_sizeof_Vec4w(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec4w_value
+    value = _ACD._cv_numpy_sizeof_Vec4w_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec4w_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec4w())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec4w
+        _ACD._cv_numpy_sizeof_Vec4w_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec4w())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec4w
 
-# Register _cv_numpy_sizeof_Vec4w in _USCD:
-_USCD._cv_numpy_sizeof_Vec4w_swigregister(_cv_numpy_sizeof_Vec4w)
+# Register _cv_numpy_sizeof_Vec4w in _ACD:
+_ACD._cv_numpy_sizeof_Vec4w_swigregister(_cv_numpy_sizeof_Vec4w)
 
 
 if _cv_numpy_sizeof_Vec4w.value == 1:
@@ -7431,52 +7431,52 @@ class _Mat__Vec4w(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec4w_create(self, *args)
+        return _ACD._Mat__Vec4w_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec4w_cross(self, m)
+        return _ACD._Mat__Vec4w_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec4w_row(self, y)
+        return _ACD._Mat__Vec4w_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec4w_col(self, x)
+        return _ACD._Mat__Vec4w_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec4w_diag(self, d)
+        return _ACD._Mat__Vec4w_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec4w_clone(self)
+        return _ACD._Mat__Vec4w_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec4w_elemSize(self)
+        return _ACD._Mat__Vec4w_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec4w_elemSize1(self)
+        return _ACD._Mat__Vec4w_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec4w_type(self)
+        return _ACD._Mat__Vec4w_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec4w_depth(self)
+        return _ACD._Mat__Vec4w_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec4w_channels(self)
+        return _ACD._Mat__Vec4w_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec4w_step1(self, i)
+        return _ACD._Mat__Vec4w_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec4w_stepT(self, i)
+        return _ACD._Mat__Vec4w_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec4w_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec4w_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec4w___call__(self, *args)
+        return _ACD._Mat__Vec4w___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec4w_swiginit(self, _USCD.new__Mat__Vec4w(*args))
+        _ACD._Mat__Vec4w_swiginit(self, _ACD.new__Mat__Vec4w(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -7514,11 +7514,11 @@ class _Mat__Vec4w(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec4w___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec4w
+        return _ACD._Mat__Vec4w___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec4w
 
-# Register _Mat__Vec4w in _USCD:
-_USCD._Mat__Vec4w_swigregister(_Mat__Vec4w)
+# Register _Mat__Vec4w in _ACD:
+_ACD._Mat__Vec4w_swigregister(_Mat__Vec4w)
 
 
 Mat4w = _Mat__Vec4w
@@ -7528,52 +7528,52 @@ class _Mat__int(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__int_create(self, *args)
+        return _ACD._Mat__int_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__int_cross(self, m)
+        return _ACD._Mat__int_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__int_row(self, y)
+        return _ACD._Mat__int_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__int_col(self, x)
+        return _ACD._Mat__int_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__int_diag(self, d)
+        return _ACD._Mat__int_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__int_clone(self)
+        return _ACD._Mat__int_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__int_elemSize(self)
+        return _ACD._Mat__int_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__int_elemSize1(self)
+        return _ACD._Mat__int_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__int_type(self)
+        return _ACD._Mat__int_type(self)
 
     def depth(self):
-        return _USCD._Mat__int_depth(self)
+        return _ACD._Mat__int_depth(self)
 
     def channels(self):
-        return _USCD._Mat__int_channels(self)
+        return _ACD._Mat__int_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__int_step1(self, i)
+        return _ACD._Mat__int_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__int_stepT(self, i)
+        return _ACD._Mat__int_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__int_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__int_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__int___call__(self, *args)
+        return _ACD._Mat__int___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__int_swiginit(self, _USCD.new__Mat__int(*args))
+        _ACD._Mat__int_swiginit(self, _ACD.new__Mat__int(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -7611,11 +7611,11 @@ class _Mat__int(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__int___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__int
+        return _ACD._Mat__int___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__int
 
-# Register _Mat__int in _USCD:
-_USCD._Mat__int_swigregister(_Mat__int)
+# Register _Mat__int in _ACD:
+_ACD._Mat__int_swigregister(_Mat__int)
 
 
 Mat1i = _Mat__int
@@ -7623,14 +7623,14 @@ Mat1i = _Mat__int
 class _cv_numpy_sizeof_Vec2i(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec2i_value
+    value = _ACD._cv_numpy_sizeof_Vec2i_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec2i_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec2i())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec2i
+        _ACD._cv_numpy_sizeof_Vec2i_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec2i())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec2i
 
-# Register _cv_numpy_sizeof_Vec2i in _USCD:
-_USCD._cv_numpy_sizeof_Vec2i_swigregister(_cv_numpy_sizeof_Vec2i)
+# Register _cv_numpy_sizeof_Vec2i in _ACD:
+_ACD._cv_numpy_sizeof_Vec2i_swigregister(_cv_numpy_sizeof_Vec2i)
 
 
 if _cv_numpy_sizeof_Vec2i.value == 1:
@@ -7643,52 +7643,52 @@ class _Mat__Vec2i(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec2i_create(self, *args)
+        return _ACD._Mat__Vec2i_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec2i_cross(self, m)
+        return _ACD._Mat__Vec2i_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec2i_row(self, y)
+        return _ACD._Mat__Vec2i_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec2i_col(self, x)
+        return _ACD._Mat__Vec2i_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec2i_diag(self, d)
+        return _ACD._Mat__Vec2i_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec2i_clone(self)
+        return _ACD._Mat__Vec2i_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec2i_elemSize(self)
+        return _ACD._Mat__Vec2i_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec2i_elemSize1(self)
+        return _ACD._Mat__Vec2i_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec2i_type(self)
+        return _ACD._Mat__Vec2i_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec2i_depth(self)
+        return _ACD._Mat__Vec2i_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec2i_channels(self)
+        return _ACD._Mat__Vec2i_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec2i_step1(self, i)
+        return _ACD._Mat__Vec2i_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec2i_stepT(self, i)
+        return _ACD._Mat__Vec2i_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec2i_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec2i_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec2i___call__(self, *args)
+        return _ACD._Mat__Vec2i___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec2i_swiginit(self, _USCD.new__Mat__Vec2i(*args))
+        _ACD._Mat__Vec2i_swiginit(self, _ACD.new__Mat__Vec2i(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -7726,11 +7726,11 @@ class _Mat__Vec2i(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec2i___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec2i
+        return _ACD._Mat__Vec2i___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec2i
 
-# Register _Mat__Vec2i in _USCD:
-_USCD._Mat__Vec2i_swigregister(_Mat__Vec2i)
+# Register _Mat__Vec2i in _ACD:
+_ACD._Mat__Vec2i_swigregister(_Mat__Vec2i)
 
 
 Mat2i = _Mat__Vec2i
@@ -7738,14 +7738,14 @@ Mat2i = _Mat__Vec2i
 class _cv_numpy_sizeof_Vec3i(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec3i_value
+    value = _ACD._cv_numpy_sizeof_Vec3i_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec3i_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec3i())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec3i
+        _ACD._cv_numpy_sizeof_Vec3i_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec3i())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec3i
 
-# Register _cv_numpy_sizeof_Vec3i in _USCD:
-_USCD._cv_numpy_sizeof_Vec3i_swigregister(_cv_numpy_sizeof_Vec3i)
+# Register _cv_numpy_sizeof_Vec3i in _ACD:
+_ACD._cv_numpy_sizeof_Vec3i_swigregister(_cv_numpy_sizeof_Vec3i)
 
 
 if _cv_numpy_sizeof_Vec3i.value == 1:
@@ -7758,52 +7758,52 @@ class _Mat__Vec3i(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec3i_create(self, *args)
+        return _ACD._Mat__Vec3i_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec3i_cross(self, m)
+        return _ACD._Mat__Vec3i_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec3i_row(self, y)
+        return _ACD._Mat__Vec3i_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec3i_col(self, x)
+        return _ACD._Mat__Vec3i_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec3i_diag(self, d)
+        return _ACD._Mat__Vec3i_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec3i_clone(self)
+        return _ACD._Mat__Vec3i_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec3i_elemSize(self)
+        return _ACD._Mat__Vec3i_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec3i_elemSize1(self)
+        return _ACD._Mat__Vec3i_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec3i_type(self)
+        return _ACD._Mat__Vec3i_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec3i_depth(self)
+        return _ACD._Mat__Vec3i_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec3i_channels(self)
+        return _ACD._Mat__Vec3i_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec3i_step1(self, i)
+        return _ACD._Mat__Vec3i_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec3i_stepT(self, i)
+        return _ACD._Mat__Vec3i_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec3i_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec3i_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec3i___call__(self, *args)
+        return _ACD._Mat__Vec3i___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec3i_swiginit(self, _USCD.new__Mat__Vec3i(*args))
+        _ACD._Mat__Vec3i_swiginit(self, _ACD.new__Mat__Vec3i(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -7841,11 +7841,11 @@ class _Mat__Vec3i(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec3i___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec3i
+        return _ACD._Mat__Vec3i___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec3i
 
-# Register _Mat__Vec3i in _USCD:
-_USCD._Mat__Vec3i_swigregister(_Mat__Vec3i)
+# Register _Mat__Vec3i in _ACD:
+_ACD._Mat__Vec3i_swigregister(_Mat__Vec3i)
 
 
 Mat3i = _Mat__Vec3i
@@ -7853,14 +7853,14 @@ Mat3i = _Mat__Vec3i
 class _cv_numpy_sizeof_Vec4i(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec4i_value
+    value = _ACD._cv_numpy_sizeof_Vec4i_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec4i_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec4i())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec4i
+        _ACD._cv_numpy_sizeof_Vec4i_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec4i())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec4i
 
-# Register _cv_numpy_sizeof_Vec4i in _USCD:
-_USCD._cv_numpy_sizeof_Vec4i_swigregister(_cv_numpy_sizeof_Vec4i)
+# Register _cv_numpy_sizeof_Vec4i in _ACD:
+_ACD._cv_numpy_sizeof_Vec4i_swigregister(_cv_numpy_sizeof_Vec4i)
 
 
 if _cv_numpy_sizeof_Vec4i.value == 1:
@@ -7873,52 +7873,52 @@ class _Mat__Vec4i(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec4i_create(self, *args)
+        return _ACD._Mat__Vec4i_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec4i_cross(self, m)
+        return _ACD._Mat__Vec4i_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec4i_row(self, y)
+        return _ACD._Mat__Vec4i_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec4i_col(self, x)
+        return _ACD._Mat__Vec4i_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec4i_diag(self, d)
+        return _ACD._Mat__Vec4i_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec4i_clone(self)
+        return _ACD._Mat__Vec4i_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec4i_elemSize(self)
+        return _ACD._Mat__Vec4i_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec4i_elemSize1(self)
+        return _ACD._Mat__Vec4i_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec4i_type(self)
+        return _ACD._Mat__Vec4i_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec4i_depth(self)
+        return _ACD._Mat__Vec4i_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec4i_channels(self)
+        return _ACD._Mat__Vec4i_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec4i_step1(self, i)
+        return _ACD._Mat__Vec4i_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec4i_stepT(self, i)
+        return _ACD._Mat__Vec4i_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec4i_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec4i_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec4i___call__(self, *args)
+        return _ACD._Mat__Vec4i___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec4i_swiginit(self, _USCD.new__Mat__Vec4i(*args))
+        _ACD._Mat__Vec4i_swiginit(self, _ACD.new__Mat__Vec4i(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -7956,11 +7956,11 @@ class _Mat__Vec4i(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec4i___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec4i
+        return _ACD._Mat__Vec4i___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec4i
 
-# Register _Mat__Vec4i in _USCD:
-_USCD._Mat__Vec4i_swigregister(_Mat__Vec4i)
+# Register _Mat__Vec4i in _ACD:
+_ACD._Mat__Vec4i_swigregister(_Mat__Vec4i)
 
 
 Mat4i = _Mat__Vec4i
@@ -7970,52 +7970,52 @@ class _Mat__float(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__float_create(self, *args)
+        return _ACD._Mat__float_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__float_cross(self, m)
+        return _ACD._Mat__float_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__float_row(self, y)
+        return _ACD._Mat__float_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__float_col(self, x)
+        return _ACD._Mat__float_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__float_diag(self, d)
+        return _ACD._Mat__float_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__float_clone(self)
+        return _ACD._Mat__float_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__float_elemSize(self)
+        return _ACD._Mat__float_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__float_elemSize1(self)
+        return _ACD._Mat__float_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__float_type(self)
+        return _ACD._Mat__float_type(self)
 
     def depth(self):
-        return _USCD._Mat__float_depth(self)
+        return _ACD._Mat__float_depth(self)
 
     def channels(self):
-        return _USCD._Mat__float_channels(self)
+        return _ACD._Mat__float_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__float_step1(self, i)
+        return _ACD._Mat__float_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__float_stepT(self, i)
+        return _ACD._Mat__float_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__float_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__float_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__float___call__(self, *args)
+        return _ACD._Mat__float___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__float_swiginit(self, _USCD.new__Mat__float(*args))
+        _ACD._Mat__float_swiginit(self, _ACD.new__Mat__float(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -8053,11 +8053,11 @@ class _Mat__float(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__float___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__float
+        return _ACD._Mat__float___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__float
 
-# Register _Mat__float in _USCD:
-_USCD._Mat__float_swigregister(_Mat__float)
+# Register _Mat__float in _ACD:
+_ACD._Mat__float_swigregister(_Mat__float)
 
 
 Mat1f = _Mat__float
@@ -8065,14 +8065,14 @@ Mat1f = _Mat__float
 class _cv_numpy_sizeof_Vec2f(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec2f_value
+    value = _ACD._cv_numpy_sizeof_Vec2f_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec2f_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec2f())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec2f
+        _ACD._cv_numpy_sizeof_Vec2f_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec2f())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec2f
 
-# Register _cv_numpy_sizeof_Vec2f in _USCD:
-_USCD._cv_numpy_sizeof_Vec2f_swigregister(_cv_numpy_sizeof_Vec2f)
+# Register _cv_numpy_sizeof_Vec2f in _ACD:
+_ACD._cv_numpy_sizeof_Vec2f_swigregister(_cv_numpy_sizeof_Vec2f)
 
 
 if _cv_numpy_sizeof_Vec2f.value == 1:
@@ -8085,52 +8085,52 @@ class _Mat__Vec2f(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec2f_create(self, *args)
+        return _ACD._Mat__Vec2f_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec2f_cross(self, m)
+        return _ACD._Mat__Vec2f_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec2f_row(self, y)
+        return _ACD._Mat__Vec2f_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec2f_col(self, x)
+        return _ACD._Mat__Vec2f_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec2f_diag(self, d)
+        return _ACD._Mat__Vec2f_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec2f_clone(self)
+        return _ACD._Mat__Vec2f_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec2f_elemSize(self)
+        return _ACD._Mat__Vec2f_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec2f_elemSize1(self)
+        return _ACD._Mat__Vec2f_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec2f_type(self)
+        return _ACD._Mat__Vec2f_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec2f_depth(self)
+        return _ACD._Mat__Vec2f_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec2f_channels(self)
+        return _ACD._Mat__Vec2f_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec2f_step1(self, i)
+        return _ACD._Mat__Vec2f_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec2f_stepT(self, i)
+        return _ACD._Mat__Vec2f_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec2f_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec2f_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec2f___call__(self, *args)
+        return _ACD._Mat__Vec2f___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec2f_swiginit(self, _USCD.new__Mat__Vec2f(*args))
+        _ACD._Mat__Vec2f_swiginit(self, _ACD.new__Mat__Vec2f(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -8168,11 +8168,11 @@ class _Mat__Vec2f(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec2f___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec2f
+        return _ACD._Mat__Vec2f___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec2f
 
-# Register _Mat__Vec2f in _USCD:
-_USCD._Mat__Vec2f_swigregister(_Mat__Vec2f)
+# Register _Mat__Vec2f in _ACD:
+_ACD._Mat__Vec2f_swigregister(_Mat__Vec2f)
 
 
 Mat2f = _Mat__Vec2f
@@ -8180,14 +8180,14 @@ Mat2f = _Mat__Vec2f
 class _cv_numpy_sizeof_Vec3f(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec3f_value
+    value = _ACD._cv_numpy_sizeof_Vec3f_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec3f_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec3f())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec3f
+        _ACD._cv_numpy_sizeof_Vec3f_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec3f())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec3f
 
-# Register _cv_numpy_sizeof_Vec3f in _USCD:
-_USCD._cv_numpy_sizeof_Vec3f_swigregister(_cv_numpy_sizeof_Vec3f)
+# Register _cv_numpy_sizeof_Vec3f in _ACD:
+_ACD._cv_numpy_sizeof_Vec3f_swigregister(_cv_numpy_sizeof_Vec3f)
 
 
 if _cv_numpy_sizeof_Vec3f.value == 1:
@@ -8200,52 +8200,52 @@ class _Mat__Vec3f(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec3f_create(self, *args)
+        return _ACD._Mat__Vec3f_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec3f_cross(self, m)
+        return _ACD._Mat__Vec3f_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec3f_row(self, y)
+        return _ACD._Mat__Vec3f_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec3f_col(self, x)
+        return _ACD._Mat__Vec3f_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec3f_diag(self, d)
+        return _ACD._Mat__Vec3f_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec3f_clone(self)
+        return _ACD._Mat__Vec3f_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec3f_elemSize(self)
+        return _ACD._Mat__Vec3f_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec3f_elemSize1(self)
+        return _ACD._Mat__Vec3f_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec3f_type(self)
+        return _ACD._Mat__Vec3f_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec3f_depth(self)
+        return _ACD._Mat__Vec3f_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec3f_channels(self)
+        return _ACD._Mat__Vec3f_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec3f_step1(self, i)
+        return _ACD._Mat__Vec3f_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec3f_stepT(self, i)
+        return _ACD._Mat__Vec3f_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec3f_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec3f_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec3f___call__(self, *args)
+        return _ACD._Mat__Vec3f___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec3f_swiginit(self, _USCD.new__Mat__Vec3f(*args))
+        _ACD._Mat__Vec3f_swiginit(self, _ACD.new__Mat__Vec3f(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -8283,11 +8283,11 @@ class _Mat__Vec3f(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec3f___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec3f
+        return _ACD._Mat__Vec3f___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec3f
 
-# Register _Mat__Vec3f in _USCD:
-_USCD._Mat__Vec3f_swigregister(_Mat__Vec3f)
+# Register _Mat__Vec3f in _ACD:
+_ACD._Mat__Vec3f_swigregister(_Mat__Vec3f)
 
 
 Mat3f = _Mat__Vec3f
@@ -8295,14 +8295,14 @@ Mat3f = _Mat__Vec3f
 class _cv_numpy_sizeof_Vec4f(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec4f_value
+    value = _ACD._cv_numpy_sizeof_Vec4f_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec4f_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec4f())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec4f
+        _ACD._cv_numpy_sizeof_Vec4f_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec4f())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec4f
 
-# Register _cv_numpy_sizeof_Vec4f in _USCD:
-_USCD._cv_numpy_sizeof_Vec4f_swigregister(_cv_numpy_sizeof_Vec4f)
+# Register _cv_numpy_sizeof_Vec4f in _ACD:
+_ACD._cv_numpy_sizeof_Vec4f_swigregister(_cv_numpy_sizeof_Vec4f)
 
 
 if _cv_numpy_sizeof_Vec4f.value == 1:
@@ -8315,52 +8315,52 @@ class _Mat__Vec4f(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec4f_create(self, *args)
+        return _ACD._Mat__Vec4f_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec4f_cross(self, m)
+        return _ACD._Mat__Vec4f_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec4f_row(self, y)
+        return _ACD._Mat__Vec4f_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec4f_col(self, x)
+        return _ACD._Mat__Vec4f_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec4f_diag(self, d)
+        return _ACD._Mat__Vec4f_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec4f_clone(self)
+        return _ACD._Mat__Vec4f_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec4f_elemSize(self)
+        return _ACD._Mat__Vec4f_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec4f_elemSize1(self)
+        return _ACD._Mat__Vec4f_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec4f_type(self)
+        return _ACD._Mat__Vec4f_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec4f_depth(self)
+        return _ACD._Mat__Vec4f_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec4f_channels(self)
+        return _ACD._Mat__Vec4f_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec4f_step1(self, i)
+        return _ACD._Mat__Vec4f_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec4f_stepT(self, i)
+        return _ACD._Mat__Vec4f_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec4f_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec4f_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec4f___call__(self, *args)
+        return _ACD._Mat__Vec4f___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec4f_swiginit(self, _USCD.new__Mat__Vec4f(*args))
+        _ACD._Mat__Vec4f_swiginit(self, _ACD.new__Mat__Vec4f(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -8398,11 +8398,11 @@ class _Mat__Vec4f(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec4f___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec4f
+        return _ACD._Mat__Vec4f___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec4f
 
-# Register _Mat__Vec4f in _USCD:
-_USCD._Mat__Vec4f_swigregister(_Mat__Vec4f)
+# Register _Mat__Vec4f in _ACD:
+_ACD._Mat__Vec4f_swigregister(_Mat__Vec4f)
 
 
 Mat4f = _Mat__Vec4f
@@ -8412,52 +8412,52 @@ class _Mat__double(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__double_create(self, *args)
+        return _ACD._Mat__double_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__double_cross(self, m)
+        return _ACD._Mat__double_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__double_row(self, y)
+        return _ACD._Mat__double_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__double_col(self, x)
+        return _ACD._Mat__double_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__double_diag(self, d)
+        return _ACD._Mat__double_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__double_clone(self)
+        return _ACD._Mat__double_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__double_elemSize(self)
+        return _ACD._Mat__double_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__double_elemSize1(self)
+        return _ACD._Mat__double_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__double_type(self)
+        return _ACD._Mat__double_type(self)
 
     def depth(self):
-        return _USCD._Mat__double_depth(self)
+        return _ACD._Mat__double_depth(self)
 
     def channels(self):
-        return _USCD._Mat__double_channels(self)
+        return _ACD._Mat__double_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__double_step1(self, i)
+        return _ACD._Mat__double_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__double_stepT(self, i)
+        return _ACD._Mat__double_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__double_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__double_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__double___call__(self, *args)
+        return _ACD._Mat__double___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__double_swiginit(self, _USCD.new__Mat__double(*args))
+        _ACD._Mat__double_swiginit(self, _ACD.new__Mat__double(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -8495,11 +8495,11 @@ class _Mat__double(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__double___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__double
+        return _ACD._Mat__double___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__double
 
-# Register _Mat__double in _USCD:
-_USCD._Mat__double_swigregister(_Mat__double)
+# Register _Mat__double in _ACD:
+_ACD._Mat__double_swigregister(_Mat__double)
 
 
 Mat1d = _Mat__double
@@ -8507,14 +8507,14 @@ Mat1d = _Mat__double
 class _cv_numpy_sizeof_Vec2d(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec2d_value
+    value = _ACD._cv_numpy_sizeof_Vec2d_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec2d_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec2d())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec2d
+        _ACD._cv_numpy_sizeof_Vec2d_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec2d())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec2d
 
-# Register _cv_numpy_sizeof_Vec2d in _USCD:
-_USCD._cv_numpy_sizeof_Vec2d_swigregister(_cv_numpy_sizeof_Vec2d)
+# Register _cv_numpy_sizeof_Vec2d in _ACD:
+_ACD._cv_numpy_sizeof_Vec2d_swigregister(_cv_numpy_sizeof_Vec2d)
 
 
 if _cv_numpy_sizeof_Vec2d.value == 1:
@@ -8527,52 +8527,52 @@ class _Mat__Vec2d(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec2d_create(self, *args)
+        return _ACD._Mat__Vec2d_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec2d_cross(self, m)
+        return _ACD._Mat__Vec2d_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec2d_row(self, y)
+        return _ACD._Mat__Vec2d_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec2d_col(self, x)
+        return _ACD._Mat__Vec2d_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec2d_diag(self, d)
+        return _ACD._Mat__Vec2d_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec2d_clone(self)
+        return _ACD._Mat__Vec2d_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec2d_elemSize(self)
+        return _ACD._Mat__Vec2d_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec2d_elemSize1(self)
+        return _ACD._Mat__Vec2d_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec2d_type(self)
+        return _ACD._Mat__Vec2d_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec2d_depth(self)
+        return _ACD._Mat__Vec2d_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec2d_channels(self)
+        return _ACD._Mat__Vec2d_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec2d_step1(self, i)
+        return _ACD._Mat__Vec2d_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec2d_stepT(self, i)
+        return _ACD._Mat__Vec2d_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec2d_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec2d_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec2d___call__(self, *args)
+        return _ACD._Mat__Vec2d___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec2d_swiginit(self, _USCD.new__Mat__Vec2d(*args))
+        _ACD._Mat__Vec2d_swiginit(self, _ACD.new__Mat__Vec2d(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -8610,11 +8610,11 @@ class _Mat__Vec2d(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec2d___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec2d
+        return _ACD._Mat__Vec2d___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec2d
 
-# Register _Mat__Vec2d in _USCD:
-_USCD._Mat__Vec2d_swigregister(_Mat__Vec2d)
+# Register _Mat__Vec2d in _ACD:
+_ACD._Mat__Vec2d_swigregister(_Mat__Vec2d)
 
 
 Mat2d = _Mat__Vec2d
@@ -8622,14 +8622,14 @@ Mat2d = _Mat__Vec2d
 class _cv_numpy_sizeof_Vec3d(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec3d_value
+    value = _ACD._cv_numpy_sizeof_Vec3d_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec3d_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec3d())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec3d
+        _ACD._cv_numpy_sizeof_Vec3d_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec3d())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec3d
 
-# Register _cv_numpy_sizeof_Vec3d in _USCD:
-_USCD._cv_numpy_sizeof_Vec3d_swigregister(_cv_numpy_sizeof_Vec3d)
+# Register _cv_numpy_sizeof_Vec3d in _ACD:
+_ACD._cv_numpy_sizeof_Vec3d_swigregister(_cv_numpy_sizeof_Vec3d)
 
 
 if _cv_numpy_sizeof_Vec3d.value == 1:
@@ -8642,52 +8642,52 @@ class _Mat__Vec3d(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec3d_create(self, *args)
+        return _ACD._Mat__Vec3d_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec3d_cross(self, m)
+        return _ACD._Mat__Vec3d_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec3d_row(self, y)
+        return _ACD._Mat__Vec3d_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec3d_col(self, x)
+        return _ACD._Mat__Vec3d_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec3d_diag(self, d)
+        return _ACD._Mat__Vec3d_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec3d_clone(self)
+        return _ACD._Mat__Vec3d_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec3d_elemSize(self)
+        return _ACD._Mat__Vec3d_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec3d_elemSize1(self)
+        return _ACD._Mat__Vec3d_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec3d_type(self)
+        return _ACD._Mat__Vec3d_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec3d_depth(self)
+        return _ACD._Mat__Vec3d_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec3d_channels(self)
+        return _ACD._Mat__Vec3d_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec3d_step1(self, i)
+        return _ACD._Mat__Vec3d_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec3d_stepT(self, i)
+        return _ACD._Mat__Vec3d_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec3d_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec3d_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec3d___call__(self, *args)
+        return _ACD._Mat__Vec3d___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec3d_swiginit(self, _USCD.new__Mat__Vec3d(*args))
+        _ACD._Mat__Vec3d_swiginit(self, _ACD.new__Mat__Vec3d(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -8725,11 +8725,11 @@ class _Mat__Vec3d(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec3d___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec3d
+        return _ACD._Mat__Vec3d___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec3d
 
-# Register _Mat__Vec3d in _USCD:
-_USCD._Mat__Vec3d_swigregister(_Mat__Vec3d)
+# Register _Mat__Vec3d in _ACD:
+_ACD._Mat__Vec3d_swigregister(_Mat__Vec3d)
 
 
 Mat3d = _Mat__Vec3d
@@ -8737,14 +8737,14 @@ Mat3d = _Mat__Vec3d
 class _cv_numpy_sizeof_Vec4d(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    value = _USCD._cv_numpy_sizeof_Vec4d_value
+    value = _ACD._cv_numpy_sizeof_Vec4d_value
 
     def __init__(self):
-        _USCD._cv_numpy_sizeof_Vec4d_swiginit(self, _USCD.new__cv_numpy_sizeof_Vec4d())
-    __swig_destroy__ = _USCD.delete__cv_numpy_sizeof_Vec4d
+        _ACD._cv_numpy_sizeof_Vec4d_swiginit(self, _ACD.new__cv_numpy_sizeof_Vec4d())
+    __swig_destroy__ = _ACD.delete__cv_numpy_sizeof_Vec4d
 
-# Register _cv_numpy_sizeof_Vec4d in _USCD:
-_USCD._cv_numpy_sizeof_Vec4d_swigregister(_cv_numpy_sizeof_Vec4d)
+# Register _cv_numpy_sizeof_Vec4d in _ACD:
+_ACD._cv_numpy_sizeof_Vec4d_swigregister(_cv_numpy_sizeof_Vec4d)
 
 
 if _cv_numpy_sizeof_Vec4d.value == 1:
@@ -8757,52 +8757,52 @@ class _Mat__Vec4d(Mat):
     __repr__ = _swig_repr
 
     def create(self, *args):
-        return _USCD._Mat__Vec4d_create(self, *args)
+        return _ACD._Mat__Vec4d_create(self, *args)
 
     def cross(self, m):
-        return _USCD._Mat__Vec4d_cross(self, m)
+        return _ACD._Mat__Vec4d_cross(self, m)
 
     def row(self, y):
-        return _USCD._Mat__Vec4d_row(self, y)
+        return _ACD._Mat__Vec4d_row(self, y)
 
     def col(self, x):
-        return _USCD._Mat__Vec4d_col(self, x)
+        return _ACD._Mat__Vec4d_col(self, x)
 
     def diag(self, d=0):
-        return _USCD._Mat__Vec4d_diag(self, d)
+        return _ACD._Mat__Vec4d_diag(self, d)
 
     def clone(self):
-        return _USCD._Mat__Vec4d_clone(self)
+        return _ACD._Mat__Vec4d_clone(self)
 
     def elemSize(self):
-        return _USCD._Mat__Vec4d_elemSize(self)
+        return _ACD._Mat__Vec4d_elemSize(self)
 
     def elemSize1(self):
-        return _USCD._Mat__Vec4d_elemSize1(self)
+        return _ACD._Mat__Vec4d_elemSize1(self)
 
     def type(self):
-        return _USCD._Mat__Vec4d_type(self)
+        return _ACD._Mat__Vec4d_type(self)
 
     def depth(self):
-        return _USCD._Mat__Vec4d_depth(self)
+        return _ACD._Mat__Vec4d_depth(self)
 
     def channels(self):
-        return _USCD._Mat__Vec4d_channels(self)
+        return _ACD._Mat__Vec4d_channels(self)
 
     def step1(self, i=0):
-        return _USCD._Mat__Vec4d_step1(self, i)
+        return _ACD._Mat__Vec4d_step1(self, i)
 
     def stepT(self, i=0):
-        return _USCD._Mat__Vec4d_stepT(self, i)
+        return _ACD._Mat__Vec4d_stepT(self, i)
 
     def adjustROI(self, dtop, dbottom, dleft, dright):
-        return _USCD._Mat__Vec4d_adjustROI(self, dtop, dbottom, dleft, dright)
+        return _ACD._Mat__Vec4d_adjustROI(self, dtop, dbottom, dleft, dright)
 
     def __call__(self, *args):
-        return _USCD._Mat__Vec4d___call__(self, *args)
+        return _ACD._Mat__Vec4d___call__(self, *args)
 
     def __init__(self, *args):
-        _USCD._Mat__Vec4d_swiginit(self, _USCD.new__Mat__Vec4d(*args))
+        _ACD._Mat__Vec4d_swiginit(self, _ACD.new__Mat__Vec4d(*args))
 
     @classmethod
     def __check_channels_compatibility(cls, array):
@@ -8840,11 +8840,11 @@ class _Mat__Vec4d(Mat):
 
 
     def __str__(self):
-        return _USCD._Mat__Vec4d___str__(self)
-    __swig_destroy__ = _USCD.delete__Mat__Vec4d
+        return _ACD._Mat__Vec4d___str__(self)
+    __swig_destroy__ = _ACD.delete__Mat__Vec4d
 
-# Register _Mat__Vec4d in _USCD:
-_USCD._Mat__Vec4d_swigregister(_Mat__Vec4d)
+# Register _Mat__Vec4d in _ACD:
+_ACD._Mat__Vec4d_swigregister(_Mat__Vec4d)
 
 
 Mat4d = _Mat__Vec4d
@@ -8852,53 +8852,53 @@ Mat4d = _Mat__Vec4d
 class _Matx_float_1_2(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_float_1_2_rows
-    cols = _USCD._Matx_float_1_2_cols
-    channels = _USCD._Matx_float_1_2_channels
-    shortdim = _USCD._Matx_float_1_2_shortdim
+    rows = _ACD._Matx_float_1_2_rows
+    cols = _ACD._Matx_float_1_2_cols
+    channels = _ACD._Matx_float_1_2_channels
+    shortdim = _ACD._Matx_float_1_2_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_float_1_2_all(alpha)
+        return _ACD._Matx_float_1_2_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_float_1_2_zeros()
+        return _ACD._Matx_float_1_2_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_float_1_2_ones()
+        return _ACD._Matx_float_1_2_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_float_1_2_eye()
+        return _ACD._Matx_float_1_2_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_float_1_2_randu(a, b)
+        return _ACD._Matx_float_1_2_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_float_1_2_randn(a, b)
+        return _ACD._Matx_float_1_2_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_float_1_2_dot(self, v)
+        return _ACD._Matx_float_1_2_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_float_1_2_ddot(self, v)
+        return _ACD._Matx_float_1_2_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_float_1_2_t(self)
+        return _ACD._Matx_float_1_2_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_float_1_2_mul(self, a)
+        return _ACD._Matx_float_1_2_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_float_1_2_div(self, a)
+        return _ACD._Matx_float_1_2_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_float_1_2___call__(self, i, j)
-    val = property(_USCD._Matx_float_1_2_val_get, _USCD._Matx_float_1_2_val_set)
+        return _ACD._Matx_float_1_2___call__(self, i, j)
+    val = property(_ACD._Matx_float_1_2_val_get, _ACD._Matx_float_1_2_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -8918,7 +8918,7 @@ class _Matx_float_1_2(object):
         args = [array]
 
 
-        _USCD._Matx_float_1_2_swiginit(self, _USCD.new__Matx_float_1_2(*args))
+        _ACD._Matx_float_1_2_swiginit(self, _ACD.new__Matx_float_1_2(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -8956,29 +8956,29 @@ class _Matx_float_1_2(object):
 
 
     def __str__(self):
-        return _USCD._Matx_float_1_2___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_float_1_2
+        return _ACD._Matx_float_1_2___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_float_1_2
 
-# Register _Matx_float_1_2 in _USCD:
-_USCD._Matx_float_1_2_swigregister(_Matx_float_1_2)
+# Register _Matx_float_1_2 in _ACD:
+_ACD._Matx_float_1_2_swigregister(_Matx_float_1_2)
 
 def _Matx_float_1_2_all(alpha):
-    return _USCD._Matx_float_1_2_all(alpha)
+    return _ACD._Matx_float_1_2_all(alpha)
 
 def _Matx_float_1_2_zeros():
-    return _USCD._Matx_float_1_2_zeros()
+    return _ACD._Matx_float_1_2_zeros()
 
 def _Matx_float_1_2_ones():
-    return _USCD._Matx_float_1_2_ones()
+    return _ACD._Matx_float_1_2_ones()
 
 def _Matx_float_1_2_eye():
-    return _USCD._Matx_float_1_2_eye()
+    return _ACD._Matx_float_1_2_eye()
 
 def _Matx_float_1_2_randu(a, b):
-    return _USCD._Matx_float_1_2_randu(a, b)
+    return _ACD._Matx_float_1_2_randu(a, b)
 
 def _Matx_float_1_2_randn(a, b):
-    return _USCD._Matx_float_1_2_randn(a, b)
+    return _ACD._Matx_float_1_2_randn(a, b)
 
 
 Matx12f = _Matx_float_1_2
@@ -8986,53 +8986,53 @@ Matx12f = _Matx_float_1_2
 class _Matx_double_1_2(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_double_1_2_rows
-    cols = _USCD._Matx_double_1_2_cols
-    channels = _USCD._Matx_double_1_2_channels
-    shortdim = _USCD._Matx_double_1_2_shortdim
+    rows = _ACD._Matx_double_1_2_rows
+    cols = _ACD._Matx_double_1_2_cols
+    channels = _ACD._Matx_double_1_2_channels
+    shortdim = _ACD._Matx_double_1_2_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_double_1_2_all(alpha)
+        return _ACD._Matx_double_1_2_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_double_1_2_zeros()
+        return _ACD._Matx_double_1_2_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_double_1_2_ones()
+        return _ACD._Matx_double_1_2_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_double_1_2_eye()
+        return _ACD._Matx_double_1_2_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_double_1_2_randu(a, b)
+        return _ACD._Matx_double_1_2_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_double_1_2_randn(a, b)
+        return _ACD._Matx_double_1_2_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_double_1_2_dot(self, v)
+        return _ACD._Matx_double_1_2_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_double_1_2_ddot(self, v)
+        return _ACD._Matx_double_1_2_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_double_1_2_t(self)
+        return _ACD._Matx_double_1_2_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_double_1_2_mul(self, a)
+        return _ACD._Matx_double_1_2_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_double_1_2_div(self, a)
+        return _ACD._Matx_double_1_2_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_double_1_2___call__(self, i, j)
-    val = property(_USCD._Matx_double_1_2_val_get, _USCD._Matx_double_1_2_val_set)
+        return _ACD._Matx_double_1_2___call__(self, i, j)
+    val = property(_ACD._Matx_double_1_2_val_get, _ACD._Matx_double_1_2_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -9052,7 +9052,7 @@ class _Matx_double_1_2(object):
         args = [array]
 
 
-        _USCD._Matx_double_1_2_swiginit(self, _USCD.new__Matx_double_1_2(*args))
+        _ACD._Matx_double_1_2_swiginit(self, _ACD.new__Matx_double_1_2(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -9090,29 +9090,29 @@ class _Matx_double_1_2(object):
 
 
     def __str__(self):
-        return _USCD._Matx_double_1_2___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_double_1_2
+        return _ACD._Matx_double_1_2___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_double_1_2
 
-# Register _Matx_double_1_2 in _USCD:
-_USCD._Matx_double_1_2_swigregister(_Matx_double_1_2)
+# Register _Matx_double_1_2 in _ACD:
+_ACD._Matx_double_1_2_swigregister(_Matx_double_1_2)
 
 def _Matx_double_1_2_all(alpha):
-    return _USCD._Matx_double_1_2_all(alpha)
+    return _ACD._Matx_double_1_2_all(alpha)
 
 def _Matx_double_1_2_zeros():
-    return _USCD._Matx_double_1_2_zeros()
+    return _ACD._Matx_double_1_2_zeros()
 
 def _Matx_double_1_2_ones():
-    return _USCD._Matx_double_1_2_ones()
+    return _ACD._Matx_double_1_2_ones()
 
 def _Matx_double_1_2_eye():
-    return _USCD._Matx_double_1_2_eye()
+    return _ACD._Matx_double_1_2_eye()
 
 def _Matx_double_1_2_randu(a, b):
-    return _USCD._Matx_double_1_2_randu(a, b)
+    return _ACD._Matx_double_1_2_randu(a, b)
 
 def _Matx_double_1_2_randn(a, b):
-    return _USCD._Matx_double_1_2_randn(a, b)
+    return _ACD._Matx_double_1_2_randn(a, b)
 
 
 Matx12d = _Matx_double_1_2
@@ -9120,53 +9120,53 @@ Matx12d = _Matx_double_1_2
 class _Matx_float_1_3(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_float_1_3_rows
-    cols = _USCD._Matx_float_1_3_cols
-    channels = _USCD._Matx_float_1_3_channels
-    shortdim = _USCD._Matx_float_1_3_shortdim
+    rows = _ACD._Matx_float_1_3_rows
+    cols = _ACD._Matx_float_1_3_cols
+    channels = _ACD._Matx_float_1_3_channels
+    shortdim = _ACD._Matx_float_1_3_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_float_1_3_all(alpha)
+        return _ACD._Matx_float_1_3_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_float_1_3_zeros()
+        return _ACD._Matx_float_1_3_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_float_1_3_ones()
+        return _ACD._Matx_float_1_3_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_float_1_3_eye()
+        return _ACD._Matx_float_1_3_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_float_1_3_randu(a, b)
+        return _ACD._Matx_float_1_3_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_float_1_3_randn(a, b)
+        return _ACD._Matx_float_1_3_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_float_1_3_dot(self, v)
+        return _ACD._Matx_float_1_3_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_float_1_3_ddot(self, v)
+        return _ACD._Matx_float_1_3_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_float_1_3_t(self)
+        return _ACD._Matx_float_1_3_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_float_1_3_mul(self, a)
+        return _ACD._Matx_float_1_3_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_float_1_3_div(self, a)
+        return _ACD._Matx_float_1_3_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_float_1_3___call__(self, i, j)
-    val = property(_USCD._Matx_float_1_3_val_get, _USCD._Matx_float_1_3_val_set)
+        return _ACD._Matx_float_1_3___call__(self, i, j)
+    val = property(_ACD._Matx_float_1_3_val_get, _ACD._Matx_float_1_3_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -9186,7 +9186,7 @@ class _Matx_float_1_3(object):
         args = [array]
 
 
-        _USCD._Matx_float_1_3_swiginit(self, _USCD.new__Matx_float_1_3(*args))
+        _ACD._Matx_float_1_3_swiginit(self, _ACD.new__Matx_float_1_3(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -9224,29 +9224,29 @@ class _Matx_float_1_3(object):
 
 
     def __str__(self):
-        return _USCD._Matx_float_1_3___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_float_1_3
+        return _ACD._Matx_float_1_3___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_float_1_3
 
-# Register _Matx_float_1_3 in _USCD:
-_USCD._Matx_float_1_3_swigregister(_Matx_float_1_3)
+# Register _Matx_float_1_3 in _ACD:
+_ACD._Matx_float_1_3_swigregister(_Matx_float_1_3)
 
 def _Matx_float_1_3_all(alpha):
-    return _USCD._Matx_float_1_3_all(alpha)
+    return _ACD._Matx_float_1_3_all(alpha)
 
 def _Matx_float_1_3_zeros():
-    return _USCD._Matx_float_1_3_zeros()
+    return _ACD._Matx_float_1_3_zeros()
 
 def _Matx_float_1_3_ones():
-    return _USCD._Matx_float_1_3_ones()
+    return _ACD._Matx_float_1_3_ones()
 
 def _Matx_float_1_3_eye():
-    return _USCD._Matx_float_1_3_eye()
+    return _ACD._Matx_float_1_3_eye()
 
 def _Matx_float_1_3_randu(a, b):
-    return _USCD._Matx_float_1_3_randu(a, b)
+    return _ACD._Matx_float_1_3_randu(a, b)
 
 def _Matx_float_1_3_randn(a, b):
-    return _USCD._Matx_float_1_3_randn(a, b)
+    return _ACD._Matx_float_1_3_randn(a, b)
 
 
 Matx13f = _Matx_float_1_3
@@ -9254,53 +9254,53 @@ Matx13f = _Matx_float_1_3
 class _Matx_double_1_3(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_double_1_3_rows
-    cols = _USCD._Matx_double_1_3_cols
-    channels = _USCD._Matx_double_1_3_channels
-    shortdim = _USCD._Matx_double_1_3_shortdim
+    rows = _ACD._Matx_double_1_3_rows
+    cols = _ACD._Matx_double_1_3_cols
+    channels = _ACD._Matx_double_1_3_channels
+    shortdim = _ACD._Matx_double_1_3_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_double_1_3_all(alpha)
+        return _ACD._Matx_double_1_3_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_double_1_3_zeros()
+        return _ACD._Matx_double_1_3_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_double_1_3_ones()
+        return _ACD._Matx_double_1_3_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_double_1_3_eye()
+        return _ACD._Matx_double_1_3_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_double_1_3_randu(a, b)
+        return _ACD._Matx_double_1_3_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_double_1_3_randn(a, b)
+        return _ACD._Matx_double_1_3_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_double_1_3_dot(self, v)
+        return _ACD._Matx_double_1_3_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_double_1_3_ddot(self, v)
+        return _ACD._Matx_double_1_3_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_double_1_3_t(self)
+        return _ACD._Matx_double_1_3_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_double_1_3_mul(self, a)
+        return _ACD._Matx_double_1_3_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_double_1_3_div(self, a)
+        return _ACD._Matx_double_1_3_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_double_1_3___call__(self, i, j)
-    val = property(_USCD._Matx_double_1_3_val_get, _USCD._Matx_double_1_3_val_set)
+        return _ACD._Matx_double_1_3___call__(self, i, j)
+    val = property(_ACD._Matx_double_1_3_val_get, _ACD._Matx_double_1_3_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -9320,7 +9320,7 @@ class _Matx_double_1_3(object):
         args = [array]
 
 
-        _USCD._Matx_double_1_3_swiginit(self, _USCD.new__Matx_double_1_3(*args))
+        _ACD._Matx_double_1_3_swiginit(self, _ACD.new__Matx_double_1_3(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -9358,29 +9358,29 @@ class _Matx_double_1_3(object):
 
 
     def __str__(self):
-        return _USCD._Matx_double_1_3___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_double_1_3
+        return _ACD._Matx_double_1_3___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_double_1_3
 
-# Register _Matx_double_1_3 in _USCD:
-_USCD._Matx_double_1_3_swigregister(_Matx_double_1_3)
+# Register _Matx_double_1_3 in _ACD:
+_ACD._Matx_double_1_3_swigregister(_Matx_double_1_3)
 
 def _Matx_double_1_3_all(alpha):
-    return _USCD._Matx_double_1_3_all(alpha)
+    return _ACD._Matx_double_1_3_all(alpha)
 
 def _Matx_double_1_3_zeros():
-    return _USCD._Matx_double_1_3_zeros()
+    return _ACD._Matx_double_1_3_zeros()
 
 def _Matx_double_1_3_ones():
-    return _USCD._Matx_double_1_3_ones()
+    return _ACD._Matx_double_1_3_ones()
 
 def _Matx_double_1_3_eye():
-    return _USCD._Matx_double_1_3_eye()
+    return _ACD._Matx_double_1_3_eye()
 
 def _Matx_double_1_3_randu(a, b):
-    return _USCD._Matx_double_1_3_randu(a, b)
+    return _ACD._Matx_double_1_3_randu(a, b)
 
 def _Matx_double_1_3_randn(a, b):
-    return _USCD._Matx_double_1_3_randn(a, b)
+    return _ACD._Matx_double_1_3_randn(a, b)
 
 
 Matx13d = _Matx_double_1_3
@@ -9388,53 +9388,53 @@ Matx13d = _Matx_double_1_3
 class _Matx_float_1_4(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_float_1_4_rows
-    cols = _USCD._Matx_float_1_4_cols
-    channels = _USCD._Matx_float_1_4_channels
-    shortdim = _USCD._Matx_float_1_4_shortdim
+    rows = _ACD._Matx_float_1_4_rows
+    cols = _ACD._Matx_float_1_4_cols
+    channels = _ACD._Matx_float_1_4_channels
+    shortdim = _ACD._Matx_float_1_4_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_float_1_4_all(alpha)
+        return _ACD._Matx_float_1_4_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_float_1_4_zeros()
+        return _ACD._Matx_float_1_4_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_float_1_4_ones()
+        return _ACD._Matx_float_1_4_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_float_1_4_eye()
+        return _ACD._Matx_float_1_4_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_float_1_4_randu(a, b)
+        return _ACD._Matx_float_1_4_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_float_1_4_randn(a, b)
+        return _ACD._Matx_float_1_4_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_float_1_4_dot(self, v)
+        return _ACD._Matx_float_1_4_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_float_1_4_ddot(self, v)
+        return _ACD._Matx_float_1_4_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_float_1_4_t(self)
+        return _ACD._Matx_float_1_4_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_float_1_4_mul(self, a)
+        return _ACD._Matx_float_1_4_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_float_1_4_div(self, a)
+        return _ACD._Matx_float_1_4_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_float_1_4___call__(self, i, j)
-    val = property(_USCD._Matx_float_1_4_val_get, _USCD._Matx_float_1_4_val_set)
+        return _ACD._Matx_float_1_4___call__(self, i, j)
+    val = property(_ACD._Matx_float_1_4_val_get, _ACD._Matx_float_1_4_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -9454,7 +9454,7 @@ class _Matx_float_1_4(object):
         args = [array]
 
 
-        _USCD._Matx_float_1_4_swiginit(self, _USCD.new__Matx_float_1_4(*args))
+        _ACD._Matx_float_1_4_swiginit(self, _ACD.new__Matx_float_1_4(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -9492,29 +9492,29 @@ class _Matx_float_1_4(object):
 
 
     def __str__(self):
-        return _USCD._Matx_float_1_4___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_float_1_4
+        return _ACD._Matx_float_1_4___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_float_1_4
 
-# Register _Matx_float_1_4 in _USCD:
-_USCD._Matx_float_1_4_swigregister(_Matx_float_1_4)
+# Register _Matx_float_1_4 in _ACD:
+_ACD._Matx_float_1_4_swigregister(_Matx_float_1_4)
 
 def _Matx_float_1_4_all(alpha):
-    return _USCD._Matx_float_1_4_all(alpha)
+    return _ACD._Matx_float_1_4_all(alpha)
 
 def _Matx_float_1_4_zeros():
-    return _USCD._Matx_float_1_4_zeros()
+    return _ACD._Matx_float_1_4_zeros()
 
 def _Matx_float_1_4_ones():
-    return _USCD._Matx_float_1_4_ones()
+    return _ACD._Matx_float_1_4_ones()
 
 def _Matx_float_1_4_eye():
-    return _USCD._Matx_float_1_4_eye()
+    return _ACD._Matx_float_1_4_eye()
 
 def _Matx_float_1_4_randu(a, b):
-    return _USCD._Matx_float_1_4_randu(a, b)
+    return _ACD._Matx_float_1_4_randu(a, b)
 
 def _Matx_float_1_4_randn(a, b):
-    return _USCD._Matx_float_1_4_randn(a, b)
+    return _ACD._Matx_float_1_4_randn(a, b)
 
 
 Matx14f = _Matx_float_1_4
@@ -9522,53 +9522,53 @@ Matx14f = _Matx_float_1_4
 class _Matx_double_1_4(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_double_1_4_rows
-    cols = _USCD._Matx_double_1_4_cols
-    channels = _USCD._Matx_double_1_4_channels
-    shortdim = _USCD._Matx_double_1_4_shortdim
+    rows = _ACD._Matx_double_1_4_rows
+    cols = _ACD._Matx_double_1_4_cols
+    channels = _ACD._Matx_double_1_4_channels
+    shortdim = _ACD._Matx_double_1_4_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_double_1_4_all(alpha)
+        return _ACD._Matx_double_1_4_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_double_1_4_zeros()
+        return _ACD._Matx_double_1_4_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_double_1_4_ones()
+        return _ACD._Matx_double_1_4_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_double_1_4_eye()
+        return _ACD._Matx_double_1_4_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_double_1_4_randu(a, b)
+        return _ACD._Matx_double_1_4_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_double_1_4_randn(a, b)
+        return _ACD._Matx_double_1_4_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_double_1_4_dot(self, v)
+        return _ACD._Matx_double_1_4_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_double_1_4_ddot(self, v)
+        return _ACD._Matx_double_1_4_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_double_1_4_t(self)
+        return _ACD._Matx_double_1_4_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_double_1_4_mul(self, a)
+        return _ACD._Matx_double_1_4_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_double_1_4_div(self, a)
+        return _ACD._Matx_double_1_4_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_double_1_4___call__(self, i, j)
-    val = property(_USCD._Matx_double_1_4_val_get, _USCD._Matx_double_1_4_val_set)
+        return _ACD._Matx_double_1_4___call__(self, i, j)
+    val = property(_ACD._Matx_double_1_4_val_get, _ACD._Matx_double_1_4_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -9588,7 +9588,7 @@ class _Matx_double_1_4(object):
         args = [array]
 
 
-        _USCD._Matx_double_1_4_swiginit(self, _USCD.new__Matx_double_1_4(*args))
+        _ACD._Matx_double_1_4_swiginit(self, _ACD.new__Matx_double_1_4(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -9626,29 +9626,29 @@ class _Matx_double_1_4(object):
 
 
     def __str__(self):
-        return _USCD._Matx_double_1_4___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_double_1_4
+        return _ACD._Matx_double_1_4___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_double_1_4
 
-# Register _Matx_double_1_4 in _USCD:
-_USCD._Matx_double_1_4_swigregister(_Matx_double_1_4)
+# Register _Matx_double_1_4 in _ACD:
+_ACD._Matx_double_1_4_swigregister(_Matx_double_1_4)
 
 def _Matx_double_1_4_all(alpha):
-    return _USCD._Matx_double_1_4_all(alpha)
+    return _ACD._Matx_double_1_4_all(alpha)
 
 def _Matx_double_1_4_zeros():
-    return _USCD._Matx_double_1_4_zeros()
+    return _ACD._Matx_double_1_4_zeros()
 
 def _Matx_double_1_4_ones():
-    return _USCD._Matx_double_1_4_ones()
+    return _ACD._Matx_double_1_4_ones()
 
 def _Matx_double_1_4_eye():
-    return _USCD._Matx_double_1_4_eye()
+    return _ACD._Matx_double_1_4_eye()
 
 def _Matx_double_1_4_randu(a, b):
-    return _USCD._Matx_double_1_4_randu(a, b)
+    return _ACD._Matx_double_1_4_randu(a, b)
 
 def _Matx_double_1_4_randn(a, b):
-    return _USCD._Matx_double_1_4_randn(a, b)
+    return _ACD._Matx_double_1_4_randn(a, b)
 
 
 Matx14d = _Matx_double_1_4
@@ -9656,53 +9656,53 @@ Matx14d = _Matx_double_1_4
 class _Matx_float_1_6(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_float_1_6_rows
-    cols = _USCD._Matx_float_1_6_cols
-    channels = _USCD._Matx_float_1_6_channels
-    shortdim = _USCD._Matx_float_1_6_shortdim
+    rows = _ACD._Matx_float_1_6_rows
+    cols = _ACD._Matx_float_1_6_cols
+    channels = _ACD._Matx_float_1_6_channels
+    shortdim = _ACD._Matx_float_1_6_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_float_1_6_all(alpha)
+        return _ACD._Matx_float_1_6_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_float_1_6_zeros()
+        return _ACD._Matx_float_1_6_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_float_1_6_ones()
+        return _ACD._Matx_float_1_6_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_float_1_6_eye()
+        return _ACD._Matx_float_1_6_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_float_1_6_randu(a, b)
+        return _ACD._Matx_float_1_6_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_float_1_6_randn(a, b)
+        return _ACD._Matx_float_1_6_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_float_1_6_dot(self, v)
+        return _ACD._Matx_float_1_6_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_float_1_6_ddot(self, v)
+        return _ACD._Matx_float_1_6_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_float_1_6_t(self)
+        return _ACD._Matx_float_1_6_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_float_1_6_mul(self, a)
+        return _ACD._Matx_float_1_6_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_float_1_6_div(self, a)
+        return _ACD._Matx_float_1_6_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_float_1_6___call__(self, i, j)
-    val = property(_USCD._Matx_float_1_6_val_get, _USCD._Matx_float_1_6_val_set)
+        return _ACD._Matx_float_1_6___call__(self, i, j)
+    val = property(_ACD._Matx_float_1_6_val_get, _ACD._Matx_float_1_6_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -9722,7 +9722,7 @@ class _Matx_float_1_6(object):
         args = [array]
 
 
-        _USCD._Matx_float_1_6_swiginit(self, _USCD.new__Matx_float_1_6(*args))
+        _ACD._Matx_float_1_6_swiginit(self, _ACD.new__Matx_float_1_6(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -9760,29 +9760,29 @@ class _Matx_float_1_6(object):
 
 
     def __str__(self):
-        return _USCD._Matx_float_1_6___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_float_1_6
+        return _ACD._Matx_float_1_6___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_float_1_6
 
-# Register _Matx_float_1_6 in _USCD:
-_USCD._Matx_float_1_6_swigregister(_Matx_float_1_6)
+# Register _Matx_float_1_6 in _ACD:
+_ACD._Matx_float_1_6_swigregister(_Matx_float_1_6)
 
 def _Matx_float_1_6_all(alpha):
-    return _USCD._Matx_float_1_6_all(alpha)
+    return _ACD._Matx_float_1_6_all(alpha)
 
 def _Matx_float_1_6_zeros():
-    return _USCD._Matx_float_1_6_zeros()
+    return _ACD._Matx_float_1_6_zeros()
 
 def _Matx_float_1_6_ones():
-    return _USCD._Matx_float_1_6_ones()
+    return _ACD._Matx_float_1_6_ones()
 
 def _Matx_float_1_6_eye():
-    return _USCD._Matx_float_1_6_eye()
+    return _ACD._Matx_float_1_6_eye()
 
 def _Matx_float_1_6_randu(a, b):
-    return _USCD._Matx_float_1_6_randu(a, b)
+    return _ACD._Matx_float_1_6_randu(a, b)
 
 def _Matx_float_1_6_randn(a, b):
-    return _USCD._Matx_float_1_6_randn(a, b)
+    return _ACD._Matx_float_1_6_randn(a, b)
 
 
 Matx16f = _Matx_float_1_6
@@ -9790,53 +9790,53 @@ Matx16f = _Matx_float_1_6
 class _Matx_double_1_6(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_double_1_6_rows
-    cols = _USCD._Matx_double_1_6_cols
-    channels = _USCD._Matx_double_1_6_channels
-    shortdim = _USCD._Matx_double_1_6_shortdim
+    rows = _ACD._Matx_double_1_6_rows
+    cols = _ACD._Matx_double_1_6_cols
+    channels = _ACD._Matx_double_1_6_channels
+    shortdim = _ACD._Matx_double_1_6_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_double_1_6_all(alpha)
+        return _ACD._Matx_double_1_6_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_double_1_6_zeros()
+        return _ACD._Matx_double_1_6_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_double_1_6_ones()
+        return _ACD._Matx_double_1_6_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_double_1_6_eye()
+        return _ACD._Matx_double_1_6_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_double_1_6_randu(a, b)
+        return _ACD._Matx_double_1_6_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_double_1_6_randn(a, b)
+        return _ACD._Matx_double_1_6_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_double_1_6_dot(self, v)
+        return _ACD._Matx_double_1_6_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_double_1_6_ddot(self, v)
+        return _ACD._Matx_double_1_6_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_double_1_6_t(self)
+        return _ACD._Matx_double_1_6_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_double_1_6_mul(self, a)
+        return _ACD._Matx_double_1_6_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_double_1_6_div(self, a)
+        return _ACD._Matx_double_1_6_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_double_1_6___call__(self, i, j)
-    val = property(_USCD._Matx_double_1_6_val_get, _USCD._Matx_double_1_6_val_set)
+        return _ACD._Matx_double_1_6___call__(self, i, j)
+    val = property(_ACD._Matx_double_1_6_val_get, _ACD._Matx_double_1_6_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -9856,7 +9856,7 @@ class _Matx_double_1_6(object):
         args = [array]
 
 
-        _USCD._Matx_double_1_6_swiginit(self, _USCD.new__Matx_double_1_6(*args))
+        _ACD._Matx_double_1_6_swiginit(self, _ACD.new__Matx_double_1_6(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -9894,29 +9894,29 @@ class _Matx_double_1_6(object):
 
 
     def __str__(self):
-        return _USCD._Matx_double_1_6___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_double_1_6
+        return _ACD._Matx_double_1_6___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_double_1_6
 
-# Register _Matx_double_1_6 in _USCD:
-_USCD._Matx_double_1_6_swigregister(_Matx_double_1_6)
+# Register _Matx_double_1_6 in _ACD:
+_ACD._Matx_double_1_6_swigregister(_Matx_double_1_6)
 
 def _Matx_double_1_6_all(alpha):
-    return _USCD._Matx_double_1_6_all(alpha)
+    return _ACD._Matx_double_1_6_all(alpha)
 
 def _Matx_double_1_6_zeros():
-    return _USCD._Matx_double_1_6_zeros()
+    return _ACD._Matx_double_1_6_zeros()
 
 def _Matx_double_1_6_ones():
-    return _USCD._Matx_double_1_6_ones()
+    return _ACD._Matx_double_1_6_ones()
 
 def _Matx_double_1_6_eye():
-    return _USCD._Matx_double_1_6_eye()
+    return _ACD._Matx_double_1_6_eye()
 
 def _Matx_double_1_6_randu(a, b):
-    return _USCD._Matx_double_1_6_randu(a, b)
+    return _ACD._Matx_double_1_6_randu(a, b)
 
 def _Matx_double_1_6_randn(a, b):
-    return _USCD._Matx_double_1_6_randn(a, b)
+    return _ACD._Matx_double_1_6_randn(a, b)
 
 
 Matx16d = _Matx_double_1_6
@@ -9924,53 +9924,53 @@ Matx16d = _Matx_double_1_6
 class _Matx_float_2_2(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_float_2_2_rows
-    cols = _USCD._Matx_float_2_2_cols
-    channels = _USCD._Matx_float_2_2_channels
-    shortdim = _USCD._Matx_float_2_2_shortdim
+    rows = _ACD._Matx_float_2_2_rows
+    cols = _ACD._Matx_float_2_2_cols
+    channels = _ACD._Matx_float_2_2_channels
+    shortdim = _ACD._Matx_float_2_2_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_float_2_2_all(alpha)
+        return _ACD._Matx_float_2_2_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_float_2_2_zeros()
+        return _ACD._Matx_float_2_2_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_float_2_2_ones()
+        return _ACD._Matx_float_2_2_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_float_2_2_eye()
+        return _ACD._Matx_float_2_2_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_float_2_2_randu(a, b)
+        return _ACD._Matx_float_2_2_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_float_2_2_randn(a, b)
+        return _ACD._Matx_float_2_2_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_float_2_2_dot(self, v)
+        return _ACD._Matx_float_2_2_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_float_2_2_ddot(self, v)
+        return _ACD._Matx_float_2_2_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_float_2_2_t(self)
+        return _ACD._Matx_float_2_2_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_float_2_2_mul(self, a)
+        return _ACD._Matx_float_2_2_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_float_2_2_div(self, a)
+        return _ACD._Matx_float_2_2_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_float_2_2___call__(self, i, j)
-    val = property(_USCD._Matx_float_2_2_val_get, _USCD._Matx_float_2_2_val_set)
+        return _ACD._Matx_float_2_2___call__(self, i, j)
+    val = property(_ACD._Matx_float_2_2_val_get, _ACD._Matx_float_2_2_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -9990,7 +9990,7 @@ class _Matx_float_2_2(object):
         args = [array]
 
 
-        _USCD._Matx_float_2_2_swiginit(self, _USCD.new__Matx_float_2_2(*args))
+        _ACD._Matx_float_2_2_swiginit(self, _ACD.new__Matx_float_2_2(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -10028,29 +10028,29 @@ class _Matx_float_2_2(object):
 
 
     def __str__(self):
-        return _USCD._Matx_float_2_2___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_float_2_2
+        return _ACD._Matx_float_2_2___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_float_2_2
 
-# Register _Matx_float_2_2 in _USCD:
-_USCD._Matx_float_2_2_swigregister(_Matx_float_2_2)
+# Register _Matx_float_2_2 in _ACD:
+_ACD._Matx_float_2_2_swigregister(_Matx_float_2_2)
 
 def _Matx_float_2_2_all(alpha):
-    return _USCD._Matx_float_2_2_all(alpha)
+    return _ACD._Matx_float_2_2_all(alpha)
 
 def _Matx_float_2_2_zeros():
-    return _USCD._Matx_float_2_2_zeros()
+    return _ACD._Matx_float_2_2_zeros()
 
 def _Matx_float_2_2_ones():
-    return _USCD._Matx_float_2_2_ones()
+    return _ACD._Matx_float_2_2_ones()
 
 def _Matx_float_2_2_eye():
-    return _USCD._Matx_float_2_2_eye()
+    return _ACD._Matx_float_2_2_eye()
 
 def _Matx_float_2_2_randu(a, b):
-    return _USCD._Matx_float_2_2_randu(a, b)
+    return _ACD._Matx_float_2_2_randu(a, b)
 
 def _Matx_float_2_2_randn(a, b):
-    return _USCD._Matx_float_2_2_randn(a, b)
+    return _ACD._Matx_float_2_2_randn(a, b)
 
 
 Matx22f = _Matx_float_2_2
@@ -10058,53 +10058,53 @@ Matx22f = _Matx_float_2_2
 class _Matx_double_2_2(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_double_2_2_rows
-    cols = _USCD._Matx_double_2_2_cols
-    channels = _USCD._Matx_double_2_2_channels
-    shortdim = _USCD._Matx_double_2_2_shortdim
+    rows = _ACD._Matx_double_2_2_rows
+    cols = _ACD._Matx_double_2_2_cols
+    channels = _ACD._Matx_double_2_2_channels
+    shortdim = _ACD._Matx_double_2_2_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_double_2_2_all(alpha)
+        return _ACD._Matx_double_2_2_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_double_2_2_zeros()
+        return _ACD._Matx_double_2_2_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_double_2_2_ones()
+        return _ACD._Matx_double_2_2_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_double_2_2_eye()
+        return _ACD._Matx_double_2_2_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_double_2_2_randu(a, b)
+        return _ACD._Matx_double_2_2_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_double_2_2_randn(a, b)
+        return _ACD._Matx_double_2_2_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_double_2_2_dot(self, v)
+        return _ACD._Matx_double_2_2_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_double_2_2_ddot(self, v)
+        return _ACD._Matx_double_2_2_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_double_2_2_t(self)
+        return _ACD._Matx_double_2_2_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_double_2_2_mul(self, a)
+        return _ACD._Matx_double_2_2_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_double_2_2_div(self, a)
+        return _ACD._Matx_double_2_2_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_double_2_2___call__(self, i, j)
-    val = property(_USCD._Matx_double_2_2_val_get, _USCD._Matx_double_2_2_val_set)
+        return _ACD._Matx_double_2_2___call__(self, i, j)
+    val = property(_ACD._Matx_double_2_2_val_get, _ACD._Matx_double_2_2_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -10124,7 +10124,7 @@ class _Matx_double_2_2(object):
         args = [array]
 
 
-        _USCD._Matx_double_2_2_swiginit(self, _USCD.new__Matx_double_2_2(*args))
+        _ACD._Matx_double_2_2_swiginit(self, _ACD.new__Matx_double_2_2(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -10162,29 +10162,29 @@ class _Matx_double_2_2(object):
 
 
     def __str__(self):
-        return _USCD._Matx_double_2_2___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_double_2_2
+        return _ACD._Matx_double_2_2___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_double_2_2
 
-# Register _Matx_double_2_2 in _USCD:
-_USCD._Matx_double_2_2_swigregister(_Matx_double_2_2)
+# Register _Matx_double_2_2 in _ACD:
+_ACD._Matx_double_2_2_swigregister(_Matx_double_2_2)
 
 def _Matx_double_2_2_all(alpha):
-    return _USCD._Matx_double_2_2_all(alpha)
+    return _ACD._Matx_double_2_2_all(alpha)
 
 def _Matx_double_2_2_zeros():
-    return _USCD._Matx_double_2_2_zeros()
+    return _ACD._Matx_double_2_2_zeros()
 
 def _Matx_double_2_2_ones():
-    return _USCD._Matx_double_2_2_ones()
+    return _ACD._Matx_double_2_2_ones()
 
 def _Matx_double_2_2_eye():
-    return _USCD._Matx_double_2_2_eye()
+    return _ACD._Matx_double_2_2_eye()
 
 def _Matx_double_2_2_randu(a, b):
-    return _USCD._Matx_double_2_2_randu(a, b)
+    return _ACD._Matx_double_2_2_randu(a, b)
 
 def _Matx_double_2_2_randn(a, b):
-    return _USCD._Matx_double_2_2_randn(a, b)
+    return _ACD._Matx_double_2_2_randn(a, b)
 
 
 Matx22d = _Matx_double_2_2
@@ -10192,53 +10192,53 @@ Matx22d = _Matx_double_2_2
 class _Matx_float_2_3(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_float_2_3_rows
-    cols = _USCD._Matx_float_2_3_cols
-    channels = _USCD._Matx_float_2_3_channels
-    shortdim = _USCD._Matx_float_2_3_shortdim
+    rows = _ACD._Matx_float_2_3_rows
+    cols = _ACD._Matx_float_2_3_cols
+    channels = _ACD._Matx_float_2_3_channels
+    shortdim = _ACD._Matx_float_2_3_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_float_2_3_all(alpha)
+        return _ACD._Matx_float_2_3_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_float_2_3_zeros()
+        return _ACD._Matx_float_2_3_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_float_2_3_ones()
+        return _ACD._Matx_float_2_3_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_float_2_3_eye()
+        return _ACD._Matx_float_2_3_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_float_2_3_randu(a, b)
+        return _ACD._Matx_float_2_3_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_float_2_3_randn(a, b)
+        return _ACD._Matx_float_2_3_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_float_2_3_dot(self, v)
+        return _ACD._Matx_float_2_3_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_float_2_3_ddot(self, v)
+        return _ACD._Matx_float_2_3_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_float_2_3_t(self)
+        return _ACD._Matx_float_2_3_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_float_2_3_mul(self, a)
+        return _ACD._Matx_float_2_3_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_float_2_3_div(self, a)
+        return _ACD._Matx_float_2_3_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_float_2_3___call__(self, i, j)
-    val = property(_USCD._Matx_float_2_3_val_get, _USCD._Matx_float_2_3_val_set)
+        return _ACD._Matx_float_2_3___call__(self, i, j)
+    val = property(_ACD._Matx_float_2_3_val_get, _ACD._Matx_float_2_3_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -10258,7 +10258,7 @@ class _Matx_float_2_3(object):
         args = [array]
 
 
-        _USCD._Matx_float_2_3_swiginit(self, _USCD.new__Matx_float_2_3(*args))
+        _ACD._Matx_float_2_3_swiginit(self, _ACD.new__Matx_float_2_3(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -10296,29 +10296,29 @@ class _Matx_float_2_3(object):
 
 
     def __str__(self):
-        return _USCD._Matx_float_2_3___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_float_2_3
+        return _ACD._Matx_float_2_3___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_float_2_3
 
-# Register _Matx_float_2_3 in _USCD:
-_USCD._Matx_float_2_3_swigregister(_Matx_float_2_3)
+# Register _Matx_float_2_3 in _ACD:
+_ACD._Matx_float_2_3_swigregister(_Matx_float_2_3)
 
 def _Matx_float_2_3_all(alpha):
-    return _USCD._Matx_float_2_3_all(alpha)
+    return _ACD._Matx_float_2_3_all(alpha)
 
 def _Matx_float_2_3_zeros():
-    return _USCD._Matx_float_2_3_zeros()
+    return _ACD._Matx_float_2_3_zeros()
 
 def _Matx_float_2_3_ones():
-    return _USCD._Matx_float_2_3_ones()
+    return _ACD._Matx_float_2_3_ones()
 
 def _Matx_float_2_3_eye():
-    return _USCD._Matx_float_2_3_eye()
+    return _ACD._Matx_float_2_3_eye()
 
 def _Matx_float_2_3_randu(a, b):
-    return _USCD._Matx_float_2_3_randu(a, b)
+    return _ACD._Matx_float_2_3_randu(a, b)
 
 def _Matx_float_2_3_randn(a, b):
-    return _USCD._Matx_float_2_3_randn(a, b)
+    return _ACD._Matx_float_2_3_randn(a, b)
 
 
 Matx23f = _Matx_float_2_3
@@ -10326,53 +10326,53 @@ Matx23f = _Matx_float_2_3
 class _Matx_double_2_3(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_double_2_3_rows
-    cols = _USCD._Matx_double_2_3_cols
-    channels = _USCD._Matx_double_2_3_channels
-    shortdim = _USCD._Matx_double_2_3_shortdim
+    rows = _ACD._Matx_double_2_3_rows
+    cols = _ACD._Matx_double_2_3_cols
+    channels = _ACD._Matx_double_2_3_channels
+    shortdim = _ACD._Matx_double_2_3_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_double_2_3_all(alpha)
+        return _ACD._Matx_double_2_3_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_double_2_3_zeros()
+        return _ACD._Matx_double_2_3_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_double_2_3_ones()
+        return _ACD._Matx_double_2_3_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_double_2_3_eye()
+        return _ACD._Matx_double_2_3_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_double_2_3_randu(a, b)
+        return _ACD._Matx_double_2_3_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_double_2_3_randn(a, b)
+        return _ACD._Matx_double_2_3_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_double_2_3_dot(self, v)
+        return _ACD._Matx_double_2_3_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_double_2_3_ddot(self, v)
+        return _ACD._Matx_double_2_3_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_double_2_3_t(self)
+        return _ACD._Matx_double_2_3_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_double_2_3_mul(self, a)
+        return _ACD._Matx_double_2_3_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_double_2_3_div(self, a)
+        return _ACD._Matx_double_2_3_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_double_2_3___call__(self, i, j)
-    val = property(_USCD._Matx_double_2_3_val_get, _USCD._Matx_double_2_3_val_set)
+        return _ACD._Matx_double_2_3___call__(self, i, j)
+    val = property(_ACD._Matx_double_2_3_val_get, _ACD._Matx_double_2_3_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -10392,7 +10392,7 @@ class _Matx_double_2_3(object):
         args = [array]
 
 
-        _USCD._Matx_double_2_3_swiginit(self, _USCD.new__Matx_double_2_3(*args))
+        _ACD._Matx_double_2_3_swiginit(self, _ACD.new__Matx_double_2_3(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -10430,29 +10430,29 @@ class _Matx_double_2_3(object):
 
 
     def __str__(self):
-        return _USCD._Matx_double_2_3___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_double_2_3
+        return _ACD._Matx_double_2_3___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_double_2_3
 
-# Register _Matx_double_2_3 in _USCD:
-_USCD._Matx_double_2_3_swigregister(_Matx_double_2_3)
+# Register _Matx_double_2_3 in _ACD:
+_ACD._Matx_double_2_3_swigregister(_Matx_double_2_3)
 
 def _Matx_double_2_3_all(alpha):
-    return _USCD._Matx_double_2_3_all(alpha)
+    return _ACD._Matx_double_2_3_all(alpha)
 
 def _Matx_double_2_3_zeros():
-    return _USCD._Matx_double_2_3_zeros()
+    return _ACD._Matx_double_2_3_zeros()
 
 def _Matx_double_2_3_ones():
-    return _USCD._Matx_double_2_3_ones()
+    return _ACD._Matx_double_2_3_ones()
 
 def _Matx_double_2_3_eye():
-    return _USCD._Matx_double_2_3_eye()
+    return _ACD._Matx_double_2_3_eye()
 
 def _Matx_double_2_3_randu(a, b):
-    return _USCD._Matx_double_2_3_randu(a, b)
+    return _ACD._Matx_double_2_3_randu(a, b)
 
 def _Matx_double_2_3_randn(a, b):
-    return _USCD._Matx_double_2_3_randn(a, b)
+    return _ACD._Matx_double_2_3_randn(a, b)
 
 
 Matx23d = _Matx_double_2_3
@@ -10460,53 +10460,53 @@ Matx23d = _Matx_double_2_3
 class _Matx_float_3_2(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_float_3_2_rows
-    cols = _USCD._Matx_float_3_2_cols
-    channels = _USCD._Matx_float_3_2_channels
-    shortdim = _USCD._Matx_float_3_2_shortdim
+    rows = _ACD._Matx_float_3_2_rows
+    cols = _ACD._Matx_float_3_2_cols
+    channels = _ACD._Matx_float_3_2_channels
+    shortdim = _ACD._Matx_float_3_2_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_float_3_2_all(alpha)
+        return _ACD._Matx_float_3_2_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_float_3_2_zeros()
+        return _ACD._Matx_float_3_2_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_float_3_2_ones()
+        return _ACD._Matx_float_3_2_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_float_3_2_eye()
+        return _ACD._Matx_float_3_2_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_float_3_2_randu(a, b)
+        return _ACD._Matx_float_3_2_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_float_3_2_randn(a, b)
+        return _ACD._Matx_float_3_2_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_float_3_2_dot(self, v)
+        return _ACD._Matx_float_3_2_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_float_3_2_ddot(self, v)
+        return _ACD._Matx_float_3_2_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_float_3_2_t(self)
+        return _ACD._Matx_float_3_2_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_float_3_2_mul(self, a)
+        return _ACD._Matx_float_3_2_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_float_3_2_div(self, a)
+        return _ACD._Matx_float_3_2_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_float_3_2___call__(self, i, j)
-    val = property(_USCD._Matx_float_3_2_val_get, _USCD._Matx_float_3_2_val_set)
+        return _ACD._Matx_float_3_2___call__(self, i, j)
+    val = property(_ACD._Matx_float_3_2_val_get, _ACD._Matx_float_3_2_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -10526,7 +10526,7 @@ class _Matx_float_3_2(object):
         args = [array]
 
 
-        _USCD._Matx_float_3_2_swiginit(self, _USCD.new__Matx_float_3_2(*args))
+        _ACD._Matx_float_3_2_swiginit(self, _ACD.new__Matx_float_3_2(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -10564,29 +10564,29 @@ class _Matx_float_3_2(object):
 
 
     def __str__(self):
-        return _USCD._Matx_float_3_2___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_float_3_2
+        return _ACD._Matx_float_3_2___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_float_3_2
 
-# Register _Matx_float_3_2 in _USCD:
-_USCD._Matx_float_3_2_swigregister(_Matx_float_3_2)
+# Register _Matx_float_3_2 in _ACD:
+_ACD._Matx_float_3_2_swigregister(_Matx_float_3_2)
 
 def _Matx_float_3_2_all(alpha):
-    return _USCD._Matx_float_3_2_all(alpha)
+    return _ACD._Matx_float_3_2_all(alpha)
 
 def _Matx_float_3_2_zeros():
-    return _USCD._Matx_float_3_2_zeros()
+    return _ACD._Matx_float_3_2_zeros()
 
 def _Matx_float_3_2_ones():
-    return _USCD._Matx_float_3_2_ones()
+    return _ACD._Matx_float_3_2_ones()
 
 def _Matx_float_3_2_eye():
-    return _USCD._Matx_float_3_2_eye()
+    return _ACD._Matx_float_3_2_eye()
 
 def _Matx_float_3_2_randu(a, b):
-    return _USCD._Matx_float_3_2_randu(a, b)
+    return _ACD._Matx_float_3_2_randu(a, b)
 
 def _Matx_float_3_2_randn(a, b):
-    return _USCD._Matx_float_3_2_randn(a, b)
+    return _ACD._Matx_float_3_2_randn(a, b)
 
 
 Matx32f = _Matx_float_3_2
@@ -10594,53 +10594,53 @@ Matx32f = _Matx_float_3_2
 class _Matx_double_3_2(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_double_3_2_rows
-    cols = _USCD._Matx_double_3_2_cols
-    channels = _USCD._Matx_double_3_2_channels
-    shortdim = _USCD._Matx_double_3_2_shortdim
+    rows = _ACD._Matx_double_3_2_rows
+    cols = _ACD._Matx_double_3_2_cols
+    channels = _ACD._Matx_double_3_2_channels
+    shortdim = _ACD._Matx_double_3_2_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_double_3_2_all(alpha)
+        return _ACD._Matx_double_3_2_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_double_3_2_zeros()
+        return _ACD._Matx_double_3_2_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_double_3_2_ones()
+        return _ACD._Matx_double_3_2_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_double_3_2_eye()
+        return _ACD._Matx_double_3_2_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_double_3_2_randu(a, b)
+        return _ACD._Matx_double_3_2_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_double_3_2_randn(a, b)
+        return _ACD._Matx_double_3_2_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_double_3_2_dot(self, v)
+        return _ACD._Matx_double_3_2_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_double_3_2_ddot(self, v)
+        return _ACD._Matx_double_3_2_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_double_3_2_t(self)
+        return _ACD._Matx_double_3_2_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_double_3_2_mul(self, a)
+        return _ACD._Matx_double_3_2_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_double_3_2_div(self, a)
+        return _ACD._Matx_double_3_2_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_double_3_2___call__(self, i, j)
-    val = property(_USCD._Matx_double_3_2_val_get, _USCD._Matx_double_3_2_val_set)
+        return _ACD._Matx_double_3_2___call__(self, i, j)
+    val = property(_ACD._Matx_double_3_2_val_get, _ACD._Matx_double_3_2_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -10660,7 +10660,7 @@ class _Matx_double_3_2(object):
         args = [array]
 
 
-        _USCD._Matx_double_3_2_swiginit(self, _USCD.new__Matx_double_3_2(*args))
+        _ACD._Matx_double_3_2_swiginit(self, _ACD.new__Matx_double_3_2(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -10698,29 +10698,29 @@ class _Matx_double_3_2(object):
 
 
     def __str__(self):
-        return _USCD._Matx_double_3_2___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_double_3_2
+        return _ACD._Matx_double_3_2___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_double_3_2
 
-# Register _Matx_double_3_2 in _USCD:
-_USCD._Matx_double_3_2_swigregister(_Matx_double_3_2)
+# Register _Matx_double_3_2 in _ACD:
+_ACD._Matx_double_3_2_swigregister(_Matx_double_3_2)
 
 def _Matx_double_3_2_all(alpha):
-    return _USCD._Matx_double_3_2_all(alpha)
+    return _ACD._Matx_double_3_2_all(alpha)
 
 def _Matx_double_3_2_zeros():
-    return _USCD._Matx_double_3_2_zeros()
+    return _ACD._Matx_double_3_2_zeros()
 
 def _Matx_double_3_2_ones():
-    return _USCD._Matx_double_3_2_ones()
+    return _ACD._Matx_double_3_2_ones()
 
 def _Matx_double_3_2_eye():
-    return _USCD._Matx_double_3_2_eye()
+    return _ACD._Matx_double_3_2_eye()
 
 def _Matx_double_3_2_randu(a, b):
-    return _USCD._Matx_double_3_2_randu(a, b)
+    return _ACD._Matx_double_3_2_randu(a, b)
 
 def _Matx_double_3_2_randn(a, b):
-    return _USCD._Matx_double_3_2_randn(a, b)
+    return _ACD._Matx_double_3_2_randn(a, b)
 
 
 Matx32d = _Matx_double_3_2
@@ -10728,53 +10728,53 @@ Matx32d = _Matx_double_3_2
 class _Matx_float_3_3(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_float_3_3_rows
-    cols = _USCD._Matx_float_3_3_cols
-    channels = _USCD._Matx_float_3_3_channels
-    shortdim = _USCD._Matx_float_3_3_shortdim
+    rows = _ACD._Matx_float_3_3_rows
+    cols = _ACD._Matx_float_3_3_cols
+    channels = _ACD._Matx_float_3_3_channels
+    shortdim = _ACD._Matx_float_3_3_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_float_3_3_all(alpha)
+        return _ACD._Matx_float_3_3_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_float_3_3_zeros()
+        return _ACD._Matx_float_3_3_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_float_3_3_ones()
+        return _ACD._Matx_float_3_3_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_float_3_3_eye()
+        return _ACD._Matx_float_3_3_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_float_3_3_randu(a, b)
+        return _ACD._Matx_float_3_3_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_float_3_3_randn(a, b)
+        return _ACD._Matx_float_3_3_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_float_3_3_dot(self, v)
+        return _ACD._Matx_float_3_3_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_float_3_3_ddot(self, v)
+        return _ACD._Matx_float_3_3_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_float_3_3_t(self)
+        return _ACD._Matx_float_3_3_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_float_3_3_mul(self, a)
+        return _ACD._Matx_float_3_3_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_float_3_3_div(self, a)
+        return _ACD._Matx_float_3_3_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_float_3_3___call__(self, i, j)
-    val = property(_USCD._Matx_float_3_3_val_get, _USCD._Matx_float_3_3_val_set)
+        return _ACD._Matx_float_3_3___call__(self, i, j)
+    val = property(_ACD._Matx_float_3_3_val_get, _ACD._Matx_float_3_3_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -10794,7 +10794,7 @@ class _Matx_float_3_3(object):
         args = [array]
 
 
-        _USCD._Matx_float_3_3_swiginit(self, _USCD.new__Matx_float_3_3(*args))
+        _ACD._Matx_float_3_3_swiginit(self, _ACD.new__Matx_float_3_3(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -10832,29 +10832,29 @@ class _Matx_float_3_3(object):
 
 
     def __str__(self):
-        return _USCD._Matx_float_3_3___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_float_3_3
+        return _ACD._Matx_float_3_3___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_float_3_3
 
-# Register _Matx_float_3_3 in _USCD:
-_USCD._Matx_float_3_3_swigregister(_Matx_float_3_3)
+# Register _Matx_float_3_3 in _ACD:
+_ACD._Matx_float_3_3_swigregister(_Matx_float_3_3)
 
 def _Matx_float_3_3_all(alpha):
-    return _USCD._Matx_float_3_3_all(alpha)
+    return _ACD._Matx_float_3_3_all(alpha)
 
 def _Matx_float_3_3_zeros():
-    return _USCD._Matx_float_3_3_zeros()
+    return _ACD._Matx_float_3_3_zeros()
 
 def _Matx_float_3_3_ones():
-    return _USCD._Matx_float_3_3_ones()
+    return _ACD._Matx_float_3_3_ones()
 
 def _Matx_float_3_3_eye():
-    return _USCD._Matx_float_3_3_eye()
+    return _ACD._Matx_float_3_3_eye()
 
 def _Matx_float_3_3_randu(a, b):
-    return _USCD._Matx_float_3_3_randu(a, b)
+    return _ACD._Matx_float_3_3_randu(a, b)
 
 def _Matx_float_3_3_randn(a, b):
-    return _USCD._Matx_float_3_3_randn(a, b)
+    return _ACD._Matx_float_3_3_randn(a, b)
 
 
 Matx33f = _Matx_float_3_3
@@ -10862,53 +10862,53 @@ Matx33f = _Matx_float_3_3
 class _Matx_double_3_3(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_double_3_3_rows
-    cols = _USCD._Matx_double_3_3_cols
-    channels = _USCD._Matx_double_3_3_channels
-    shortdim = _USCD._Matx_double_3_3_shortdim
+    rows = _ACD._Matx_double_3_3_rows
+    cols = _ACD._Matx_double_3_3_cols
+    channels = _ACD._Matx_double_3_3_channels
+    shortdim = _ACD._Matx_double_3_3_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_double_3_3_all(alpha)
+        return _ACD._Matx_double_3_3_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_double_3_3_zeros()
+        return _ACD._Matx_double_3_3_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_double_3_3_ones()
+        return _ACD._Matx_double_3_3_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_double_3_3_eye()
+        return _ACD._Matx_double_3_3_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_double_3_3_randu(a, b)
+        return _ACD._Matx_double_3_3_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_double_3_3_randn(a, b)
+        return _ACD._Matx_double_3_3_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_double_3_3_dot(self, v)
+        return _ACD._Matx_double_3_3_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_double_3_3_ddot(self, v)
+        return _ACD._Matx_double_3_3_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_double_3_3_t(self)
+        return _ACD._Matx_double_3_3_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_double_3_3_mul(self, a)
+        return _ACD._Matx_double_3_3_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_double_3_3_div(self, a)
+        return _ACD._Matx_double_3_3_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_double_3_3___call__(self, i, j)
-    val = property(_USCD._Matx_double_3_3_val_get, _USCD._Matx_double_3_3_val_set)
+        return _ACD._Matx_double_3_3___call__(self, i, j)
+    val = property(_ACD._Matx_double_3_3_val_get, _ACD._Matx_double_3_3_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -10928,7 +10928,7 @@ class _Matx_double_3_3(object):
         args = [array]
 
 
-        _USCD._Matx_double_3_3_swiginit(self, _USCD.new__Matx_double_3_3(*args))
+        _ACD._Matx_double_3_3_swiginit(self, _ACD.new__Matx_double_3_3(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -10966,29 +10966,29 @@ class _Matx_double_3_3(object):
 
 
     def __str__(self):
-        return _USCD._Matx_double_3_3___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_double_3_3
+        return _ACD._Matx_double_3_3___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_double_3_3
 
-# Register _Matx_double_3_3 in _USCD:
-_USCD._Matx_double_3_3_swigregister(_Matx_double_3_3)
+# Register _Matx_double_3_3 in _ACD:
+_ACD._Matx_double_3_3_swigregister(_Matx_double_3_3)
 
 def _Matx_double_3_3_all(alpha):
-    return _USCD._Matx_double_3_3_all(alpha)
+    return _ACD._Matx_double_3_3_all(alpha)
 
 def _Matx_double_3_3_zeros():
-    return _USCD._Matx_double_3_3_zeros()
+    return _ACD._Matx_double_3_3_zeros()
 
 def _Matx_double_3_3_ones():
-    return _USCD._Matx_double_3_3_ones()
+    return _ACD._Matx_double_3_3_ones()
 
 def _Matx_double_3_3_eye():
-    return _USCD._Matx_double_3_3_eye()
+    return _ACD._Matx_double_3_3_eye()
 
 def _Matx_double_3_3_randu(a, b):
-    return _USCD._Matx_double_3_3_randu(a, b)
+    return _ACD._Matx_double_3_3_randu(a, b)
 
 def _Matx_double_3_3_randn(a, b):
-    return _USCD._Matx_double_3_3_randn(a, b)
+    return _ACD._Matx_double_3_3_randn(a, b)
 
 
 Matx33d = _Matx_double_3_3
@@ -10996,53 +10996,53 @@ Matx33d = _Matx_double_3_3
 class _Matx_float_3_4(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_float_3_4_rows
-    cols = _USCD._Matx_float_3_4_cols
-    channels = _USCD._Matx_float_3_4_channels
-    shortdim = _USCD._Matx_float_3_4_shortdim
+    rows = _ACD._Matx_float_3_4_rows
+    cols = _ACD._Matx_float_3_4_cols
+    channels = _ACD._Matx_float_3_4_channels
+    shortdim = _ACD._Matx_float_3_4_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_float_3_4_all(alpha)
+        return _ACD._Matx_float_3_4_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_float_3_4_zeros()
+        return _ACD._Matx_float_3_4_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_float_3_4_ones()
+        return _ACD._Matx_float_3_4_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_float_3_4_eye()
+        return _ACD._Matx_float_3_4_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_float_3_4_randu(a, b)
+        return _ACD._Matx_float_3_4_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_float_3_4_randn(a, b)
+        return _ACD._Matx_float_3_4_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_float_3_4_dot(self, v)
+        return _ACD._Matx_float_3_4_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_float_3_4_ddot(self, v)
+        return _ACD._Matx_float_3_4_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_float_3_4_t(self)
+        return _ACD._Matx_float_3_4_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_float_3_4_mul(self, a)
+        return _ACD._Matx_float_3_4_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_float_3_4_div(self, a)
+        return _ACD._Matx_float_3_4_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_float_3_4___call__(self, i, j)
-    val = property(_USCD._Matx_float_3_4_val_get, _USCD._Matx_float_3_4_val_set)
+        return _ACD._Matx_float_3_4___call__(self, i, j)
+    val = property(_ACD._Matx_float_3_4_val_get, _ACD._Matx_float_3_4_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -11062,7 +11062,7 @@ class _Matx_float_3_4(object):
         args = [array]
 
 
-        _USCD._Matx_float_3_4_swiginit(self, _USCD.new__Matx_float_3_4(*args))
+        _ACD._Matx_float_3_4_swiginit(self, _ACD.new__Matx_float_3_4(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -11100,29 +11100,29 @@ class _Matx_float_3_4(object):
 
 
     def __str__(self):
-        return _USCD._Matx_float_3_4___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_float_3_4
+        return _ACD._Matx_float_3_4___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_float_3_4
 
-# Register _Matx_float_3_4 in _USCD:
-_USCD._Matx_float_3_4_swigregister(_Matx_float_3_4)
+# Register _Matx_float_3_4 in _ACD:
+_ACD._Matx_float_3_4_swigregister(_Matx_float_3_4)
 
 def _Matx_float_3_4_all(alpha):
-    return _USCD._Matx_float_3_4_all(alpha)
+    return _ACD._Matx_float_3_4_all(alpha)
 
 def _Matx_float_3_4_zeros():
-    return _USCD._Matx_float_3_4_zeros()
+    return _ACD._Matx_float_3_4_zeros()
 
 def _Matx_float_3_4_ones():
-    return _USCD._Matx_float_3_4_ones()
+    return _ACD._Matx_float_3_4_ones()
 
 def _Matx_float_3_4_eye():
-    return _USCD._Matx_float_3_4_eye()
+    return _ACD._Matx_float_3_4_eye()
 
 def _Matx_float_3_4_randu(a, b):
-    return _USCD._Matx_float_3_4_randu(a, b)
+    return _ACD._Matx_float_3_4_randu(a, b)
 
 def _Matx_float_3_4_randn(a, b):
-    return _USCD._Matx_float_3_4_randn(a, b)
+    return _ACD._Matx_float_3_4_randn(a, b)
 
 
 Matx34f = _Matx_float_3_4
@@ -11130,53 +11130,53 @@ Matx34f = _Matx_float_3_4
 class _Matx_double_3_4(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_double_3_4_rows
-    cols = _USCD._Matx_double_3_4_cols
-    channels = _USCD._Matx_double_3_4_channels
-    shortdim = _USCD._Matx_double_3_4_shortdim
+    rows = _ACD._Matx_double_3_4_rows
+    cols = _ACD._Matx_double_3_4_cols
+    channels = _ACD._Matx_double_3_4_channels
+    shortdim = _ACD._Matx_double_3_4_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_double_3_4_all(alpha)
+        return _ACD._Matx_double_3_4_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_double_3_4_zeros()
+        return _ACD._Matx_double_3_4_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_double_3_4_ones()
+        return _ACD._Matx_double_3_4_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_double_3_4_eye()
+        return _ACD._Matx_double_3_4_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_double_3_4_randu(a, b)
+        return _ACD._Matx_double_3_4_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_double_3_4_randn(a, b)
+        return _ACD._Matx_double_3_4_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_double_3_4_dot(self, v)
+        return _ACD._Matx_double_3_4_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_double_3_4_ddot(self, v)
+        return _ACD._Matx_double_3_4_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_double_3_4_t(self)
+        return _ACD._Matx_double_3_4_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_double_3_4_mul(self, a)
+        return _ACD._Matx_double_3_4_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_double_3_4_div(self, a)
+        return _ACD._Matx_double_3_4_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_double_3_4___call__(self, i, j)
-    val = property(_USCD._Matx_double_3_4_val_get, _USCD._Matx_double_3_4_val_set)
+        return _ACD._Matx_double_3_4___call__(self, i, j)
+    val = property(_ACD._Matx_double_3_4_val_get, _ACD._Matx_double_3_4_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -11196,7 +11196,7 @@ class _Matx_double_3_4(object):
         args = [array]
 
 
-        _USCD._Matx_double_3_4_swiginit(self, _USCD.new__Matx_double_3_4(*args))
+        _ACD._Matx_double_3_4_swiginit(self, _ACD.new__Matx_double_3_4(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -11234,29 +11234,29 @@ class _Matx_double_3_4(object):
 
 
     def __str__(self):
-        return _USCD._Matx_double_3_4___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_double_3_4
+        return _ACD._Matx_double_3_4___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_double_3_4
 
-# Register _Matx_double_3_4 in _USCD:
-_USCD._Matx_double_3_4_swigregister(_Matx_double_3_4)
+# Register _Matx_double_3_4 in _ACD:
+_ACD._Matx_double_3_4_swigregister(_Matx_double_3_4)
 
 def _Matx_double_3_4_all(alpha):
-    return _USCD._Matx_double_3_4_all(alpha)
+    return _ACD._Matx_double_3_4_all(alpha)
 
 def _Matx_double_3_4_zeros():
-    return _USCD._Matx_double_3_4_zeros()
+    return _ACD._Matx_double_3_4_zeros()
 
 def _Matx_double_3_4_ones():
-    return _USCD._Matx_double_3_4_ones()
+    return _ACD._Matx_double_3_4_ones()
 
 def _Matx_double_3_4_eye():
-    return _USCD._Matx_double_3_4_eye()
+    return _ACD._Matx_double_3_4_eye()
 
 def _Matx_double_3_4_randu(a, b):
-    return _USCD._Matx_double_3_4_randu(a, b)
+    return _ACD._Matx_double_3_4_randu(a, b)
 
 def _Matx_double_3_4_randn(a, b):
-    return _USCD._Matx_double_3_4_randn(a, b)
+    return _ACD._Matx_double_3_4_randn(a, b)
 
 
 Matx34d = _Matx_double_3_4
@@ -11264,53 +11264,53 @@ Matx34d = _Matx_double_3_4
 class _Matx_float_4_3(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_float_4_3_rows
-    cols = _USCD._Matx_float_4_3_cols
-    channels = _USCD._Matx_float_4_3_channels
-    shortdim = _USCD._Matx_float_4_3_shortdim
+    rows = _ACD._Matx_float_4_3_rows
+    cols = _ACD._Matx_float_4_3_cols
+    channels = _ACD._Matx_float_4_3_channels
+    shortdim = _ACD._Matx_float_4_3_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_float_4_3_all(alpha)
+        return _ACD._Matx_float_4_3_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_float_4_3_zeros()
+        return _ACD._Matx_float_4_3_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_float_4_3_ones()
+        return _ACD._Matx_float_4_3_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_float_4_3_eye()
+        return _ACD._Matx_float_4_3_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_float_4_3_randu(a, b)
+        return _ACD._Matx_float_4_3_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_float_4_3_randn(a, b)
+        return _ACD._Matx_float_4_3_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_float_4_3_dot(self, v)
+        return _ACD._Matx_float_4_3_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_float_4_3_ddot(self, v)
+        return _ACD._Matx_float_4_3_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_float_4_3_t(self)
+        return _ACD._Matx_float_4_3_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_float_4_3_mul(self, a)
+        return _ACD._Matx_float_4_3_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_float_4_3_div(self, a)
+        return _ACD._Matx_float_4_3_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_float_4_3___call__(self, i, j)
-    val = property(_USCD._Matx_float_4_3_val_get, _USCD._Matx_float_4_3_val_set)
+        return _ACD._Matx_float_4_3___call__(self, i, j)
+    val = property(_ACD._Matx_float_4_3_val_get, _ACD._Matx_float_4_3_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -11330,7 +11330,7 @@ class _Matx_float_4_3(object):
         args = [array]
 
 
-        _USCD._Matx_float_4_3_swiginit(self, _USCD.new__Matx_float_4_3(*args))
+        _ACD._Matx_float_4_3_swiginit(self, _ACD.new__Matx_float_4_3(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -11368,29 +11368,29 @@ class _Matx_float_4_3(object):
 
 
     def __str__(self):
-        return _USCD._Matx_float_4_3___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_float_4_3
+        return _ACD._Matx_float_4_3___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_float_4_3
 
-# Register _Matx_float_4_3 in _USCD:
-_USCD._Matx_float_4_3_swigregister(_Matx_float_4_3)
+# Register _Matx_float_4_3 in _ACD:
+_ACD._Matx_float_4_3_swigregister(_Matx_float_4_3)
 
 def _Matx_float_4_3_all(alpha):
-    return _USCD._Matx_float_4_3_all(alpha)
+    return _ACD._Matx_float_4_3_all(alpha)
 
 def _Matx_float_4_3_zeros():
-    return _USCD._Matx_float_4_3_zeros()
+    return _ACD._Matx_float_4_3_zeros()
 
 def _Matx_float_4_3_ones():
-    return _USCD._Matx_float_4_3_ones()
+    return _ACD._Matx_float_4_3_ones()
 
 def _Matx_float_4_3_eye():
-    return _USCD._Matx_float_4_3_eye()
+    return _ACD._Matx_float_4_3_eye()
 
 def _Matx_float_4_3_randu(a, b):
-    return _USCD._Matx_float_4_3_randu(a, b)
+    return _ACD._Matx_float_4_3_randu(a, b)
 
 def _Matx_float_4_3_randn(a, b):
-    return _USCD._Matx_float_4_3_randn(a, b)
+    return _ACD._Matx_float_4_3_randn(a, b)
 
 
 Matx43f = _Matx_float_4_3
@@ -11398,53 +11398,53 @@ Matx43f = _Matx_float_4_3
 class _Matx_double_4_3(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_double_4_3_rows
-    cols = _USCD._Matx_double_4_3_cols
-    channels = _USCD._Matx_double_4_3_channels
-    shortdim = _USCD._Matx_double_4_3_shortdim
+    rows = _ACD._Matx_double_4_3_rows
+    cols = _ACD._Matx_double_4_3_cols
+    channels = _ACD._Matx_double_4_3_channels
+    shortdim = _ACD._Matx_double_4_3_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_double_4_3_all(alpha)
+        return _ACD._Matx_double_4_3_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_double_4_3_zeros()
+        return _ACD._Matx_double_4_3_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_double_4_3_ones()
+        return _ACD._Matx_double_4_3_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_double_4_3_eye()
+        return _ACD._Matx_double_4_3_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_double_4_3_randu(a, b)
+        return _ACD._Matx_double_4_3_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_double_4_3_randn(a, b)
+        return _ACD._Matx_double_4_3_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_double_4_3_dot(self, v)
+        return _ACD._Matx_double_4_3_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_double_4_3_ddot(self, v)
+        return _ACD._Matx_double_4_3_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_double_4_3_t(self)
+        return _ACD._Matx_double_4_3_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_double_4_3_mul(self, a)
+        return _ACD._Matx_double_4_3_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_double_4_3_div(self, a)
+        return _ACD._Matx_double_4_3_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_double_4_3___call__(self, i, j)
-    val = property(_USCD._Matx_double_4_3_val_get, _USCD._Matx_double_4_3_val_set)
+        return _ACD._Matx_double_4_3___call__(self, i, j)
+    val = property(_ACD._Matx_double_4_3_val_get, _ACD._Matx_double_4_3_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -11464,7 +11464,7 @@ class _Matx_double_4_3(object):
         args = [array]
 
 
-        _USCD._Matx_double_4_3_swiginit(self, _USCD.new__Matx_double_4_3(*args))
+        _ACD._Matx_double_4_3_swiginit(self, _ACD.new__Matx_double_4_3(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -11502,29 +11502,29 @@ class _Matx_double_4_3(object):
 
 
     def __str__(self):
-        return _USCD._Matx_double_4_3___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_double_4_3
+        return _ACD._Matx_double_4_3___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_double_4_3
 
-# Register _Matx_double_4_3 in _USCD:
-_USCD._Matx_double_4_3_swigregister(_Matx_double_4_3)
+# Register _Matx_double_4_3 in _ACD:
+_ACD._Matx_double_4_3_swigregister(_Matx_double_4_3)
 
 def _Matx_double_4_3_all(alpha):
-    return _USCD._Matx_double_4_3_all(alpha)
+    return _ACD._Matx_double_4_3_all(alpha)
 
 def _Matx_double_4_3_zeros():
-    return _USCD._Matx_double_4_3_zeros()
+    return _ACD._Matx_double_4_3_zeros()
 
 def _Matx_double_4_3_ones():
-    return _USCD._Matx_double_4_3_ones()
+    return _ACD._Matx_double_4_3_ones()
 
 def _Matx_double_4_3_eye():
-    return _USCD._Matx_double_4_3_eye()
+    return _ACD._Matx_double_4_3_eye()
 
 def _Matx_double_4_3_randu(a, b):
-    return _USCD._Matx_double_4_3_randu(a, b)
+    return _ACD._Matx_double_4_3_randu(a, b)
 
 def _Matx_double_4_3_randn(a, b):
-    return _USCD._Matx_double_4_3_randn(a, b)
+    return _ACD._Matx_double_4_3_randn(a, b)
 
 
 Matx43d = _Matx_double_4_3
@@ -11532,53 +11532,53 @@ Matx43d = _Matx_double_4_3
 class _Matx_float_4_4(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_float_4_4_rows
-    cols = _USCD._Matx_float_4_4_cols
-    channels = _USCD._Matx_float_4_4_channels
-    shortdim = _USCD._Matx_float_4_4_shortdim
+    rows = _ACD._Matx_float_4_4_rows
+    cols = _ACD._Matx_float_4_4_cols
+    channels = _ACD._Matx_float_4_4_channels
+    shortdim = _ACD._Matx_float_4_4_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_float_4_4_all(alpha)
+        return _ACD._Matx_float_4_4_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_float_4_4_zeros()
+        return _ACD._Matx_float_4_4_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_float_4_4_ones()
+        return _ACD._Matx_float_4_4_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_float_4_4_eye()
+        return _ACD._Matx_float_4_4_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_float_4_4_randu(a, b)
+        return _ACD._Matx_float_4_4_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_float_4_4_randn(a, b)
+        return _ACD._Matx_float_4_4_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_float_4_4_dot(self, v)
+        return _ACD._Matx_float_4_4_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_float_4_4_ddot(self, v)
+        return _ACD._Matx_float_4_4_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_float_4_4_t(self)
+        return _ACD._Matx_float_4_4_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_float_4_4_mul(self, a)
+        return _ACD._Matx_float_4_4_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_float_4_4_div(self, a)
+        return _ACD._Matx_float_4_4_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_float_4_4___call__(self, i, j)
-    val = property(_USCD._Matx_float_4_4_val_get, _USCD._Matx_float_4_4_val_set)
+        return _ACD._Matx_float_4_4___call__(self, i, j)
+    val = property(_ACD._Matx_float_4_4_val_get, _ACD._Matx_float_4_4_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -11598,7 +11598,7 @@ class _Matx_float_4_4(object):
         args = [array]
 
 
-        _USCD._Matx_float_4_4_swiginit(self, _USCD.new__Matx_float_4_4(*args))
+        _ACD._Matx_float_4_4_swiginit(self, _ACD.new__Matx_float_4_4(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -11636,29 +11636,29 @@ class _Matx_float_4_4(object):
 
 
     def __str__(self):
-        return _USCD._Matx_float_4_4___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_float_4_4
+        return _ACD._Matx_float_4_4___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_float_4_4
 
-# Register _Matx_float_4_4 in _USCD:
-_USCD._Matx_float_4_4_swigregister(_Matx_float_4_4)
+# Register _Matx_float_4_4 in _ACD:
+_ACD._Matx_float_4_4_swigregister(_Matx_float_4_4)
 
 def _Matx_float_4_4_all(alpha):
-    return _USCD._Matx_float_4_4_all(alpha)
+    return _ACD._Matx_float_4_4_all(alpha)
 
 def _Matx_float_4_4_zeros():
-    return _USCD._Matx_float_4_4_zeros()
+    return _ACD._Matx_float_4_4_zeros()
 
 def _Matx_float_4_4_ones():
-    return _USCD._Matx_float_4_4_ones()
+    return _ACD._Matx_float_4_4_ones()
 
 def _Matx_float_4_4_eye():
-    return _USCD._Matx_float_4_4_eye()
+    return _ACD._Matx_float_4_4_eye()
 
 def _Matx_float_4_4_randu(a, b):
-    return _USCD._Matx_float_4_4_randu(a, b)
+    return _ACD._Matx_float_4_4_randu(a, b)
 
 def _Matx_float_4_4_randn(a, b):
-    return _USCD._Matx_float_4_4_randn(a, b)
+    return _ACD._Matx_float_4_4_randn(a, b)
 
 
 Matx44f = _Matx_float_4_4
@@ -11666,53 +11666,53 @@ Matx44f = _Matx_float_4_4
 class _Matx_double_4_4(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_double_4_4_rows
-    cols = _USCD._Matx_double_4_4_cols
-    channels = _USCD._Matx_double_4_4_channels
-    shortdim = _USCD._Matx_double_4_4_shortdim
+    rows = _ACD._Matx_double_4_4_rows
+    cols = _ACD._Matx_double_4_4_cols
+    channels = _ACD._Matx_double_4_4_channels
+    shortdim = _ACD._Matx_double_4_4_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_double_4_4_all(alpha)
+        return _ACD._Matx_double_4_4_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_double_4_4_zeros()
+        return _ACD._Matx_double_4_4_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_double_4_4_ones()
+        return _ACD._Matx_double_4_4_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_double_4_4_eye()
+        return _ACD._Matx_double_4_4_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_double_4_4_randu(a, b)
+        return _ACD._Matx_double_4_4_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_double_4_4_randn(a, b)
+        return _ACD._Matx_double_4_4_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_double_4_4_dot(self, v)
+        return _ACD._Matx_double_4_4_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_double_4_4_ddot(self, v)
+        return _ACD._Matx_double_4_4_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_double_4_4_t(self)
+        return _ACD._Matx_double_4_4_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_double_4_4_mul(self, a)
+        return _ACD._Matx_double_4_4_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_double_4_4_div(self, a)
+        return _ACD._Matx_double_4_4_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_double_4_4___call__(self, i, j)
-    val = property(_USCD._Matx_double_4_4_val_get, _USCD._Matx_double_4_4_val_set)
+        return _ACD._Matx_double_4_4___call__(self, i, j)
+    val = property(_ACD._Matx_double_4_4_val_get, _ACD._Matx_double_4_4_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -11732,7 +11732,7 @@ class _Matx_double_4_4(object):
         args = [array]
 
 
-        _USCD._Matx_double_4_4_swiginit(self, _USCD.new__Matx_double_4_4(*args))
+        _ACD._Matx_double_4_4_swiginit(self, _ACD.new__Matx_double_4_4(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -11770,29 +11770,29 @@ class _Matx_double_4_4(object):
 
 
     def __str__(self):
-        return _USCD._Matx_double_4_4___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_double_4_4
+        return _ACD._Matx_double_4_4___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_double_4_4
 
-# Register _Matx_double_4_4 in _USCD:
-_USCD._Matx_double_4_4_swigregister(_Matx_double_4_4)
+# Register _Matx_double_4_4 in _ACD:
+_ACD._Matx_double_4_4_swigregister(_Matx_double_4_4)
 
 def _Matx_double_4_4_all(alpha):
-    return _USCD._Matx_double_4_4_all(alpha)
+    return _ACD._Matx_double_4_4_all(alpha)
 
 def _Matx_double_4_4_zeros():
-    return _USCD._Matx_double_4_4_zeros()
+    return _ACD._Matx_double_4_4_zeros()
 
 def _Matx_double_4_4_ones():
-    return _USCD._Matx_double_4_4_ones()
+    return _ACD._Matx_double_4_4_ones()
 
 def _Matx_double_4_4_eye():
-    return _USCD._Matx_double_4_4_eye()
+    return _ACD._Matx_double_4_4_eye()
 
 def _Matx_double_4_4_randu(a, b):
-    return _USCD._Matx_double_4_4_randu(a, b)
+    return _ACD._Matx_double_4_4_randu(a, b)
 
 def _Matx_double_4_4_randn(a, b):
-    return _USCD._Matx_double_4_4_randn(a, b)
+    return _ACD._Matx_double_4_4_randn(a, b)
 
 
 Matx44d = _Matx_double_4_4
@@ -11800,53 +11800,53 @@ Matx44d = _Matx_double_4_4
 class _Matx_float_6_6(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_float_6_6_rows
-    cols = _USCD._Matx_float_6_6_cols
-    channels = _USCD._Matx_float_6_6_channels
-    shortdim = _USCD._Matx_float_6_6_shortdim
+    rows = _ACD._Matx_float_6_6_rows
+    cols = _ACD._Matx_float_6_6_cols
+    channels = _ACD._Matx_float_6_6_channels
+    shortdim = _ACD._Matx_float_6_6_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_float_6_6_all(alpha)
+        return _ACD._Matx_float_6_6_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_float_6_6_zeros()
+        return _ACD._Matx_float_6_6_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_float_6_6_ones()
+        return _ACD._Matx_float_6_6_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_float_6_6_eye()
+        return _ACD._Matx_float_6_6_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_float_6_6_randu(a, b)
+        return _ACD._Matx_float_6_6_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_float_6_6_randn(a, b)
+        return _ACD._Matx_float_6_6_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_float_6_6_dot(self, v)
+        return _ACD._Matx_float_6_6_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_float_6_6_ddot(self, v)
+        return _ACD._Matx_float_6_6_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_float_6_6_t(self)
+        return _ACD._Matx_float_6_6_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_float_6_6_mul(self, a)
+        return _ACD._Matx_float_6_6_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_float_6_6_div(self, a)
+        return _ACD._Matx_float_6_6_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_float_6_6___call__(self, i, j)
-    val = property(_USCD._Matx_float_6_6_val_get, _USCD._Matx_float_6_6_val_set)
+        return _ACD._Matx_float_6_6___call__(self, i, j)
+    val = property(_ACD._Matx_float_6_6_val_get, _ACD._Matx_float_6_6_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -11866,7 +11866,7 @@ class _Matx_float_6_6(object):
         args = [array]
 
 
-        _USCD._Matx_float_6_6_swiginit(self, _USCD.new__Matx_float_6_6(*args))
+        _ACD._Matx_float_6_6_swiginit(self, _ACD.new__Matx_float_6_6(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -11904,29 +11904,29 @@ class _Matx_float_6_6(object):
 
 
     def __str__(self):
-        return _USCD._Matx_float_6_6___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_float_6_6
+        return _ACD._Matx_float_6_6___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_float_6_6
 
-# Register _Matx_float_6_6 in _USCD:
-_USCD._Matx_float_6_6_swigregister(_Matx_float_6_6)
+# Register _Matx_float_6_6 in _ACD:
+_ACD._Matx_float_6_6_swigregister(_Matx_float_6_6)
 
 def _Matx_float_6_6_all(alpha):
-    return _USCD._Matx_float_6_6_all(alpha)
+    return _ACD._Matx_float_6_6_all(alpha)
 
 def _Matx_float_6_6_zeros():
-    return _USCD._Matx_float_6_6_zeros()
+    return _ACD._Matx_float_6_6_zeros()
 
 def _Matx_float_6_6_ones():
-    return _USCD._Matx_float_6_6_ones()
+    return _ACD._Matx_float_6_6_ones()
 
 def _Matx_float_6_6_eye():
-    return _USCD._Matx_float_6_6_eye()
+    return _ACD._Matx_float_6_6_eye()
 
 def _Matx_float_6_6_randu(a, b):
-    return _USCD._Matx_float_6_6_randu(a, b)
+    return _ACD._Matx_float_6_6_randu(a, b)
 
 def _Matx_float_6_6_randn(a, b):
-    return _USCD._Matx_float_6_6_randn(a, b)
+    return _ACD._Matx_float_6_6_randn(a, b)
 
 
 Matx66f = _Matx_float_6_6
@@ -11934,53 +11934,53 @@ Matx66f = _Matx_float_6_6
 class _Matx_double_6_6(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rows = _USCD._Matx_double_6_6_rows
-    cols = _USCD._Matx_double_6_6_cols
-    channels = _USCD._Matx_double_6_6_channels
-    shortdim = _USCD._Matx_double_6_6_shortdim
+    rows = _ACD._Matx_double_6_6_rows
+    cols = _ACD._Matx_double_6_6_cols
+    channels = _ACD._Matx_double_6_6_channels
+    shortdim = _ACD._Matx_double_6_6_shortdim
 
     @staticmethod
     def all(alpha):
-        return _USCD._Matx_double_6_6_all(alpha)
+        return _ACD._Matx_double_6_6_all(alpha)
 
     @staticmethod
     def zeros():
-        return _USCD._Matx_double_6_6_zeros()
+        return _ACD._Matx_double_6_6_zeros()
 
     @staticmethod
     def ones():
-        return _USCD._Matx_double_6_6_ones()
+        return _ACD._Matx_double_6_6_ones()
 
     @staticmethod
     def eye():
-        return _USCD._Matx_double_6_6_eye()
+        return _ACD._Matx_double_6_6_eye()
 
     @staticmethod
     def randu(a, b):
-        return _USCD._Matx_double_6_6_randu(a, b)
+        return _ACD._Matx_double_6_6_randu(a, b)
 
     @staticmethod
     def randn(a, b):
-        return _USCD._Matx_double_6_6_randn(a, b)
+        return _ACD._Matx_double_6_6_randn(a, b)
 
     def dot(self, v):
-        return _USCD._Matx_double_6_6_dot(self, v)
+        return _ACD._Matx_double_6_6_dot(self, v)
 
     def ddot(self, v):
-        return _USCD._Matx_double_6_6_ddot(self, v)
+        return _ACD._Matx_double_6_6_ddot(self, v)
 
     def t(self):
-        return _USCD._Matx_double_6_6_t(self)
+        return _ACD._Matx_double_6_6_t(self)
 
     def mul(self, a):
-        return _USCD._Matx_double_6_6_mul(self, a)
+        return _ACD._Matx_double_6_6_mul(self, a)
 
     def div(self, a):
-        return _USCD._Matx_double_6_6_div(self, a)
+        return _ACD._Matx_double_6_6_div(self, a)
 
     def __call__(self, i, j):
-        return _USCD._Matx_double_6_6___call__(self, i, j)
-    val = property(_USCD._Matx_double_6_6_val_get, _USCD._Matx_double_6_6_val_set)
+        return _ACD._Matx_double_6_6___call__(self, i, j)
+    val = property(_ACD._Matx_double_6_6_val_get, _ACD._Matx_double_6_6_val_set)
 
     import re
     _re_pattern = re.compile("^_Matx_(?P<value_type>[a-zA-Z_][a-zA-Z0-9_]*)_(?P<rows>[0-9]+)_(?P<cols>[0-9]+)$")
@@ -12000,7 +12000,7 @@ class _Matx_double_6_6(object):
         args = [array]
 
 
-        _USCD._Matx_double_6_6_swiginit(self, _USCD.new__Matx_double_6_6(*args))
+        _ACD._Matx_double_6_6_swiginit(self, _ACD.new__Matx_double_6_6(*args))
 
     def __getattribute__(self, name):
         if name == "__array_interface__":
@@ -12038,29 +12038,29 @@ class _Matx_double_6_6(object):
 
 
     def __str__(self):
-        return _USCD._Matx_double_6_6___str__(self)
-    __swig_destroy__ = _USCD.delete__Matx_double_6_6
+        return _ACD._Matx_double_6_6___str__(self)
+    __swig_destroy__ = _ACD.delete__Matx_double_6_6
 
-# Register _Matx_double_6_6 in _USCD:
-_USCD._Matx_double_6_6_swigregister(_Matx_double_6_6)
+# Register _Matx_double_6_6 in _ACD:
+_ACD._Matx_double_6_6_swigregister(_Matx_double_6_6)
 
 def _Matx_double_6_6_all(alpha):
-    return _USCD._Matx_double_6_6_all(alpha)
+    return _ACD._Matx_double_6_6_all(alpha)
 
 def _Matx_double_6_6_zeros():
-    return _USCD._Matx_double_6_6_zeros()
+    return _ACD._Matx_double_6_6_zeros()
 
 def _Matx_double_6_6_ones():
-    return _USCD._Matx_double_6_6_ones()
+    return _ACD._Matx_double_6_6_ones()
 
 def _Matx_double_6_6_eye():
-    return _USCD._Matx_double_6_6_eye()
+    return _ACD._Matx_double_6_6_eye()
 
 def _Matx_double_6_6_randu(a, b):
-    return _USCD._Matx_double_6_6_randu(a, b)
+    return _ACD._Matx_double_6_6_randu(a, b)
 
 def _Matx_double_6_6_randn(a, b):
-    return _USCD._Matx_double_6_6_randn(a, b)
+    return _ACD._Matx_double_6_6_randn(a, b)
 
 
 Matx66d = _Matx_double_6_6
@@ -12070,29 +12070,29 @@ class _Point__int(object):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
-        _USCD._Point__int_swiginit(self, _USCD.new__Point__int(*args))
+        _ACD._Point__int_swiginit(self, _ACD.new__Point__int(*args))
 
     def dot(self, pt):
-        return _USCD._Point__int_dot(self, pt)
+        return _ACD._Point__int_dot(self, pt)
 
     def ddot(self, pt):
-        return _USCD._Point__int_ddot(self, pt)
+        return _ACD._Point__int_ddot(self, pt)
 
     def cross(self, pt):
-        return _USCD._Point__int_cross(self, pt)
-    x = property(_USCD._Point__int_x_get, _USCD._Point__int_x_set)
-    y = property(_USCD._Point__int_y_get, _USCD._Point__int_y_set)
+        return _ACD._Point__int_cross(self, pt)
+    x = property(_ACD._Point__int_x_get, _ACD._Point__int_x_set)
+    y = property(_ACD._Point__int_y_get, _ACD._Point__int_y_set)
 
     def __iter__(self):
         return iter((self.x, self.y))
 
 
     def __str__(self):
-        return _USCD._Point__int___str__(self)
-    __swig_destroy__ = _USCD.delete__Point__int
+        return _ACD._Point__int___str__(self)
+    __swig_destroy__ = _ACD.delete__Point__int
 
-# Register _Point__int in _USCD:
-_USCD._Point__int_swigregister(_Point__int)
+# Register _Point__int in _ACD:
+_ACD._Point__int_swigregister(_Point__int)
 
 
 Point2i = _Point__int
@@ -12102,29 +12102,29 @@ class _Point__float(object):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
-        _USCD._Point__float_swiginit(self, _USCD.new__Point__float(*args))
+        _ACD._Point__float_swiginit(self, _ACD.new__Point__float(*args))
 
     def dot(self, pt):
-        return _USCD._Point__float_dot(self, pt)
+        return _ACD._Point__float_dot(self, pt)
 
     def ddot(self, pt):
-        return _USCD._Point__float_ddot(self, pt)
+        return _ACD._Point__float_ddot(self, pt)
 
     def cross(self, pt):
-        return _USCD._Point__float_cross(self, pt)
-    x = property(_USCD._Point__float_x_get, _USCD._Point__float_x_set)
-    y = property(_USCD._Point__float_y_get, _USCD._Point__float_y_set)
+        return _ACD._Point__float_cross(self, pt)
+    x = property(_ACD._Point__float_x_get, _ACD._Point__float_x_set)
+    y = property(_ACD._Point__float_y_get, _ACD._Point__float_y_set)
 
     def __iter__(self):
         return iter((self.x, self.y))
 
 
     def __str__(self):
-        return _USCD._Point__float___str__(self)
-    __swig_destroy__ = _USCD.delete__Point__float
+        return _ACD._Point__float___str__(self)
+    __swig_destroy__ = _ACD.delete__Point__float
 
-# Register _Point__float in _USCD:
-_USCD._Point__float_swigregister(_Point__float)
+# Register _Point__float in _ACD:
+_ACD._Point__float_swigregister(_Point__float)
 
 
 Point2f = _Point__float
@@ -12134,29 +12134,29 @@ class _Point__double(object):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
-        _USCD._Point__double_swiginit(self, _USCD.new__Point__double(*args))
+        _ACD._Point__double_swiginit(self, _ACD.new__Point__double(*args))
 
     def dot(self, pt):
-        return _USCD._Point__double_dot(self, pt)
+        return _ACD._Point__double_dot(self, pt)
 
     def ddot(self, pt):
-        return _USCD._Point__double_ddot(self, pt)
+        return _ACD._Point__double_ddot(self, pt)
 
     def cross(self, pt):
-        return _USCD._Point__double_cross(self, pt)
-    x = property(_USCD._Point__double_x_get, _USCD._Point__double_x_set)
-    y = property(_USCD._Point__double_y_get, _USCD._Point__double_y_set)
+        return _ACD._Point__double_cross(self, pt)
+    x = property(_ACD._Point__double_x_get, _ACD._Point__double_x_set)
+    y = property(_ACD._Point__double_y_get, _ACD._Point__double_y_set)
 
     def __iter__(self):
         return iter((self.x, self.y))
 
 
     def __str__(self):
-        return _USCD._Point__double___str__(self)
-    __swig_destroy__ = _USCD.delete__Point__double
+        return _ACD._Point__double___str__(self)
+    __swig_destroy__ = _ACD.delete__Point__double
 
-# Register _Point__double in _USCD:
-_USCD._Point__double_swigregister(_Point__double)
+# Register _Point__double in _ACD:
+_ACD._Point__double_swigregister(_Point__double)
 
 
 Point2d = _Point__double
@@ -12169,37 +12169,37 @@ class _Rect__int(object):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
-        _USCD._Rect__int_swiginit(self, _USCD.new__Rect__int(*args))
+        _ACD._Rect__int_swiginit(self, _ACD.new__Rect__int(*args))
 
     def tl(self):
-        return _USCD._Rect__int_tl(self)
+        return _ACD._Rect__int_tl(self)
 
     def br(self):
-        return _USCD._Rect__int_br(self)
+        return _ACD._Rect__int_br(self)
 
     def size(self):
-        return _USCD._Rect__int_size(self)
+        return _ACD._Rect__int_size(self)
 
     def area(self):
-        return _USCD._Rect__int_area(self)
+        return _ACD._Rect__int_area(self)
 
     def contains(self, pt):
-        return _USCD._Rect__int_contains(self, pt)
-    x = property(_USCD._Rect__int_x_get, _USCD._Rect__int_x_set)
-    y = property(_USCD._Rect__int_y_get, _USCD._Rect__int_y_set)
-    width = property(_USCD._Rect__int_width_get, _USCD._Rect__int_width_set)
-    height = property(_USCD._Rect__int_height_get, _USCD._Rect__int_height_set)
+        return _ACD._Rect__int_contains(self, pt)
+    x = property(_ACD._Rect__int_x_get, _ACD._Rect__int_x_set)
+    y = property(_ACD._Rect__int_y_get, _ACD._Rect__int_y_set)
+    width = property(_ACD._Rect__int_width_get, _ACD._Rect__int_width_set)
+    height = property(_ACD._Rect__int_height_get, _ACD._Rect__int_height_set)
 
     def __iter__(self):
         return iter((self.x, self.y, self.width, self.height))
 
 
     def __str__(self):
-        return _USCD._Rect__int___str__(self)
-    __swig_destroy__ = _USCD.delete__Rect__int
+        return _ACD._Rect__int___str__(self)
+    __swig_destroy__ = _ACD.delete__Rect__int
 
-# Register _Rect__int in _USCD:
-_USCD._Rect__int_swigregister(_Rect__int)
+# Register _Rect__int in _ACD:
+_ACD._Rect__int_swigregister(_Rect__int)
 
 
 Rect2i = _Rect__int
@@ -12209,37 +12209,37 @@ class _Rect__float(object):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
-        _USCD._Rect__float_swiginit(self, _USCD.new__Rect__float(*args))
+        _ACD._Rect__float_swiginit(self, _ACD.new__Rect__float(*args))
 
     def tl(self):
-        return _USCD._Rect__float_tl(self)
+        return _ACD._Rect__float_tl(self)
 
     def br(self):
-        return _USCD._Rect__float_br(self)
+        return _ACD._Rect__float_br(self)
 
     def size(self):
-        return _USCD._Rect__float_size(self)
+        return _ACD._Rect__float_size(self)
 
     def area(self):
-        return _USCD._Rect__float_area(self)
+        return _ACD._Rect__float_area(self)
 
     def contains(self, pt):
-        return _USCD._Rect__float_contains(self, pt)
-    x = property(_USCD._Rect__float_x_get, _USCD._Rect__float_x_set)
-    y = property(_USCD._Rect__float_y_get, _USCD._Rect__float_y_set)
-    width = property(_USCD._Rect__float_width_get, _USCD._Rect__float_width_set)
-    height = property(_USCD._Rect__float_height_get, _USCD._Rect__float_height_set)
+        return _ACD._Rect__float_contains(self, pt)
+    x = property(_ACD._Rect__float_x_get, _ACD._Rect__float_x_set)
+    y = property(_ACD._Rect__float_y_get, _ACD._Rect__float_y_set)
+    width = property(_ACD._Rect__float_width_get, _ACD._Rect__float_width_set)
+    height = property(_ACD._Rect__float_height_get, _ACD._Rect__float_height_set)
 
     def __iter__(self):
         return iter((self.x, self.y, self.width, self.height))
 
 
     def __str__(self):
-        return _USCD._Rect__float___str__(self)
-    __swig_destroy__ = _USCD.delete__Rect__float
+        return _ACD._Rect__float___str__(self)
+    __swig_destroy__ = _ACD.delete__Rect__float
 
-# Register _Rect__float in _USCD:
-_USCD._Rect__float_swigregister(_Rect__float)
+# Register _Rect__float in _ACD:
+_ACD._Rect__float_swigregister(_Rect__float)
 
 
 Rect2f = _Rect__float
@@ -12249,37 +12249,37 @@ class _Rect__double(object):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
-        _USCD._Rect__double_swiginit(self, _USCD.new__Rect__double(*args))
+        _ACD._Rect__double_swiginit(self, _ACD.new__Rect__double(*args))
 
     def tl(self):
-        return _USCD._Rect__double_tl(self)
+        return _ACD._Rect__double_tl(self)
 
     def br(self):
-        return _USCD._Rect__double_br(self)
+        return _ACD._Rect__double_br(self)
 
     def size(self):
-        return _USCD._Rect__double_size(self)
+        return _ACD._Rect__double_size(self)
 
     def area(self):
-        return _USCD._Rect__double_area(self)
+        return _ACD._Rect__double_area(self)
 
     def contains(self, pt):
-        return _USCD._Rect__double_contains(self, pt)
-    x = property(_USCD._Rect__double_x_get, _USCD._Rect__double_x_set)
-    y = property(_USCD._Rect__double_y_get, _USCD._Rect__double_y_set)
-    width = property(_USCD._Rect__double_width_get, _USCD._Rect__double_width_set)
-    height = property(_USCD._Rect__double_height_get, _USCD._Rect__double_height_set)
+        return _ACD._Rect__double_contains(self, pt)
+    x = property(_ACD._Rect__double_x_get, _ACD._Rect__double_x_set)
+    y = property(_ACD._Rect__double_y_get, _ACD._Rect__double_y_set)
+    width = property(_ACD._Rect__double_width_get, _ACD._Rect__double_width_set)
+    height = property(_ACD._Rect__double_height_get, _ACD._Rect__double_height_set)
 
     def __iter__(self):
         return iter((self.x, self.y, self.width, self.height))
 
 
     def __str__(self):
-        return _USCD._Rect__double___str__(self)
-    __swig_destroy__ = _USCD.delete__Rect__double
+        return _ACD._Rect__double___str__(self)
+    __swig_destroy__ = _ACD.delete__Rect__double
 
-# Register _Rect__double in _USCD:
-_USCD._Rect__double_swigregister(_Rect__double)
+# Register _Rect__double in _ACD:
+_ACD._Rect__double_swigregister(_Rect__double)
 
 
 Rect2d = _Rect__double
@@ -12292,20 +12292,20 @@ class _Scalar__double(_Vec_double_4):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
-        _USCD._Scalar__double_swiginit(self, _USCD.new__Scalar__double(*args))
+        _ACD._Scalar__double_swiginit(self, _ACD.new__Scalar__double(*args))
 
     @staticmethod
     def all(v0):
-        return _USCD._Scalar__double_all(v0)
+        return _ACD._Scalar__double_all(v0)
 
     def mul(self, a, scale=1):
-        return _USCD._Scalar__double_mul(self, a, scale)
+        return _ACD._Scalar__double_mul(self, a, scale)
 
     def conj(self):
-        return _USCD._Scalar__double_conj(self)
+        return _ACD._Scalar__double_conj(self)
 
     def isReal(self):
-        return _USCD._Scalar__double_isReal(self)
+        return _ACD._Scalar__double_isReal(self)
 
     def __iter__(self):
         return iter((self(0), self(1), self(2), self(3)))
@@ -12321,14 +12321,14 @@ class _Scalar__double(_Vec_double_4):
 
 
     def __str__(self):
-        return _USCD._Scalar__double___str__(self)
-    __swig_destroy__ = _USCD.delete__Scalar__double
+        return _ACD._Scalar__double___str__(self)
+    __swig_destroy__ = _ACD.delete__Scalar__double
 
-# Register _Scalar__double in _USCD:
-_USCD._Scalar__double_swigregister(_Scalar__double)
+# Register _Scalar__double in _ACD:
+_ACD._Scalar__double_swigregister(_Scalar__double)
 
 def _Scalar__double_all(v0):
-    return _USCD._Scalar__double_all(v0)
+    return _ACD._Scalar__double_all(v0)
 
 
 Scalar4d = _Scalar__double
@@ -12341,23 +12341,23 @@ class _Size__int(object):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
-        _USCD._Size__int_swiginit(self, _USCD.new__Size__int(*args))
+        _ACD._Size__int_swiginit(self, _ACD.new__Size__int(*args))
 
     def area(self):
-        return _USCD._Size__int_area(self)
-    width = property(_USCD._Size__int_width_get, _USCD._Size__int_width_set)
-    height = property(_USCD._Size__int_height_get, _USCD._Size__int_height_set)
+        return _ACD._Size__int_area(self)
+    width = property(_ACD._Size__int_width_get, _ACD._Size__int_width_set)
+    height = property(_ACD._Size__int_height_get, _ACD._Size__int_height_set)
 
     def __iter__(self):
         return iter((self.width, self.height))
 
 
     def __str__(self):
-        return _USCD._Size__int___str__(self)
-    __swig_destroy__ = _USCD.delete__Size__int
+        return _ACD._Size__int___str__(self)
+    __swig_destroy__ = _ACD.delete__Size__int
 
-# Register _Size__int in _USCD:
-_USCD._Size__int_swigregister(_Size__int)
+# Register _Size__int in _ACD:
+_ACD._Size__int_swigregister(_Size__int)
 
 
 Size2i = _Size__int
@@ -12367,23 +12367,23 @@ class _Size__float(object):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
-        _USCD._Size__float_swiginit(self, _USCD.new__Size__float(*args))
+        _ACD._Size__float_swiginit(self, _ACD.new__Size__float(*args))
 
     def area(self):
-        return _USCD._Size__float_area(self)
-    width = property(_USCD._Size__float_width_get, _USCD._Size__float_width_set)
-    height = property(_USCD._Size__float_height_get, _USCD._Size__float_height_set)
+        return _ACD._Size__float_area(self)
+    width = property(_ACD._Size__float_width_get, _ACD._Size__float_width_set)
+    height = property(_ACD._Size__float_height_get, _ACD._Size__float_height_set)
 
     def __iter__(self):
         return iter((self.width, self.height))
 
 
     def __str__(self):
-        return _USCD._Size__float___str__(self)
-    __swig_destroy__ = _USCD.delete__Size__float
+        return _ACD._Size__float___str__(self)
+    __swig_destroy__ = _ACD.delete__Size__float
 
-# Register _Size__float in _USCD:
-_USCD._Size__float_swigregister(_Size__float)
+# Register _Size__float in _ACD:
+_ACD._Size__float_swigregister(_Size__float)
 
 
 Size2f = _Size__float
@@ -12393,23 +12393,23 @@ class _Size__double(object):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
-        _USCD._Size__double_swiginit(self, _USCD.new__Size__double(*args))
+        _ACD._Size__double_swiginit(self, _ACD.new__Size__double(*args))
 
     def area(self):
-        return _USCD._Size__double_area(self)
-    width = property(_USCD._Size__double_width_get, _USCD._Size__double_width_set)
-    height = property(_USCD._Size__double_height_get, _USCD._Size__double_height_set)
+        return _ACD._Size__double_area(self)
+    width = property(_ACD._Size__double_width_get, _ACD._Size__double_width_set)
+    height = property(_ACD._Size__double_height_get, _ACD._Size__double_height_set)
 
     def __iter__(self):
         return iter((self.width, self.height))
 
 
     def __str__(self):
-        return _USCD._Size__double___str__(self)
-    __swig_destroy__ = _USCD.delete__Size__double
+        return _ACD._Size__double___str__(self)
+    __swig_destroy__ = _ACD.delete__Size__double
 
-# Register _Size__double in _USCD:
-_USCD._Size__double_swigregister(_Size__double)
+# Register _Size__double in _ACD:
+_ACD._Size__double_swigregister(_Size__double)
 
 
 Size2d = _Size__double
@@ -12418,7 +12418,7 @@ Size2d = _Size__double
 Size = Size2i
 
 
-def ACD(filebname1, filename2, outfile):
-    return _USCD.ACD(filebname1, filename2, outfile)
+def ACD(file1, file2, outfile):
+    return _ACD.ACD(file1, file2, outfile)
 
 

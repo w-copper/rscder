@@ -5,7 +5,7 @@ from sklearn.cluster import k_means
 from rscder.utils.geomath import geo2imageRC, imageRC2geo
 from rscder.utils.project import Project, PairLayer
 import numpy as np
-from .USCD import ACD
+from .ACD import ACD
 from .AHT import AHT
 from .OCD import OCD
 from .LHBA import LHBA
