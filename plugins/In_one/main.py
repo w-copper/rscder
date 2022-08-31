@@ -1,29 +1,24 @@
-import copy as cp
-from asyncio.windows_events import NULL
-from concurrent.futures import thread
-from copy import copy
-from email.policy import default
 import os
-import pdb
 from threading import Thread
 import numpy as np
 # from plugins.basic_change.main import MyDialog
 from rscder.gui.actions import ActionManager
 from rscder.plugins.basic import BasicPlugin
-from PyQt5.QtWidgets import QAction, QDialog, QHBoxLayout, QVBoxLayout, QPushButton,QWidget,QLabel,QLineEdit,QPushButton,QComboBox
-from PyQt5.QtGui import QIcon,QPixmap
-from PyQt5.QtCore import Qt
-from rscder.gui.layercombox import LayerCombox,PairLayerCombox
+from PyQt5.QtWidgets import QAction, QDialog, QHBoxLayout, QVBoxLayout, QPushButton,QWidget,QLabel,QLineEdit,QPushButton,QComboBox,QDialogButtonBox
+from PyQt5.QtGui import QPixmap
+
+from rscder.gui.layercombox import PairLayerCombox
 from rscder.utils.icons import IconInstance
-from rscder.utils.geomath import geo2imageRC, imageRC2geo
-from rscder.utils.project import Project, RasterLayer, PairLayer,ResultPointLayer,MultiBandRasterLayer
+from rscder.utils.geomath import geo2imageRC
+from rscder.utils.project import Project,  PairLayer,ResultPointLayer,MultiBandRasterLayer
 from In_one.otsu import OTSU
 from osgeo import gdal
-from plugins.In_one import pic
+from In_one import pic
 import math
 from skimage.filters import rank
 from skimage.morphology import disk, rectangle
-
+from In_one.scripts.UnsupervisedCD import LSTS,CVA,ACD_
+from In_one.scripts.USCD import ACD
 def Meanfilter(x_size,y_size,layer:MultiBandRasterLayer):
     x_size = int(x_size)
     y_size = int(y_size)
@@ -281,7 +276,7 @@ def table_layer(pth,layer,name,send_message,dict):
     send_message.emit('计算完成')
 
 class LockerButton(QPushButton):
-    def __init__(self,parent=NULL):
+    def __init__(self,parent=None):
         super(LockerButton,self).__init__(parent)
         m_imageLabel =  QLabel(self)
         m_imageLabel.setFixedWidth(20)
@@ -408,24 +403,30 @@ class AllInOne(QDialog):
         thresholdlayout.addWidget(thresholdWeight)
 
         #确认
-        oklayout=QHBoxLayout()
+        
         self.ok_button = QPushButton('确定', self)
         self.ok_button.setIcon(IconInstance().OK)
         self.ok_button.clicked.connect(self.accept)
+        self.ok_button.setDefault(True)
+        
 
         self.cancel_button = QPushButton('取消', self)
         self.cancel_button.setIcon(IconInstance().CANCEL)
         self.cancel_button.clicked.connect(self.reject)
-        oklayout.addWidget(self.ok_button,0,alignment=Qt.AlignHCenter)
-        oklayout.addWidget(self.cancel_button,0,alignment=Qt.AlignHCenter)
-
+        self.cancel_button.setDefault(False)
+        buttonbox=QDialogButtonBox(self)
+        buttonbox.addButton(self.ok_button,QDialogButtonBox.NoRole)
+        buttonbox.addButton(self.cancel_button,QDialogButtonBox.NoRole)
+        buttonbox.setCenterButtons(True)
+        #buttonbox.setContentsMargins(,)
+        
 
         totalvlayout=QVBoxLayout()
         totalvlayout.addLayout(layerbox)
         totalvlayout.addLayout(filterlayout)
         totalvlayout.addLayout(changelayout)
         totalvlayout.addLayout(thresholdlayout)
-        totalvlayout.addLayout(oklayout)
+        totalvlayout.addWidget(buttonbox)
         totalvlayout.addStretch()
         
         self.setLayout(totalvlayout)
@@ -473,7 +474,7 @@ class AllInOne(QDialog):
         return p
 class InOnePlugin(BasicPlugin):
     pre={"均值滤波":Meanfilter}#可添加其他方法
-    cd={'差分法':basic_cd}#可添加其他方法
+    cd={'差分法':basic_cd,'LSTS':LSTS,'CVA':CVA,'ACD':ACD_}#可添加其他方法
     threshold={'OTSU阈值':otsu}#可添加其他方法
 
 
@@ -487,13 +488,12 @@ class InOnePlugin(BasicPlugin):
         }
 
     def set_action(self):
-
-        basic_diff_method_in_one = QAction('差分法')
-        # ActionManager().change_detection_menu.addAction(basic_diff_method_in_one)
-        ActionManager().unsupervised_menu.addAction(basic_diff_method_in_one)
+        
+        basic_diff_method_in_one = QAction(IconInstance().UNSUPERVISED, '&无监督变化检测')
+        ActionManager().change_detection_menu.addAction(basic_diff_method_in_one)
+        # ActionManager().menubar.addAction(basic_diff_method_in_one)
         self.basic_diff_method_in_one = basic_diff_method_in_one
         basic_diff_method_in_one.triggered.connect(self.run) 
-
 
     def run(self):
         myDialog=AllInOne(list(self.pre.keys()),list(self.cd.keys()),list(self.threshold.keys()),self.mainwindow)
@@ -521,18 +521,26 @@ class InOnePlugin(BasicPlugin):
         self.send_message.emit('{}图像{}'.format(preKey,w.layer_combox.layer1.name))
         pth2=self.pre[preKey](w.x_size_input.text(),w.y_size_input.text(),w.layer_combox.layer2)
         self.send_message.emit('{}图像{}'.format(preKey,w.layer_combox.layer2.name))
-        name=name+'_mean_filter'
+        name=name+'_'+preKey
         dict['预处理']=[preKey,'|'.format(pth1,pth2)]
 
 
         cdpth=None
     #变化检测
         # if w.cd_select.choose==self.cd[0]:
+        # if w.cd_select.choose=='ACD':
+        #     cdKey='ACD'
+        #     self.send_message.emit('ACD计算中...')
+        #     cdpth=os.path.join(Project().cmi_path, '{}_{}_cmi.tif'.format(w.layer_combox.layer1.layer_parent.name, int(np.random.rand() * 100000)))
+        #     print(pth1,pth2,cdpth)
+        #     ACD(pth1,pth2,cdpth)
+        # else:
+        #     pass
         cdKey=w.cd_select.choose
         cdpth=self.cd[cdKey](pth1,pth2,w.layer_combox.layer1.layer_parent,self.send_message)
-        name += '_basic_cd'
+        name += '_'+cdKey
         dict['变化检测算法']=[cdKey,cdpth]
-
+        
     #阈值处理
     #例如手动阈值和otsu参数不同，则要做区分
         thpth=None

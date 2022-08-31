@@ -52,7 +52,7 @@ class ActionManager(QtCore.QObject):
         self.basic_menu = menubar.addMenu( '&基础工具')
         self.filter_menu = self.basic_menu.addMenu(IconInstance().FILTER, '&滤波处理')
         self.change_detection_menu = menubar.addMenu('&通用变化检测')
-        self.unsupervised_menu = self.change_detection_menu.addMenu(IconInstance().UNSUPERVISED, '&无监督变化检测')
+        # self.unsupervised_menu = self.change_detection_menu.addMenu(IconInstance().UNSUPERVISED, '&无监督变化检测')
         self.supervised_menu = self.change_detection_menu.addMenu(IconInstance().SUPERVISED,'&监督变化检测')
         self.ai_menu = self.change_detection_menu.addMenu(IconInstance().AI_DETECT,'&AI变化检测')
         self.special_chagne_detec_menu = menubar.addMenu( '&专题变化检测')

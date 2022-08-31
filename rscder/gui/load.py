@@ -3,7 +3,7 @@ import os
 from turtle import width
 from osgeo import gdal
 from PyQt5.QtWidgets import  QWidget, QApplication, QMainWindow, QToolBox
-from PyQt5.QtWidgets import QDialog, QFileDialog, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QMessageBox,QSpacerItem
+from PyQt5.QtWidgets import QDialog, QFileDialog, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QMessageBox,QSpacerItem,QDialogButtonBox
 from PyQt5.QtCore import Qt, QSize,QSettings,pyqtSignal,QThread
 from PyQt5.QtGui import QIcon,QColor,QPalette,QPixmap
 from PyQt5 import QtGui
@@ -150,11 +150,16 @@ class loader(QDialog):
 
         ok_button.clicked.connect(self.ok)
         cancel_button.clicked.connect(self.cancel)
-
-        button_layout = QHBoxLayout()
-        button_layout.setDirection(QHBoxLayout.RightToLeft)
-        button_layout.addWidget(cancel_button, 0, Qt.AlignCenter)
-        button_layout.addWidget(ok_button, 0, Qt.AlignCenter)
+        ok_button.setDefault(True)
+        cancel_button.setDefault(False)
+        buttonbox=QDialogButtonBox(self)
+        buttonbox.addButton(ok_button,QDialogButtonBox.NoRole)
+        buttonbox.addButton(cancel_button,QDialogButtonBox.NoRole)
+        buttonbox.setCenterButtons(True)
+        # button_layout = QHBoxLayout()
+        # button_layout.setDirection(QHBoxLayout.RightToLeft)
+        # button_layout.addWidget(cancel_button, 0, Qt.AlignCenter)
+        # button_layout.addWidget(ok_button, 0, Qt.AlignCenter)
 
         main_layout = QVBoxLayout()
         main_layout.addLayout(path1_layout)
@@ -162,7 +167,8 @@ class loader(QDialog):
         main_layout.addLayout(path2_layout)
         main_layout.addLayout(style2_layout)
         main_layout.addLayout(maplayout)
-        main_layout.addLayout(button_layout)
+        main_layout.addWidget(buttonbox)
+        # main_layout.addLayout(button_layout)
         self.setLayout(main_layout)
 
     def open_file1(self):
