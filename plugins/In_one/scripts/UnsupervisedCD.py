@@ -17,6 +17,8 @@ def warp(file,ds:gdal.Dataset,srcWin=[0,0,0,0]):
     geo=ds.GetGeoTransform()
     orj=ds.GetProjection()
     band=ds.RasterCount
+    if os.path.exists(file):
+        os.remove(file)
     out_ds:gdal.Dataset=driver.Create(file, xsize, ysize, band, gdal.GDT_Byte)
     out_ds.SetGeoTransform(geo)
     out_ds.SetProjection(orj)
