@@ -13,11 +13,11 @@
   path: ./plugin\export_to
   version: 1.0.0
 - author: RSCDER
-  description: MeanFilter
+  description: FilterCollection
   enabled: true
-  module: some_filter
-  name: MeanFilter
-  path: ./plugin\some_filter
+  module: filter_collection
+  name: FilterCollection
+  path: ./plugin\filter_collection
   version: 1.0.0
 - author: RSCDER
   description: Evaluation
@@ -27,11 +27,11 @@
   path: ./plugin\evaluation
   version: 1.0.0
 - author: RSCDER
-  description: AllinOne
+  description: UnsupervisedPlugin
   enabled: true
-  module: In_one
-  name: basic_diff_AllinOne
-  path: ./plugin\In_one
+  module: unsupervised_method
+  name: UnsupervisedPlugin
+  path: ./plugin\unsupervsied_method
   version: 1.0.0
 - author: RSCDER
   description: set Change Rate

@@ -62,7 +62,10 @@ class PluginLoader(QObject):
                         self.plugins.append(obj(self.ctx))
                         break
             except Exception as e:
+                # import traceback
+                # traceback.print_exc()
                 self.ctx['message_box'].error(f'{plugin["name"]} load error: {e}')
+                
         
 
         self.plugin_loaded.emit()
