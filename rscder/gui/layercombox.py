@@ -7,6 +7,7 @@ class LayerCombox(QComboBox):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.addItem('---', None)
+        self.setMinimumWidth(200)
         
         for layer in Project().layers.values(): 
             self.addItem(IconInstance().LAYER, layer.name, layer.id)
@@ -49,6 +50,7 @@ class PairLayerCombox(QWidget):
         self.layer_combox.currentIndexChanged.connect(self.on_group_changed)
 
         hbox1 = QHBoxLayout()
+        
         hbox1.addWidget(QLabel('时相1:'))
         hbox1.addWidget(self.raster_layer1)
 
