@@ -9,6 +9,10 @@ class Register:
         self._dict = {}
         self._name = registry_name
 
+    @property
+    def name(self):
+        return self._name
+
     def __setitem__(self, key, value):
         if not callable(value):
             raise Exception(f"Value of a Registry must be a callable!\nValue: {value}")

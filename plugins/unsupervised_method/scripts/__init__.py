@@ -8,7 +8,7 @@ from rscder.utils.geomath import geo2imageRC, imageRC2geo
 from rscder.utils.project import Project, PairLayer
 from misc import Register, AlgFrontend
 
-UNSUPER_CD = Register('unsuper cd')
+UNSUPER_CD = Register('无监督变化检测方法')
 
 import numpy as np
 from .ACD import ACD
@@ -153,8 +153,10 @@ class LSTS(AlgFrontend):
 
         widget = QtWidgets.QWidget(parent)
 
+        return widget
 
-    def get_params(self):
+    @staticmethod
+    def get_params(widget=None):
         return dict(n=5, w_size=(3,3))
     
     @staticmethod

@@ -40,3 +40,10 @@
   name: set_change_rate
   path: ./plugin\change_rate
   version: 1.0.0
+- author: RSCDER
+  description: Follow box
+  enabled: true
+  module: follow
+  name: FollowPlugin
+  path: ./plugin\follow
+  version: 1.0.0

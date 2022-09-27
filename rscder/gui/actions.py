@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, QSize, QSettings, pyqtSignal
-from PyQt5.QtWidgets import QAction, QActionGroup, QLabel, QFileDialog, QMenuBar, QToolBar
+from PyQt5.QtWidgets import QAction, QActionGroup, QLabel, QFileDialog, QMenuBar, QToolBar, QVBoxLayout, QComboBox
 from rscder.gui import project
 from rscder.gui.project import Create
 from rscder.utils.icons import IconInstance
@@ -75,6 +75,12 @@ class ActionManager(QtCore.QObject):
         self.view_menu = menubar.addMenu('&视图')
         self.plugin_menu = menubar.addMenu('&插件')
         self.help_menu = menubar.addMenu( '&帮助')
+
+        # vbox = QVBoxLayout()
+        # follow_combox = QComboBox(self.follow_box)
+        # vbox.addWidget(follow_combox)
+        # self.follow_box.setLayout(vbox)
+        
 
     def set_toolbar(self, toolbar):
         self.toolbar:QToolBar = toolbar

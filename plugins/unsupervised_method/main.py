@@ -10,6 +10,7 @@ from filter_collection import FILTER
 from .scripts import UNSUPER_CD
 from thres import THRES
 from misc import table_layer, AlgSelectWidget
+from follow import FOLLOW
 
 class UnsupervisedCDMethod(QDialog):
     def __init__(self,parent=None, alg:AlgFrontend=None):
@@ -51,52 +52,112 @@ class UnsupervisedCDMethod(QDialog):
         if self.param_widget is not None:
             totalvlayout.addWidget(self.param_widget)
         totalvlayout.addWidget(self.thres_select)
-        totalvlayout.addWidget(buttonbox)
-        totalvlayout.addStretch()
+        totalvlayout.addStretch(1)
+        hbox = QHBoxLayout()
+        hbox.addStretch(1)
+        hbox.addWidget(buttonbox)
+        totalvlayout.addLayout(hbox)
+        # totalvlayout.addStretch()
         
         self.setLayout(totalvlayout)
 
-class UnsupervisedCD(QDialog):
-    def __init__(self,parent=None):
-        super(UnsupervisedCD, self).__init__(parent)
-        self.setWindowTitle('无监督变化检测')
-        self.setWindowIcon(IconInstance().LOGO)
-        self.setMinimumWidth(600)
-        self.initUI()
+@FOLLOW.register
+class UnsupervisedCDFollow(AlgFrontend):
 
-    def initUI(self):
-        #图层
-        self.layer_combox = PairLayerCombox(self)
-        layerbox = QHBoxLayout()
-        layerbox.addWidget(self.layer_combox)
+    @staticmethod
+    def get_name():
+        return '无监督变化检测'
+
+    @staticmethod
+    def get_icon():
+        return IconInstance().UNSUPERVISED
+    
+    @staticmethod
+    def get_widget(parent=None):
+        widget = QWidget(parent)
+        layer_combox = PairLayerCombox(widget)
+        layer_combox.setObjectName('layer_combox')
         
-        self.filter_select = AlgSelectWidget(self, FILTER)
-        self.unsupervised_select = AlgSelectWidget(self, UNSUPER_CD)
-        self.thres_select = AlgSelectWidget(self, THRES)
-
-        self.ok_button = QPushButton('确定', self)
-        self.ok_button.setIcon(IconInstance().OK)
-        self.ok_button.clicked.connect(self.accept)
-        self.ok_button.setDefault(True)
-
-        self.cancel_button = QPushButton('取消', self)
-        self.cancel_button.setIcon(IconInstance().CANCEL)
-        self.cancel_button.clicked.connect(self.reject)
-        self.cancel_button.setDefault(False)
-        buttonbox=QDialogButtonBox(self)
-        buttonbox.addButton(self.ok_button,QDialogButtonBox.NoRole)
-        buttonbox.addButton(self.cancel_button,QDialogButtonBox.NoRole)
-        buttonbox.setCenterButtons(True)
+        filter_select = AlgSelectWidget(widget, FILTER)
+        filter_select.setObjectName('filter_select')
+        unsupervised_select = AlgSelectWidget(widget, UNSUPER_CD)
+        unsupervised_select.setObjectName('unsupervised_select')
+        thres_select = AlgSelectWidget(widget, THRES)
+        thres_select.setObjectName('thres_select')
 
         totalvlayout=QVBoxLayout()
-        totalvlayout.addLayout(layerbox)
-        totalvlayout.addWidget(self.filter_select)
-        totalvlayout.addWidget(self.unsupervised_select)
-        totalvlayout.addWidget(self.thres_select)
-        totalvlayout.addWidget(buttonbox)
+        totalvlayout.addWidget(layer_combox)
+        totalvlayout.addWidget(filter_select)
+        totalvlayout.addWidget(unsupervised_select)
+        totalvlayout.addWidget(thres_select)
         totalvlayout.addStretch()
         
-        self.setLayout(totalvlayout)
+        widget.setLayout(totalvlayout)
+
+        return widget
+
+    @staticmethod
+    def get_params(widget:QWidget=None):
+        if widget is None:
+            return dict()
+        
+        layer_combox = widget.findChild(PairLayerCombox, 'layer_combox')
+        filter_select = widget.findChild(AlgSelectWidget, 'filter_select')
+        unsupervised_select = widget.findChild(AlgSelectWidget, 'unsupervised_select')
+        thres_select = widget.findChild(AlgSelectWidget, 'thres_select')
+
+        layer1=layer_combox.layer1        
+        pth1 = layer_combox.layer1.path
+        pth2 = layer_combox.layer2.path
+
+        falg, fparams =  filter_select.get_alg_and_params()
+        cdalg, cdparams = unsupervised_select.get_alg_and_params()
+        thalg, thparams = thres_select.get_alg_and_params()
+        
+        if cdalg is None or thalg is None:
+            return dict()
+
+        return dict(
+            layer1=layer1,
+            pth1 = pth1,
+            pth2 = pth2,
+            falg = falg,
+            fparams = fparams,
+            cdalg = cdalg,
+            cdparams = cdparams,
+            thalg = thalg,
+            thparams = thparams,
+        )
+
+    @staticmethod
+    def run_alg(layer1=None,
+            pth1 = None,
+            pth2 = None,
+            falg = None,
+            fparams = None,
+            cdalg = None,
+            cdparams = None,
+            thalg = None,
+            thparams = None,
+            send_message = None):
+        
+        if cdalg is None or thalg is None:
+            return
+
+        name = layer1.name
+
+        if falg is not None:
+            pth1 = falg.run_alg(pth1, name=name, send_message= send_message, **fparams)
+            pth2 = falg.run_alg(pth2, name=name, send_message= send_message, **fparams)
+
+        
+        cdpth = cdalg.run_alg(pth1, pth2, layer1.layer_parent,  send_message= send_message,**cdparams)
+
+        
+        thpth = thalg.run_alg(cdpth, name=name, send_message= send_message, **thparams)
+
+        table_layer(thpth,layer1,name, send_message)
+
 
 
 
@@ -116,12 +177,7 @@ class UnsupervisedPlugin(BasicPlugin):
         unsupervised_menu = QMenu('&无监督变化检测', self.mainwindow)
         unsupervised_menu.setIcon(IconInstance().UNSUPERVISED)
         ActionManager().change_detection_menu.addMenu(unsupervised_menu)
-        basic_diff_method_in_one = QAction(IconInstance().UNSUPERVISED, '&无监督变化检测', self.mainwindow)
-        basic_diff_method_in_one.triggered.connect(self.run) 
-        toolbar:QToolBar = ActionManager().add_toolbar('无监督变化检测')
-        toolbar.addAction(basic_diff_method_in_one)
-        # self.mainwindow.addToolbar(toolbar)
-        # print(UNSUPER_CD.keys())
+
         for key in UNSUPER_CD.keys():
             alg:AlgFrontend = UNSUPER_CD[key]
             if alg.get_name() is None:
@@ -134,13 +190,6 @@ class UnsupervisedPlugin(BasicPlugin):
 
             unsupervised_menu.addAction(action)
 
-    def run(self):
-        myDialog= UnsupervisedCD(self.mainwindow)
-        myDialog.show()
-        if myDialog.exec_()==QDialog.Accepted:
-            w=myDialog
-            t=Thread(target=self.run_alg,args=(w,))
-            t.start()
 
     def run_cd(self, alg):
         dialog = UnsupervisedCDMethod(self.mainwindow, alg)
@@ -174,29 +223,4 @@ class UnsupervisedPlugin(BasicPlugin):
         thpth = thalg.run_alg(cdpth, name=name, send_message=self.send_message, **thparams)
 
         table_layer(thpth,layer1,name,self.send_message)
-
-    def run_alg(self,w:UnsupervisedCD):
-
-        layer1=w.layer_combox.layer1        
-        pth1 = w.layer_combox.layer1.path
-        pth2 = w.layer_combox.layer2.path
-        name = layer1.layer_parent.name
-
-        falg, fparams =  w.filter_select.get_alg_and_params()
-        cdalg, cdparams = w.unsupervised_select.get_alg_and_params()
-        thalg, thparams = w.thres_select.get_alg_and_params()
         
-        if cdalg is None or thalg is None:
-            return
-
-        if falg is not None:
-            pth1 = falg.run_alg(pth1, name=name, send_message=self.send_message, **fparams)
-            pth2 = falg.run_alg(pth2, name=name, send_message=self.send_message, **fparams)
-
-        
-        cdpth = cdalg.run_alg(pth1, pth2, layer1.layer_parent,  send_message=self.send_message,**cdparams)
-
-        
-        thpth = thalg.run_alg(cdpth, name=name, send_message=self.send_message, **thparams)
-
-        table_layer(thpth,layer1,name,self.send_message)
