@@ -1,3 +1,4 @@
+from functools import partial
 from threading import Thread
 from rscder.plugins.basic import BasicPlugin
 from rscder.utils.icons import IconInstance
@@ -65,7 +66,8 @@ class FollowPlugin(BasicPlugin):
             combox.addItem(name, key)
 
             action = QtWidgets.QAction(alg.get_icon(), name, self.mainwindow)
-            action.triggered.connect(lambda : self.run_dialog(alg))
+            func = partial(self.run_dialog, alg)
+            action.triggered.connect(func)
             toolbar.addAction(action)
         
 
@@ -138,7 +140,7 @@ class FollowPlugin(BasicPlugin):
 
             params = alg.get_params(dialog.widget)
 
-            t = Thread(target=self.run_alg, args = (params,))
+            t = Thread(target=self.run_alg, args = (alg, params,))
             t.start()
 
 

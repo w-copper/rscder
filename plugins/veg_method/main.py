@@ -8,16 +8,16 @@ from PyQt5.QtWidgets import QAction, QToolBar,  QMenu, QDialog, QHBoxLayout, QVB
 from rscder.gui.layercombox import PairLayerCombox
 from rscder.utils.icons import IconInstance
 from filter_collection import FILTER
-from .scripts import UNSUPER_CD
+from .scripts import VEG_CD
 from thres import THRES
 from misc import table_layer, AlgSelectWidget
 from follow import FOLLOW
 
-class UnsupervisedCDMethod(QDialog):
+class VegtationCDMethod(QDialog):
     def __init__(self,parent=None, alg:AlgFrontend=None):
-        super(UnsupervisedCDMethod, self).__init__(parent)
+        super(VegtationCDMethod, self).__init__(parent)
         self.alg = alg
-        self.setWindowTitle('无监督变化检测:{}'.format(alg.get_name()))
+        self.setWindowTitle('植被变化检测:{}'.format(alg.get_name()))
         self.setWindowIcon(IconInstance().LOGO)
         self.initUI()
         self.setMinimumWidth(500)
@@ -63,11 +63,11 @@ class UnsupervisedCDMethod(QDialog):
         self.setLayout(totalvlayout)
 
 @FOLLOW.register
-class UnsupervisedCDFollow(AlgFrontend):
+class VegetationCDFollow(AlgFrontend):
 
     @staticmethod
     def get_name():
-        return '无监督变化检测'
+        return '植被变化检测'
 
     @staticmethod
     def get_icon():
@@ -81,7 +81,7 @@ class UnsupervisedCDFollow(AlgFrontend):
         
         filter_select = AlgSelectWidget(widget, FILTER)
         filter_select.setObjectName('filter_select')
-        unsupervised_select = AlgSelectWidget(widget, UNSUPER_CD)
+        unsupervised_select = AlgSelectWidget(widget, VEG_CD)
         unsupervised_select.setObjectName('unsupervised_select')
         thres_select = AlgSelectWidget(widget, THRES)
         thres_select.setObjectName('thres_select')
@@ -160,47 +160,46 @@ class UnsupervisedCDFollow(AlgFrontend):
 
 
 
-class UnsupervisedPlugin(BasicPlugin):
+class VegtationPlugin(BasicPlugin):
 
 
     @staticmethod
     def info():
         return {
-            'name': 'UnsupervisedPlugin',
-            'description': 'UnsupervisedPlugin',
+            'name': 'VegtationPlugin',
+            'description': 'VegtationPlugin',
             'author': 'RSCDER',
             'version': '1.0.0',
         }
 
     def set_action(self):
-        unsupervised_menu = QMenu('&无监督变化检测', self.mainwindow)
-        unsupervised_menu.setIcon(IconInstance().UNSUPERVISED)
-        ActionManager().change_detection_menu.addMenu(unsupervised_menu)
+        veg_menu = ActionManager().veg_menu
+        # veg_menu.setIcon(IconInstance().UNSUPERVISED)
+        # ActionManager().veg_menu.addMenu(veg_menu)
 
-        for key in UNSUPER_CD.keys():
-            alg:AlgFrontend = UNSUPER_CD[key]
+        for key in VEG_CD.keys():
+            alg:AlgFrontend = VEG_CD[key]
             if alg.get_name() is None:
                 name = key
             else:
                 name = alg.get_name()
             
-            action = QAction(name, unsupervised_menu)
+            action = QAction(name, veg_menu)
             func = partial(self.run_cd, alg)
             action.triggered.connect(func)
 
-            unsupervised_menu.addAction(action)
+            veg_menu.addAction(action)
 
 
     def run_cd(self, alg):
-        print(alg.get_name())
-        dialog = UnsupervisedCDMethod(self.mainwindow, alg)
+        dialog = VegtationCDMethod(self.mainwindow, alg)
         dialog.show()
 
         if dialog.exec_() == QDialog.Accepted:
             t = Thread(target=self.run_cd_alg, args=(dialog,))
             t.start()
     
-    def run_cd_alg(self, w:UnsupervisedCDMethod):
+    def run_cd_alg(self, w:VegtationCDMethod):
         
         layer1=w.layer_combox.layer1        
         pth1 = w.layer_combox.layer1.path
@@ -209,7 +208,7 @@ class UnsupervisedPlugin(BasicPlugin):
 
         falg, fparams =  w.filter_select.get_alg_and_params()
         cdalg = w.alg
-        cdparams = w.alg.get_params(w.param_widget)
+        cdparams = w.alg.get_params()
         thalg, thparams = w.thres_select.get_alg_and_params()
         
         if cdalg is None or thalg is None:

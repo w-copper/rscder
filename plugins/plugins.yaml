@@ -34,6 +34,13 @@
   path: ./plugin\unsupervsied_method
   version: 1.0.0
 - author: RSCDER
+  description: VegatationPlugin
+  enabled: true
+  module: veg_method
+  name: VegatationPlugin
+  path: ./plugin\veg_method
+  version: 1.0.0
+- author: RSCDER
   description: set Change Rate
   enabled: true
   module: change_rate
