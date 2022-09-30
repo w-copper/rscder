@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QComboBox, QWidget, QLabel, QHBoxLayout, QVBoxLayout
 from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import Qt
 from rscder.utils.icons import IconInstance
 from rscder.utils.project import PairLayer, Project, RasterLayer, ResultPointLayer,SingleBandRasterLayer
 class LayerCombox(QComboBox):
@@ -7,6 +8,7 @@ class LayerCombox(QComboBox):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.addItem('---', None)
+        self.setMinimumWidth(200)
         
         for layer in Project().layers.values(): 
             self.addItem(IconInstance().LAYER, layer.name, layer.id)
@@ -34,8 +36,9 @@ class PairLayerCombox(QWidget):
         layer_label = QLabel('图层组:')
 
         hbox = QHBoxLayout()
+        hbox.setAlignment(Qt.AlignLeft)
         hbox.addWidget(layer_label)
-        hbox.addWidget(self.layer_combox)
+        hbox.addWidget(self.layer_combox, 2)
 
         self.raster_layer1 = QComboBox(self)
         self.raster_layer1.addItem('---', None)
@@ -49,12 +52,14 @@ class PairLayerCombox(QWidget):
         self.layer_combox.currentIndexChanged.connect(self.on_group_changed)
 
         hbox1 = QHBoxLayout()
+        hbox1.setAlignment(Qt.AlignLeft)
         hbox1.addWidget(QLabel('时相1:'))
-        hbox1.addWidget(self.raster_layer1)
+        hbox1.addWidget(self.raster_layer1, 2)
 
         hbox2 = QHBoxLayout()
+        hbox2.setAlignment(Qt.AlignLeft)
         hbox2.addWidget(QLabel('时相2:'))
-        hbox2.addWidget(self.raster_layer2)
+        hbox2.addWidget(self.raster_layer2, 2)
 
         vbox = QVBoxLayout()
         vbox.addLayout(hbox)

@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 from threading import Thread
 from PyQt5.QtWidgets import QDialog, QAction
@@ -10,19 +11,98 @@ from rscder.plugins.basic  import BasicPlugin
 from rscder.gui.layercombox import RasterLayerCombox
 from osgeo import gdal, gdal_array
 from skimage.filters import rank
-from skimage.morphology import disk, rectangle
+from skimage.morphology import  rectangle
+from filter_collection import FILTER
+from misc import AlgFrontend
+
+@FILTER.register
+class MainFilter(AlgFrontend):
+
+    @staticmethod
+    def get_name():
+        return '均值滤波'
+    
+    @staticmethod
+    def get_widget(parent=None):
+        widget = QtWidgets.QWidget(parent)
+        x_size_input = QtWidgets.QLineEdit(widget)
+        x_size_input.setText('3')
+        x_size_input.setValidator(QtGui.QIntValidator())
+        x_size_input.setObjectName('xinput')
+        y_size_input = QtWidgets.QLineEdit(widget)
+        y_size_input.setValidator(QtGui.QIntValidator())
+        y_size_input.setObjectName('yinput')
+        y_size_input.setText('3')
+
+        size_label = QtWidgets.QLabel(widget)
+        size_label.setText('窗口大小:')
+
+        time_label = QtWidgets.QLabel(widget)
+        time_label.setText('X')
+
+        hlayout1 = QtWidgets.QHBoxLayout()
+
+        hlayout1.addWidget(size_label)
+        hlayout1.addWidget(x_size_input)
+        hlayout1.addWidget(time_label)
+        hlayout1.addWidget(y_size_input)
+
+        widget.setLayout(hlayout1)
+
+        return widget
+
+    @staticmethod
+    def get_params(widget:QtWidgets.QWidget=None):
+        if widget is None:
+            return dict(x_size=3, y_size=3)
+        
+        x_input = widget.findChild(QtWidgets.QLineEdit, 'xinput')
+        y_input = widget.findChild(QtWidgets.QLineEdit, 'yinput')
+
+        if x_input is None or y_input is None:
+            return dict(x_size=3, y_size=3)
+        
+        x_size = int(x_input.text())
+        y_size = int(y_input.text())
+
+        return dict(x_size=x_size, y_size=y_size)
+
+    @staticmethod
+    def run_alg(pth, x_size, y_size, *args, **kargs):
+        x_size = int(x_size)
+        y_size = int(y_size)
+        # pth = layer.path
+        if pth is None:
+            return
+        
+        ds = gdal.Open(pth)
+        band_count = ds.RasterCount
+
+        out_path = os.path.join(Project().other_path, 'mean_filter_{}.tif'.format(int(datetime.now().timestamp() * 1000)))
+        out_ds = gdal.GetDriverByName('GTiff').Create(out_path, ds.RasterXSize, ds.RasterYSize, band_count, ds.GetRasterBand(1).DataType)
+        out_ds.SetProjection(ds.GetProjection())
+        out_ds.SetGeoTransform(ds.GetGeoTransform())
+
+        for i in range(band_count):
+            band = ds.GetRasterBand(i+1)
+            data = band.ReadAsArray()
+            
+            data = rank.mean(data, rectangle(y_size, x_size))
+
+            out_band = out_ds.GetRasterBand(i+1)
+            out_band.WriteArray(data)
+
+        out_ds.FlushCache()
+        del out_ds
+        del ds
+        return out_path
+
 class FilterSetting(QDialog):
     def __init__(self, parent=None):
         super(FilterSetting, self).__init__(parent)
         self.setWindowTitle('滤波设置')
-        # self.setWindowFlags(Qt.WindowStaysOnTopHint)
-        # self.setFixedSize(300, 200)
-        # self.setStyleSheet("QDialog{background-color:rgb(255,255,255);}")
         self.setWindowIcon(IconInstance().FILTER)
-        # self.setWindowIconText('Filter Setting')
-        # self.setWindowModality(Qt.ApplicationModal)
         self.initUI()
-        # self.show()
 
     def initUI(self):
         self.layer_combox = RasterLayerCombox(self)
@@ -61,8 +141,8 @@ class FilterSetting(QDialog):
         cancel_button.clicked.connect(self.reject)
 
         hlayout2 = QtWidgets.QHBoxLayout()
-        hlayout2.addWidget(ok_button)
-        hlayout2.addWidget(cancel_button)
+        hlayout2.addWidget(ok_button,0,alignment=Qt.AlignHCenter)
+        hlayout2.addWidget(cancel_button,0,alignment=Qt.AlignHCenter)
 
         vlayout = QtWidgets.QVBoxLayout()
         vlayout.addLayout(hbox)
@@ -78,10 +158,10 @@ class MainPlugin(BasicPlugin):
     @staticmethod
     def info():
         return {
-            'name': 'mean_filter',
+            'name': 'FilterCollection',
             'author': 'rscder',
             'version': '0.0.1',
-            'description': 'Mean Filter'
+            'description': 'Filter Collections'
         }
     
     def set_action(self):

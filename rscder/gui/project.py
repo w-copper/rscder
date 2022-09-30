@@ -92,8 +92,8 @@ class Create(QDialog):
         
         button_layout = QHBoxLayout()
         button_layout.setDirection(QHBoxLayout.RightToLeft)
-        button_layout.addWidget(ok_button, 0, Qt.AlignRight)
-        button_layout.addWidget(cancel_button, 0, Qt.AlignRight)
+        button_layout.addWidget(ok_button, 0, Qt.AlignHCenter)
+        button_layout.addWidget(cancel_button, 0, Qt.AlignHCenter)
 
         main_layout = QVBoxLayout()
         main_layout.addLayout(file_input_layout)

@@ -7,7 +7,7 @@ import numpy as np
 from rscder.gui.actions import ActionManager
 from rscder.plugins.basic import BasicPlugin
 from rscder.gui.layercombox import RasterLayerCombox,ResultLayercombox, ResultPointLayerCombox
-from PyQt5.QtWidgets import QAction, QFileDialog, QDialog, QLabel, QHBoxLayout, QVBoxLayout, QPushButton
+from PyQt5.QtWidgets import QAction, QFileDialog, QDialog, QLabel, QHBoxLayout, QVBoxLayout, QPushButton,QDialogButtonBox
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 from osgeo import gdal
@@ -49,14 +49,19 @@ class EvalutationDialog(QDialog):
         self.ok_button = QPushButton('确定', self)
         self.ok_button.setIcon(IconInstance().OK)
         self.ok_button.clicked.connect(self.on_ok)
-
+        self.ok_button.setDefault(True)
         self.cancel_button = QPushButton('取消', self)
         self.cancel_button.setIcon(IconInstance().CANCEL)
         self.cancel_button.clicked.connect(self.on_cancel)
+        self.cancel_button.setDefault(False)
+        self.buttonbox=QDialogButtonBox(self)
+        self.buttonbox.addButton(self.ok_button,QDialogButtonBox.NoRole)
+        self.buttonbox.addButton(self.cancel_button,QDialogButtonBox.NoRole)
+        self.buttonbox.setCenterButtons(True)
 
         self.button_layout = QHBoxLayout()
-        self.button_layout.addWidget(self.ok_button)
-        self.button_layout.addWidget(self.cancel_button)
+        self.button_layout.addWidget(self.ok_button,0,alignment=Qt.AlignHCenter)
+        self.button_layout.addLayout(self.cancel_button,0,alignment=Qt.AlignHCenter)
 
         self.main_layout = QVBoxLayout()
         self.main_layout.addLayout(hbox1)

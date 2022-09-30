@@ -15,10 +15,7 @@ from rscder.utils.icons import IconInstance
 from rscder.utils.project import Project
 from rscder.gui.layercombox import LayerCombox
 from rscder.gui.eagle_eye import eagleEye
-import skimage
-import numpy as np
-import sys
-import scipy
+
 class MainWindow(QMainWindow):
 
     closed = pyqtSignal()

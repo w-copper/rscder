@@ -47,8 +47,8 @@ class LicenseGen(QDialog):
         self.btn_cancel.clicked.connect(self.reject)
 
         hbox4 = QHBoxLayout()
-        hbox4.addWidget(self.btn_generate, alignment = QtCore.Qt.AlignRight, stretch= 0)
-        hbox4.addWidget(self.btn_cancel, alignment = QtCore.Qt.AlignRight, stretch= 0)
+        hbox4.addWidget(self.btn_generate, alignment = QtCore.Qt.AlignCenter, stretch= 0)
+        hbox4.addWidget(self.btn_cancel, alignment = QtCore.Qt.AlignCenter, stretch= 0)
 
         vbox = QVBoxLayout()
         vbox.addLayout(hbox1)

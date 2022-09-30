@@ -1,10 +1,11 @@
 from colorsys import hls_to_rgb
 import os
+from turtle import width
 from osgeo import gdal
 from PyQt5.QtWidgets import  QWidget, QApplication, QMainWindow, QToolBox
-from PyQt5.QtWidgets import QDialog, QFileDialog, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QMessageBox,QSpacerItem
+from PyQt5.QtWidgets import QDialog, QFileDialog, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QMessageBox,QSpacerItem,QDialogButtonBox
 from PyQt5.QtCore import Qt, QSize,QSettings,pyqtSignal,QThread
-from PyQt5.QtGui import QIcon,QColor
+from PyQt5.QtGui import QIcon,QColor,QPalette,QPixmap
 from PyQt5 import QtGui
 from threading import Thread
 from rscder.utils.icons import IconInstance
@@ -38,6 +39,8 @@ class loader(QDialog):
     signal1=pyqtSignal(str)
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
+        self.left_layer=None
+        self.right_layer=None
         self.setWindowTitle('载入数据')
         self.setWindowIcon(IconInstance().DATA_LOAD)
         self.pyramid:bool=False
@@ -46,18 +49,20 @@ class loader(QDialog):
         self.path1=''
         self.path2=''
         self.bands=['red:','green:','blue:','NIR:']
-        self.bandsorder=[3,2,1,4]
-        self.mapcanva1 = QgsMapCanvas(self)
-        self.mapcanva2 = QgsMapCanvas(self)
-        self.mapcanva1.setCanvasColor(QColor(0, 0, 0))
-        self.mapcanva2.setCanvasColor(QColor(0, 0, 0))
-        self.mapcanva1.setFixedWidth(200)
-        self.mapcanva1.setFixedHeight(200)
-        self.mapcanva2.setFixedWidth(200)
-        self.mapcanva2.setFixedHeight(200)
+        self.bandsorder=[1,2,3,4]
+        
+        self.left_map=QLabel()
+        self.left_map.setFixedSize(200,200)
+        self.left_map.setAutoFillBackground(True)
+        self.left_map.setBackgroundRole(QPalette.Dark)
+
+        self.right_map=QLabel()
+        self.right_map.setFixedSize(200,200)
+        self.right_map.setAutoFillBackground(True)
+        self.right_map.setBackgroundRole(QPalette.Dark)
         maplayout=QHBoxLayout()
-        maplayout.addWidget(self.mapcanva1)
-        maplayout.addWidget(self.mapcanva2)
+        maplayout.addWidget(self.left_map)
+        maplayout.addWidget(self.right_map)
 
         path1_label = QLabel('时相1影像:')
         path1_label.setFixedWidth(60)
@@ -145,11 +150,16 @@ class loader(QDialog):
 
         ok_button.clicked.connect(self.ok)
         cancel_button.clicked.connect(self.cancel)
-
-        button_layout = QHBoxLayout()
-        button_layout.setDirection(QHBoxLayout.RightToLeft)
-        button_layout.addWidget(cancel_button, 0, Qt.AlignRight)
-        button_layout.addWidget(ok_button, 0, Qt.AlignRight)
+        ok_button.setDefault(True)
+        cancel_button.setDefault(False)
+        buttonbox=QDialogButtonBox(self)
+        buttonbox.addButton(ok_button,QDialogButtonBox.NoRole)
+        buttonbox.addButton(cancel_button,QDialogButtonBox.NoRole)
+        buttonbox.setCenterButtons(True)
+        # button_layout = QHBoxLayout()
+        # button_layout.setDirection(QHBoxLayout.RightToLeft)
+        # button_layout.addWidget(cancel_button, 0, Qt.AlignCenter)
+        # button_layout.addWidget(ok_button, 0, Qt.AlignCenter)
 
         main_layout = QVBoxLayout()
         main_layout.addLayout(path1_layout)
@@ -157,7 +167,8 @@ class loader(QDialog):
         main_layout.addLayout(path2_layout)
         main_layout.addLayout(style2_layout)
         main_layout.addLayout(maplayout)
-        main_layout.addLayout(button_layout)
+        main_layout.addWidget(buttonbox)
+        # main_layout.addLayout(button_layout)
         self.setLayout(main_layout)
 
     def open_file1(self):
@@ -171,24 +182,23 @@ class loader(QDialog):
                 if result==QMessageBox.Yes:
                     progress1:QDialog=progressDialog(self,'加载时相一')
                     progress1.setModal(False)
-                    self.temp1=os.path.join(Project().other_path,'temp1.tif')
-                    t1=GdalPreviewImage(self.path1,self.temp1,1024,self.parent())
-                    # t1.started.connect(progress1.show)
-                    t1.finished.connect(self.loadfile1)
-                    t1.finished.connect(lambda :self.setlabel(progress1) )
+                    self.left_layer=MultiBandRasterLayer(path=self.path1)
+                    t1=GdalPreviewImage(self.left_layer,self.left_map,width=200,parent=self.parent())
+                    t1.finished.connect(lambda :self.setlabel(progress1))
                     t2=build_pyramids_overviews(self.path1,self.parent())
                     t2.finished.connect(progress1.hide)
-                    t1.start()
                     t1.finished.connect(t2.start)
+                    t1.finished.connect(lambda : self.open1.setEnabled(True))
+                    t1.start()
                     # t2.start()
                     progress1.show()
                 else:
                     progress1=progressDialog(self,'加载时相一')
                     progress1.setModal(False)
-                    self.temp1=os.path.join(Project().other_path,'temp1.tif')
-                    t1=GdalPreviewImage(self.path1,self.temp1,1024,self.parent())
+                    self.left_layer=MultiBandRasterLayer(path=self.path1)
+                    t1=GdalPreviewImage(self.left_layer,self.left_map,width=200,parent=self.parent())
                     # t1.started.connect(progress1.show)
-                    t1.finished.connect(self.loadfile1)
+                    t1.finished.connect(lambda : self.open1.setEnabled(True))
                     t1.finished.connect(progress1.hide)
                     t1.start()
                     progress1.show()
@@ -196,14 +206,7 @@ class loader(QDialog):
 
             except:
                 return
-    def loadfile1(self):
-        try:
-            self.left_layer=MultiBandRasterLayer(path=self.temp1)
-            self.mapcanva1.setLayers([self.left_layer.layer])
-            self.mapcanva1.zoomToFeatureExtent(self.left_layer.layer.extent())
-            self.open1.setEnabled(True)
-        except:
-            return
+    
     def open_file2(self):
         path2 = QFileDialog.getOpenFileNames(self, '打开数据2', Settings.General().last_path, '*.*')
         if  path2[0]!='':
@@ -216,12 +219,14 @@ class loader(QDialog):
                 progress2=progressDialog(self,'加载时相二')
                 progress2.setModal(False)
                 # progress1.show
-                self.temp2=os.path.join(Project().other_path,'temp2.tif')
-                t1=GdalPreviewImage(self.path2,self.temp2,1024,self.parent())
-                
+                self.right_layer=MultiBandRasterLayer(path=self.path2)
+
+                t1=GdalPreviewImage(self.right_layer,self.right_map,width=200,parent=self.parent())
+
                 # t1.started.connect(progress1.show)
-                t1.finished.connect(self.loadfile2)
+                t1.finished.connect(lambda :self.open2.setEnabled(True))
                 t1.finished.connect(lambda :self.setlabel(progress2))
+                
                 t2=build_pyramids_overviews(self.path2,self.parent())
                 t2.finished.connect(progress2.hide)
                 t1.start()
@@ -230,24 +235,15 @@ class loader(QDialog):
             else:
                 progress2=progressDialog(self,'加载时相二')
                 progress2.setModal(False)
-                self.temp2=os.path.join(Project().other_path,'temp2.tif')
-                t1=GdalPreviewImage(self.path2,self.temp2,1024,self.parent())
+                self.right_layer=MultiBandRasterLayer(path=self.path2)
+                t1=GdalPreviewImage(self.right_layer,self.right_map,width=200,parent=self.parent())
+
                 # t1.started.connect(progress1.show)
-                t1.finished.connect(self.loadfile2)
+                t1.finished.connect(lambda :self.open2.setEnabled(True))
                 t1.finished.connect(progress2.hide)
                 t1.start()
                 progress2.show()
 
-
-
-    def loadfile2(self):
-        try:
-            self.right_layer=MultiBandRasterLayer(path=self.temp2)
-            self.mapcanva2.setLayers([self.right_layer.layer])
-            self.mapcanva2.zoomToFeatureExtent(self.right_layer.layer.extent())
-            self.open2.setEnabled(True)
-        except:
-            return
     def ok(self):
         self.bandsorder1=[int(q.text()) for q in self.style1_inputs ]
         self.style1={'r':self.bandsorder1[0],'g':self.bandsorder1[1],'b':self.bandsorder1[2],'NIR':self.bandsorder1[3]}
@@ -265,8 +261,7 @@ class loader(QDialog):
     def cancel(self):
         self.reject()
 
-    def open_alg(self,path):
-        pass
+
     def setlabel(self,s):
         try:
             s.setlabel('创建影像金字塔..')
@@ -276,72 +271,22 @@ class loader(QDialog):
         self.bandsorder1=[int(q.text()) for q in self.style1_inputs ]
         self.style1={'r':self.bandsorder1[0],'g':self.bandsorder1[1],'b':self.bandsorder1[2],'NIR':self.bandsorder1[3]}
         self.left_layer.set_stlye(self.style1)
+        self.left_map.setPixmap(self.left_layer.previewAsPixmapo(width=200))
 
     def set_style2(self):
         self.bandsorder2=[int(q.text()) for q in self.style2_inputs ]
         self.style2={'r':self.bandsorder2[0],'g':self.bandsorder2[1],'b':self.bandsorder2[2],'NIR':self.bandsorder2[3]}
         self.right_layer.set_stlye(self.style2)
+        self.right_map.setPixmap(self.right_layer.previewAsPixmapo(width=200))
 
 class GdalPreviewImage(QThread):
-    def __init__(self,srcFile,tarFilename,width=1024.0,parent=None) -> None:
+    def __init__(self,layer,map,width=200,parent=None) -> None:
         super(GdalPreviewImage,self).__init__(parent)
-        self.srcFile=srcFile
-        self.tarFilename=tarFilename
+        self.layer=layer
+        self.map=map
         self.width=width
     def run(self):
-        try:
-            srcFile=self.srcFile
-            tarFilename=self.tarFilename
-            width=self.width
-            p=tarFilename
-            dataset = gdal.Open(srcFile, gdal.GA_ReadOnly)
-            srcProjection = dataset.GetProjection()
-            srcGeoTransform = dataset.GetGeoTransform()
-            srcWidth = dataset.RasterXSize
-            srcHeight = dataset.RasterYSize
-            srcBandCount = dataset.RasterCount
-            # srcNoDatas = [
-            #     dataset.GetRasterBand(bandIndex).GetNoDataValue()
-            #     for bandIndex in range(1, srcBandCount+1)
-            # ]
-            # print(srcNoDatas)
-            srcBandDataType = dataset.GetRasterBand(1).DataType
-            # 创建重采样后的栅格
-            outFilePath = p
-            resampleFactor=width/srcWidth
-            driver = gdal.GetDriverByName('GTiff')
-            outWidth = int(srcWidth * resampleFactor)
-            outHeight = int(srcHeight * resampleFactor)
-            outDataset = driver.Create(
-                outFilePath,
-                outWidth,
-                outHeight,
-                srcBandCount,
-                srcBandDataType
-            )
-            print(outDataset)
-            geoTransforms = list(srcGeoTransform)
-            geoTransforms[1] = geoTransforms[1]/resampleFactor
-            geoTransforms[5] = geoTransforms[5]/resampleFactor
-            outGeoTransform = tuple(geoTransforms)
-            outDataset.SetGeoTransform(outGeoTransform)
-            outDataset.SetProjection(srcProjection)
-            # for bandIndex in range(1, srcBandCount+1):
-            #     band = outDataset.GetRasterBand(bandIndex)
-            #     band.SetNoDataValue(srcNoDatas[bandIndex-1])
-            gdal.ReprojectImage(
-                dataset,
-                outDataset,
-                srcProjection,
-                srcProjection,
-                gdal.gdalconst.GRA_NearestNeighbour,
-                0.0, 0.0,
-            )
-            del outDataset
-        except:
-            pass
-        
-        # return outFilePath
+        self.map.setPixmap(self.layer.previewAsPixmapo(width=self.width))
 
 
 class build_pyramids_overviews(QThread):

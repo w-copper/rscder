@@ -1,9 +1,10 @@
 import os
+from pickle import TRUE
 from threading import Thread
 from rscder.gui.actions import ActionManager
 from rscder.gui.layercombox import ResultPointLayerCombox
 from rscder.plugins.basic import BasicPlugin
-from PyQt5.QtWidgets import QAction, QDialog, QLabel, QHBoxLayout, QVBoxLayout, QPushButton,QSlider,QSpinBox,QSpacerItem
+from PyQt5.QtWidgets import QAction, QDialog, QLabel, QHBoxLayout, QVBoxLayout, QPushButton,QSlider,QSpinBox,QSpacerItem,QDialogButtonBox
 from PyQt5.QtCore import pyqtSignal,Qt
 from PyQt5.QtGui import QIcon
 from rscder.utils.icons import IconInstance
@@ -36,19 +37,20 @@ class RateSetdialog(QDialog):
         self.ok_button = QPushButton('确定', self)
         self.ok_button.setIcon(IconInstance().OK)
         self.ok_button.clicked.connect(self.on_ok)
-
+        self.ok_button.setDefault(True)
         self.cancel_button = QPushButton('取消', self)
         self.cancel_button.setIcon(IconInstance().CANCEL)
         self.cancel_button.clicked.connect(self.on_cancel)
-
-        self.button_layout = QHBoxLayout()
-        self.button_layout.addWidget(self.ok_button)
-        self.button_layout.addWidget(self.cancel_button)
+        self.cancel_button.setDefault(False)
+        self.buttonbox=QDialogButtonBox(self)
+        self.buttonbox.addButton(self.ok_button,QDialogButtonBox.NoRole)
+        self.buttonbox.addButton(self.cancel_button,QDialogButtonBox.NoRole)
+        self.buttonbox.setCenterButtons(True)
         vlayout=QVBoxLayout()
         vlayout.addLayout(h1)
         vlayout.addWidget(QLabel('设置阈值'))
         vlayout.addLayout(h2)
-        vlayout.addLayout(self.button_layout)
+        vlayout.addWidget(self.buttonbox)
         self.setLayout(vlayout)
 
         self.old_data = None

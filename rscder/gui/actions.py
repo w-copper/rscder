@@ -2,7 +2,8 @@ import logging
 import os
 from pathlib import Path
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QAction, QActionGroup, QLabel, QFileDialog, QMenuBar
+from PyQt5.QtCore import Qt, QSize, QSettings, pyqtSignal
+from PyQt5.QtWidgets import QAction, QActionGroup, QLabel, QFileDialog, QMenuBar, QToolBar, QVBoxLayout, QComboBox
 from rscder.gui import project
 from rscder.gui.project import Create
 from rscder.utils.icons import IconInstance
@@ -20,17 +21,19 @@ class ActionManager(QtCore.QObject):
     instance = None
 
     def __init__(self,
-             double_map,
-             layer_tree,
-             follow_box,
-             result_box,
-             message_box,
-             parent=None):
+            double_map,
+            layer_tree,
+            follow_box,
+            result_box,
+            message_box,
+            parent=None):
         super().__init__(parent)
         self.w_parent = parent
         self.actions = {}
         self.action_groups = {}
         self.action_group_actions = {}
+
+        self.toolbars = {}
 
         self.double_map = double_map
         self.layer_tree = layer_tree
@@ -52,7 +55,7 @@ class ActionManager(QtCore.QObject):
         self.basic_menu = menubar.addMenu( '&基础工具')
         self.filter_menu = self.basic_menu.addMenu(IconInstance().FILTER, '&滤波处理')
         self.change_detection_menu = menubar.addMenu('&通用变化检测')
-        self.unsupervised_menu = self.change_detection_menu.addMenu(IconInstance().UNSUPERVISED, '&无监督变化检测')
+        # self.unsupervised_menu = self.change_detection_menu.addMenu(IconInstance().UNSUPERVISED, '&无监督变化检测')
         self.supervised_menu = self.change_detection_menu.addMenu(IconInstance().SUPERVISED,'&监督变化检测')
         self.ai_menu = self.change_detection_menu.addMenu(IconInstance().AI_DETECT,'&AI变化检测')
         self.special_chagne_detec_menu = menubar.addMenu( '&专题变化检测')
@@ -73,10 +76,28 @@ class ActionManager(QtCore.QObject):
         self.plugin_menu = menubar.addMenu('&插件')
         self.help_menu = menubar.addMenu( '&帮助')
 
+        # vbox = QVBoxLayout()
+        # follow_combox = QComboBox(self.follow_box)
+        # vbox.addWidget(follow_combox)
+        # self.follow_box.setLayout(vbox)
+        
+
     def set_toolbar(self, toolbar):
-        self.toolbar = toolbar
+        self.toolbar:QToolBar = toolbar
         self.toolbar.setIconSize(QtCore.QSize(24, 24))
-    
+        
+    def add_toolbar(self, name=None):
+        
+        toolbar = self.w_parent.addToolBar(name)
+        toolbar.setMovable(True)
+        toolbar.setFloatable(False)
+        toolbar.setIconSize(QSize(32, 32))
+        toolbar.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
+        toolbar.setContextMenuPolicy(Qt.PreventContextMenu)
+        toolbar.setLayoutDirection(Qt.LeftToRight)
+        
+        return toolbar
+
     def set_status_bar(self, status_bar):
         self.status_bar = status_bar
     
@@ -131,6 +152,9 @@ class ActionManager(QtCore.QObject):
         zomm_out.setChecked(False)
         zomm_in.setCheckable(True)
         zomm_in.setChecked(False)
+        
+        toolbar = self.add_toolbar('Map')
+        toolbar.addActions([pan, zomm_out, zomm_in, locate])
 
         self.double_map.connect_map_tool(pan, zomm_in, zomm_out)
         # self.double_map.connect_grid_show(grid_line)
@@ -147,6 +171,9 @@ class ActionManager(QtCore.QObject):
         '''
         plugin_list = self.add_action(QAction(IconInstance().PLUGINS,'&插件列表', self.w_parent), 'Plugin')
         plugin_list.triggered.connect(self.plugin_list)
+
+        # toolbar = self.add_toolbar('Plugin')
+        # toolbar.addAction(plugin_list)
 
         self.plugin_menu.addAction(plugin_list)
 

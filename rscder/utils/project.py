@@ -8,6 +8,7 @@ from pathlib import Path
 from pydoc import render_doc
 import shutil
 from statistics import stdev
+from tabnanny import check
 from threading import Thread
 from time import sleep, time
 from typing import Dict, List
@@ -26,9 +27,9 @@ from qgis.core import (\
     QgsGeometry, QgsPointXY, QgsMultiBandColorRenderer)
 from PyQt5.QtCore import QObject, pyqtSignal, Qt, QThread,QSize
 from PyQt5.QtWidgets import QTreeWidgetItem, QAction,QMessageBox
-from PyQt5.QtGui import QColor, QIcon, QFont
+from PyQt5.QtGui import QColor, QIcon, QFont,QPixmap
 import yaml
-
+from rscder.utils.geomath import geo2imageRC,imageRC2geo
 from .misc import singleton
 def relative_path(path: str, root:str) -> str:
     return os.path.relpath(path, root)
@@ -235,6 +236,7 @@ def from_dict(data:dict):
     if cls_type is not None and cls_type in globals():
         return globals()[cls_type](**data)
 
+
 class BasicLayer(QObject):
 
     LEFT_VIEW=1
@@ -375,13 +377,13 @@ class GridLayer(BasicLayer):
         self.x_lines = []
         for xi in range(self.x_size // self.cell_size[0] +1):
             self.x_lines.append(self.x_min + self.x_res * xi * self.cell_size[0])
-        if self.x_lines[-1] == self.x_max:
+        if self.x_lines[-1] > self.x_max:
             self.x_lines.pop()
         self.x_lines.append(self.x_max)
         self.y_lines = []
         for yi in range(self.y_size // self.cell_size[1]+1):
             self.y_lines.append(self.y_min + self.y_res * yi * self.cell_size[1])
-        if self.y_lines[-1] == self.y_max:
+        if self.y_lines[-1] < self.y_max:
             self.y_lines.pop()
         self.y_lines.append(self.y_max)
         crs = QgsCoordinateReferenceSystem()
@@ -408,11 +410,13 @@ class GridLayer(BasicLayer):
 
         self.set_render()   
 
-
-
+class Mask(object):
+    def __init__(self,geoxy) -> None:
+        super().__init__()
+        self.xy=geoxy
 class RasterLayer(BasicLayer):
     
-    def __init__(self, name=None, enable=False, path=None, view_mode=BasicLayer.BOATH_VIEW,style_info={'r':3,'g':2,'b':1,'NIR':0}):
+    def __init__(self, name=None, enable=False, path=None, view_mode=BasicLayer.BOATH_VIEW,style_info={'r':1,'g':2,'b':3,'NIR':0}):
         if name is None:
             name = os.path.splitext(os.path.basename(path))[0]
         super().__init__(name, enable, IconInstance().RASTER, path, BasicLayer.IN_FILE, view_mode)
@@ -420,18 +424,68 @@ class RasterLayer(BasicLayer):
         self.style_info=style_info
         self.apply_style()
     def compare(self, other:'RasterLayer'):
-        ds1 = gdal.Open(self.path)
-        ds2 = gdal.Open(other.path)
+        '''
+        与其他图像比较，看是否处于同一投影,有无重叠区域,能否进行变化检测
+        other:其它同类图层
+        return:-1,无法进行比较;0,有重叠区域;1,完全重叠。
+        '''
+        ds1:gdal.Dataset = gdal.Open(self.path)
+        ds2 :gdal.Dataset = gdal.Open(other.path)
+        geo1=ds1.GetGeoTransform()
+        geo2=ds2.GetGeoTransform()
+        map1xy=[imageRC2geo(geo1,0,0),imageRC2geo(geo1,ds1.RasterXSize,ds1.RasterYSize)]
+        map2xy=[imageRC2geo(geo2,0,0),imageRC2geo(geo2,ds2.RasterXSize,ds2.RasterYSize)]
+        map1xx=[map1xy[0][0],map1xy[1][0]]
+        map1yy=[map1xy[0][1],map1xy[1][1]]
+        map2xx=[map2xy[0][0],map2xy[1][0]]
+        map2yy=[map2xy[0][1],map2xy[1][1]]
+        map1xx.sort()
+        map1yy.sort()
+        map2yy.sort()
+        map2xx.sort()
         if ds1 is None or ds2 is None:
             Project().message_box.error('图层打开失败')
-            return False
-        
-        if ds1.RasterXSize != ds2.RasterXSize or ds1.RasterYSize != ds2.RasterYSize:
-            Project().message_box.error('图层尺寸不一致')
-            return False
-        
-        return True
-    
+            return -1
+        if not ds1.GetProjection()==ds2.GetProjection():
+            Project().message_box.error('投影不一致')
+            return -1
+        elif (map1xx[0]>map2xx[1] or map1xx[1]<map2xx[0])or(map1yy[0]>map2yy[1] or map1yy[1]<map2yy[0] ):
+            Project().message_box.error('图层无重叠区域')
+            return -1
+        elif ds1.RasterXSize == ds2.RasterXSize and ds1.RasterYSize == ds2.RasterYSize and geo1==geo2:
+            # Project().message_box.error('两图一致')
+            return 1
+        #图层尺寸相同
+        Project().message_box.warning('图层不完全重叠')
+        del ds1
+        del ds2
+        return 0
+    def overlap(self,other:'RasterLayer'):
+        '''
+        与其他图像比较，看是否处于同一投影,有无重叠区域,能否进行变化检测
+        other:其它同类图层
+        return:[重叠区域左上点xy,重叠区域右下点xy]
+        '''
+        ds1:gdal.Dataset = gdal.Open(self.path)
+        ds2 :gdal.Dataset = gdal.Open(other.path)
+        geo1=ds1.GetGeoTransform()
+        geo2=ds2.GetGeoTransform()
+        #地理（投影）坐标，y向下变小
+        map1xy=[imageRC2geo(geo1,0,0),imageRC2geo(geo1,ds1.RasterXSize,ds1.RasterYSize)]
+        map2xy=[imageRC2geo(geo2,0,0),imageRC2geo(geo2,ds2.RasterXSize,ds2.RasterYSize)]
+        xx=[map1xy[0][0],map1xy[1][0],map2xy[0][0],map2xy[1][0]]
+        yy=[map1xy[0][1],map1xy[1][1],map2xy[0][1],map2xy[1][1]]
+        xx.sort()
+        yy.sort()
+        return [xx[1],yy[2],xx[2],yy[1]]
+    @property
+    def band(self):
+        ds:gdal.Dataset =  gdal.Open(self.path)
+        if ds is None:
+            return None
+        band = ds.RasterCount
+        del ds
+        return band
     @property
     def geo(self):
         ds =  gdal.Open(self.path)
@@ -493,6 +547,13 @@ class RasterLayer(BasicLayer):
             'prewmap':self.preview
         }
         return mapinfo
+
+    def previewAsPixmapo(self,width,height=None):
+        w=self.layer.width()
+        h=self.layer.height()
+        if height:
+            return QPixmap.fromImage(self.layer.previewAsImage(QSize(width,height)))
+        return QPixmap.fromImage(self.layer.previewAsImage(QSize(width,int(width*h/w))))
     @property
     def preview(self,width=400):
         w=self.layer.width()
@@ -505,16 +566,30 @@ class MultiBandRasterLayer(RasterLayer):
         renderer=QgsMultiBandColorRenderer(self.layer.dataProvider(),self.style_info['r'],self.style_info['g'],self.style_info['b'])
         self.layer.setRenderer(renderer)
         self.layer.triggerRepaint()
-    # @property
-    # def info(self):
-    #     mapinfo=super().info
-    #     mapinfo['渲染属性']['波段']='单波段'
+    def toArray(self,mask=None,band:list=None):
+        ds:gdal.Dataset=gdal.Open(self.path)
+        res=None
+        startx=0
+        starty=0
+        xsize=ds.RasterXSize
+        ysize=ds.RasterYSize
+        if mask:
+            #转为图像坐标
+            startx,starty=geo2imageRC(self.geo,mask[0],mask[1])
+            x2,y2=geo2imageRC(self.geo,mask[2],mask[3])
+            xsize=x2-startx
+            ysize=y2-starty
+        res=ds.ReadAsArray(startx,starty,xsize,ysize,band_list=band)
+        del ds
+        return res
+    def readAsArray(self,xoff: int = 0, yoff: int = 0, xsize= None, ysize = None, buf_obj= None, buf_xsize= None, buf_ysize = None, buf_type= None, callback = None, callback_data = None, interleave = 'band', band_list = None):
+        ds:gdal.Dataset = gdal.Open(self.path)
+        array=ds.ReadAsArray(xoff= 0, yoff= 0, xsize= None, ysize = None, buf_obj= None, buf_xsize= None, buf_ysize = None, buf_type= None, callback = None, callback_data = None, interleave= 'band', band_list = None)
+        return array
 class SingleBandRasterLayer(RasterLayer):
     
     def apply_style(self):
         pass
-
-
 class VectorLayer(BasicLayer):
     pass
 
@@ -696,7 +771,7 @@ class ResultPointLayer(BasicLayer):
         return {'基础属性':basic,'渲染属性':render}
 class PairLayer(BasicLayer):
     
-    def __init__(self, pth1, pth2,style_info1,style_info2) -> None:
+    def __init__(self, pth1, pth2,style_info1,style_info2,mask=None) -> None:
         
         self.layers:List[BasicLayer] = []
         self.id = str(uuid.uuid1())
@@ -708,26 +783,39 @@ class PairLayer(BasicLayer):
         self.grid = None
         self.cell_size = Project().cell_size
         name = os.path.basename(pth1)[:4] + '-' + os.path.basename(pth2)[:4]
+        self.mask=mask
         # self.layer_update.connect(Project().layer_updated)
 
         super().__init__(name, True, IconInstance().DOCUMENT)
         self.layer = self.main_l1.layer
         if self.check():
-            self.geo = self.main_l1.geo
-            self.proj = self.main_l1.proj
-            self.size = self.main_l1.size
             self.layers.append(self.main_l1)
             self.layers.append(self.main_l2)
-            self.grid = GridLayer(self.proj, self.geo, self.size[0], self.size[1], cell_size=Project().cell_size)
-            self.grid.set_layer_parent(self)
+            
             # self.layers.append(self.grid)
+    @property
+    def l1_geo(self):
+        return self.main_l1.geo
+    @property
+    def l2_geo(self):
+        return self.main_l2.geo
     
     def check(self):
         if self.checked:
             return self.checked
         self.checked = self.main_l1.compare(self.main_l2)
-        return self.checked
-    
+        if not self.checked==-1:#重叠
+            self.mask=Mask(self.main_l1.overlap(self.main_l2))
+            x1,y1=geo2imageRC(self.l1_geo,*self.mask.xy[0:2])
+            x2,y2=geo2imageRC(self.l1_geo,*self.mask.xy[2:])
+            self.size=[x2-x1,y2-y1]
+            self.geo = self.main_l1.geo
+            self.proj = self.main_l1.proj
+            gridgeo=[self.mask.xy[0],self.l1_geo[1],self.l1_geo[2],self.mask.xy[1],self.l1_geo[4],self.l1_geo[5]]
+            self.grid = GridLayer(self.proj, gridgeo , self.size[0], self.size[1], cell_size=Project().cell_size)
+            self.grid.set_layer_parent(self)
+        return self.checked!=-1
+
     def add_result_layer(self, result):
         result.set_layer_parent(self)
         self.layers.insert(0, result)
@@ -763,13 +851,15 @@ class PairLayer(BasicLayer):
             pth2=self.main_l2.path,
             style_info1=self.main_l1.style_info,
             style_info2=self.main_l2.style_info,
-            layers=[to_dict(l)  for l in self.layers if not (l is self.grid or l is self.main_l1 or l is self.main_l2) ]
+            layers=[to_dict(l)  for l in self.layers if not (l is self.grid or l is self.main_l1 or l is self.main_l2) ],
+            
         )
         return data
-    
+
+
     @property
     def info(self):
-        
+
         ds= gdal.Open(self.main_l1.path)
         srs= osr.SpatialReference(ds.GetProjectionRef())
         metadata={}
@@ -791,7 +881,9 @@ class PairLayer(BasicLayer):
 
         #公共掩模
         maskData={}
-        
+        if self.mask:
+            maskData['左上角坐标']=self.mask.xy[0:2]
+            maskData['右下角坐标']=self.mask.xy[2:]
 
         mapinfo={
         '坐标系':metadata,
@@ -801,7 +893,7 @@ class PairLayer(BasicLayer):
         
         return mapinfo
 
-        
+
     @staticmethod
     def from_dict(data):
         player = PairLayer(data['pth1'], data['pth2'], data['style_info1'], data['style_info2'])
